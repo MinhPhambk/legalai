@@ -1,0 +1,2951 @@
+{
+ "summary": {
+  "name": "A1",
+  "scenario": "A",
+  "concurrency": 1,
+  "via": "local",
+  "base": "http://127.0.0.1:3000",
+  "stoppedEarly": null,
+  "deadlineMin": 10,
+  "startedAt": "2026-09-27T13:29:06.142Z",
+  "durationS": 89.7,
+  "pre": {
+   "waitedS": 0,
+   "activeRuns": 0
+  },
+  "success": 1,
+  "total": 1,
+  "successRate": 1,
+  "timeouts": 0,
+  "errors": 0,
+  "createMsP50": 141,
+  "createMsMax": 141,
+  "loginMsP50": 117,
+  "firstStepS": {
+   "p50": 9.6,
+   "p90": 9.6,
+   "max": 9.6
+  },
+  "firstTextS": {
+   "p50": 9.6,
+   "p90": 9.6,
+   "max": 9.6
+  },
+  "finalS": {
+   "p50": 82,
+   "p90": 82,
+   "max": 82,
+   "min": 82
+  },
+  "toolCalls": {
+   "avg": 10,
+   "max": 10,
+   "errors": 0
+  },
+  "llmCalls": {
+   "avg": 11,
+   "total": 11
+  },
+  "grounding": {
+   "cao": 1
+  },
+  "questionsAnswered": 0,
+  "tokens": {
+   "in": 519269,
+   "out": 5004,
+   "outTpsStage": 55.8,
+   "perCallDecodeTpsP50": 71.9,
+   "llmCallMsP50": 7513,
+   "llmCallMsP90": 12257
+  },
+  "machine": {
+   "cpuAvg": 37,
+   "cpuMax": 100,
+   "freeMBmin": 16396,
+   "freeMBstart": 17118,
+   "groups": {
+    "web": {
+     "wsMBmax": 221,
+     "wsMBstart": 218,
+     "pmMBmax": 239,
+     "nMax": 3,
+     "cpuCoreAvg": 0.01
+    },
+    "opencode": {
+     "wsMBmax": 719,
+     "wsMBstart": 655,
+     "pmMBmax": 994,
+     "nMax": 3,
+     "cpuCoreAvg": 0.21
+    },
+    "sandboxChrome": {
+     "wsMBmax": 992,
+     "wsMBstart": 630,
+     "pmMBmax": 859,
+     "nMax": 10,
+     "cpuCoreAvg": 0.06
+    },
+    "ocrChrome": {
+     "wsMBmax": 460,
+     "wsMBstart": 460,
+     "pmMBmax": 267,
+     "nMax": 8,
+     "cpuCoreAvg": 0.01
+    },
+    "otherChrome": {
+     "wsMBmax": 3835,
+     "wsMBstart": 3417,
+     "pmMBmax": 3711,
+     "nMax": 32,
+     "cpuCoreAvg": 1.65
+    }
+   }
+  },
+  "activeRunsMax": 1,
+  "chromePagesMax": 2,
+  "chromePagesStart": 1,
+  "statsLatencyMsP50": 78,
+  "statsLatencyMsMax": 332,
+  "http429": 0
+ },
+ "results": [
+  {
+   "tag": "same",
+   "t0": 1790515746158,
+   "events": 478,
+   "polls": 35,
+   "pollErr": 0,
+   "questions": 0,
+   "errors": [],
+   "httpErr": [],
+   "createMs": 141,
+   "chatId": "c_QX_IacQsACe60zNb",
+   "firstEventMs": 9570,
+   "firstStepMs": 9570,
+   "firstTextMs": 9570,
+   "lastTextMs": 82033,
+   "followupsMs": 83485,
+   "doneMs": 82033,
+   "endMs": 89670,
+   "toolCalls": 10,
+   "toolErrors": 0,
+   "tools": {
+    "vbpl_find": 1,
+    "vbpl_document": 1,
+    "vbpl_article": 2,
+    "skill": 1,
+    "grounding_check": 4,
+    "vbpl_verify": 1
+   },
+   "answerChars": 1129,
+   "answerHead": "## Mức phạt vi phạm hợp đồng thương mại tối đa\n\nTheo **Điều 301 Luật Thương mại 2005 (Law No. 36/2005/QH11)**, mức phạt vi phạm được quy định như sau:\n\n> *\"Mức ",
+   "msgErrors": [],
+   "artifacts": 0,
+   "grounding": "cao",
+   "groundingOrigin": "model",
+   "sessionIds": [
+    "ses_f1cf1ea79ffeDZki856EuJRgON"
+   ],
+   "ok": true,
+   "user": 1,
+   "startOffsetMs": 16,
+   "llmCalls": 11,
+   "inTok": 519269,
+   "outTok": 5004,
+   "llmBusyMs": 81730,
+   "llmPerCall": [
+    {
+     "ms": 9336,
+     "out": 566,
+     "in": 37399,
+     "created": 1790515746286,
+     "completed": 1790515755622
+    },
+    {
+     "ms": 13003,
+     "out": 127,
+     "in": 39131,
+     "created": 1790515755628,
+     "completed": 1790515768631
+    },
+    {
+     "ms": 2789,
+     "out": 109,
+     "in": 44594,
+     "created": 1790515768639,
+     "completed": 1790515771428
+    },
+    {
+     "ms": 3412,
+     "out": 201,
+     "in": 44880,
+     "created": 1790515771434,
+     "completed": 1790515774846
+    },
+    {
+     "ms": 4851,
+     "out": 349,
+     "in": 45248,
+     "created": 1790515774858,
+     "completed": 1790515779709
+    },
+    {
+     "ms": 12257,
+     "out": 950,
+     "in": 49707,
+     "created": 1790515779719,
+     "completed": 1790515791976
+    },
+    {
+     "ms": 5205,
+     "out": 331,
+     "in": 50565,
+     "created": 1790515791986,
+     "completed": 1790515797191
+    },
+    {
+     "ms": 8640,
+     "out": 674,
+     "in": 50784,
+     "created": 1790515797203,
+     "completed": 1790515805843
+    },
+    {
+     "ms": 7620,
+     "out": 571,
+     "in": 51584,
+     "created": 1790515805851,
+     "completed": 1790515813471
+    },
+    {
+     "ms": 7513,
+     "out": 583,
+     "in": 52384,
+     "created": 1790515813477,
+     "completed": 1790515820990
+    },
+    {
+     "ms": 7104,
+     "out": 543,
+     "in": 52993,
+     "created": 1790515820997,
+     "completed": 1790515828101
+    }
+   ],
+   "dbTools": {
+    "vbpl_find": 1,
+    "vbpl_document": 1,
+    "vbpl_article": 2,
+    "skill": 1,
+    "grounding_check": 4,
+    "vbpl_verify": 1
+   }
+  }
+ ],
+ "samples": [
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 771.94,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3274,
+     "cpuSec": 38903.22,
+     "wsMB": 3407,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 936,
+     "cpuSec": 127.28,
+     "wsMB": 649,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 234,
+     "cpuSec": 17.97,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.3,
+     "wsMB": 64,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515737478,
+   "freeMB": 17118,
+   "cpu": 17
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 771.95,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3276,
+     "cpuSec": 38903.69,
+     "wsMB": 3409,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 936,
+     "cpuSec": 127.3,
+     "wsMB": 649,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 234,
+     "cpuSec": 17.97,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.3,
+     "wsMB": 64,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515739497,
+   "freeMB": 17109,
+   "cpu": 13
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 771.98,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3270,
+     "cpuSec": 38905.5,
+     "wsMB": 3408,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 936,
+     "cpuSec": 127.36,
+     "wsMB": 649,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 234,
+     "cpuSec": 17.97,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.3,
+     "wsMB": 64,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515741510,
+   "freeMB": 17112,
+   "cpu": 18
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 771.98,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3280,
+     "cpuSec": 38907.19,
+     "wsMB": 3413,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 936,
+     "cpuSec": 127.42,
+     "wsMB": 649,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 234,
+     "cpuSec": 17.97,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.3,
+     "wsMB": 64,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515743526,
+   "freeMB": 17109,
+   "cpu": 15
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 771.98,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3273,
+     "cpuSec": 38908.75,
+     "wsMB": 3411,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 930,
+     "cpuSec": 127.47,
+     "wsMB": 648,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 234,
+     "cpuSec": 17.97,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 27,
+     "cpuSec": 0.3,
+     "wsMB": 62,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515745534,
+   "freeMB": 17121,
+   "cpu": 20
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 772.02,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3281,
+     "cpuSec": 38910.25,
+     "wsMB": 3417,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 946,
+     "cpuSec": 127.94,
+     "wsMB": 655,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 234,
+     "cpuSec": 18.05,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.33,
+     "wsMB": 63,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515747535,
+   "freeMB": 17118,
+   "cpu": 29
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 772.05,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3280,
+     "cpuSec": 38911.83,
+     "wsMB": 3418,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 948,
+     "cpuSec": 128.12,
+     "wsMB": 656,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.05,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.34,
+     "wsMB": 64,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515749554,
+   "freeMB": 17123,
+   "cpu": 24
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 772.06,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3290,
+     "cpuSec": 38913.28,
+     "wsMB": 3423,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 949,
+     "cpuSec": 128.55,
+     "wsMB": 658,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.08,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.34,
+     "wsMB": 64,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515751562,
+   "freeMB": 17110,
+   "cpu": 14
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 772.11,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3270,
+     "cpuSec": 38915.73,
+     "wsMB": 3404,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 949,
+     "cpuSec": 129.45,
+     "wsMB": 657,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.11,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.36,
+     "wsMB": 64,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515753573,
+   "freeMB": 17132,
+   "cpu": 36
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 772.14,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3445,
+     "cpuSec": 38917.81,
+     "wsMB": 3436,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.06,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 994,
+     "cpuSec": 130.22,
+     "wsMB": 719,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.12,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.36,
+     "wsMB": 64,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515755586,
+   "freeMB": 17040,
+   "cpu": 53
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 772.16,
+     "wsMB": 630,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3443,
+     "cpuSec": 38920.39,
+     "wsMB": 3444,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.12,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 947,
+     "cpuSec": 130.58,
+     "wsMB": 673,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.12,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.36,
+     "wsMB": 64,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515757598,
+   "freeMB": 17083,
+   "cpu": 18
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 714,
+     "cpuSec": 775.52,
+     "wsMB": 820,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3462,
+     "cpuSec": 38923.84,
+     "wsMB": 3455,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.12,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 943,
+     "cpuSec": 131.7,
+     "wsMB": 669,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.12,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.36,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515759614,
+   "freeMB": 16893,
+   "cpu": 69
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 796,
+     "cpuSec": 778.72,
+     "wsMB": 915,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3626,
+     "cpuSec": 38931.34,
+     "wsMB": 3569,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.2,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 943,
+     "cpuSec": 132.2,
+     "wsMB": 669,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.12,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.38,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515761827,
+   "freeMB": 16608,
+   "cpu": 100
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 816,
+     "cpuSec": 780.55,
+     "wsMB": 938,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3660,
+     "cpuSec": 38939.41,
+     "wsMB": 3606,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.28,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 944,
+     "cpuSec": 132.95,
+     "wsMB": 670,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.12,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.39,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515763836,
+   "freeMB": 16525,
+   "cpu": 100
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 859,
+     "cpuSec": 783.7,
+     "wsMB": 992,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3693,
+     "cpuSec": 38945.52,
+     "wsMB": 3649,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.36,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 939,
+     "cpuSec": 133.86,
+     "wsMB": 662,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.16,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.41,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515765853,
+   "freeMB": 16396,
+   "cpu": 100
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 839,
+     "cpuSec": 784.81,
+     "wsMB": 984,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3711,
+     "cpuSec": 38953.14,
+     "wsMB": 3687,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.39,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 939,
+     "cpuSec": 134.67,
+     "wsMB": 662,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.19,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.41,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515767861,
+   "freeMB": 16401,
+   "cpu": 70
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 690,
+     "cpuSec": 780.2,
+     "wsMB": 808,
+     "n": 10
+    },
+    "otherChrome": {
+     "pmMB": 3639,
+     "cpuSec": 38957,
+     "wsMB": 3762,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.45,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 941,
+     "cpuSec": 135.22,
+     "wsMB": 664,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.22,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.41,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515769872,
+   "freeMB": 16743,
+   "cpu": 29
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 681,
+     "cpuSec": 780.5,
+     "wsMB": 792,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3643,
+     "cpuSec": 38959.66,
+     "wsMB": 3760,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.47,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 947,
+     "cpuSec": 135.75,
+     "wsMB": 667,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.25,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.42,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515771885,
+   "freeMB": 16716,
+   "cpu": 49
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 524,
+     "cpuSec": 776.16,
+     "wsMB": 610,
+     "n": 8
+    },
+    "otherChrome": {
+     "pmMB": 3557,
+     "cpuSec": 38962.78,
+     "wsMB": 3723,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.52,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 952,
+     "cpuSec": 136.11,
+     "wsMB": 671,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.25,
+     "wsMB": 218,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.42,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515773900,
+   "freeMB": 16884,
+   "cpu": 38
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 515,
+     "cpuSec": 776.36,
+     "wsMB": 610,
+     "n": 8
+    },
+    "otherChrome": {
+     "pmMB": 3593,
+     "cpuSec": 38968.53,
+     "wsMB": 3731,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.52,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 944,
+     "cpuSec": 137.09,
+     "wsMB": 667,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.3,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 27,
+     "cpuSec": 0.44,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515775920,
+   "freeMB": 16874,
+   "cpu": 28
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 500,
+     "cpuSec": 776.42,
+     "wsMB": 610,
+     "n": 8
+    },
+    "otherChrome": {
+     "pmMB": 3570,
+     "cpuSec": 38972.28,
+     "wsMB": 3722,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.52,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 945,
+     "cpuSec": 137.53,
+     "wsMB": 673,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.3,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 27,
+     "cpuSec": 0.47,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515777928,
+   "freeMB": 16880,
+   "cpu": 25
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 481,
+     "cpuSec": 776.48,
+     "wsMB": 609,
+     "n": 8
+    },
+    "otherChrome": {
+     "pmMB": 3567,
+     "cpuSec": 38974.56,
+     "wsMB": 3720,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.52,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 953,
+     "cpuSec": 138.31,
+     "wsMB": 677,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.3,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 27,
+     "cpuSec": 0.47,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515779947,
+   "freeMB": 16855,
+   "cpu": 24
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 776.52,
+     "wsMB": 601,
+     "n": 8
+    },
+    "otherChrome": {
+     "pmMB": 3511,
+     "cpuSec": 38976.89,
+     "wsMB": 3716,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.52,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 946,
+     "cpuSec": 138.62,
+     "wsMB": 677,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.3,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 27,
+     "cpuSec": 0.47,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515781961,
+   "freeMB": 16885,
+   "cpu": 27
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 478,
+     "cpuSec": 776.52,
+     "wsMB": 600,
+     "n": 8
+    },
+    "otherChrome": {
+     "pmMB": 3493,
+     "cpuSec": 38979.25,
+     "wsMB": 3719,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.52,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 945,
+     "cpuSec": 138.89,
+     "wsMB": 676,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.3,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.47,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515783974,
+   "freeMB": 16879,
+   "cpu": 16
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 494,
+     "cpuSec": 776.66,
+     "wsMB": 636,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3493,
+     "cpuSec": 38982.08,
+     "wsMB": 3720,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.52,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 947,
+     "cpuSec": 139.22,
+     "wsMB": 679,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.33,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.47,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515785985,
+   "freeMB": 16876,
+   "cpu": 32
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 493,
+     "cpuSec": 776.66,
+     "wsMB": 636,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3489,
+     "cpuSec": 38984.16,
+     "wsMB": 3718,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.52,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 945,
+     "cpuSec": 139.3,
+     "wsMB": 676,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.33,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.48,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515787995,
+   "freeMB": 16886,
+   "cpu": 17
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 482,
+     "cpuSec": 776.67,
+     "wsMB": 636,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3494,
+     "cpuSec": 38987.77,
+     "wsMB": 3724,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.52,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 941,
+     "cpuSec": 139.44,
+     "wsMB": 676,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.33,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.52,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515790008,
+   "freeMB": 16866,
+   "cpu": 41
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 481,
+     "cpuSec": 776.69,
+     "wsMB": 636,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3534,
+     "cpuSec": 38992.3,
+     "wsMB": 3731,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.55,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 950,
+     "cpuSec": 140.14,
+     "wsMB": 687,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 235,
+     "cpuSec": 18.38,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 27,
+     "cpuSec": 0.52,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515792027,
+   "freeMB": 16871,
+   "cpu": 42
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 481,
+     "cpuSec": 776.75,
+     "wsMB": 636,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3521,
+     "cpuSec": 38997.7,
+     "wsMB": 3716,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.58,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 941,
+     "cpuSec": 140.47,
+     "wsMB": 682,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 235,
+     "cpuSec": 18.39,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.52,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515794037,
+   "freeMB": 16881,
+   "cpu": 30
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 481,
+     "cpuSec": 776.75,
+     "wsMB": 636,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3490,
+     "cpuSec": 39001.12,
+     "wsMB": 3658,
+     "n": 29
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.58,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 939,
+     "cpuSec": 140.7,
+     "wsMB": 681,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.39,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.52,
+     "wsMB": 65,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515796051,
+   "freeMB": 16907,
+   "cpu": 24
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 505,
+     "cpuSec": 776.84,
+     "wsMB": 611,
+     "n": 8
+    },
+    "otherChrome": {
+     "pmMB": 3510,
+     "cpuSec": 39005.31,
+     "wsMB": 3678,
+     "n": 29
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.58,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 938,
+     "cpuSec": 141.48,
+     "wsMB": 679,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.39,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.52,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515798065,
+   "freeMB": 16877,
+   "cpu": 52
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 496,
+     "cpuSec": 776.95,
+     "wsMB": 609,
+     "n": 8
+    },
+    "otherChrome": {
+     "pmMB": 3489,
+     "cpuSec": 39009.38,
+     "wsMB": 3674,
+     "n": 29
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.59,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 944,
+     "cpuSec": 142.02,
+     "wsMB": 682,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.42,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.53,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515800091,
+   "freeMB": 16851,
+   "cpu": 68
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 492,
+     "cpuSec": 777.11,
+     "wsMB": 637,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3689,
+     "cpuSec": 39014.28,
+     "wsMB": 3695,
+     "n": 29
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.59,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 943,
+     "cpuSec": 142.09,
+     "wsMB": 681,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.42,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.53,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515802098,
+   "freeMB": 16873,
+   "cpu": 35
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 492,
+     "cpuSec": 777.23,
+     "wsMB": 629,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3654,
+     "cpuSec": 39017.48,
+     "wsMB": 3628,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.67,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 943,
+     "cpuSec": 142.23,
+     "wsMB": 681,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.48,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.55,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515804107,
+   "freeMB": 16885,
+   "cpu": 30
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 491,
+     "cpuSec": 777.23,
+     "wsMB": 629,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3627,
+     "cpuSec": 39020.22,
+     "wsMB": 3628,
+     "n": 28
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.69,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 942,
+     "cpuSec": 142.73,
+     "wsMB": 686,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.5,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.55,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515806118,
+   "freeMB": 16880,
+   "cpu": 33
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 490,
+     "cpuSec": 777.31,
+     "wsMB": 629,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3604,
+     "cpuSec": 39022.81,
+     "wsMB": 3596,
+     "n": 27
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.69,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 942,
+     "cpuSec": 142.95,
+     "wsMB": 687,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.5,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.55,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515808128,
+   "freeMB": 16885,
+   "cpu": 51
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 485,
+     "cpuSec": 777.33,
+     "wsMB": 629,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3621,
+     "cpuSec": 39027.3,
+     "wsMB": 3604,
+     "n": 27
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.69,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 940,
+     "cpuSec": 143.09,
+     "wsMB": 685,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.5,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.55,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515810144,
+   "freeMB": 16815,
+   "cpu": 15
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 481,
+     "cpuSec": 777.34,
+     "wsMB": 629,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3617,
+     "cpuSec": 39029.89,
+     "wsMB": 3606,
+     "n": 27
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.69,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 942,
+     "cpuSec": 143.28,
+     "wsMB": 686,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 236,
+     "cpuSec": 18.52,
+     "wsMB": 219,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.55,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515812167,
+   "freeMB": 16807,
+   "cpu": 20
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.38,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3576,
+     "cpuSec": 39033,
+     "wsMB": 3593,
+     "n": 27
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.7,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 947,
+     "cpuSec": 143.86,
+     "wsMB": 694,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.52,
+     "wsMB": 220,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.55,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515814178,
+   "freeMB": 16811,
+   "cpu": 31
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.38,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3577,
+     "cpuSec": 39035.58,
+     "wsMB": 3603,
+     "n": 27
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 942,
+     "cpuSec": 144.28,
+     "wsMB": 690,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.53,
+     "wsMB": 220,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.56,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515816182,
+   "freeMB": 16791,
+   "cpu": 72
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.42,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3617,
+     "cpuSec": 39038.78,
+     "wsMB": 3835,
+     "n": 32
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 941,
+     "cpuSec": 144.38,
+     "wsMB": 689,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.53,
+     "wsMB": 220,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.56,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515818184,
+   "freeMB": 16811,
+   "cpu": 15
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.42,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3604,
+     "cpuSec": 39040.33,
+     "wsMB": 3816,
+     "n": 31
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 942,
+     "cpuSec": 144.42,
+     "wsMB": 690,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.55,
+     "wsMB": 220,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.58,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515820198,
+   "freeMB": 16807,
+   "cpu": 13
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.42,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3569,
+     "cpuSec": 39041.92,
+     "wsMB": 3819,
+     "n": 31
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 943,
+     "cpuSec": 144.86,
+     "wsMB": 692,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.58,
+     "wsMB": 220,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.58,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515822201,
+   "freeMB": 16811,
+   "cpu": 18
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.44,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3584,
+     "cpuSec": 39043.67,
+     "wsMB": 3810,
+     "n": 31
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 944,
+     "cpuSec": 145.23,
+     "wsMB": 692,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.61,
+     "wsMB": 220,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.59,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515824209,
+   "freeMB": 16818,
+   "cpu": 15
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.44,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3586,
+     "cpuSec": 39045.33,
+     "wsMB": 3812,
+     "n": 31
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 950,
+     "cpuSec": 145.7,
+     "wsMB": 695,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 237,
+     "cpuSec": 18.61,
+     "wsMB": 220,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 28,
+     "cpuSec": 0.59,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515826222,
+   "freeMB": 16809,
+   "cpu": 24
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.44,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3524,
+     "cpuSec": 39047.64,
+     "wsMB": 3780,
+     "n": 31
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 948,
+     "cpuSec": 146,
+     "wsMB": 693,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 239,
+     "cpuSec": 18.69,
+     "wsMB": 220,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.59,
+     "wsMB": 66,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515828222,
+   "freeMB": 16840,
+   "cpu": 10
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.47,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3484,
+     "cpuSec": 39049.3,
+     "wsMB": 3778,
+     "n": 31
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 948,
+     "cpuSec": 146.2,
+     "wsMB": 692,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 239,
+     "cpuSec": 18.75,
+     "wsMB": 221,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.61,
+     "wsMB": 67,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515830236,
+   "freeMB": 16840,
+   "cpu": 20
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.48,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3488,
+     "cpuSec": 39050.81,
+     "wsMB": 3781,
+     "n": 31
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 943,
+     "cpuSec": 146.28,
+     "wsMB": 692,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 239,
+     "cpuSec": 18.75,
+     "wsMB": 221,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.62,
+     "wsMB": 67,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515832246,
+   "freeMB": 16834,
+   "cpu": 33
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.48,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3591,
+     "cpuSec": 39053.48,
+     "wsMB": 3727,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 940,
+     "cpuSec": 146.45,
+     "wsMB": 691,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 239,
+     "cpuSec": 18.77,
+     "wsMB": 221,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.66,
+     "wsMB": 67,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515834255,
+   "freeMB": 16830,
+   "cpu": 41
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.48,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3607,
+     "cpuSec": 39056.5,
+     "wsMB": 3754,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 937,
+     "cpuSec": 146.61,
+     "wsMB": 692,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 241,
+     "cpuSec": 18.78,
+     "wsMB": 224,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.69,
+     "wsMB": 67,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515836265,
+   "freeMB": 16766,
+   "cpu": 21
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.56,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3554,
+     "cpuSec": 39058.81,
+     "wsMB": 3754,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.72,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 934,
+     "cpuSec": 146.66,
+     "wsMB": 691,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 241,
+     "cpuSec": 18.8,
+     "wsMB": 224,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.69,
+     "wsMB": 67,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515838278,
+   "freeMB": 16763,
+   "cpu": 26
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.62,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3526,
+     "cpuSec": 39061.12,
+     "wsMB": 3747,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.73,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 934,
+     "cpuSec": 146.73,
+     "wsMB": 691,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 241,
+     "cpuSec": 18.8,
+     "wsMB": 224,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.7,
+     "wsMB": 67,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515840292,
+   "freeMB": 16773,
+   "cpu": 23
+  },
+  {
+   "g": {
+    "sandboxChrome": {
+     "pmMB": 473,
+     "cpuSec": 777.64,
+     "wsMB": 628,
+     "n": 9
+    },
+    "otherChrome": {
+     "pmMB": 3586,
+     "cpuSec": 39064.53,
+     "wsMB": 3781,
+     "n": 30
+    },
+    "ocrChrome": {
+     "pmMB": 267,
+     "cpuSec": 80.75,
+     "wsMB": 460,
+     "n": 8
+    },
+    "opencode": {
+     "pmMB": 934,
+     "cpuSec": 146.81,
+     "wsMB": 691,
+     "n": 3
+    },
+    "web": {
+     "pmMB": 241,
+     "cpuSec": 18.81,
+     "wsMB": 224,
+     "n": 3
+    },
+    "loadtest": {
+     "pmMB": 29,
+     "cpuSec": 0.72,
+     "wsMB": 67,
+     "n": 1
+    }
+   },
+   "totalMB": 30659,
+   "t": 1790515842298,
+   "freeMB": 16738,
+   "cpu": 32
+  }
+ ],
+ "statsSamples": [
+  {
+   "t": 1790515746171,
+   "activeRuns": 0,
+   "waitingOnQuestion": 0,
+   "openStreams": 0,
+   "chromePages": 1,
+   "statsMs": 29
+  },
+  {
+   "t": 1790515748235,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 56
+  },
+  {
+   "t": 1790515750306,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 52
+  },
+  {
+   "t": 1790515752418,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 90
+  },
+  {
+   "t": 1790515754509,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 78
+  },
+  {
+   "t": 1790515756608,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 73
+  },
+  {
+   "t": 1790515758858,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 2,
+   "statsMs": 222
+  },
+  {
+   "t": 1790515761221,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 2,
+   "statsMs": 295
+  },
+  {
+   "t": 1790515763586,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 2,
+   "statsMs": 332
+  },
+  {
+   "t": 1790515765751,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 2,
+   "statsMs": 133
+  },
+  {
+   "t": 1790515767992,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 2,
+   "statsMs": 196
+  },
+  {
+   "t": 1790515770081,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 67
+  },
+  {
+   "t": 1790515772182,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 94
+  },
+  {
+   "t": 1790515774347,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 132
+  },
+  {
+   "t": 1790515776530,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 173
+  },
+  {
+   "t": 1790515778630,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 79
+  },
+  {
+   "t": 1790515780690,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 56
+  },
+  {
+   "t": 1790515782792,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 81
+  },
+  {
+   "t": 1790515784878,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 63
+  },
+  {
+   "t": 1790515786983,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 81
+  },
+  {
+   "t": 1790515789109,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 113
+  },
+  {
+   "t": 1790515791213,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 82
+  },
+  {
+   "t": 1790515793337,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 84
+  },
+  {
+   "t": 1790515795428,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 78
+  },
+  {
+   "t": 1790515797537,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 81
+  },
+  {
+   "t": 1790515799617,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 56
+  },
+  {
+   "t": 1790515801670,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 39
+  },
+  {
+   "t": 1790515803766,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 80
+  },
+  {
+   "t": 1790515805950,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 179
+  },
+  {
+   "t": 1790515808006,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 35
+  },
+  {
+   "t": 1790515810097,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 80
+  },
+  {
+   "t": 1790515812157,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 53
+  },
+  {
+   "t": 1790515814245,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 84
+  },
+  {
+   "t": 1790515816366,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 106
+  },
+  {
+   "t": 1790515818457,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 72
+  },
+  {
+   "t": 1790515820530,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 52
+  },
+  {
+   "t": 1790515822657,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 115
+  },
+  {
+   "t": 1790515824730,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 51
+  },
+  {
+   "t": 1790515826831,
+   "activeRuns": 1,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 77
+  },
+  {
+   "t": 1790515828915,
+   "activeRuns": 0,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 57
+  },
+  {
+   "t": 1790515830952,
+   "activeRuns": 0,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 24
+  },
+  {
+   "t": 1790515832992,
+   "activeRuns": 0,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 22
+  },
+  {
+   "t": 1790515835066,
+   "activeRuns": 0,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 49
+  },
+  {
+   "t": 1790515837126,
+   "activeRuns": 0,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 36
+  },
+  {
+   "t": 1790515839171,
+   "activeRuns": 0,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 37
+  },
+  {
+   "t": 1790515841233,
+   "activeRuns": 0,
+   "waitingOnQuestion": 0,
+   "openStreams": 1,
+   "chromePages": 1,
+   "statsMs": 36
+  }
+ ],
+ "tStart": 1790515746142,
+ "tEnd": 1790515835829
+}

@@ -1,0 +1,4 @@
+[0m
+> legal · qwen3.6-35b-a3b-fp8
+[0m
+[91m[1mError: [0m<none>

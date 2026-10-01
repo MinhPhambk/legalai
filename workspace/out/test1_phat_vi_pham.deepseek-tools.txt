@@ -1,0 +1,79 @@
+[0m
+> legal · deepseek-ai/deepseek-v4.1-flash
+[0m
+[0m→ [0mSkill "legal-research"
+[0m⚙ [0mvbpl_find {"query":"Luật Thương mại 2005"}
+I'll research this directly on vbpl.vn. Let me load the research skill and find the relevant law.
+[0m⚙ [0mvbpl_search_articles {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","keywords":"phạt vi phạm"}
+[0m⚙ [0mvbpl_document {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"301"}
+[0m⚙ [0mvbpl_find {"query":"văn bản hợp nhất Luật Thương mại"}
+<｜DSML｜ calls>
+[0m⚙ [0mvbpl_find {"query":"Luật sửa đổi bổ sung một số điều của Luật Thương mại"}
+The article is found. Now I must clarify the "hết hiệu lực một phần" status and whether Điều 301 is affected.
+[0m⚙ [0mvbpl_verify {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","quote":"Mức phạt đối với vi phạm nghĩa vụ hợp đồng hoặc tổng mức phạt đối với nhiều vi phạm do các bên thỏa thuận trong hợp đồng, nhưng không quá 8% giá trị phần nghĩa vụ hợp đồng bị vi phạm, trừ trường hợp quy định tại Điều 266 của Luật này."}
+All direct citations verify. Let me confirm which parts of the Law are no longer in force (to ensure Điều 301 is unaffected).
+[0m⚙ [0mchrome_new_page {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+<｜DSML｜ calls>
+[0m⚙ [0mchrome_evaluate_script {"pageId":2,"function":"() => { const t = document.body.innerText; const idx = []; let i = t.indexOf('hiệu lực một phần'); while(i>=0){ idx.push(t.substring(Math.max(0,i-200), i+400)); i = t.indexOf('hiệu lực một phần', i+1);} return idx.slice(0,5); }"}
+[0m⚙ [0mchrome_evaluate_script {"function":"() => { const t = document.body.innerText; const out={}; ['Lịch sử','Văn bản liên quan','Văn bản sửa đổi','hết hiệu lực','Điều 301','Mức phạt vi phạm','Quốc hội khóa'].forEach(k=>{const i=t.indexOf(k); out[k]= i<0?'--':t.substring(Math.max(0,i-100), i+500);}); return out; }","pageId":2}
+[0m⚙ [0mchrome_evaluate_script {"function":"() => { const tabs=[...document.querySelectorAll('a,button,li,div')].filter(e=>/Thuộc tính|Lịch sử/.test(e.textContent)&&e.textContent.length<40); return tabs.slice(0,20).map(e=>({tag:e.tagName, txt:e.textContent.trim(), href:e.getAttribute&&e.getAttribute('href')})); }","pageId":2}
+<｜DSML｜ calls>
+[0m⚙ [0mchrome_evaluate_script {"function":"() => { const els=[...document.querySelectorAll('div')].filter(e=>e.textContent.trim()==='Lịch sử'); if(!els.length) return 'none'; els[0].click(); return 'clicked'; }","pageId":2}
+[0m⚙ [0mchrome_evaluate_script {"function":"() => { const t=document.body.innerText; const i=t.indexOf('Lịch sử'); return t.substring(i, i+2500); }","pageId":2}
+[0m→ [0mSkill "citation-check"
+Let me run the mandatory citation check.
+[0m⚙ [0mvbpl_article {"article":"4","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"300","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+<｜DSML｜ calls>
+[0m⚙ [0mvbpl_article {"article":"307","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_verify {"quote":"Trường hợp các bên có thỏa thuận phạt vi phạm thì bên bị vi phạm có quyền áp dụng cả chế tài phạt vi phạm và buộc bồi thường thiệt hại, trừ trường hợp Luật này có quy định khác.","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_verify {"quote":"Phạt vi phạm là việc bên bị vi phạm yêu cầu bên vi phạm trả một khoản tiền phạt do vi phạm hợp đồng nếu trong hợp đồng có thoả thuận, trừ các trường hợp miễn trách nhiệm quy định tại Điều 294 của Luật này.","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+## Kết luận
+
+Theo pháp luật Việt Nam, **mức phạt vi phạm tối đa trong hợp đồng thương mại là 8% giá trị phần nghĩa vụ hợp đồng bị vi phạm** (đối với mỗi vi phạm hoặc tổng mức phạt đối với nhiều vi phạm), trừ trường hợp đặc biệt về giám định quy định tại Điều 266 Luật Thương mại 2005.
+
+## Căn cứ pháp lý (đã tra cứu và xác minh trên vbpl.vn ngày 26/09/2026)
+
+**1. Điều 301 Luật Thương mại 2005 (36/2005/QH11) – Mức phạt vi phạm**
+
+> "Mức phạt đối với vi phạm nghĩa vụ hợp đồng hoặc tổng mức phạt đối với nhiều vi phạm do các bên thỏa thuận trong hợp đồng, nhưng không quá 8% giá trị phần nghĩa vụ hợp đồng bị vi phạm, trừ trường hợp quy định tại Điều 266 của Luật này."
+
+**2. Điều 300 Luật Thương mại 2005 – Phạt vi phạm**
+
+> "Phạt vi phạm là việc bên bị vi phạm yêu cầu bên vi phạm trả một khoản tiền phạt do vi phạm hợp đồng **nếu trong hợp đồng có thoả thuận**, trừ các trường hợp miễn trách nhiệm quy định tại Điều 294 của Luật này."
+
+→ Nghĩa là: nếu hợp đồng **không có thỏa thuận phạt vi phạm** thì bên bị vi phạm **không được** yêu cầu phạt (chỉ có thể yêu cầu bồi thường thiệt hại).
+
+**3. Điều 307 Luật Thương mại 2005 – Quan hệ giữa phạt vi phạm và bồi thường thiệt hại** (khoản 2)
+
+> "Trường hợp các bên có thỏa thuận phạt vi phạm thì bên bị vi phạm có quyền áp dụng cả chế tài phạt vi phạm và buộc bồi thường thiệt hại, trừ trường hợp Luật này có quy định khác."
+
+→ Mức 8% là **giới hạn của riêng khoản phạt**, không giới hạn số tiền bồi thường thiệt hại; hai chế tài này có thể áp dụng đồng thời.
+
+Link đã mở: https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117
+
+## Lưu ý quan trọng về tình trạng hiệu lực
+
+- Luật Thương mại 2005 hiện đang ở trạng thái **"Hết hiệu lực một phần"** và **không phải hết toàn bộ**. Theo mục "Lịch sử văn bản" trên vbpl.vn, việc bãi bỏ một phần bắt nguồn từ **Luật Quản lý ngoại thương số 05/2017/QH14 (hiệu lực 01/01/2018)** – liên quan đến các quy định về quản lý ngoại thương (xuất nhập khẩu, quá cảnh…).
+- **Điều 301 nằm trong Chương VII (Chế tài trong thương mại) và vẫn còn hiệu lực**, nội dung nguyên văn vẫn được hiển thị đầy đủ trên trang văn bản.
+
+## Lưu ý về phạm vi áp dụng
+
+- Con số **8%** áp dụng cho **hợp đồng thương mại** giữa các thương nhân (kể cả mua bán hàng hóa, cung ứng dịch vụ, đại lý, logistics…).
+- Nếu hợp đồng có **yếu tố nước ngoài**, các bên có thể chọn luật áp dụng khác (CISG, luật nước ngoài…); khi đó giới hạn 8% không đương nhiên áp dụng.
+- Một số lĩnh vực đặc thù có thể có quy định riêng về mức phạt (ví dụ hợp đồng xây dựng), do Điều 4 Luật Thương mại 2005 quy định hoạt động thương mại đặc thù được quy định trong luật khác thì áp dụng luật đó. Cần kiểm tra thêm nếu hợp đồng của bạn thuộc lĩnh vực đặc thù.
+
+## Mẫu kết thúc
+
+Nguồn đã tra (26/09/2026):
+- Điều 301 Luật Thương mại 2005 (36/2005/QH11) – https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117 (trích đã `vbpl_verify`: KHỚP)
+- Điều 300 Luật Thương mại 2005 – cùng link (KHỚP)
+- Điều 307 Luật Thương mại 2005 – cùng link (KHỚP)
+- Lịch sử hiệu lực (bãi bỏ một phần bởi Luật 05/2017/QH14) – cùng link
+
+**Độ tin cậy: cao** – các điều khoản được trích nguyên văn, xác minh khớp trên vbpl.vn; mức 8% là quy định rõ ràng, điều khoản vẫn còn hiệu lực.
+
+**Khuyến nghị tham vấn luật sư**: chỉ cần thiết nếu hợp đồng của bạn có yếu tố nước ngoài, thuộc lĩnh vực đặc thù, giá trị lớn, hoặc đang có tranh chấp thực tế — khi đó cần đánh giá toàn diện chế tài, luật áp dụng và chứng cứ.
+
+*Lưu ý: thông tin mang tính tham khảo, không thay thế tư vấn pháp lý chính thức.*

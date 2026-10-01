@@ -1,0 +1,329 @@
+/* v4 – document versions, diff view, imported uploads. Black & white; diff marks are the only colour. */
+:root {
+  --ins-fg: #0b6b2e;
+  --ins-bg: rgba(22, 163, 74, 0.11);
+  --del-fg: #b3261e;
+  --del-bg: rgba(220, 38, 38, 0.09);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ins-fg: #7ee2a0;
+    --ins-bg: rgba(74, 222, 128, 0.13);
+    --del-fg: #ff9a92;
+    --del-bg: rgba(248, 113, 113, 0.13);
+  }
+}
+:root[data-theme="dark"] {
+  --ins-fg: #7ee2a0;
+  --ins-bg: rgba(74, 222, 128, 0.13);
+  --del-fg: #ff9a92;
+  --del-bg: rgba(248, 113, 113, 0.13);
+}
+
+/* ---- doc card: versions, changes, notes ------------------------------------------------------ */
+.doc-card.rich .doc-actions {
+  flex-basis: 100%;
+  justify-content: flex-start;
+  margin-left: 0;
+}
+.doc-origin {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  color: var(--text-3);
+}
+.doc-vnav {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.doc-vchips {
+  display: flex;
+  gap: 4px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 2px;
+}
+.doc-vchips::-webkit-scrollbar {
+  display: none;
+}
+.doc-vchip {
+  flex: none;
+  height: 26px;
+  min-width: 34px;
+  padding: 0 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+.doc-vchip:hover {
+  background: var(--hover);
+}
+.doc-vchip.on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+.doc-changes {
+  flex-basis: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+.doc-changes-title {
+  display: block;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.doc-changes ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 2px;
+}
+.doc-changes li {
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+.doc-changes-more {
+  margin-top: 4px;
+  font-size: 12.5px;
+}
+.doc-note {
+  flex-basis: 100%;
+  margin: -4px 0 0;
+  font-size: 12.5px;
+  color: var(--text-3);
+  font-style: italic;
+}
+.doc-actions .btn {
+  white-space: nowrap;
+}
+@media (max-width: 420px) {
+  .doc-actions .btn {
+    white-space: normal;
+    text-align: left;
+    height: auto;
+    min-height: 34px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+/* imported uploads on the user's message */
+.user-docs {
+  width: min(100%, 560px);
+  margin-top: 6px;
+}
+.user-docs .doc-card {
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---- panel: sub-toolbar ------------------------------------------------------------------------ */
+.doc-subbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 8px 12px 8px 18px;
+  border-bottom: 1px solid var(--border);
+  min-width: 0;
+}
+.doc-subbar:not(:has(> :not(.doc-subbar-dl))) .doc-subbar-dl:empty {
+  display: none;
+}
+.doc-subbar-dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-left: auto;
+  min-width: 0;
+}
+.doc-subbar-dl .btn {
+  white-space: nowrap;
+}
+.doc-only {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-2);
+  cursor: pointer;
+  user-select: none;
+}
+@media (max-width: 600px) {
+  .doc-subbar {
+    padding-left: 12px;
+  }
+  .doc-subbar-dl {
+    margin-left: 0;
+  }
+}
+
+/* ---- diff page ------------------------------------------------------------------------------------ */
+.doc-panel.is-diff .doc-canvas {
+  display: block;
+}
+.diff-page {
+  width: min(794px, 100%);
+  margin: 0 auto;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 12px 40px -12px rgba(0, 0, 0, 0.22);
+  padding: 40px clamp(18px, 6%, 64px) 56px;
+  animation: fade-up 0.35s var(--ease-out) both;
+  min-width: 0;
+}
+.diff-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 12.5px;
+  color: var(--text-3);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.diff-text {
+  font-family: "Times New Roman", "Noto Serif", Georgia, serif;
+  font-size: 15.5px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.diff-page ins,
+.diff-page del {
+  border-radius: 2px;
+  padding: 0 1px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.diff-page ins {
+  color: var(--ins-fg);
+  background: var(--ins-bg);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.diff-page del {
+  color: var(--del-fg);
+  background: var(--del-bg);
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+.diff-gap {
+  margin: 10px 0;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--bg-muted);
+  color: var(--text-3);
+  font-family: var(--font);
+  font-size: 12.5px;
+  text-align: center;
+  white-space: normal;
+}
+.diff-same {
+  color: var(--text-2);
+  font-size: 14px;
+}
+@media (max-width: 600px) {
+  .diff-page {
+    padding: 24px 16px 40px;
+  }
+  .diff-text {
+    font-size: 15px;
+  }
+}
+@media print {
+  .diff-page {
+    box-shadow: none;
+    border: 0;
+  }
+}
+/* whitespace-only changes (added / removed blank lines) carry no colour bar */
+.diff-page ins.ws,
+.diff-page del.ws {
+  background: none;
+  text-decoration: none;
+  padding: 0;
+}
+
+/* ---- admin users table on narrow / landscape-phone screens -------------------------------------------
+   The table keeps its natural width and scrolls horizontally INSIDE its card (never the page). The user
+   column stays pinned while scrolling so the action buttons are always next to the account they act on,
+   and edge shadows show that there is more to scroll. */
+.admin-table {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  background:
+    linear-gradient(to left, var(--bg) 40%, transparent) right center / 36px 100% no-repeat local,
+    radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--text) 18%, transparent), transparent) right center / 12px 100% no-repeat scroll;
+}
+.admin-table table {
+  width: max-content;
+  min-width: 100%;
+}
+@media (max-width: 1100px) {
+  .admin-table th,
+  .admin-table td {
+    padding: 9px 10px;
+  }
+  .admin-table th:first-child,
+  .admin-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--bg);
+    box-shadow: 1px 0 0 var(--border);
+  }
+  .admin-table th:first-child {
+    background: var(--bg-soft);
+  }
+  .admin-table tbody tr:hover td:first-child {
+    background: linear-gradient(var(--hover), var(--hover)), var(--bg);
+  }
+  .admin-table .u-cell {
+    max-width: 210px;
+  }
+  .admin-table .u-cell > span:last-child {
+    min-width: 0;
+  }
+  .admin-table .u-email,
+  .admin-table .u-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (max-width: 480px) {
+  .admin-table .u-cell {
+    max-width: 150px;
+  }
+  .admin-table .avatar.sm {
+    display: none;
+  }
+}
+
+/* Reserve the scrollbar's space so a scrollbar appearing/disappearing never changes the canvas width
+   (that re-triggered zoom-to-fit in a loop). */
+.doc-panel .doc-canvas {
+  scrollbar-gutter: stable;
+}

@@ -1,0 +1,90 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": false,
+  "share": "disabled",
+  "snapshot": false,
+  "provider": {
+    "nvidia": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "NVIDIA API (cloud – chỉ dùng thử, không đưa hợp đồng thật)",
+      "options": {
+        "baseURL": "{env:NVIDIA_BASE_URL}",
+        "apiKey": "{env:NVIDIA_API_KEY}"
+      },
+      "models": {
+        "nvidia/nemotron-3.5-lightning-30b-a3b": {
+          "name": "Nemotron 3.5 Lightning 30B-A3B",
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 16384
+          }
+        },
+        "deepseek-ai/deepseek-v4.1-flash": {
+          "name": "DeepSeek V4.1 Flash (NVIDIA API)",
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 16384
+          }
+        }
+      }
+    },
+    "qwen": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Qwen (GPUStack – tự host)",
+      "options": {
+        "baseURL": "{env:QWEN_BASE_URL}",
+        "apiKey": "{env:QWEN_API_KEY}"
+      },
+      "models": {
+        "qwen3.6-35b-a3b-fp8": {
+          "name": "Qwen3.6-35B-A3B FP8",
+          "tool_call": true,
+          "limit": {
+            "context": 131072,
+            "output": 16384
+          },
+          "reasoning": true
+        }
+      }
+    }
+  },
+  "model": "qwen/qwen3.6-35b-a3b-fp8",
+  "small_model": "nvidia/deepseek-ai/deepseek-v4.1-flash",
+  "default_agent": "legal",
+  "mcp": {
+    "chrome": {
+      "type": "local",
+      "command": [
+        "node",
+        "{env:ND45_ROOT}/node_modules/chrome-devtools-mcp/build/src/bin/chrome-devtools-mcp.js",
+        "--browserUrl",
+        "http://127.0.0.1:{env:CHROME_PORT}",
+        "--no-usage-statistics"
+      ],
+      "enabled": true,
+      "timeout": 30000
+    }
+  },
+  "permission": {
+    "external_directory": {
+      "*": "deny",
+      "C:\\Users\\Admin\\Data\\FTU\\LegalAI\\nd45-platform\\.opencode\\skills\\*": "allow",
+      "C:\\Users\\Admin\\Data\\FTU\\LegalAI\\nd45-platform\\.sandbox\\data\\opencode\\tool-output\\*": "allow"
+    },
+    "bash": "deny",
+    "webfetch": "deny",
+    "websearch": "deny",
+    "edit": {
+      "*": "allow",
+      "C:\\Users\\Admin\\Data\\FTU\\LegalAI\\nd45-platform\\.opencode\\*": "deny",
+      "C:\\Users\\Admin\\Data\\FTU\\LegalAI\\nd45-platform\\opencode.json": "deny"
+    },
+    "read": "allow",
+    "skill": "allow",
+    "doom_loop": "deny"
+  }
+}

@@ -1,0 +1,2335 @@
+{
+  "app": {
+    "title": "LegalAI – Trợ lý pháp lý",
+    "chatTitle": "{title} – LegalAI",
+    "description": "Trợ lý AI pháp lý cho doanh nghiệp Việt Nam – hợp đồng thương mại và biện pháp thương mại quốc tế."
+  },
+  "common": {
+    "back": "Quay lại",
+    "home": "Về trang chủ",
+    "retry": "Thử lại",
+    "cancel": "Huỷ",
+    "ok": "Đồng ý",
+    "close": "Đóng",
+    "closeEsc": "Đóng (Esc)",
+    "save": "Lưu",
+    "edit": "Sửa",
+    "delete": "Xoá",
+    "share": "Chia sẻ",
+    "copy": "Sao chép",
+    "copied": "Đã sao chép",
+    "copiedShort": "Đã chép",
+    "copyFailed": "Không sao chép được.",
+    "refresh": "Làm mới",
+    "error": "Lỗi",
+    "loading": "Đang tải…",
+    "loadFailed": "Không tải được.",
+    "endOfList": "Đã hiển thị hết",
+    "showLess": "Thu gọn",
+    "notifications": "Thông báo",
+    "dismissNotification": "Đóng thông báo",
+    "typeToConfirm": "Nhập <b>{text}</b> để xác nhận",
+    "pagination": "Phân trang",
+    "prevPage": "Trang trước",
+    "nextPage": "Trang sau",
+    "rowsPerPage": "Số dòng mỗi trang",
+    "perPage": "{n} / trang",
+    "items_other": "{count} mục",
+    "themeToLight": "Chuyển giao diện sáng",
+    "themeToDark": "Chuyển giao diện tối",
+    "dataLang": {
+      "vi": "Dữ liệu gốc tiếng Việt",
+      "en": "Dữ liệu gốc tiếng Anh"
+    }
+  },
+  "theme": {
+    "label": "Giao diện",
+    "light": "Sáng",
+    "dark": "Tối",
+    "system": "Hệ thống",
+    "systemLong": "Theo hệ thống"
+  },
+  "time": {
+    "justNow": "vừa xong",
+    "seconds": "{n} s",
+    "minSec": "{m} ph {s} s"
+  },
+  "errors": {
+    "generic": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "offline": "Không kết nối được máy chủ. Kiểm tra mạng rồi thử lại.",
+    "uploadFailed": "Tải lên thất bại. Kiểm tra mạng rồi thử lại.",
+    "uploadCancelled": "Đã huỷ tải lên.",
+    "stream": {
+      "aborted": "Đã dừng.",
+      "provider_auth": "Mô hình AI tạm thời không khả dụng. Vui lòng báo quản trị viên.",
+      "context_overflow": "Cuộc trò chuyện đã quá dài. Hãy mở cuộc trò chuyện mới.",
+      "output_length": "Câu trả lời vượt quá độ dài cho phép.",
+      "model_error": "Mô hình AI tạm thời không phản hồi. Vui lòng thử lại sau ít phút.",
+      "processing_error": "Đã xảy ra lỗi khi xử lý. Vui lòng thử lại."
+    }
+  },
+  "auth": {
+    "sessionExpired": "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.",
+    "email": "Email",
+    "emailPlaceholder": "ten@congty.vn",
+    "password": "Mật khẩu",
+    "confirmPassword": "Nhập lại mật khẩu",
+    "passwordsMatch": "Khớp",
+    "showPassword": "Hiện mật khẩu",
+    "hidePassword": "Ẩn mật khẩu",
+    "capsLock": "Caps Lock đang bật",
+    "forgot": "Quên mật khẩu?",
+    "forgotBody": "Hệ thống không gửi email đặt lại mật khẩu. Hãy liên hệ <b>quản trị viên</b> của tổ chức: quản trị viên sẽ cấp cho bạn một mật khẩu tạm thời trong màn hình Quản trị, sau đó bạn đổi lại trong Cài đặt → Tài khoản.",
+    "registrationClosed": "Đăng ký đang tắt – liên hệ quản trị viên để được cấp tài khoản.",
+    "disclaimer": "Thông tin chỉ mang tính tham khảo, không thay thế tư vấn của luật sư.",
+    "strength": {
+      "label": "Độ mạnh: <b>{level}</b>",
+      "needMore_other": "cần thêm {count} ký tự",
+      "tooShort": "Quá ngắn",
+      "weak": "Yếu",
+      "fair": "Trung bình",
+      "good": "Khá",
+      "strong": "Mạnh"
+    },
+    "errors": {
+      "emailFormat": "Email chưa đúng định dạng (VD: ten@congty.vn).",
+      "emailRequired": "Vui lòng nhập email.",
+      "passwordShort": "Mật khẩu cần ít nhất 8 ký tự.",
+      "passwordRequired": "Vui lòng nhập mật khẩu.",
+      "passwordMismatch": "Mật khẩu nhập lại không khớp."
+    },
+    "login": {
+      "docTitle": "Đăng nhập – LegalAI",
+      "title": "Chào mừng trở lại",
+      "subtitle": "Đăng nhập để tiếp tục trò chuyện với trợ lý pháp lý.",
+      "submit": "Đăng nhập",
+      "busy": "Đang đăng nhập…",
+      "noAccount": "Chưa có tài khoản?",
+      "toRegister": "Đăng ký"
+    },
+    "register": {
+      "docTitle": "Tạo tài khoản – LegalAI",
+      "title": "Tạo tài khoản",
+      "subtitle": "Miễn phí cho thành viên. Chỉ cần email và mật khẩu.",
+      "submit": "Tạo tài khoản",
+      "busy": "Đang tạo tài khoản…",
+      "haveAccount": "Đã có tài khoản?",
+      "toLogin": "Đăng nhập"
+    },
+    "hero": {
+      "label": "Giới thiệu",
+      "title": "Trợ lý pháp lý AI<br/>cho doanh nghiệp Việt Nam",
+      "caps": {
+        "contracts": {
+          "title": "Hợp đồng thương mại",
+          "text": "Hỏi đáp, rà soát rủi ro, gợi ý sửa điều khoản, bảng nghĩa vụ – thời hạn."
+        },
+        "remedies": {
+          "title": "Phòng vệ thương mại",
+          "text": "Chống bán phá giá, chống trợ cấp, tự vệ, FTA với hàng xuất khẩu Việt Nam."
+        },
+        "citations": {
+          "title": "Trích dẫn nguồn chính thống",
+          "text": "Nguyên văn từ vbpl.vn, trav.gov.vn, Federal Register – kèm tình trạng hiệu lực."
+        }
+      },
+      "demoLabel": "Ví dụ câu trả lời",
+      "demoQ": "Mức phạt vi phạm tối đa trong hợp đồng thương mại là bao nhiêu?",
+      "demoA": "Tối đa <b>8% giá trị phần nghĩa vụ hợp đồng bị vi phạm</b>, trừ trường hợp quy định tại Điều 266",
+      "demoSrc": "vbpl.vn · Điều 301 Luật Thương mại 2005"
+    },
+    "home": "Trang chủ",
+    "requestAccess": "Chưa có tài khoản? <a>Yêu cầu truy cập</a>",
+    "registerClosed": {
+      "title": "Đăng ký đang tạm đóng",
+      "body": "Trong giai đoạn thí điểm, tài khoản do quản trị viên cấp. Gửi yêu cầu truy cập, chúng tôi sẽ liên hệ lại.",
+      "request": "Yêu cầu truy cập",
+      "toLogin": "Đã có tài khoản? Đăng nhập"
+    }
+  },
+  "sidebar": {
+    "label": "Danh sách cuộc trò chuyện",
+    "open": "Mở danh sách cuộc trò chuyện",
+    "close": "Đóng thanh bên",
+    "history": "Lịch sử trò chuyện",
+    "search": "Tìm kiếm",
+    "expertQueue": "Hàng đợi chuyên gia",
+    "newRequests_other": "{count} yêu cầu mới",
+    "pinned": "Đã ghim",
+    "empty": "Chưa có cuộc trò chuyện nào.",
+    "allShown": "Đã hiển thị tất cả cuộc trò chuyện",
+    "groups": {
+      "today": "Hôm nay",
+      "yesterday": "Hôm qua",
+      "week": "7 ngày trước",
+      "month": "30 ngày trước",
+      "older": "Cũ hơn"
+    },
+    "renameLabel": "Tên cuộc trò chuyện",
+    "unreadExpert_other": "{count} trả lời mới của chuyên gia",
+    "optionsFor": "Tuỳ chọn cho “{title}”",
+    "chatOptions": "Tuỳ chọn cuộc trò chuyện",
+    "pin": "Ghim",
+    "unpin": "Bỏ ghim",
+    "rename": "Đổi tên",
+    "deleteTitle": "Xoá cuộc trò chuyện?",
+    "deleteBody": "“{title}” sẽ bị xoá vĩnh viễn cùng mọi phiên bản và liên kết chia sẻ. Không thể hoàn tác.",
+    "toastPinned": "Đã ghim cuộc trò chuyện.",
+    "toastUnpinned": "Đã bỏ ghim.",
+    "toastDeleted": "Đã xoá cuộc trò chuyện.",
+    "account": "Tài khoản",
+    "logout": "Đăng xuất",
+    "showMore": "Xem thêm"
+  },
+  "chat": {
+    "newChat": "Cuộc trò chuyện mới",
+    "newChatTip": "Cuộc trò chuyện mới ({mod}+Shift+O)",
+    "modelBadge": "Mô hình AI của FTU Tech Lab",
+    "modelTip": "Trợ lý chạy trên mô hình AI do FTU Tech Lab triển khai",
+    "notFound": "Không tìm thấy cuộc trò chuyện.",
+    "sentTo": "Đã gửi: “{title}”",
+    "logLabel": "Nội dung trò chuyện",
+    "loadingChat": "Đang tải cuộc trò chuyện",
+    "jumpToBottom": "Cuộn xuống cuối",
+    "thinking": "Đang suy nghĩ…",
+    "retrying": "Đang thử lại…",
+    "retryingN": "Đang thử lại (lần {n})…",
+    "stopped": "Đã dừng phản hồi.",
+    "copyAnswer": "Sao chép câu trả lời",
+    "copyMessage": "Sao chép tin nhắn",
+    "editMessage": "Sửa tin nhắn",
+    "editHint": "Câu trả lời mới sẽ được tạo; phiên bản cũ vẫn xem lại được.",
+    "attachmentKept": "Tệp đính kèm được giữ nguyên",
+    "regenerate": "Tạo lại",
+    "regenerateLabel": "Tạo lại câu trả lời",
+    "versionOf": "Phiên bản {n} trên {total}",
+    "prevVersion": "Phiên bản trước",
+    "nextVersion": "Phiên bản sau",
+    "empty": {
+      "title": "Tôi có thể giúp gì cho bạn?",
+      "subtitle": "Hỏi về hợp đồng thương mại, điều luật, biện pháp phòng vệ thương mại hoặc tải hợp đồng lên để rà soát. Mọi câu trả lời đều kèm trích dẫn nguồn chính thống."
+    },
+    "examples": {
+      "penalty": "Mức phạt vi phạm tối đa trong hợp đồng thương mại là bao nhiêu?",
+      "review": "Rà soát hợp đồng mua bán hàng hóa tôi tải lên",
+      "steel": "Thép mạ kẽm xuất sang Mỹ đang bị áp biện pháp gì?",
+      "avoidance": "Khi nào bên mua được huỷ bỏ hợp đồng mua bán hàng hóa?"
+    },
+    "loadOlder": "Tải tin nhắn cũ hơn",
+    "olderRetry": "Không tải được – thử lại",
+    "finalizing": "Đang hoàn tất câu trả lời…",
+    "noAnswer": "Chưa tạo được câu trả lời – hãy thử hỏi lại hoặc nhờ chuyên gia."
+  },
+  "composer": {
+    "inputLabel": "Nhập câu hỏi",
+    "placeholder": "Hỏi về hợp đồng, điều luật, biện pháp thương mại…",
+    "attach": "Đính kèm tệp",
+    "attachLabel": "Đính kèm tệp (.docx, .pdf, .txt, .md)",
+    "attachments": "Tệp đính kèm",
+    "removeFile": "Bỏ tệp {name}",
+    "uploading": "Đang tải lên {pct}%",
+    "truncatedShort": "đã cắt bớt",
+    "hintSend": "gửi",
+    "hintNewline": "xuống dòng",
+    "send": "Gửi",
+    "stop": "Dừng",
+    "stopLabel": "Dừng phản hồi",
+    "disclaimer": "Trợ lý AI có thể sai. Hãy kiểm tra nguồn trích dẫn.",
+    "dropTitle": "Thả tệp để đính kèm",
+    "dropHint": ".docx, .pdf, .txt, .md · tối đa 10 MB",
+    "badType": "“{name}”: chỉ nhận tệp .docx, .pdf, .txt, .md.",
+    "tooBig": "“{name}” vượt quá 10 MB.",
+    "tooMany_other": "Tối đa {count} tệp mỗi tin nhắn.",
+    "truncated": "“{name}” dài {chars} ký tự – chỉ {sent} ký tự đầu được gửi cho trợ lý.",
+    "fileError": "“{name}”: {message}",
+    "pii": {
+      "warn": "Tin nhắn có vẻ chứa thông tin định danh cá nhân ({kinds}). Chỉ gửi khi thật cần thiết.",
+      "fileWarn": "Tệp đính kèm có vẻ chứa thông tin định danh cá nhân ({kinds}). Chỉ gửi khi thật cần thiết.",
+      "sendAnyway": "Gửi",
+      "edit": "Sửa",
+      "keep": "Vẫn giữ tệp",
+      "removeFiles": "Bỏ tệp",
+      "kind": {
+        "cccd": "số CCCD",
+        "passport": "số hộ chiếu",
+        "bank": "số tài khoản ngân hàng",
+        "phone": "số điện thoại"
+      }
+    },
+    "processing": "Đang đọc nội dung tệp…",
+    "ocrWait": "Đang chờ nhận dạng chữ…",
+    "ocrRunning": "Đang nhận dạng chữ từ bản scan…",
+    "ocrRunningPages_other": "Đang nhận dạng chữ từ bản scan… ({count} trang)",
+    "ocrWaitTip": "Đang chờ nhận dạng chữ (một tệp khác đang được xử lý)…",
+    "autoRepair": "Tự tra lại",
+    "autoRepairLabel": "Tự tra lại khi độ tin cậy thấp",
+    "autoRepairOnTip": "Tự tra lại khi độ tin cậy thấp: đang bật – trợ lý tự tra lại và cập nhật câu trả lời một lần.",
+    "autoRepairOffTip": "Tự tra lại khi độ tin cậy thấp: đang tắt – bấm để bật."
+  },
+  "tools": {
+    "done": "Đã tra cứu",
+    "steps_other": "{count} bước",
+    "errors_other": "{count} lỗi",
+    "planning": "Đang phân tích câu hỏi…",
+    "analyzing": "Đang phân tích kết quả «{name}»…",
+    "showReasoning": "Xem suy nghĩ của mô hình ({n})",
+    "hideReasoning": "Ẩn suy nghĩ của mô hình ({n})",
+    "state": {
+      "running": "đang chạy",
+      "error": "lỗi",
+      "done": "xong"
+    },
+    "text": {
+      "results_other": "{count} kết quả",
+      "relatedArticles_other": "{count} điều liên quan",
+      "todos_other": "{count} việc",
+      "changes_other": "{count} thay đổi",
+      "noFiles": "không có tệp",
+      "article": "Điều {n}"
+    },
+    "name": {
+      "_browser": "Trình duyệt",
+      "_tool": "Công cụ",
+      "vbpl_find": "Tìm văn bản",
+      "vbpl_document": "Mở văn bản",
+      "vbpl_article": "Đọc điều luật",
+      "vbpl_search_articles": "Tìm điều khoản",
+      "vbpl_history": "Tra lịch sử hiệu lực",
+      "vbpl_verify": "Kiểm chứng trích dẫn",
+      "trav_search": "Tìm tin phòng vệ thương mại",
+      "trav_measures": "Tra biện pháp đang áp dụng",
+      "trav_page": "Đọc bài Cục Phòng vệ thương mại",
+      "fedreg_search": "Tìm văn bản Federal Register",
+      "fedreg_document": "Đọc văn bản Federal Register",
+      "chrome_new_page": "Mở trang web",
+      "chrome_navigate_page": "Mở trang web",
+      "chrome_take_snapshot": "Đọc trang web",
+      "chrome_evaluate_script": "Trích nội dung trang",
+      "chrome_click": "Bấm trên trang",
+      "chrome_fill": "Nhập vào trang",
+      "chrome_wait_for": "Chờ trang tải",
+      "chrome_list_pages": "Xem các tab",
+      "chrome_select_page": "Chuyển tab",
+      "skill": "Nạp kỹ năng",
+      "document_create": "Tạo tài liệu",
+      "document_edit": "Sửa tài liệu",
+      "document_read": "Đọc tài liệu",
+      "expert_escalate": "Chuyển chuyên gia",
+      "grounding_check": "Kiểm chứng độ tin cậy",
+      "read": "Đọc tệp",
+      "write": "Ghi tệp",
+      "edit": "Sửa tệp",
+      "glob": "Tìm tệp",
+      "grep": "Tìm trong tệp",
+      "todowrite": "Lập kế hoạch",
+      "task": "Giao việc cho agent phụ",
+      "eurlex_search": "Tìm văn bản EUR-Lex",
+      "eurlex_document": "Đọc văn bản EUR-Lex",
+      "eping_search": "Tìm thông báo SPS/TBT (ePing)",
+      "eping_notification": "Đọc thông báo WTO",
+      "fta_list": "Xem danh sách FTA",
+      "fta_search": "Tìm cam kết FTA",
+      "fta_document": "Đọc văn bản FTA",
+      "court_anle_search": "Tìm án lệ",
+      "court_anle_document": "Đọc án lệ",
+      "court_judgment_search": "Tìm bản án",
+      "court_judgment_document": "Đọc bản án",
+      "clock_now": "Xem ngày giờ",
+      "clock_calc": "Tính thời hạn",
+      "about_self": "Thông tin hệ thống",
+      "safety_scan": "Kiểm tra an toàn",
+      "calc_eval": "Tính toán",
+      "calc_money_words": "Đổi số thành chữ",
+      "calc_check_words": "Soát số tiền bằng chữ",
+      "calc_interest": "Tính lãi / phạt",
+      "calc_contract_check": "Soát số liệu hợp đồng",
+      "fx_rate": "Tra tỷ giá",
+      "fx_convert": "Quy đổi ngoại tệ",
+      "web_search": "Tìm trên web (nguồn chính thức)",
+      "web_read": "Đọc trang web",
+      "draft_plan": "Lập dàn ý",
+      "draft_write": "Viết các phần",
+      "draft_check": "Soát chéo",
+      "draft_fix": "Sửa các phần",
+      "draft_assemble": "Gộp văn bản",
+      "draft_status": "Tiến độ soạn thảo",
+      "question": "Hỏi lại người dùng",
+      "tariff_vn": "Tra biểu thuế Việt Nam",
+      "tariff_us": "Tra biểu thuế Hoa Kỳ (HTS)",
+      "tariff_eu": "Tra biểu thuế EU (TARIC)",
+      "tariff_search": "Tìm mã HS",
+      "invalid": "Lệnh gọi công cụ không hợp lệ",
+      "chrome_close_page": "Đóng tab",
+      "chrome_drag": "Kéo thả trên trang",
+      "chrome_emulate": "Giả lập thiết bị",
+      "chrome_fill_form": "Điền biểu mẫu",
+      "chrome_get_console_message": "Đọc thông báo console",
+      "chrome_get_css_styles": "Đọc định dạng CSS",
+      "chrome_get_network_request": "Đọc yêu cầu mạng",
+      "chrome_handle_dialog": "Xử lý hộp thoại",
+      "chrome_hover": "Di chuột trên trang",
+      "chrome_lighthouse_audit": "Kiểm tra Lighthouse",
+      "chrome_list_console_messages": "Liệt kê thông báo console",
+      "chrome_list_network_requests": "Liệt kê yêu cầu mạng",
+      "chrome_performance_analyze_insight": "Phân tích hiệu năng",
+      "chrome_performance_start_trace": "Bắt đầu đo hiệu năng",
+      "chrome_performance_stop_trace": "Dừng đo hiệu năng",
+      "chrome_press_key": "Nhấn phím",
+      "chrome_resize_page": "Đổi kích thước trang",
+      "chrome_take_heapsnapshot": "Chụp bộ nhớ",
+      "chrome_take_screenshot": "Chụp màn hình",
+      "chrome_type_text": "Gõ chữ",
+      "chrome_upload_file": "Tải tệp lên trang",
+      "company_lookup": "Tra cứu doanh nghiệp",
+      "company_verify": "Đối chiếu thông tin doanh nghiệp",
+      "diagram_create": "Vẽ sơ đồ",
+      "image_search": "Tìm ảnh minh hoạ",
+      "image_fetch": "Lưu ảnh minh hoạ",
+      "source_snapshot": "Chụp văn bản gốc"
+    },
+    "active": {
+      "_fallback": "Đang {name}",
+      "vbpl_find": "Đang tìm văn bản",
+      "vbpl_document": "Đang mở văn bản",
+      "vbpl_article": "Đang đọc điều luật",
+      "vbpl_search_articles": "Đang tìm điều khoản liên quan",
+      "vbpl_history": "Đang tra lịch sử hiệu lực",
+      "vbpl_verify": "Đang kiểm chứng trích dẫn",
+      "trav_search": "Đang tìm tin phòng vệ thương mại",
+      "trav_measures": "Đang tra biện pháp đang áp dụng",
+      "trav_page": "Đang đọc bài của Cục Phòng vệ thương mại",
+      "fedreg_search": "Đang tìm trên Federal Register",
+      "fedreg_document": "Đang đọc văn bản Federal Register",
+      "skill": "Đang nạp kỹ năng",
+      "document_create": "Đang tạo tài liệu",
+      "document_edit": "Đang sửa tài liệu",
+      "document_read": "Đang đọc tài liệu",
+      "expert_escalate": "Đang chuyển chuyên gia",
+      "grounding_check": "Đang đối chiếu nguồn…",
+      "eurlex_search": "Đang tìm trên EUR-Lex",
+      "eurlex_document": "Đang đọc văn bản EUR-Lex",
+      "eping_search": "Đang tìm thông báo SPS/TBT",
+      "eping_notification": "Đang đọc thông báo WTO",
+      "fta_list": "Đang xem danh sách FTA",
+      "fta_search": "Đang tìm cam kết FTA",
+      "fta_document": "Đang đọc văn bản FTA",
+      "court_anle_search": "Đang tìm án lệ",
+      "court_anle_document": "Đang đọc án lệ",
+      "court_judgment_search": "Đang tìm bản án",
+      "court_judgment_document": "Đang đọc bản án",
+      "clock_now": "Đang xem ngày giờ",
+      "clock_calc": "Đang tính thời hạn",
+      "about_self": "Đang xem thông tin hệ thống",
+      "safety_scan": "Đang kiểm tra an toàn",
+      "calc_eval": "Đang tính toán",
+      "calc_money_words": "Đang đổi số thành chữ",
+      "calc_check_words": "Đang soát số tiền bằng chữ",
+      "calc_interest": "Đang tính lãi / phạt",
+      "calc_contract_check": "Đang soát số liệu hợp đồng",
+      "fx_rate": "Đang tra tỷ giá",
+      "fx_convert": "Đang quy đổi ngoại tệ",
+      "web_search": "Đang tìm trên web (nguồn chính thức)",
+      "web_read": "Đang đọc trang web",
+      "draft_plan": "Đang lập dàn ý",
+      "draft_write": "Đang viết các phần",
+      "draft_check": "Đang soát chéo",
+      "draft_fix": "Đang sửa các phần",
+      "draft_assemble": "Đang gộp văn bản",
+      "draft_status": "Đang xem tiến độ soạn thảo",
+      "question": "Đang hỏi lại người dùng",
+      "tariff_vn": "Đang tra biểu thuế Việt Nam",
+      "tariff_us": "Đang tra biểu thuế Hoa Kỳ",
+      "tariff_eu": "Đang tra biểu thuế EU",
+      "tariff_search": "Đang tìm mã HS",
+      "company_lookup": "Đang tra cứu doanh nghiệp",
+      "company_verify": "Đang đối chiếu thông tin doanh nghiệp",
+      "diagram_create": "Đang vẽ sơ đồ",
+      "image_search": "Đang tìm ảnh minh hoạ",
+      "image_fetch": "Đang lưu ảnh minh hoạ",
+      "source_snapshot": "Đang chụp văn bản gốc"
+    },
+    "count": {
+      "results_other": "{count} kết quả",
+      "docs_other": "{count} văn bản",
+      "articles_other": "{count} điều",
+      "precedents_other": "{count} án lệ",
+      "judgments_other": "{count} bản án",
+      "measures_other": "{count} biện pháp",
+      "news_other": "{count} bài",
+      "notifications_other": "{count} thông báo",
+      "codes_other": "{count} mã",
+      "tariffLines_other": "{count} dòng thuế",
+      "ftas_other": "{count} FTA",
+      "changes_other": "{count} thay đổi",
+      "tasks_other": "{count} việc",
+      "entries_other": "{count} mốc",
+      "items_other": "{count} mục",
+      "pages_other": "{count} trang"
+    },
+    "res": {
+      "none": "Không có kết quả",
+      "official_other": "{count} chính thức",
+      "allOfficial": "đều chính thức",
+      "verify": {
+        "match": "Khớp nguyên văn",
+        "nomatch": "Không khớp nguyên văn"
+      },
+      "deadline": "Hạn cuối {date}",
+      "daysLeft_other": "còn {count} ngày",
+      "overdue_other": "quá hạn {count} ngày",
+      "safety": {
+        "clean": "Không phát hiện rủi ro",
+        "flagged": "Có cảnh báo"
+      },
+      "error": "Công cụ báo lỗi"
+    },
+    "arg": {
+      "version": "v{n}"
+    },
+    "error": {
+      "aborted": "Đã dừng.",
+      "timeout": "Hết thời gian chờ.",
+      "notFound": "Không tìm thấy.",
+      "failed": "Bước này bị lỗi."
+    },
+    "status": {
+      "manual_required": "Cần tự tra (mã xác thực)",
+      "invalid_code": "MST không hợp lệ",
+      "personal_id": "Số định danh cá nhân – không tra",
+      "parsed": "Đã đọc dữ liệu doanh nghiệp",
+      "unofficial": "Có dữ liệu tham khảo (không chính thức)"
+    }
+  },
+  "sources": {
+    "title": "Nguồn",
+    "citeN": "Nguồn {n}",
+    "open": "Mở nguồn",
+    "looked": "Đã tra cứu",
+    "more_other": "Xem thêm {count} nguồn",
+    "accessedOn": "tra cứu {date}",
+    "site": {
+      "vbpl": "CSDL quốc gia về văn bản pháp luật",
+      "trav": "Cục Phòng vệ thương mại",
+      "fedreg": "Federal Register (Hoa Kỳ)",
+      "govinfo": "GovInfo (Hoa Kỳ)"
+    },
+    "meta": {
+      "number": "Số hiệu",
+      "docNumber": "Số văn bản",
+      "articles": "Điều khoản",
+      "status": "Hiệu lực",
+      "citation": "Trích dẫn",
+      "issued": "Ban hành",
+      "published": "Ngày đăng",
+      "accessed": "Tra cứu",
+      "agency": "Cơ quan"
+    },
+    "status": {
+      "inForce": "Còn hiệu lực",
+      "partlyExpired": "Hết hiệu lực một phần",
+      "expired": "Hết hiệu lực toàn bộ",
+      "notYet": "Chưa có hiệu lực",
+      "partlySuspended": "Ngưng hiệu lực một phần",
+      "suspended": "Ngưng hiệu lực",
+      "obsolete": "Không còn phù hợp",
+      "applicable": "Còn áp dụng",
+      "notApplicable": "Không còn áp dụng"
+    },
+    "agency": {
+      "trav": "Cục Phòng vệ thương mại"
+    }
+  },
+  "confidence": {
+    "none": "Chưa kiểm chứng tự động",
+    "noneTip": "Câu trả lời này không có kết quả grounding_check – chưa được kiểm chứng tự động với nguồn đã tra.",
+    "label": "Độ tin cậy: {level}",
+    "reasons": "Lý do: {tip}",
+    "claims": "{supported}/{claims} căn cứ khớp nguồn đã tra",
+    "level": {
+      "high": "Cao",
+      "medium": "Trung bình",
+      "low": "Thấp"
+    },
+    "byServer": "kiểm chứng tự động bởi hệ thống",
+    "lowWarn": "Một số nội dung chưa có căn cứ trong nguồn đã tra – hãy thận trọng khi sử dụng:",
+    "why": {
+      "no_sources": "không có nguồn nào được tra bằng công cụ trong phiên này",
+      "calc_only": "chỉ có kết quả tính bằng công cụ / số liệu của tài liệu, không có nguồn pháp lý nào được tra",
+      "bad_quotes_other": "{count} đoạn trích không có nguyên văn trong nguồn đã tra",
+      "unsupported": "{n}/{total} mục chưa có căn cứ",
+      "unmatched": "một số link / con số / số tiền / số hiệu chưa đối chiếu được với nguồn đã tra",
+      "source_warnings": "công cụ tra cứu có cảnh báo về văn bản nguồn",
+      "unverifiable_links": "có link ngoài các nguồn kiểm chứng tự động được",
+      "few_items": "câu trả lời dựa trên quá ít căn cứ đã kiểm chứng",
+      "all_matched": "{n}/{total} căn cứ đều khớp với nguồn đã tra",
+      "all_matched_calc": "{n}/{total} căn cứ đều khớp với nguồn đã tra hoặc do công cụ tính ({computed})",
+      "from_memory": "câu trả lời nêu số hiệu / con số / trích dẫn nhưng chưa mở nguồn nào trong phiên (trả lời theo trí nhớ)",
+      "ocr_evidence": "một số căn cứ chỉ có trong văn bản nhận dạng OCR – cần đối chiếu bản gốc"
+    }
+  },
+  "report": {
+    "defaultTitle": "Báo cáo",
+    "writing": "Đang soạn…",
+    "open": "Mở báo cáo",
+    "opened": "Đang mở",
+    "sections_other": "{count} mục",
+    "tables_other": "{count} bảng",
+    "readTime_other": "~{count} phút đọc",
+    "chars_other": "{count} ký tự",
+    "sources_other": "{count} nguồn",
+    "panelLabel": "Báo cáo: {title}",
+    "resize": "Kéo để đổi độ rộng",
+    "copy": "Sao chép báo cáo",
+    "docxTip": "Tải xuống định dạng Word",
+    "pdfTip": "In hoặc lưu thành PDF",
+    "close": "Đóng báo cáo",
+    "docxDone": "Đã tải tệp .docx.",
+    "docxFailed": "Không xuất được tệp .docx.",
+    "exportedOn": "xuất ngày {date}",
+    "footer": "Thông tin tham khảo do trợ lý AI tạo – hãy kiểm tra nguồn trích dẫn trước khi sử dụng."
+  },
+  "docs": {
+    "kind": {
+      "contract": "Hợp đồng",
+      "report": "Báo cáo",
+      "document": "Văn bản",
+      "generic": "Tài liệu"
+    },
+    "language": {
+      "vi": "Tài liệu tiếng Việt",
+      "en": "Tài liệu tiếng Anh",
+      "bilingual": "Tài liệu song ngữ Việt – Anh"
+    },
+    "uploadNote": "Định dạng theo mẫu chuẩn của hệ thống, không giữ định dạng gốc",
+    "version": "phiên bản {n}",
+    "versionNav_other": "Phiên bản {n} – {count} phiên bản",
+    "uploaded": "tệp tải lên",
+    "noFiles": "Không có tệp",
+    "changesTitle": "Thay đổi so với bản trước",
+    "moreChanges_other": "Xem thêm {count} thay đổi",
+    "preview": "Xem trước",
+    "previewOf": "Xem trước {title}",
+    "compare": "So sánh với bản trước",
+    "compareShort": "So sánh",
+    "download": "Tải .{ext}",
+    "redline": "Bản đánh dấu thay đổi (.docx)",
+    "redlineShort": "Bản đánh dấu thay đổi",
+    "redlineTip": "Tải bản đánh dấu thay đổi (.docx) – mở bằng Word để xem Track Changes",
+    "original": "Tệp gốc",
+    "originalTip": "Tải tệp gốc bạn đã tải lên",
+    "fullscreen": "Mở toàn màn hình",
+    "closePreview": "Đóng xem trước",
+    "viewMode": "Chế độ xem",
+    "loadingPreview": "Đang tải bản xem trước…",
+    "diff": {
+      "loading": "Đang so sánh…",
+      "label": "So sánh phiên bản {from} và {to}",
+      "title": "So sánh v{from} → v{to}",
+      "inserted": "chữ thêm vào",
+      "deleted": "chữ bị xoá",
+      "same": "Hai phiên bản có nội dung giống nhau.",
+      "unchangedLines_other": "{count} dòng không thay đổi",
+      "insertedWords_other": "+{count} từ",
+      "deletedWords_other": "−{count} từ",
+      "changes_other": "{count} chỗ thay đổi",
+      "onlyChanges": "Chỉ hiện chỗ thay đổi"
+    },
+    "change": {
+      "op": {
+        "edit": "Sửa",
+        "add": "Thêm",
+        "delete": "Xóa",
+        "rewrite": "Viết lại"
+      },
+      "pos": {
+        "after": "sau",
+        "before": "trước"
+      },
+      "end": "cuối văn bản",
+      "preamble": "phần mở đầu",
+      "unit": {
+        "article": "Điều {n}",
+        "chapter": "Chương {n}",
+        "section": "Mục {n}",
+        "part": "Phần {n}",
+        "clause": "Khoản {n}"
+      },
+      "clauses_other": "khoản {list}",
+      "point": "điểm {p}",
+      "times_other": "({count} chỗ)"
+    }
+  },
+  "expert": {
+    "navTitle": "Chuyên gia",
+    "docTitle": "Chuyên gia – LegalAI",
+    "escalate": "Chuyển chuyên gia",
+    "escalated": "Đã chuyển chuyên gia",
+    "askReview": "Nhờ chuyên gia xem lại",
+    "toastReplied": "Chuyên gia đã trả lời yêu cầu của bạn.",
+    "toastNewRequest": "Có yêu cầu mới trong hàng đợi chuyên gia.",
+    "dialogTitle": "Chuyển cho chuyên gia pháp lý",
+    "dialogBody": "Chuyên gia của nền tảng sẽ đọc câu hỏi, câu trả lời của trợ lý và các nguồn đã tra, rồi trả lời ngay trong cuộc trò chuyện này. Hãy bổ sung bối cảnh nếu cần (không đưa thông tin bí mật không cần thiết).",
+    "lowWarn": "Câu trả lời này có độ tin cậy thấp – nên để chuyên gia xem lại trước khi sử dụng.",
+    "urgencyLabel": "Mức khẩn",
+    "noteLabel": "Ghi chú cho chuyên gia (không bắt buộc)",
+    "notePlaceholder": "VD: hợp đồng đã ký, giá trị 5 tỷ đồng, đối tác chậm giao hàng 20 ngày…",
+    "submit": "Gửi yêu cầu",
+    "sent": "Đã gửi yêu cầu {id} tới chuyên gia.",
+    "progress": "Tiến độ",
+    "reasonLine": "Lý do: {reason}",
+    "deadlineLine": "Hạn chót: {deadline}",
+    "assigneeLine": "Chuyên gia phụ trách: {name}",
+    "replyAuthor": "Chuyên gia · {name}",
+    "replyTo": "trả lời {id}",
+    "origin": {
+      "youManual": "bạn yêu cầu",
+      "agent": "trợ lý đề xuất",
+      "user": "Người dùng yêu cầu",
+      "agentCap": "Trợ lý đề xuất"
+    },
+    "status": {
+      "new": "Mới",
+      "inProgress": "Đang xử lý",
+      "answered": "Đã trả lời",
+      "closed": "Đã đóng"
+    },
+    "urgency": {
+      "low": "Thấp",
+      "medium": "Trung bình",
+      "high": "Cao",
+      "urgent": "Khẩn"
+    },
+    "urgencyBadge": {
+      "low": "Ưu tiên thấp",
+      "medium": "Ưu tiên trung bình",
+      "high": "Ưu tiên cao",
+      "urgent": "Khẩn"
+    },
+    "filter": {
+      "open": "Đang mở",
+      "all": "Tất cả"
+    },
+    "queueLabel": "Hàng đợi yêu cầu",
+    "backToList": "Danh sách",
+    "due": "hạn {deadline}",
+    "replies_other": "{count} trả lời",
+    "unassigned": "chưa giao",
+    "empty": "Không có yêu cầu nào.",
+    "loadFailed": "Không tải được hàng đợi.",
+    "requestsCount_other": "{count} yêu cầu",
+    "pick": "Chọn một yêu cầu trong hàng đợi để xem hội thoại, nguồn và trả lời.",
+    "case": {
+      "untitled": "Yêu cầu chuyên gia",
+      "unknownOwner": "Không rõ người gửi",
+      "created": "tạo {when}",
+      "updated": "cập nhật {when}",
+      "claim": "Nhận xử lý",
+      "claimed": "Bạn đã nhận xử lý yêu cầu.",
+      "assignee": "Người phụ trách",
+      "assigned": "Đã giao việc.",
+      "unassignedOption": "— Chưa giao —",
+      "me": "(tôi)",
+      "status": "Trạng thái",
+      "statusChanged": "Trạng thái: {status}.",
+      "closeTitle": "Đóng yêu cầu?",
+      "closeBody": "Người dùng vẫn xem được các trả lời; yêu cầu chuyển sang Đã đóng.",
+      "closeConfirm": "Đóng yêu cầu",
+      "assigneeShort": "Phụ trách: {name}",
+      "none": "chưa có",
+      "request": "Yêu cầu",
+      "reason": "Lý do",
+      "topic": "Lĩnh vực",
+      "deadline": "Hạn chót",
+      "machineConfidence": "Độ tin cậy (máy)",
+      "unverified": "chưa kiểm chứng",
+      "summary": "Tóm tắt",
+      "sources": "Nguồn trợ lý đã tra",
+      "replies": "Đã trả lời",
+      "replyTitle": "Trả lời người dùng",
+      "emptyPreview": "(trống)",
+      "replyPlaceholder": "Nhận định của chuyên gia, căn cứ, khuyến nghị và việc người dùng cần chuẩn bị… (hỗ trợ markdown)",
+      "replyHint": "Ctrl/⌘+Enter để gửi · trả lời hiện trong cuộc trò chuyện của người dùng và đặt trạng thái “Đã trả lời”.",
+      "sendReply": "Gửi trả lời",
+      "replySent": "Đã gửi trả lời – người dùng sẽ thấy ngay trong cuộc trò chuyện.",
+      "conversation": "Toàn bộ cuộc trò chuyện",
+      "conversationMissing": "Không đọc được nội dung (cuộc trò chuyện ngoài web hoặc đã bị xoá)."
+    },
+    "reasonLabel": "Lý do",
+    "deadlineLabel": "Hạn chót",
+    "assigneeLabel": "Chuyên gia phụ trách",
+    "replyAuthorLabel": "Chuyên gia",
+    "dueLabel": "hạn",
+    "reasonCode": {
+      "user_request": "Người dùng yêu cầu chuyên gia xem lại"
+    },
+    "summary": {
+      "note": "Ghi chú của người dùng",
+      "question": "Câu hỏi",
+      "attachmentOnly": "(chỉ có tệp đính kèm)",
+      "attachments": "Tệp đính kèm",
+      "answer": "Câu trả lời của trợ lý (rút gọn)",
+      "noAnswer": "Trợ lý chưa có câu trả lời."
+    }
+  },
+  "admin": {
+    "title": "Quản trị",
+    "docTitle": "Quản trị – LegalAI",
+    "backToChat": "Về trò chuyện",
+    "overview": "Tổng quan",
+    "refreshStats": "Làm mới số liệu",
+    "stats": {
+      "users": "Người dùng",
+      "locked_other": "{count} bị khoá",
+      "active": "đang hoạt động",
+      "chats": "Cuộc trò chuyện",
+      "today_other": "{count} hôm nay",
+      "questionsToday": "Câu hỏi hôm nay",
+      "last7d_other": "{count} trong 7 ngày",
+      "running": "Đang chạy",
+      "streams_other": "{count} kết nối trực tiếp",
+      "shares": "Liên kết chia sẻ"
+    },
+    "agent": {
+      "ok": "Agent hoạt động bình thường",
+      "down": "Agent không phản hồi",
+      "checking": "Đang kiểm tra agent…",
+      "name": "agent “{name}”",
+      "model": "model (chỉ quản trị viên thấy): {name} – {provider}",
+      "latency": "phản hồi {ms} ms",
+      "eventsUp": "luồng sự kiện đã kết nối",
+      "eventsDown": "luồng sự kiện mất kết nối"
+    },
+    "models": {
+      "title": "Mô hình AI (chỉ quản trị viên)",
+      "desc": "Chọn mô hình cho mọi tin nhắn mới, sửa tin nhắn và tạo lại câu trả lời (kể cả gợi ý câu hỏi tiếp theo). Danh sách lấy từ cấu hình hệ thống. Người dùng không bao giờ thấy tên mô hình.",
+      "active": "Đang dùng",
+      "configDefault": "Mặc định cấu hình",
+      "test": "Kiểm tra",
+      "testing": "Đang kiểm tra…",
+      "testOk": "Hoạt động – {ms} ms, gọi công cụ được.",
+      "testNoTool": "Phản hồi trong {ms} ms nhưng không gọi công cụ đúng: {error}",
+      "testFail": "Lỗi sau {ms} ms: {error}",
+      "setDefault": "Đặt làm mặc định",
+      "saved": "Đã chuyển sang {name}.",
+      "reset": "Khôi phục mô hình mặc định của cấu hình"
+    },
+    "system": "Cài đặt hệ thống",
+    "allowReg": "Cho phép đăng ký",
+    "allowRegDesc": "Khi tắt, chỉ quản trị viên tạo được tài khoản mới. Có hiệu lực ngay.",
+    "reasoningUsers": "Cho người dùng xem suy nghĩ của mô hình",
+    "reasoningUsersDesc": "Mặc định tắt: phần suy nghĩ bị loại bỏ ở máy chủ (luồng trả lời, lịch sử, tệp xuất). Trang chia sẻ công khai không bao giờ có phần này.",
+    "reasoningOn": "Người dùng đã có thể xem suy nghĩ của mô hình.",
+    "reasoningOff": "Đã ẩn suy nghĩ của mô hình với người dùng.",
+    "regOpened": "Đã mở đăng ký.",
+    "regClosed": "Đã tắt đăng ký.",
+    "users": "Người dùng",
+    "usersCount_other": "{count} người dùng",
+    "searchPlaceholder": "Tìm email hoặc tên…",
+    "searchLabel": "Tìm người dùng",
+    "col": {
+      "user": "Người dùng",
+      "role": "Vai trò",
+      "status": "Trạng thái",
+      "chats": "Trò chuyện",
+      "activity": "Hoạt động",
+      "actions": "Thao tác"
+    },
+    "role": {
+      "admin": "Quản trị",
+      "expert": "Chuyên gia",
+      "member": "Thành viên"
+    },
+    "state": {
+      "locked": "Đã khoá",
+      "active": "Hoạt động"
+    },
+    "signedIn": "đăng nhập {when}",
+    "neverUsed": "chưa dùng",
+    "you": "(bạn)",
+    "noMatch": "Không có người dùng khớp “{q}”.",
+    "loadFailed": "Không tải được danh sách.",
+    "create": {
+      "title": "Tạo người dùng",
+      "adminRole": "Quyền quản trị",
+      "adminRoleDesc": "Truy cập màn hình Quản trị.",
+      "passwordNote": "Hệ thống sẽ tạo một mật khẩu tạm thời và hiển thị một lần sau khi tạo.",
+      "submit": "Tạo",
+      "done": "Đã tạo tài khoản."
+    },
+    "otp": {
+      "body": "Mật khẩu tạm thời cho <b>{email}</b>. Mật khẩu chỉ hiện <b>một lần</b> – hãy gửi cho người dùng qua kênh an toàn và nhắc họ đổi lại trong Cài đặt → Tài khoản.",
+      "done": "Đã lưu, đóng",
+      "newPassword": "Mật khẩu mới",
+      "created": "Tài khoản đã tạo"
+    },
+    "reset": {
+      "title": "Đặt lại mật khẩu?",
+      "body": "Mật khẩu hiện tại của {email} sẽ ngừng hoạt động và mọi phiên đăng nhập của họ bị huỷ.",
+      "confirm": "Đặt lại",
+      "tip": "Đặt lại mật khẩu",
+      "short": "Đặt lại MK"
+    },
+    "lock": {
+      "title": "Khoá tài khoản?",
+      "body": "{email} sẽ bị đăng xuất và không đăng nhập được cho tới khi mở khoá.",
+      "confirm": "Khoá",
+      "unlock": "Mở khoá"
+    },
+    "adminRole": {
+      "grantTitle": "Cấp quyền quản trị?",
+      "revokeTitle": "Bỏ quyền quản trị?",
+      "grantBody": "{email} sẽ quản lý được mọi tài khoản.",
+      "revokeBody": "{email} sẽ không vào được màn hình Quản trị.",
+      "grant": "Cấp QTV",
+      "revoke": "Bỏ QTV"
+    },
+    "expertRole": {
+      "grant": "Cấp chuyên gia",
+      "revoke": "Bỏ chuyên gia",
+      "granted": "Đã cấp vai trò chuyên gia – người này thấy hàng đợi yêu cầu.",
+      "revoked": "Đã bỏ vai trò chuyên gia."
+    },
+    "delete": {
+      "title": "Xoá người dùng?",
+      "body_other": "Tài khoản {email} cùng {count} cuộc trò chuyện, tệp tải lên và liên kết chia sẻ sẽ bị xoá vĩnh viễn.",
+      "done": "Đã xoá người dùng.",
+      "label": "Xoá {email}"
+    },
+    "followups": {
+      "title": "Gợi ý câu hỏi tiếp theo",
+      "desc": "Số câu hỏi gợi ý dưới mỗi câu trả lời (0 = tắt). Tạo bằng một lượt gọi model ngắn sau khi trả lời xong.",
+      "offShort": "Tắt",
+      "off": "Đã tắt gợi ý câu hỏi.",
+      "saved_other": "Sẽ hiện {count} gợi ý câu hỏi."
+    },
+    "grounding": {
+      "server": "Kiểm chứng tự động bởi hệ thống",
+      "serverDesc": "Khi câu trả lời có nội dung pháp lý mà trợ lý chưa tự kiểm chứng, hệ thống tự đối chiếu với nguồn đã tra và hiển thị độ tin cậy.",
+      "repair": "Cho phép tự tra lại khi độ tin cậy thấp",
+      "repairDesc": "Mặc định tắt. Khi bật, mỗi người dùng tự quyết định bật “Tự tra lại khi độ tin cậy thấp” (trợ lý tra lại và cập nhật câu trả lời một lần) và cảnh báo độ tin cậy thấp có nút “Tra lại ngay”.",
+      "saved": "Đã lưu cài đặt."
+    },
+    "lib": {
+      "title": "Thư viện công cụ & kỹ năng",
+      "intro": "Các công cụ và kỹ năng trợ lý dùng khi trả lời người dùng: mô tả, tham số, mức độ sử dụng và công tắc bật / tắt cho người dùng.",
+      "reload": "Tải lại thư viện",
+      "tab": {
+        "tools": "Công cụ",
+        "skills": "Kỹ năng"
+      },
+      "countOff": "{total} · tắt {off}",
+      "searchTools": "Tìm công cụ theo tên, mô tả…",
+      "searchSkills": "Tìm kỹ năng theo tên, mô tả…",
+      "searchLabel": "Tìm trong thư viện",
+      "filterLabel": "Lọc theo trạng thái",
+      "filter": {
+        "all": "Tất cả",
+        "on": "Đang bật",
+        "off": "Đang tắt"
+      },
+      "periodLabel": "Khoảng thống kê",
+      "period7": "7 ngày",
+      "period30": "30 ngày",
+      "noteTools": "Bật / tắt áp dụng từ tin nhắn tiếp theo của mọi người dùng. Công cụ có khoá luôn bật (an toàn, kiểm chứng, ngày giờ).",
+      "noteSkills": "Bật / tắt áp dụng từ tin nhắn tiếp theo của mọi người dùng. Kỹ năng an toàn và kiểm tra trích dẫn luôn bật.",
+      "usageUnavailable": "Chưa đọc được số liệu sử dụng.",
+      "browserDown": "Trình duyệt của trợ lý hiện chưa kết nối – các công cụ trình duyệt có thể lỗi.",
+      "noMatch": "Không có mục nào khớp.",
+      "group": {
+        "vbpl": "Văn bản pháp luật",
+        "court": "Tòa án",
+        "remedy": "Phòng vệ thương mại",
+        "fta": "FTA",
+        "docs": "Tài liệu",
+        "calc": "Tính toán & tỷ giá",
+        "web": "Tra cứu web",
+        "verify": "Kiểm chứng",
+        "system": "An toàn & hệ thống",
+        "browser": "Trình duyệt",
+        "question": "Hỏi lại",
+        "other": "Khác",
+        "tariff": "Biểu thuế",
+        "company": "Doanh nghiệp",
+        "visuals": "Hình minh hoạ"
+      },
+      "locked": "Luôn bật",
+      "lockedTip": "Bắt buộc cho an toàn / độ tin cậy – không tắt được",
+      "alwaysOn": "Luôn bật",
+      "on": "Bật",
+      "off": "Đã tắt",
+      "toggleLabel": "Bật/Tắt cho người dùng: {name}",
+      "savedOn": "Đã bật «{name}» cho người dùng.",
+      "savedOff": "Đã tắt «{name}» cho người dùng.",
+      "unused": "Chưa dùng trong khoảng này",
+      "calls_other": "{n} lượt gọi",
+      "errorRate": "lỗi {pct}%",
+      "median": "trung vị {d}",
+      "lastUsed": "dùng {when}",
+      "enabledBy": "Bật bởi {who} · {when}",
+      "disabledBy": "Tắt bởi {who} · {when}",
+      "params_other": "Tham số ({count})",
+      "noParams": "Không có tham số.",
+      "required": "bắt buộc",
+      "modified": "sửa {when}",
+      "view": "Xem nội dung",
+      "viewTitle": "Kỹ năng: {name}",
+      "readOnly": "Chỉ xem – nội dung kỹ năng được quản lý trong mã nguồn hệ thống.",
+      "techDesc": "Mô tả kỹ thuật",
+      "techNote": "Mô tả gốc dành cho mô hình AI (không dịch).",
+      "noDesc": "Chưa có mô tả."
+    },
+    "console": {
+      "navLabel": "Các mục quản trị",
+      "nav": {
+        "overview": "Tổng quan",
+        "users": "Người dùng",
+        "chats": "Trò chuyện",
+        "accessLog": "Nhật ký truy cập",
+        "experts": "Chuyên gia",
+        "models": "Mô hình AI",
+        "library": "Công cụ & kỹ năng",
+        "settings": "Cài đặt hệ thống"
+      },
+      "desc": {
+        "overview": "Số liệu chính, trạng thái hệ thống AI và hoạt động gần đây.",
+        "users": "Tạo tài khoản, đặt lại mật khẩu một lần, cấp quyền, khoá hoặc xoá người dùng.",
+        "experts": "Tình hình hàng đợi chuyên gia và danh sách người có vai trò chuyên gia.",
+        "settings": "Các công tắc áp dụng cho toàn hệ thống, có hiệu lực ngay."
+      },
+      "waiting_other": "{count} chờ người dùng trả lời",
+      "expertOpen": "Yêu cầu chuyên gia đang mở",
+      "expertNew_other": "{count} yêu cầu mới",
+      "recent": "Hoạt động gần đây",
+      "seeAll": "Xem tất cả",
+      "openQueue": "Mở hàng đợi chuyên gia",
+      "expertList": "Chuyên gia",
+      "manageRoles": "Cấp / bỏ vai trò ở mục Người dùng",
+      "noExperts": "Chưa có ai có vai trò chuyên gia.",
+      "group": {
+        "access": "Truy cập",
+        "answers": "Câu trả lời",
+        "verify": "Kiểm chứng"
+      }
+    }
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "sections": "Mục cài đặt",
+    "close": "Đóng cài đặt",
+    "tabs": {
+      "general": "Chung",
+      "account": "Tài khoản",
+      "data": "Dữ liệu",
+      "about": "Giới thiệu"
+    },
+    "general": {
+      "language": "Ngôn ngữ",
+      "languageDesc": "Ngôn ngữ giao diện; trợ lý cũng trả lời bằng ngôn ngữ này theo mặc định.",
+      "languageName": {
+        "vi": "Tiếng Việt",
+        "en": "English"
+      },
+      "themeDesc": "Áp dụng cho trình duyệt này.",
+      "fontSize": "Cỡ chữ",
+      "fontSizeDesc": "Cỡ chữ của nội dung trò chuyện.",
+      "fontSm": "Nhỏ",
+      "fontMd": "Vừa",
+      "fontLg": "Lớn",
+      "reasoning": "Mở sẵn suy nghĩ của mô hình",
+      "reasoningDesc": "Hiện luôn phần “suy nghĩ” trong mục Các bước tra cứu thay vì thu gọn.",
+      "adminReasoning": "Hiện suy nghĩ của mô hình (quản trị viên)",
+      "adminReasoningDesc": "Chỉ áp dụng cho tài khoản quản trị của bạn, để gỡ lỗi. Người dùng khác chỉ thấy khi bật trong Quản trị → Hệ thống.",
+      "enterToSend": "Enter để gửi",
+      "enterOn": "Enter gửi, Shift+Enter xuống dòng.",
+      "enterOff": "Enter xuống dòng, Ctrl/⌘+Enter gửi.",
+      "followups": "Gợi ý câu hỏi tiếp theo",
+      "followupsDesc": "Hiện vài câu hỏi gợi ý dưới câu trả lời mới nhất.",
+      "autoRepair": "Tự tra lại khi độ tin cậy thấp",
+      "autoRepairDesc": "Khi câu trả lời có độ tin cậy THẤP, trợ lý tự tra lại và cập nhật câu trả lời một lần (câu trả lời ban đầu vẫn xem được). Mặc định tắt."
+    },
+    "account": {
+      "emailDesc": "Dùng để đăng nhập. Liên hệ quản trị viên nếu cần đổi.",
+      "displayName": "Tên hiển thị",
+      "displayNamePlaceholder": "VD: Nguyễn Văn A",
+      "nameSaved": "Đã lưu tên hiển thị.",
+      "changePassword": "Đổi mật khẩu",
+      "currentPassword": "Mật khẩu hiện tại",
+      "newPassword": "Mật khẩu mới",
+      "confirmNewPassword": "Nhập lại mật khẩu mới",
+      "newPasswordShort": "Mật khẩu mới cần ít nhất 8 ký tự.",
+      "passwordChanged": "Đã đổi mật khẩu. Các thiết bị khác đã được đăng xuất.",
+      "otherSessions": "Phiên đăng nhập khác",
+      "otherSessionsN_other": "{count} thiết bị/trình duyệt khác đang đăng nhập.",
+      "noOtherSessions": "Không có phiên nào khác.",
+      "logoutAll": "Đăng xuất tất cả",
+      "logoutOthersTitle": "Đăng xuất các thiết bị khác?",
+      "logoutOthersBody": "Mọi phiên đăng nhập khác của bạn sẽ kết thúc ngay.",
+      "loggedOutOthers_other": "Đã đăng xuất {count} phiên khác.",
+      "deleteAccount": "Xoá tài khoản",
+      "deleteAccountDesc": "Xoá vĩnh viễn tài khoản, mọi cuộc trò chuyện, tệp tải lên và liên kết chia sẻ.",
+      "deleteConfirm": "Nhập lại email <b>{email}</b> và mật khẩu để xác nhận. Không thể hoàn tác.",
+      "deleteForever": "Xoá vĩnh viễn",
+      "deleted": "Tài khoản đã bị xoá."
+    },
+    "data": {
+      "sharedLinks": "Liên kết đã chia sẻ",
+      "noShares": "Bạn chưa chia sẻ cuộc trò chuyện nào.",
+      "openLink": "Mở liên kết",
+      "moreLinks": "Xem thêm liên kết",
+      "revokeBody": "Liên kết của “{title}” sẽ ngừng hoạt động.",
+      "export": "Xuất dữ liệu",
+      "exportDesc": "Tải về toàn bộ cuộc trò chuyện (phiên bản đang hiển thị) dạng tệp .zip.",
+      "deleteAllRow": "Xoá tất cả cuộc trò chuyện",
+      "deleteAllDesc": "Không ảnh hưởng tới tài khoản của bạn.",
+      "deleteAll": "Xoá tất cả",
+      "deleteAllTitle": "Xoá tất cả cuộc trò chuyện?",
+      "deleteAllBody": "Mọi cuộc trò chuyện, mọi phiên bản và liên kết chia sẻ của bạn sẽ bị xoá vĩnh viễn.",
+      "deleteAllPhrase": "XOÁ TẤT CẢ",
+      "deletedN_other": "Đã xoá {count} cuộc trò chuyện.",
+      "adminAccess": "Quản trị viên có thể xem lịch sử trò chuyện để hỗ trợ và kiểm tra chất lượng; mọi lượt xem đều được ghi nhật ký."
+    },
+    "about": {
+      "lead": "<b>LegalAI</b> là trợ lý AI pháp lý cho doanh nghiệp Việt Nam: giải đáp và rà soát <b>hợp đồng thương mại</b> (mua bán hàng hóa, dịch vụ, đại lý, phân phối, vận chuyển) và tra cứu <b>biện pháp phòng vệ thương mại</b>, FTA ảnh hưởng tới hàng xuất khẩu.",
+      "sources": "Nguồn tra cứu",
+      "srcVbpl": "CSDL quốc gia về văn bản pháp luật (nguyên văn điều luật, tình trạng hiệu lực)",
+      "srcTrav": "Cục Phòng vệ thương mại (tin điều tra, cảnh báo sớm, biện pháp đang áp dụng)",
+      "srcUs": "văn bản chính thức của Hoa Kỳ (AD/CVD, mức thuế, biên độ)",
+      "srcOther": "Các trang chính thống khác qua trình duyệt riêng của hệ thống",
+      "model": "Mô hình AI",
+      "modelName": "Mô hình AI do FTU Tech Lab triển khai",
+      "notes": "Lưu ý",
+      "disclaimer": "Câu trả lời do AI tạo, chỉ mang tính tham khảo và không thay thế tư vấn của luật sư. Luôn kiểm tra trích dẫn trên trang gốc (bấm vào số [1], [2]…) và tình trạng hiệu lực tại thời điểm sử dụng."
+    }
+  },
+  "search": {
+    "title": "Tìm kiếm cuộc trò chuyện",
+    "placeholder": "Tìm theo tiêu đề hoặc nội dung…",
+    "inputLabel": "Từ khoá tìm kiếm",
+    "close": "Đóng tìm kiếm",
+    "results": "Kết quả",
+    "recent": "Gần đây",
+    "empty": "Không tìm thấy cuộc trò chuyện nào khớp “{q}”.",
+    "end": "Hết kết quả",
+    "hintSelect": "chọn",
+    "hintOpen": "mở",
+    "hintClose": "đóng"
+  },
+  "share": {
+    "buttonTip": "Chia sẻ liên kết chỉ xem",
+    "dialogTitle": "Chia sẻ cuộc trò chuyện",
+    "lead": "Tạo liên kết chỉ-xem cho <b>“{title}”</b>. Người nhận xem được câu hỏi, câu trả lời, các bước tra cứu và nguồn – không cần đăng nhập, không gửi tiếp được. Tệp đính kèm chỉ hiện tên.",
+    "linkLabel": "Liên kết chia sẻ",
+    "snapshotNote": "Ảnh chụp lúc {date}. Tin nhắn mới sau thời điểm này không hiện trong liên kết – bấm “Cập nhật” để tạo ảnh chụp mới.",
+    "create": "Tạo liên kết",
+    "update": "Cập nhật",
+    "view": "Xem",
+    "revoke": "Thu hồi",
+    "revokeTitle": "Thu hồi liên kết?",
+    "revokeBody": "Người có liên kết sẽ không xem được cuộc trò chuyện này nữa.",
+    "toastCreated": "Đã tạo và sao chép liên kết.",
+    "toastRevoked": "Đã thu hồi liên kết.",
+    "badge": "Bản chia sẻ chỉ xem",
+    "docTitle": "{title} – LegalAI (chia sẻ)",
+    "openApp": "Mở ứng dụng",
+    "tryApp": "Dùng thử LegalAI",
+    "revokedTitle": "Liên kết đã bị thu hồi",
+    "revokedBody": "Chủ cuộc trò chuyện đã ngừng chia sẻ nội dung này.",
+    "notFoundTitle": "Không tìm thấy liên kết",
+    "notFoundBody": "Liên kết không đúng hoặc không còn tồn tại. Hãy kiểm tra lại với người đã gửi cho bạn.",
+    "sharedOn": "Chia sẻ ngày {date} · Nội dung do trợ lý AI tạo, chỉ mang tính tham khảo.",
+    "end": "Hết nội dung chia sẻ."
+  },
+  "shortcuts": {
+    "title": "Phím tắt",
+    "search": "Tìm kiếm cuộc trò chuyện",
+    "newChat": "Cuộc trò chuyện mới",
+    "focusInput": "Chuyển tới ô nhập câu hỏi",
+    "send": "Gửi (tắt được trong Cài đặt)",
+    "newline": "Xuống dòng",
+    "modSend": "Gửi khi đã tắt “Enter để gửi” / lưu khi sửa tin nhắn",
+    "close": "Đóng hộp thoại, báo cáo, thanh bên",
+    "settings": "Mở Cài đặt",
+    "help": "Mở bảng phím tắt này",
+    "helpTyping": "Mở bảng phím tắt (cả khi đang gõ)"
+  },
+  "states": {
+    "notFound": {
+      "docTitle": "Không tìm thấy trang – LegalAI",
+      "title": "Không tìm thấy trang",
+      "body": "Trang bạn tìm không tồn tại hoặc đã được chuyển đi."
+    },
+    "crash": {
+      "title": "Có lỗi xảy ra",
+      "body": "Giao diện gặp sự cố ngoài dự kiến. Dữ liệu của bạn vẫn an toàn trên máy chủ."
+    },
+    "conn": {
+      "offline": "Bạn đang ngoại tuyến. Nội dung sẽ tự cập nhật khi có mạng trở lại.",
+      "server": "Mất kết nối tới máy chủ. Đang thử kết nối lại…",
+      "agent": "Trợ lý đang bảo trì hoặc tạm thời không phản hồi. Bạn vẫn xem được lịch sử; hãy thử gửi lại sau ít phút.",
+      "stream": "Đang kết nối lại luồng trả lời…",
+      "checking": "Đang kiểm tra…"
+    }
+  },
+  "about": {
+    "link": "Giới thiệu & giới hạn",
+    "title": "Giới thiệu & giới hạn",
+    "model": "LegalAI chạy trên mô hình AI do FTU Tech Lab triển khai.",
+    "purpose": {
+      "title": "LegalAI làm gì",
+      "body": "Trợ lý AI giúp doanh nghiệp Việt Nam tra cứu và rà soát hợp đồng thương mại, biện pháp phòng vệ thương mại và FTA, kèm trích dẫn nguồn chính thống (vbpl.vn, trav.gov.vn, Federal Register)."
+    },
+    "advice": {
+      "title": "Không phải tư vấn pháp lý",
+      "body": "Câu trả lời do AI tạo, có thể sai hoặc chưa đầy đủ và không thay thế tư vấn của luật sư. Hãy kiểm tra trích dẫn và tình trạng hiệu lực trước khi sử dụng; huy hiệu độ tin cậy chỉ là kết quả kiểm chứng tự động."
+    },
+    "data": {
+      "title": "Dữ liệu của bạn",
+      "body": "Cuộc trò chuyện và tệp tải lên được lưu trên máy chủ của nền tảng; nội dung chữ của tệp được gửi kèm câu hỏi tới mô hình AI do FTU Tech Lab triển khai để tạo câu trả lời. Bạn có thể xuất, thu hồi liên kết chia sẻ hoặc xoá toàn bộ dữ liệu trong Cài đặt → Dữ liệu. Không tải lên thông tin mật hoặc thông tin định danh cá nhân khi không cần thiết."
+    },
+    "escalation": {
+      "title": "Chuyển chuyên gia",
+      "body": "Bấm “Chuyển chuyên gia” dưới câu trả lời (trợ lý cũng đề xuất khi độ tin cậy thấp). Chuyên gia của nền tảng đọc câu hỏi, câu trả lời và nguồn đã tra, rồi trả lời ngay trong cuộc trò chuyện; bạn theo dõi trạng thái trên thẻ yêu cầu."
+    }
+  },
+  "followups": {
+    "title": "Hỏi tiếp",
+    "label": "Gợi ý câu hỏi tiếp theo",
+    "loading": "Đang tạo gợi ý câu hỏi…",
+    "ask": "Hỏi: {q}"
+  },
+  "site": {
+    "tagline": "Trợ lý pháp lý AI cho doanh nghiệp Việt",
+    "meta": {
+      "landing": {
+        "title": "LegalAI – Trợ lý pháp lý AI cho doanh nghiệp Việt",
+        "description": "Hỏi đáp pháp luật Việt Nam có trích dẫn nguyên văn từ nguồn chính thức, soạn và rà soát hợp đồng thương mại, tra cứu phòng vệ thương mại. Sản phẩm thí điểm của FTU Tech Lab, Trường Đại học Ngoại thương."
+      },
+      "brand": {
+        "title": "Bộ nhận diện thương hiệu – LegalAI",
+        "description": "Hướng dẫn sử dụng logo, màu sắc, kiểu chữ và giọng văn của LegalAI."
+      },
+      "privacy": {
+        "title": "Chính sách quyền riêng tư (bản nháp) – LegalAI",
+        "description": "Bản nháp chính sách quyền riêng tư của LegalAI trong giai đoạn thí điểm."
+      },
+      "terms": {
+        "title": "Điều khoản sử dụng (bản nháp) – LegalAI",
+        "description": "Bản nháp điều khoản sử dụng LegalAI trong giai đoạn thí điểm."
+      }
+    },
+    "nav": {
+      "home": "LegalAI – Trang chủ",
+      "primary": "Điều hướng chính",
+      "features": "Tính năng",
+      "how": "Cách hoạt động",
+      "demo": "Video demo",
+      "faq": "Câu hỏi thường gặp",
+      "login": "Đăng nhập",
+      "request": "Yêu cầu truy cập",
+      "openApp": "Mở ứng dụng",
+      "menu": "Mở menu",
+      "language": "Ngôn ngữ",
+      "skip": "Bỏ qua đến nội dung chính",
+      "themeDark": "Chuyển sang giao diện tối",
+      "themeLight": "Chuyển sang giao diện sáng"
+    },
+    "cta": {
+      "mailSubject": "Yêu cầu truy cập LegalAI"
+    },
+    "langName": {
+      "vi": "Tiếng Việt",
+      "en": "English"
+    },
+    "crumbs": {
+      "label": "Đường dẫn",
+      "home": "Trang chủ"
+    },
+    "endorse": {
+      "line1": "Sản phẩm của FTU Tech Lab",
+      "line2": "Trường Đại học Ngoại thương, Hà Nội",
+      "ftuAlt": "Logo Trường Đại học Ngoại thương (Foreign Trade University)",
+      "ftuLink": "Trang web Trường Đại học Ngoại thương (mở tab mới)"
+    },
+    "sources": {
+      "vbpl": {
+        "name": "vbpl.vn",
+        "what": "Văn bản pháp luật, hiệu lực"
+      },
+      "court": {
+        "name": "Tòa án nhân dân",
+        "what": "Án lệ và bản án"
+      },
+      "trav": {
+        "name": "trav.gov.vn",
+        "what": "Cục Phòng vệ thương mại"
+      },
+      "fedreg": {
+        "name": "Federal Register",
+        "what": "Hoa Kỳ · govinfo"
+      },
+      "eurlex": {
+        "name": "EUR-Lex",
+        "what": "Pháp luật Liên minh châu Âu"
+      },
+      "eping": {
+        "name": "WTO ePing",
+        "what": "Thông báo SPS/TBT"
+      },
+      "fta": {
+        "name": "trungtamwto.vn",
+        "what": "Cam kết FTA"
+      }
+    },
+    "footer": {
+      "product": "Sản phẩm",
+      "resources": "Tài liệu",
+      "contact": "Liên hệ",
+      "limits": "Giới thiệu & giới hạn",
+      "brand": "Bộ nhận diện",
+      "privacy": "Quyền riêng tư (bản nháp)",
+      "terms": "Điều khoản (bản nháp)",
+      "status": "Đang thí điểm nghiên cứu",
+      "copyright": "© {year} FTU Tech Lab – Trường Đại học Ngoại thương.",
+      "disclaimer": "LegalAI cung cấp thông tin tham khảo, không phải tư vấn pháp lý."
+    }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Thí điểm nghiên cứu · FTU Tech Lab",
+      "title": "Trợ lý pháp lý AI cho <em>doanh nghiệp Việt</em>",
+      "lead": "Hỏi về pháp luật Việt Nam và thương mại quốc tế, nhận câu trả lời dẫn về đúng điều khoản kèm trích nguyên văn từ nguồn chính thức. Soạn, rà soát và sửa hợp đồng thương mại ngay trong cuộc trò chuyện.",
+      "watch": "Xem video demo",
+      "note": "Đang thí điểm – thông tin tham khảo, không thay thế tư vấn của luật sư.",
+      "frameTitle": "Hỏi đáp có trích dẫn",
+      "shotAlt": "Giao diện LegalAI: câu trả lời về quyền huỷ bỏ hợp đồng mua bán hàng hoá, có trích dẫn Luật Thương mại 2005 và huy hiệu độ tin cậy",
+      "steps": {
+        "busy": "Đang tra cứu nguồn chính thức…",
+        "done_other": "Đã tra cứu {count} bước",
+        "find": "Tìm văn bản trên vbpl.vn",
+        "article": "Đọc Điều 312 Luật Thương mại 2005",
+        "verify": "Đối chiếu trích dẫn nguyên văn",
+        "ground": "Kiểm tra căn cứ: 9/9 khớp nguồn"
+      },
+      "cite": {
+        "source": "Luật Thương mại 2005 · Điều 312",
+        "quote": "4. … chế tài hủy bỏ hợp đồng được áp dụng trong các trường hợp sau đây: … b) Một bên vi phạm cơ bản nghĩa vụ hợp đồng.",
+        "status": "vbpl.vn: Hết hiệu lực một phần",
+        "confidence": "Độ tin cậy: Cao"
+      }
+    },
+    "sources": {
+      "title": "Tra cứu trực tiếp trên nguồn chính thức – mỗi lần hỏi"
+    },
+    "features": {
+      "eyebrow": "Tính năng",
+      "title": "Một trợ lý cho cả câu hỏi pháp lý lẫn hợp đồng",
+      "lead": "LegalAI hiển thị từng bước tra cứu, dẫn nguồn cho từng nhận định và cho bạn biết khi nào nên hỏi chuyên gia.",
+      "research": {
+        "title": "Hỏi đáp có trích dẫn nguyên văn",
+        "text": "Mỗi nhận định dẫn về điều, khoản cụ thể; di chuột vào số trích dẫn để xem nguyên văn, tình trạng hiệu lực và ngày tra cứu.",
+        "alt": "Câu trả lời với các số trích dẫn và bảng nguồn"
+      },
+      "confidence": {
+        "title": "Độ tin cậy tính từ bằng chứng",
+        "text": "Trước khi trả lời, hệ thống đối chiếu từng căn cứ với nguồn đã tra. Độ tin cậy thấp thì gợi ý chuyển chuyên gia – một người thật xem lại.",
+        "alt": "Huy hiệu độ tin cậy và thẻ yêu cầu chuyển chuyên gia"
+      },
+      "contracts": {
+        "title": "Soạn và sửa hợp đồng",
+        "text": "Soạn từ yêu cầu, nhập tệp .docx/.pdf, sửa đúng chỗ cần sửa; mỗi lần sửa là một phiên bản mới, xuất DOCX và PDF.",
+        "alt": "Thẻ tài liệu với các phiên bản v1, v2 và nút tải DOCX, PDF"
+      },
+      "trade": {
+        "title": "Phòng vệ thương mại & thương mại quốc tế",
+        "text": "Tra các vụ điều tra, biện pháp chống bán phá giá, chống trợ cấp, tự vệ và cam kết FTA trên nguồn chính thức trong nước và quốc tế.",
+        "alt": "Câu trả lời về các vụ điều tra phòng vệ thương mại đối với thép mạ kẽm xuất khẩu sang Úc"
+      },
+      "bilingual": {
+        "title": "Song ngữ Việt – Anh",
+        "text": "Giao diện tiếng Việt và tiếng Anh; hợp đồng song ngữ hai cột."
+      },
+      "deadline": {
+        "title": "Tính thời hạn",
+        "text": "Tính ngày đến hạn theo quy tắc của Bộ luật Dân sự, có nêu cách tính."
+      },
+      "safety": {
+        "title": "An toàn & riêng tư",
+        "text": "Từ chối yêu cầu trái pháp luật; nhắc trước khi gửi thông tin định danh cá nhân như số CCCD hay số tài khoản."
+      },
+      "followups": {
+        "title": "Gợi ý câu hỏi tiếp theo",
+        "text": "Sau mỗi câu trả lời, gợi ý vài câu hỏi liên quan để đi sâu hơn."
+      }
+    },
+    "contracts": {
+      "eyebrow": "Hợp đồng",
+      "title": "Từ bản nháp đầu tiên đến bản đánh dấu thay đổi",
+      "lead": "Soạn và chỉnh sửa hợp đồng thương mại theo mẫu chuẩn, có căn cứ pháp lý cho các điều khoản quan trọng.",
+      "b1": "Soạn hợp đồng từ mô tả ngắn, xuất tệp Word (.docx) và PDF",
+      "b2": "Tải hợp đồng của bạn lên (.docx, .pdf, .txt, .md) để rà soát hoặc sửa",
+      "b3": "Sửa đúng điều khoản được yêu cầu, giữ nguyên phần còn lại",
+      "b4": "Mỗi lần sửa là một phiên bản; so sánh hai phiên bản theo từng từ",
+      "b5": "Tải bản đánh dấu thay đổi (Track Changes) để gửi đối tác",
+      "alt": "Bảng so sánh phiên bản hợp đồng: chữ thêm được gạch chân, chữ xoá bị gạch ngang"
+    },
+    "trade": {
+      "eyebrow": "Thương mại quốc tế",
+      "title": "Theo dõi phòng vệ thương mại tại nguồn",
+      "lead": "Hỏi về mặt hàng và thị trường xuất khẩu của bạn; LegalAI tra trên các cơ sở dữ liệu chính thức và dẫn về trang gốc.",
+      "b1": "Các vụ điều tra và biện pháp đang áp dụng với hàng Việt Nam",
+      "b2": "Văn bản của Hoa Kỳ và EU liên quan tới vụ việc",
+      "b3": "Thông báo SPS/TBT và cam kết thuế quan trong các FTA",
+      "tableLabel": "Nguồn tra cứu thương mại quốc tế",
+      "colSource": "Nguồn",
+      "colWhat": "LegalAI tra cứu",
+      "rows": {
+        "trav": "Vụ điều tra, biện pháp phòng vệ thương mại (Cục Phòng vệ thương mại)",
+        "fedreg": "Thông báo khởi xướng, quyết định của Hoa Kỳ (Federal Register, govinfo)",
+        "eurlex": "Quy định áp thuế và văn bản pháp luật EU",
+        "eping": "Thông báo biện pháp SPS/TBT của các thành viên WTO",
+        "fta": "Cam kết trong các hiệp định thương mại tự do của Việt Nam"
+      }
+    },
+    "how": {
+      "eyebrow": "Cách hoạt động",
+      "title": "Ba bước, nhìn thấy từng bước",
+      "s1": {
+        "title": "Đặt câu hỏi hoặc tải hợp đồng lên",
+        "text": "Viết bằng tiếng Việt hoặc tiếng Anh như khi hỏi một đồng nghiệp; đính kèm tệp khi cần."
+      },
+      "s2": {
+        "title": "LegalAI tra cứu nguồn chính thức",
+        "text": "Các bước tra cứu hiện trực tiếp: văn bản nào, điều nào, đã đối chiếu những gì."
+      },
+      "s3": {
+        "title": "Nhận câu trả lời có kiểm chứng",
+        "text": "Trích dẫn nguyên văn, độ tin cậy, tài liệu tải về – hoặc chuyển cho chuyên gia xem lại."
+      }
+    },
+    "demo": {
+      "eyebrow": "Video demo",
+      "title": "Xem LegalAI làm việc",
+      "lead": "Quay màn hình sản phẩm thật, phát lại các cuộc trò chuyện đã ghi (phần chờ được tua nhanh). Có phụ đề tiếng Việt và tiếng Anh.",
+      "download": "Tải video (MP4)",
+      "transcriptTitle": "Nội dung video (bản chữ)",
+      "transcriptNote": "Video không có lời thoại hay nhạc nền; nội dung trên là phụ đề.",
+      "transcript": {
+        "t1": "Trang giới thiệu LegalAI – trợ lý pháp lý AI cho doanh nghiệp Việt, sản phẩm thí điểm của FTU Tech Lab, Trường Đại học Ngoại thương.",
+        "t2": "Đăng nhập (trong giai đoạn thí điểm, tài khoản do quản trị viên cấp).",
+        "t3": "Hỏi: “Khi nào bên mua được huỷ bỏ hợp đồng mua bán hàng hoá?”",
+        "t4": "Các bước tra cứu hiện trực tiếp: vbpl.vn, Luật Thương mại 2005, Bộ luật Dân sự 2015… (phần chờ được tua nhanh).",
+        "t5": "Câu trả lời dẫn về điều luật kèm trích nguyên văn (di chuột vào số trích dẫn); độ tin cậy Cao – 9/9 căn cứ khớp nguồn đã tra; gợi ý câu hỏi tiếp theo.",
+        "t6": "Soạn hợp đồng mua bán thép cuộn nội địa (tua nhanh).",
+        "t7": "Thẻ tài liệu: xem trước trang A4, tải DOCX và PDF.",
+        "t8": "Hợp đồng người dùng tải lên và yêu cầu sửa 2 chỗ: phiên bản v1 → v2.",
+        "t9": "So sánh thay đổi theo từng từ, chỉ hiện chỗ thay đổi, tải bản đánh dấu thay đổi (Track Changes).",
+        "t10": "Chuyển giao diện sang tiếng Anh; hợp đồng mua bán cà phê nhân song ngữ Việt – Anh hai cột.",
+        "t11": "Chuyển câu trả lời cho chuyên gia: thẻ yêu cầu hiển thị mã và trạng thái xử lý.",
+        "t12": "LegalAI · FTU Tech Lab – Trường Đại học Ngoại thương. Thông tin tham khảo, không phải tư vấn pháp lý."
+      }
+    },
+    "bilingual": {
+      "eyebrow": "Song ngữ",
+      "title": "Làm việc bằng tiếng Việt hoặc tiếng Anh",
+      "lead": "Chọn ngôn ngữ giao diện; soạn hợp đồng song ngữ hai cột cho giao dịch với đối tác nước ngoài.",
+      "b1": "Giao diện, thông báo và tệp xuất theo ngôn ngữ bạn chọn",
+      "b2": "Hợp đồng song ngữ Việt – Anh, trình bày hai cột, ghi rõ bản ưu tiên",
+      "b3": "Trích dẫn luật giữ nguyên văn tiếng Việt, kèm giải thích bằng ngôn ngữ của bạn",
+      "docTitle": "HỢP ĐỒNG MUA BÁN CÀ PHÊ NHÂN · GREEN COFFEE BEAN SALES CONTRACT",
+      "viHead": "Điều 4. Phạt vi phạm và bồi thường thiệt hại",
+      "viText": "1. Phạt vi phạm: bên vi phạm nghĩa vụ thanh toán hoặc nghĩa vụ giao hàng phải trả cho bên bị vi phạm một khoản tiền phạt bằng …% giá trị phần nghĩa vụ hợp đồng bị vi phạm [cần thương lượng].",
+      "enHead": "Article 4. Penalty for Breach and Compensation for Damage",
+      "enText": "1. Penalty: a party breaching its payment or delivery obligation shall pay the aggrieved party a penalty equal to …% of the value of the breached part of the contractual obligation [to be negotiated].",
+      "docNote": "Trích từ một hợp đồng LegalAI đã soạn trong giai đoạn thử nghiệm (các chỗ “…” để các bên thương lượng)."
+    },
+    "about": {
+      "eyebrow": "Về dự án",
+      "title": "Nghiên cứu ứng dụng AI cho pháp lý doanh nghiệp",
+      "text": "LegalAI là dự án nghiên cứu của FTU Tech Lab (FTL), Trường Đại học Ngoại thương, Hà Nội: xây dựng nền tảng AI giúp doanh nghiệp nhỏ và vừa Việt Nam soạn thảo, đàm phán, thực hiện hợp đồng thương mại và xử lý các vấn đề phòng vệ thương mại, thương mại quốc tế."
+    },
+    "limits": {
+      "title": "Giới hạn cần biết",
+      "l1": "Đây là sản phẩm thí điểm nghiên cứu; câu trả lời có thể sai hoặc thiếu. Hãy kiểm tra nguồn trích dẫn trước khi sử dụng.",
+      "l2": "LegalAI không phải là luật sư và không cung cấp tư vấn pháp lý; việc quan trọng nên nhờ chuyên gia xem lại.",
+      "l3": "Độ tin cậy chỉ đo mức khớp giữa các căn cứ và nguồn đã tra, không bảo đảm kết luận đúng.",
+      "l4": "Nguồn chính thức có thể tạm thời không truy cập được; khi đó câu trả lời sẽ nói rõ.",
+      "l5": "PDF dạng ảnh quét (không có lớp chữ) chưa được hỗ trợ."
+    },
+    "faq": {
+      "eyebrow": "Câu hỏi thường gặp",
+      "title": "Câu hỏi thường gặp",
+      "advice": {
+        "q": "LegalAI có thay thế luật sư không?",
+        "a": "Không. LegalAI là sản phẩm thí điểm nghiên cứu, cung cấp thông tin tham khảo có dẫn nguồn, không phải tư vấn pháp lý. Với vụ việc có giá trị lớn hoặc rủi ro cao, hãy dùng nút “Chuyển chuyên gia” hoặc hỏi luật sư."
+      },
+      "sources": {
+        "q": "LegalAI lấy thông tin từ đâu?",
+        "a": "Tra trực tiếp khi bạn hỏi trên các nguồn chính thức: vbpl.vn (văn bản pháp luật), cổng án lệ và bản án của Tòa án, Cục Phòng vệ thương mại (trav.gov.vn), Federal Register/govinfo, EUR-Lex, WTO ePing và trungtamwto.vn (cam kết FTA). Mỗi trích dẫn ghi rõ nguồn và ngày tra cứu."
+      },
+      "confidence": {
+        "q": "Độ tin cậy được tính thế nào?",
+        "a": "Trước khi trả lời, một bước kiểm tra tự động đối chiếu từng căn cứ pháp lý trong câu trả lời với nội dung đã tra được từ nguồn. Kết quả (cao, trung bình, thấp) hiện dưới câu trả lời kèm lý do. Đây là thước đo mức khớp nguồn, không phải bảo đảm tính đúng."
+      },
+      "data": {
+        "q": "Dữ liệu của tôi được xử lý thế nào?",
+        "a": "Cuộc trò chuyện và tệp tải lên được lưu trên máy chủ chạy LegalAI. Nội dung chữ của tệp được trích ở máy chủ và gửi kèm câu hỏi tới mô hình AI do FTU Tech Lab triển khai. Bạn có thể xoá cuộc trò chuyện, xuất dữ liệu và thu hồi liên kết chia sẻ bất kỳ lúc nào. Chính sách chi tiết đang ở dạng bản nháp."
+      },
+      "model": {
+        "q": "LegalAI chạy trên mô hình AI nào?",
+        "a": "LegalAI chạy trên một mô hình ngôn ngữ lớn do FTU Tech Lab triển khai; Lab không công bố tên mô hình nền. Câu hỏi và phần chữ của tệp đính kèm được xử lý trên hạ tầng do FTU Tech Lab vận hành cùng các nhà cung cấp dịch vụ kỹ thuật để tạo câu trả lời. Giao diện nhắc bạn trước khi gửi thông tin định danh như số CCCD hay số tài khoản – chỉ gửi khi thật cần thiết."
+      },
+      "access": {
+        "q": "Làm sao để dùng thử?",
+        "a": "Trong giai đoạn thí điểm, tài khoản do quản trị viên cấp (đăng ký công khai đang tắt). Gửi yêu cầu truy cập qua email liên hệ ở cuối trang."
+      },
+      "files": {
+        "q": "LegalAI hỗ trợ những định dạng tệp nào?",
+        "a": "Tải lên .docx, .pdf, .txt, .md tối đa 10 MB. Tài liệu do LegalAI tạo được xuất .docx và .pdf, có bản đánh dấu thay đổi cho mỗi lần sửa. PDF dạng ảnh quét chưa được hỗ trợ."
+      },
+      "language": {
+        "q": "Có dùng được bằng tiếng Anh không?",
+        "a": "Có. Giao diện có tiếng Việt và tiếng Anh; bạn có thể hỏi bằng tiếng Anh và soạn hợp đồng song ngữ Việt – Anh hai cột."
+      }
+    },
+    "cta": {
+      "title": "Dùng thử LegalAI trong giai đoạn thí điểm",
+      "text": "Chúng tôi đang mời doanh nghiệp và chuyên gia pháp lý dùng thử và góp ý."
+    }
+  },
+  "legal": {
+    "draftBadge": "Bản nháp",
+    "draftNote": "Văn bản này là bản nháp cho giai đoạn thí điểm, chưa được rà soát pháp lý và có thể thay đổi. Vui lòng không coi đây là cam kết cuối cùng.",
+    "contactH": "Liên hệ",
+    "contactP": "Câu hỏi về văn bản này:",
+    "updated": "Cập nhật lần cuối: 26/09/2026 (bản nháp).",
+    "privacy": {
+      "title": "Chính sách quyền riêng tư",
+      "intro": "Mô tả cách LegalAI – sản phẩm thí điểm của FTU Tech Lab, Trường Đại học Ngoại thương – thu thập và xử lý dữ liệu khi bạn sử dụng dịch vụ.",
+      "s1": {
+        "h": "Dữ liệu chúng tôi lưu",
+        "p": "Email và mật khẩu đã băm (không lưu mật khẩu gốc), tên hiển thị, cài đặt giao diện; nội dung các cuộc trò chuyện; tệp bạn tải lên và phần chữ trích từ tệp; tài liệu do LegalAI tạo; yêu cầu chuyển chuyên gia và trả lời."
+      },
+      "s2": {
+        "h": "Mục đích sử dụng",
+        "p": "Để cung cấp câu trả lời, tạo và sửa tài liệu theo yêu cầu của bạn, chuyển yêu cầu cho chuyên gia khi bạn chọn, và cải thiện sản phẩm trong khuôn khổ nghiên cứu."
+      },
+      "s3": {
+        "h": "Mô hình AI và nhà cung cấp dịch vụ kỹ thuật",
+        "p": "Câu hỏi và phần chữ của tệp đính kèm được xử lý bởi hạ tầng mô hình AI do FTU Tech Lab vận hành, cùng các nhà cung cấp dịch vụ kỹ thuật của FTU Tech Lab, để tạo câu trả lời. Giao diện nhắc bạn trước khi gửi thông tin định danh cá nhân. Khi tra cứu, LegalAI truy cập các trang nguồn chính thức nhưng không gửi dữ liệu cá nhân của bạn tới các trang đó."
+      },
+      "s4": {
+        "h": "Lưu trữ và bảo mật",
+        "p": "Dữ liệu lưu trên máy chủ chạy LegalAI. Phiên đăng nhập dùng cookie httpOnly; mật khẩu băm bằng scrypt; kết nối qua HTTPS khi truy cập từ Internet."
+      },
+      "s5": {
+        "h": "Quản trị viên xem nội dung",
+        "p": "Quản trị viên của FTU Tech Lab có thể xem các cuộc trò chuyện và tài liệu bạn tải lên nhằm hỗ trợ người dùng, kiểm tra chất lượng và bảo đảm an toàn. Mọi lượt xem như vậy đều được ghi nhật ký (người xem, thời điểm, nội dung được xem)."
+      },
+      "s6": {
+        "h": "Quyền của bạn",
+        "p": "Bạn có thể xem, xuất và xoá các cuộc trò chuyện, thu hồi liên kết chia sẻ và yêu cầu xoá tài khoản bằng cách liên hệ quản trị viên."
+      },
+      "s7": {
+        "h": "Thời gian lưu",
+        "p": "Dữ liệu được lưu trong thời gian thí điểm hoặc tới khi bạn xoá. Thời hạn cụ thể sẽ được xác định trong bản chính thức."
+      },
+      "s8": {
+        "h": "Thay đổi chính sách",
+        "p": "Chính sách có thể được cập nhật; bản chính thức sẽ được công bố tại trang này."
+      }
+    },
+    "terms": {
+      "title": "Điều khoản sử dụng",
+      "intro": "Các điều kiện khi sử dụng LegalAI trong giai đoạn thí điểm nghiên cứu của FTU Tech Lab, Trường Đại học Ngoại thương.",
+      "s1": {
+        "h": "Tính chất dịch vụ",
+        "p": "LegalAI là công cụ nghiên cứu cung cấp thông tin pháp lý tham khảo. LegalAI không phải là tổ chức hành nghề luật sư và không cung cấp dịch vụ tư vấn pháp lý."
+      },
+      "s2": {
+        "h": "Tài khoản",
+        "p": "Tài khoản do quản trị viên cấp trong giai đoạn thí điểm. Bạn chịu trách nhiệm giữ bí mật mật khẩu và các hoạt động dưới tài khoản của mình."
+      },
+      "s3": {
+        "h": "Sử dụng được phép",
+        "p": "Không sử dụng LegalAI cho mục đích trái pháp luật, để lẩn tránh nghĩa vụ pháp lý, hoặc để gửi nội dung mà bạn không có quyền chia sẻ."
+      },
+      "s4": {
+        "h": "Độ chính xác",
+        "p": "Câu trả lời có thể sai, thiếu hoặc không còn cập nhật. Bạn cần kiểm tra nguồn trích dẫn và tự chịu trách nhiệm khi sử dụng thông tin."
+      },
+      "s5": {
+        "h": "Tài liệu tạo ra",
+        "p": "Tài liệu do LegalAI soạn là bản nháp để bạn xem xét, chỉnh sửa; nên được người có chuyên môn rà soát trước khi ký kết."
+      },
+      "s6": {
+        "h": "Gián đoạn dịch vụ",
+        "p": "Dịch vụ thí điểm có thể bị gián đoạn, thay đổi hoặc dừng mà không báo trước."
+      },
+      "s7": {
+        "h": "Thay đổi điều khoản",
+        "p": "Điều khoản có thể được cập nhật; bản chính thức sẽ được công bố tại trang này."
+      }
+    }
+  },
+  "brand": {
+    "eyebrow": "Bộ nhận diện",
+    "title": "Thương hiệu LegalAI",
+    "lead": "Hướng dẫn ngắn để dùng logo, màu sắc, kiểu chữ và giọng văn LegalAI nhất quán. Màu chủ đạo là đỏ FTU, dùng tiết chế trên nền đen – trắng – xám.",
+    "toc": "Mục lục",
+    "logo": {
+      "title": "Logo",
+      "lead": "Biểu tượng + chữ “LegalAI”. Dùng bản màu trên nền sáng, bản màu-trên-nền-tối hoặc trắng trên nền tối, bản đen khi in một màu.",
+      "rationaleTitle": "Ý tưởng",
+      "rationale": "Một chiếc cân được dựng bằng hình học đơn giản – dầm, trụ, đế và hai đĩa cân – với điểm tựa là một tia sáng bốn cánh: pháp luật được cân nhắc với sự trợ giúp của AI. Nét dày, không chi tiết mảnh để đọc rõ ở 16 px; ô vuông bo góc 25% màu đỏ FTU. Chữ “LegalAI” dùng Be Vietnam Pro Bold, chuyển thành đường nét.",
+      "variants": {
+        "horizontalColor": "Ngang – màu",
+        "horizontalColorOnDark": "Ngang – màu trên nền tối",
+        "stackedColor": "Xếp dọc – màu",
+        "horizontalBlack": "Ngang – đen",
+        "horizontalWhite": "Ngang – trắng",
+        "horizontalRed": "Ngang – đỏ",
+        "markColor": "Biểu tượng – màu",
+        "markBlack": "Biểu tượng – đen",
+        "markWhite": "Biểu tượng – trắng"
+      }
+    },
+    "space": {
+      "title": "Khoảng trống & kích thước tối thiểu",
+      "clear": "Khoảng trống xung quanh logo tối thiểu bằng 1/4 chiều cao biểu tượng.",
+      "min": "Biểu tượng tối thiểu 16 px (favicon dùng bản vẽ riêng khớp điểm ảnh); logo ngang tối thiểu rộng 96 px.",
+      "minLockup": "96 px"
+    },
+    "donts": {
+      "title": "Không nên",
+      "stretch": "Kéo giãn hoặc bóp méo tỉ lệ.",
+      "recolor": "Đổi sang màu ngoài bộ màu.",
+      "rotate": "Xoay nghiêng logo.",
+      "effects": "Thêm bóng đổ, viền, hiệu ứng.",
+      "busy": "Đặt trên nền rối, thiếu tương phản.",
+      "combine": "Ghép với biểu trưng FTU thành một logo mới."
+    },
+    "color": {
+      "title": "Màu sắc",
+      "lead": "Đỏ FTU #C20B11 (lấy từ logo chính thức của Trường) là màu nhấn duy nhất: nút chính, biểu tượng, liên kết, viền focus và điểm nhấn quan trọng. Phần còn lại là đen, trắng, xám.",
+      "red": "Đỏ (thương hiệu)",
+      "neutral": "Trung tính",
+      "status": "Trạng thái",
+      "pairs": "Cặp màu dùng trong giao diện (WCAG)",
+      "brandNote": "màu thương hiệu",
+      "darkLinkNote": "liên kết trên nền tối",
+      "light": "sáng",
+      "dark": "tối",
+      "theme": "Giao diện",
+      "pair": "Vai trò",
+      "sample": "Mẫu",
+      "ratio": "Tương phản",
+      "usage": "Tỉ lệ tương phản được tính trực tiếp từ mã màu (công thức WCAG 2.x). Trên nền tối, chữ và liên kết đỏ dùng tông sáng hơn (red 300/400) để đạt AA; nút chính giữ nền #C20B11 với chữ trắng."
+    },
+    "type": {
+      "title": "Kiểu chữ",
+      "lead": "Be Vietnam Pro (SIL Open Font License) – thiết kế cho tiếng Việt, đủ dấu. Tiêu đề đậm, khoảng chữ âm nhẹ; nội dung 15–16 px.",
+      "sample": "Trợ lý pháp lý AI",
+      "sampleLong": "Hợp đồng mua bán hàng hoá quốc tế – điều khoản phạt vi phạm và bồi thường thiệt hại."
+    },
+    "voice": {
+      "title": "Giọng văn",
+      "lead": "Rõ ràng, trung thực, có căn cứ và tôn trọng người đọc – bằng cả tiếng Việt và tiếng Anh.",
+      "say": "Nên",
+      "avoid": "Tránh",
+      "clear": {
+        "title": "Rõ ràng",
+        "text": "Câu ngắn, thuật ngữ được giải thích khi cần.",
+        "do": "“Bên mua được huỷ hợp đồng khi bên bán vi phạm cơ bản.”",
+        "dont": "“Căn cứ vào các quy định hiện hành có liên quan…”"
+      },
+      "honest": {
+        "title": "Trung thực",
+        "text": "Nói rõ giới hạn và mức độ chắc chắn.",
+        "do": "“Độ tin cậy: trung bình – một căn cứ chưa tìm thấy trong nguồn.”",
+        "dont": "“Chắc chắn 100% đúng luật.”"
+      },
+      "grounded": {
+        "title": "Có căn cứ",
+        "text": "Mỗi nhận định pháp lý kèm nguồn.",
+        "do": "“Theo Điều 301 Luật Thương mại 2005 …”",
+        "dont": "Nêu con số, mức phạt không có nguồn."
+      },
+      "respectful": {
+        "title": "Tôn trọng",
+        "text": "Xưng hô lịch sự, không phán xét, không dọa dẫm.",
+        "do": "“Bạn nên nhờ chuyên gia xem lại điều khoản này.”",
+        "dont": "“Bạn sẽ thua kiện nếu…”"
+      }
+    },
+    "ui": {
+      "title": "Ví dụ giao diện",
+      "primary": "Nút chính",
+      "secondary": "Nút phụ",
+      "link": "Liên kết",
+      "label": "Nhãn trường nhập",
+      "placeholder": "Nhập câu hỏi…",
+      "confHigh": "Độ tin cậy: Cao",
+      "confMid": "Trung bình",
+      "confLow": "Thấp",
+      "status": "Còn hiệu lực"
+    },
+    "endorse": {
+      "title": "Logo Trường Đại học Ngoại thương",
+      "lead": "LegalAI là sản phẩm của FTU Tech Lab, Trường Đại học Ngoại thương. Logo của Trường chỉ xuất hiện ở khu vực ghi nhận này.",
+      "r1": "Dùng đúng tệp logo chính thức, không vẽ lại, đổi màu, cắt xén hay đảo màu.",
+      "r2": "Trên nền tối, đặt logo trên tấm nền trắng bo góc.",
+      "r3": "Đặt tách biệt với logo LegalAI, không ghép thành một logo chung.",
+      "r4": "“FTU Tech Lab” viết bằng chữ thường – không có logo riêng."
+    },
+    "downloads": {
+      "title": "Tải xuống",
+      "zip": "Tải bộ logo LegalAI (.zip)",
+      "note": "Gồm SVG và PNG của mọi phiên bản logo, kèm README. Logo Trường Đại học Ngoại thương không nằm trong gói."
+    }
+  },
+  "adminChats": {
+    "title": "Lịch sử trò chuyện",
+    "desc": "Mọi cuộc trò chuyện của người dùng (chỉ đọc). Mỗi lượt mở, xem trước hoặc tải tài liệu của người khác đều được ghi vào Nhật ký truy cập.",
+    "keyword": "Từ khoá (tiêu đề hoặc nội dung)",
+    "user": "Email người dùng",
+    "from": "Từ ngày",
+    "to": "Đến ngày",
+    "col": {
+      "user": "Người dùng",
+      "title": "Tiêu đề",
+      "created": "Tạo lúc",
+      "updated": "Cập nhật",
+      "turns": "Lượt",
+      "flags": "Có"
+    },
+    "docs": "tài liệu",
+    "escalated": "chuyển chuyên gia",
+    "empty": "Không có cuộc trò chuyện phù hợp.",
+    "count_other": "{count} cuộc trò chuyện",
+    "back": "Quản trị",
+    "banner": "Đang xem với quyền quản trị – chỉ đọc · {email}",
+    "viewerTitle": "{title} – xem với quyền quản trị",
+    "older": "Tải các lượt cũ hơn",
+    "end": "Hết cuộc trò chuyện · chế độ chỉ đọc"
+  },
+  "accessLog": {
+    "title": "Nhật ký truy cập",
+    "desc": "Các lượt quản trị viên xem cuộc trò chuyện hoặc xem trước / tải tài liệu của người dùng khác.",
+    "col": {
+      "time": "Thời gian",
+      "admin": "Quản trị viên",
+      "action": "Hành động",
+      "owner": "Chủ cuộc trò chuyện",
+      "chat": "Cuộc trò chuyện"
+    },
+    "action": {
+      "view": "xem",
+      "preview": "xem trước tài liệu",
+      "download": "tải tài liệu"
+    },
+    "deleted": "(đã xoá)",
+    "empty": "Chưa có lượt truy cập nào.",
+    "count_other": "{count} lượt"
+  },
+  "question": {
+    "label": "Câu hỏi làm rõ",
+    "chip": "Cần bạn chọn",
+    "step": "Câu {n}/{total}",
+    "other": "Khác…",
+    "otherLabel": "Câu trả lời khác",
+    "recommended": "Khuyến nghị",
+    "multiHint": "Có thể chọn nhiều",
+    "back": "Quay lại",
+    "next": "Tiếp",
+    "submit": "Gửi",
+    "skip": "Bỏ qua",
+    "sending": "Đang gửi…",
+    "keysHint": "Phím 1–9 để chọn · Enter để tiếp tục",
+    "answered": "Bạn đã chọn",
+    "unanswered": "Không trả lời",
+    "dismissed": "Đã bỏ qua câu hỏi – trợ lý dừng lại ở đây.",
+    "stopped": "Câu hỏi không được trả lời (đã dừng).",
+    "waitingUser": "Đang chờ người dùng trả lời.",
+    "preparing": "Đang chuẩn bị câu hỏi…",
+    "composerHint": "Trả lời câu hỏi ở trên để tiếp tục",
+    "sendFailed": "Không gửi được câu trả lời: {message}"
+  },
+  "repair": {
+    "previous": "Câu trả lời ban đầu (trước khi kiểm chứng lại)",
+    "updated": "Đã tra lại và cập nhật",
+    "running": "Đang tra lại để kiểm chứng…",
+    "now": "Tra lại ngay",
+    "nowTip": "Trợ lý tra lại các mục chưa có căn cứ và cập nhật câu trả lời (một lần)."
+  },
+  "draft": {
+    "label": "Tiến độ soạn thảo: {title}",
+    "stepsLabel": "Các bước soạn thảo",
+    "kind": {
+      "contract": "Hợp đồng",
+      "report": "Báo cáo",
+      "document": "Văn bản"
+    },
+    "lang": {
+      "vi": "VI",
+      "en": "EN",
+      "bilingual": "VI–EN"
+    },
+    "phase": {
+      "plan": "Đang lập dàn ý…",
+      "write": "Đang viết các phần…",
+      "check": "Đang soát chéo…",
+      "fix": "Đang sửa các phần…",
+      "assemble": "Đang gộp văn bản…",
+      "done": "Hoàn tất",
+      "failed": "Soạn thảo bị lỗi",
+      "between": "Đang chuyển bước…",
+      "paused": "Đã dừng"
+    },
+    "step": {
+      "plan": "Lập dàn ý",
+      "write": "Viết các phần",
+      "check": "Soát chéo",
+      "fix": "Sửa",
+      "assemble": "Gộp file"
+    },
+    "state": {
+      "done": "xong",
+      "current": "đang chạy",
+      "failed": "lỗi",
+      "todo": "chưa làm"
+    },
+    "sec": {
+      "pending": "chờ viết",
+      "writing": "đang viết",
+      "written": "đã viết",
+      "failed": "lỗi",
+      "checked": "đã soát",
+      "fixed": "đã sửa"
+    },
+    "sectionsDone": "{done}/{total} phần",
+    "words_other": "{n} từ",
+    "noIssues": "Không còn vấn đề",
+    "errors_other": "{count} lỗi",
+    "warnings_other": "{count} cảnh báo",
+    "suggestions_other": "{count} gợi ý",
+    "rounds_other": "{count} vòng sửa",
+    "secIssues_other": "{count} vấn đề",
+    "showSections_other": "Xem {count} phần",
+    "hideSections_other": "Ẩn {count} phần",
+    "docReady": "Đã tạo tài liệu {title} (phiên bản {v})",
+    "openDoc": "Đến tài liệu",
+    "failedDetail": "Chi tiết từ công cụ:"
+  },
+  "cards": {
+    "calc": {
+      "result": "Kết quả",
+      "interest": "Tiền lãi",
+      "penalty": "Tiền phạt",
+      "words": "Bằng chữ",
+      "formula": {
+        "penalty": "tiền phạt = tỷ lệ phạt × giá trị phần nghĩa vụ bị vi phạm",
+        "simple_year": "tiền lãi = gốc × lãi suất năm × số ngày / {denom}",
+        "simple_day": "tiền lãi = gốc × lãi suất ngày × số ngày",
+        "monthly": "lãi nhập gốc hằng tháng",
+        "daily": "lãi nhập gốc hằng ngày"
+      },
+      "kind": {
+        "loan": "Lãi vay",
+        "late_payment": "Lãi chậm trả"
+      },
+      "period": "{from} → {to} ({days} ngày)",
+      "days_other": "{count} ngày",
+      "rate": {
+        "year": "{rate}/năm",
+        "month": "{rate}/tháng",
+        "day": "{rate}/ngày"
+      },
+      "comp": {
+        "simple": "lãi đơn",
+        "monthly": "nhập gốc hằng tháng",
+        "daily": "nhập gốc hằng ngày"
+      },
+      "rounding_other": "Làm tròn {count} chữ số thập phân (half-up)",
+      "unrounded": "Chưa làm tròn: {v}",
+      "total": "Tổng gốc + lãi: {v}",
+      "warn": {
+        "penalty_cap": "Mức phạt {rate} vượt mức trần {cap} của Luật Thương mại 2005 (Điều 301) – gợi ý căn cứ, cần xác minh trước khi nêu.",
+        "loan_cap": "Lãi suất {rate}/năm vượt trần {cap}/năm của Bộ luật Dân sự 2015 (Điều 468) – gợi ý căn cứ, cần xác minh trước khi nêu."
+      }
+    },
+    "steps_other": "Các bước ({count})",
+    "details": "Chi tiết",
+    "standard": "Cách viết chuẩn",
+    "check": {
+      "ok": "Khớp",
+      "style": "Khớp giá trị, khác cách viết",
+      "mismatch": "Không khớp",
+      "unread": "Không đọc được",
+      "said": "Phần chữ đọc ra: {v}",
+      "words": "Bằng chữ trong văn bản"
+    },
+    "contract": {
+      "errors_other": "{count} lỗi",
+      "warnings_other": "{count} cảnh báo",
+      "passed": "đạt {passed}/{checks} phép kiểm tra",
+      "total": "Giá trị hợp đồng xác định được: {v}"
+    },
+    "fx": {
+      "rateOn": "Tỷ giá ngày {date}",
+      "convert": "Quy đổi",
+      "ways_other": "Các cách quy đổi ({count})",
+      "reference": "Tỷ giá tham khảo – ghi rõ nguồn và ngày khi sử dụng.",
+      "src": {
+        "sbv_central": "NHNN – tỷ giá trung tâm",
+        "sbv_ref": "NHNN – tỷ giá tham khảo",
+        "sbv_cross": "NHNN – tỷ giá tính chéo (thuế XNK)",
+        "vcb": "Vietcombank",
+        "vcb_cash": "Vietcombank – mua tiền mặt",
+        "vcb_transfer": "Vietcombank – mua chuyển khoản",
+        "vcb_sell": "Vietcombank – bán",
+        "sbv_ref_buy": "NHNN – tham khảo (mua)",
+        "sbv_ref_sell": "NHNN – tham khảo (bán)",
+        "other": "Nguồn khác"
+      },
+      "crossVia": "Quy đổi chéo: {a} / {b}",
+      "buySell": "mua {buy} – bán {sell} VND",
+      "vcbRates": "mua TM {cash} · mua CK {transfer} · bán {sell} VND",
+      "dateOf": "ngày {date}",
+      "validFrom": "hiệu lực {from} – {to}",
+      "errors_other": "{count} nguồn không lấy được"
+    },
+    "web": {
+      "official": "Nguồn chính thức",
+      "unofficial": "Không chính thức",
+      "date": "ngày {date}",
+      "officialGroup": "thuộc",
+      "noDate": "không rõ ngày đăng"
+    },
+    "tariff": {
+      "market": {
+        "vn": "Biểu thuế Việt Nam",
+        "us": "Biểu thuế Hoa Kỳ (HTS)",
+        "eu": "Biểu thuế EU (TARIC)"
+      },
+      "year": "năm {year}",
+      "origin": "xuất xứ {origin}",
+      "dest": "nhập vào {dest}",
+      "col": {
+        "mfn": "Ưu đãi (MFN)",
+        "normal": "Thông thường",
+        "export": "Thuế xuất khẩu",
+        "fta": "Ưu đãi đặc biệt {fta}",
+        "general": "Cột 1 – General (NTR/MFN)",
+        "special": "Cột Special (chương trình ưu đãi)",
+        "col2": "Column 2",
+        "third_country": "Thuế MFN (nước thứ ba)",
+        "preference": "Ưu đãi thuế quan",
+        "lvc": "Thuế hàng giá trị thấp",
+        "quota": "Hạn ngạch thuế quan",
+        "antidumping": "Thuế chống bán phá giá",
+        "countervailing": "Thuế chống trợ cấp",
+        "safeguard": "Thuế tự vệ",
+        "additional": "Thuế bổ sung",
+        "other": "Biện pháp khác"
+      },
+      "free": "Miễn thuế (0%)",
+      "ergaOmnes": "mọi xuất xứ",
+      "annex": "mức năm {year} theo phụ lục",
+      "period": "{from} – {to}",
+      "since": "từ {from}",
+      "quota": "hạn ngạch {n}",
+      "stale": "khác năm tra cứu",
+      "extraDuties_other": "Còn {count} tiêu mục Chương 99 nêu đích danh Việt Nam (thuế bổ sung) – không kết luận tổng thuế chỉ bằng cột General.",
+      "amended_other": "Có {count} văn bản sửa đổi liên quan tới mã này – đối chiếu trước khi dùng.",
+      "lines_other": "Dòng thuế ({count})",
+      "unit": "ĐVT: {unit}",
+      "more_other": "… còn {count} dòng",
+      "note": "Mức thuế nguyên văn từ nguồn chính thức – ghi rõ nguồn và ngày tra cứu khi sử dụng."
+    },
+    "legacy": {
+      "calc": "Kết quả tính",
+      "check": "Soát bằng chữ",
+      "contract": "Soát số liệu",
+      "fx": "Tỷ giá",
+      "web": "Trang web"
+    },
+    "company": {
+      "mode": {
+        "lookup": "Tra cứu doanh nghiệp",
+        "verify": "Đối chiếu doanh nghiệp",
+        "verifyUnofficial": "Đối chiếu với nguồn không chính thức"
+      },
+      "taxCode": "MST",
+      "checksum": {
+        "valid": "Hợp lệ về định dạng",
+        "validBranch": "Mã đơn vị phụ thuộc hợp lệ",
+        "invalid": "Sai chữ số kiểm tra",
+        "format": "Sai định dạng",
+        "branchZero": "Số đơn vị phụ thuộc không hợp lệ",
+        "personal_id": "Số định danh cá nhân"
+      },
+      "checksumHint": "Chỉ là kiểm tra toán học – không cho biết mã đã được cấp hay doanh nghiệp còn hoạt động.",
+      "byName": "Tra theo tên",
+      "date": "Ngày tra cứu: {date}",
+      "manual": {
+        "title": "Nguồn chính thức yêu cầu mã xác thực – hãy tự tra",
+        "body": "Công cụ không vượt qua mã xác thực (CAPTCHA), nên thông tin doanh nghiệp chưa được xác minh tự động.",
+        "stepsTitle": "Cách tự tra",
+        "step1Code": "Mở một cổng chính thức bên dưới và nhập MST {code}.",
+        "step1Name": "Mở một cổng chính thức bên dưới và nhập tên doanh nghiệp.",
+        "step2": "Hoàn tất mã xác thực, bấm Tìm kiếm rồi mở trang của doanh nghiệp.",
+        "step3": "Sao chép phần thông tin cơ bản và dán vào khung chat để đối chiếu."
+      },
+      "portal": {
+        "dkkd": "Cổng thông tin quốc gia về đăng ký doanh nghiệp",
+        "dkkd_egazette": "Bố cáo điện tử",
+        "gdt": "Cục Thuế – tra cứu người nộp thuế"
+      },
+      "portalHint": {
+        "dkkd": "tên, tình trạng, người đại diện, địa chỉ",
+        "dkkd_egazette": "lịch sử thay đổi, tạm ngừng, giải thể",
+        "gdt": "tình trạng người nộp thuế, cơ quan thuế"
+      },
+      "gate": {
+        "captcha": "Cần mã xác thực",
+        "open": "Không thấy mã xác thực",
+        "blocked": "Chặn truy cập tự động",
+        "error": "Chưa kiểm tra được"
+      },
+      "newTab": "mở trong thẻ mới",
+      "confirm": "Xác nhận trên cổng chính thức",
+      "invalid": "MST không hợp lệ – kiểm tra lại trên hợp đồng, hóa đơn hoặc Giấy chứng nhận đăng ký doanh nghiệp.",
+      "personal": "Đây là số định danh cá nhân – công cụ chỉ tra doanh nghiệp, không xử lý dữ liệu cá nhân.",
+      "field": {
+        "name": "Tên doanh nghiệp",
+        "nameEn": "Tên tiếng nước ngoài",
+        "short": "Tên viết tắt",
+        "code": "Mã số doanh nghiệp",
+        "tax_code": "MST",
+        "status": "Tình trạng",
+        "legalType": "Loại hình",
+        "regDate": "Ngày thành lập",
+        "address": "Địa chỉ trụ sở",
+        "representative": "Người đại diện theo pháp luật",
+        "mainLine": "Ngành nghề chính",
+        "taxAuthority": "Cơ quan thuế quản lý"
+      },
+      "status": {
+        "active": "Đang hoạt động",
+        "temporarily_suspended": "Tạm ngừng kinh doanh",
+        "not_at_address": "Không hoạt động tại địa chỉ đăng ký",
+        "dissolving": "Đang làm thủ tục giải thể",
+        "dissolved": "Đã giải thể",
+        "bankrupt": "Phá sản",
+        "revoked": "Bị thu hồi Giấy chứng nhận đăng ký doanh nghiệp",
+        "ceased_pending_closure": "Ngừng hoạt động, chưa chấm dứt hiệu lực MST",
+        "tax_code_closed": "Đã chấm dứt hiệu lực MST",
+        "ceased": "Ngừng hoạt động",
+        "other": "Tình trạng khác"
+      },
+      "origin": {
+        "user_paste": "Nguồn: dữ liệu người dùng dán từ cổng chính thức",
+        "aggregator": "Nguồn không chính thức – có thể chậm cập nhật; xác nhận trên cổng chính thức trước khi ký",
+        "official": "Nguồn chính thức – bạn đã tự xác minh trên trang chính thức, hệ thống đọc trang kết quả."
+      },
+      "sources": "Nguồn tham khảo",
+      "unofficial": "không chính thức",
+      "fetched": "lấy ngày {date}",
+      "cross": {
+        "agree": "Các nguồn khớp nhau",
+        "disagree": "Các nguồn khác nhau"
+      },
+      "codeMismatch": "MST trong nội dung dán khác MST cần tra – có thể dán nhầm trang của doanh nghiệp khác.",
+      "col": {
+        "field": "Mục",
+        "expected": "Theo hợp đồng",
+        "official": "Theo nguồn chính thức",
+        "reference": "Theo nguồn tham khảo",
+        "result": "Kết quả",
+        "unofficial": "Theo nguồn không chính thức"
+      },
+      "notLooked": "chưa tra",
+      "result": {
+        "match": "Khớp",
+        "partial": "Gần khớp",
+        "mismatch": "Không khớp",
+        "not_checked": "Chưa đối chiếu",
+        "unclear": "Gần khớp / chưa rõ"
+      },
+      "summary": {
+        "match": "Khớp toàn bộ",
+        "partial": "Có mục gần khớp",
+        "mismatch": "Có mục không khớp"
+      },
+      "risksTitle": "Rủi ro / việc cần làm",
+      "risk": {
+        "mismatch": "{field}: không khớp – yêu cầu đối tác giải trình hoặc sửa hợp đồng.",
+        "partial": "{field}: gần khớp – nên ghi đúng như đăng ký.",
+        "representative": "Người ký khác người đại diện theo pháp luật – cần giấy ủy quyền hợp lệ.",
+        "statusHigh": "Tình trạng “{status}” – rủi ro cao, làm rõ trước khi ký.",
+        "statusVeryHigh": "Tình trạng “{status}” – rủi ro rất cao, không ký hợp đồng.",
+        "checksum": "MST trong hợp đồng không hợp lệ – yêu cầu đối tác xác nhận lại.",
+        "branch": "MST 13 số là của đơn vị phụ thuộc, không có tư cách pháp nhân – hợp đồng nên đứng tên doanh nghiệp (chi nhánh ký theo ủy quyền).",
+        "conflict": "{field}: các nguồn không chính thức ghi khác nhau – xác nhận trên cổng chính thức.",
+        "unclear": "{field}: gần khớp hoặc các nguồn không thống nhất – xác nhận trên cổng chính thức."
+      },
+      "risksMore_other": "Câu trả lời nêu {count} điểm cần lưu ý.",
+      "summaryUnofficial": {
+        "match": "Khớp nguồn không chính thức",
+        "partial": "Gần khớp / chưa rõ (không chính thức)",
+        "mismatch": "Có mục không khớp (không chính thức)"
+      },
+      "conflict": "Chưa thống nhất giữa các nguồn",
+      "updated": "trang ghi cập nhật {date}",
+      "candidates": "Doanh nghiệp gợi ý từ trang tổng hợp",
+      "lookupThis": "Tra mã này",
+      "candidatesHint": "Chọn một MST và yêu cầu “Tra mã này” để xem chi tiết, rồi xác nhận trên cổng chính thức.",
+      "skipped": "Không dùng",
+      "skip": {
+        "robots": "robots.txt không cho phép",
+        "challenge": "trang chống bot",
+        "not_found": "không có dữ liệu",
+        "code_mismatch": "trả về doanh nghiệp khác",
+        "error": "lỗi truy cập"
+      },
+      "sourcesOfficial": "Nguồn chính thức",
+      "assist": {
+        "cancelled": "Bước xác minh trên trang chính thức đã bị huỷ – thông tin chưa được xác nhận chính thức.",
+        "timeout": "Hết thời gian xác minh trên trang chính thức – thông tin chưa được xác nhận chính thức.",
+        "not_found": "Trang chính thức báo không tìm thấy mã này – kiểm tra lại MST.",
+        "unparsed": "Đã xác minh nhưng không đọc được trang kết quả – hãy tự xem trên cổng chính thức.",
+        "error": "Không mở được trang chính thức lúc này."
+      }
+    }
+  },
+  "library": {
+    "tool": {
+      "vbpl_find": "Tìm văn bản pháp luật trung ương trên vbpl.vn theo tên hoặc số hiệu.",
+      "vbpl_document": "Mở văn bản trên vbpl.vn: thuộc tính, tình trạng hiệu lực, danh sách điều.",
+      "vbpl_article": "Trích nguyên văn một điều luật kèm tình trạng hiệu lực.",
+      "vbpl_search_articles": "Tìm các điều có chứa từ khóa trong một văn bản.",
+      "vbpl_history": "Lịch sử hiệu lực và văn bản sửa đổi, thay thế.",
+      "vbpl_verify": "Kiểm tra đoạn trích có đúng nguyên văn trên vbpl.vn.",
+      "court_anle_search": "Tìm án lệ đã công bố (anle.toaan.gov.vn).",
+      "court_anle_document": "Đọc một án lệ: trạng thái, tình huống, giải pháp pháp lý, nguyên văn.",
+      "court_judgment_search": "Tìm bản án, quyết định đã công bố (congbobanan.toaan.gov.vn).",
+      "court_judgment_document": "Đọc một bản án: đương sự, nhận định, quyết định, căn cứ.",
+      "trav_search": "Tìm tin phòng vệ thương mại trên trav.gov.vn.",
+      "trav_measures": "Tra biện pháp phòng vệ thương mại đang áp dụng (CSDL cảnh báo sớm).",
+      "trav_page": "Đọc một bài trên trav.gov.vn.",
+      "fedreg_search": "Tìm văn bản trên Federal Register (Hoa Kỳ).",
+      "fedreg_document": "Đọc văn bản Federal Register: mức thuế, biên độ, ký quỹ.",
+      "eurlex_search": "Tìm văn bản pháp luật EU (EUR-Lex).",
+      "eurlex_document": "Đọc văn bản EU: Điều 1, bảng mức thuế.",
+      "eping_search": "Tìm thông báo SPS/TBT của WTO (ePing).",
+      "eping_notification": "Đọc một thông báo SPS/TBT.",
+      "fta_list": "Danh sách FTA của Việt Nam.",
+      "fta_search": "Tìm cam kết, văn kiện FTA (trungtamwto.vn).",
+      "fta_document": "Đọc văn kiện / tệp FTA.",
+      "tariff_vn": "Tra biểu thuế xuất nhập khẩu Việt Nam theo mã HS, kèm căn cứ.",
+      "tariff_us": "Tra biểu thuế Hoa Kỳ (HTS – USITC) theo mã HS.",
+      "tariff_eu": "Tra biểu thuế EU (TARIC qua Access2Markets) theo mã HS.",
+      "tariff_search": "Tìm mã HS theo mô tả hàng hóa (gợi ý).",
+      "document_create": "Tạo tài liệu Word / PDF (hợp đồng, báo cáo…).",
+      "document_edit": "Sửa tài liệu đã tạo hoặc tải lên, tạo phiên bản mới.",
+      "document_read": "Đọc nội dung một tài liệu.",
+      "draft_plan": "Soạn văn bản dài – lập dàn ý.",
+      "draft_write": "Soạn văn bản dài – viết các phần song song.",
+      "draft_check": "Soạn văn bản dài – rà soát chéo.",
+      "draft_fix": "Soạn văn bản dài – sửa các phần có lỗi.",
+      "draft_assemble": "Soạn văn bản dài – ghép thành tài liệu.",
+      "draft_status": "Tiến độ soạn văn bản dài.",
+      "calc_eval": "Máy tính chính xác cho mọi phép tính số tiền, tỷ lệ.",
+      "calc_interest": "Tính tiền lãi, lãi chậm trả, tiền phạt.",
+      "calc_money_words": "Viết số tiền bằng chữ.",
+      "calc_check_words": "Soát số tiền bằng chữ so với bằng số.",
+      "calc_contract_check": "Soát số liệu hợp đồng (bảng giá, thanh toán, bằng chữ).",
+      "fx_rate": "Tra tỷ giá chính thức (NHNN, Vietcombank).",
+      "fx_convert": "Quy đổi ngoại tệ theo tỷ giá chính thức.",
+      "web_search": "Tìm kiếm web, ưu tiên nguồn chính thức.",
+      "web_read": "Đọc một trang web / tệp PDF, đánh dấu nguồn chính thức.",
+      "grounding_check": "Kiểm chứng câu trả lời với nguồn đã tra, tính độ tin cậy.",
+      "expert_escalate": "Chuyển câu hỏi cho chuyên gia pháp lý.",
+      "clock_now": "Ngày giờ hiện tại (giờ Việt Nam).",
+      "clock_calc": "Tính thời hạn theo Bộ luật Dân sự, ngày nghỉ lễ.",
+      "about_self": "Thông tin về trợ lý và giới hạn.",
+      "safety_scan": "Kiểm tra an toàn nội dung (chèn lệnh, dữ liệu định danh).",
+      "question": "Hỏi lại người dùng bằng thẻ lựa chọn.",
+      "chrome_click": "Bấm vào phần tử trên trang.",
+      "chrome_close_page": "Đóng một tab.",
+      "chrome_drag": "Kéo thả phần tử.",
+      "chrome_emulate": "Giả lập thiết bị / mạng.",
+      "chrome_evaluate_script": "Chạy mã để lấy nội dung trang.",
+      "chrome_fill": "Điền một ô nhập.",
+      "chrome_fill_form": "Điền nhiều ô của biểu mẫu.",
+      "chrome_get_console_message": "Đọc một thông báo console.",
+      "chrome_get_css_styles": "Đọc định dạng CSS của phần tử.",
+      "chrome_get_network_request": "Đọc một yêu cầu mạng.",
+      "chrome_handle_dialog": "Xử lý hộp thoại của trang.",
+      "chrome_hover": "Di chuột lên phần tử.",
+      "chrome_lighthouse_audit": "Kiểm tra trang bằng Lighthouse.",
+      "chrome_list_console_messages": "Liệt kê thông báo console.",
+      "chrome_list_network_requests": "Liệt kê yêu cầu mạng.",
+      "chrome_list_pages": "Liệt kê các tab đang mở.",
+      "chrome_navigate_page": "Mở địa chỉ trong tab hiện tại.",
+      "chrome_new_page": "Mở tab mới.",
+      "chrome_performance_analyze_insight": "Phân tích kết quả đo hiệu năng.",
+      "chrome_performance_start_trace": "Bắt đầu đo hiệu năng trang.",
+      "chrome_performance_stop_trace": "Dừng đo hiệu năng trang.",
+      "chrome_press_key": "Nhấn phím trên trang.",
+      "chrome_resize_page": "Đổi kích thước cửa sổ trang.",
+      "chrome_select_page": "Chuyển sang tab khác.",
+      "chrome_take_heapsnapshot": "Chụp bộ nhớ của trang.",
+      "chrome_take_screenshot": "Chụp màn hình trang.",
+      "chrome_take_snapshot": "Đọc cấu trúc và chữ của trang.",
+      "chrome_type_text": "Gõ chữ vào trang.",
+      "chrome_upload_file": "Tải tệp lên trang.",
+      "chrome_wait_for": "Chờ chữ xuất hiện trên trang.",
+      "company_lookup": "Kiểm tra MST và hướng dẫn tra doanh nghiệp trên cổng chính thức; đọc dữ liệu người dùng dán từ trang kết quả.",
+      "company_verify": "Đối chiếu tên, địa chỉ, người đại diện của một bên hợp đồng với hồ sơ doanh nghiệp.",
+      "diagram_create": "Vẽ sơ đồ quy trình, trình tự, cơ cấu các bên (kiểm tra bố cục, tải PNG / SVG).",
+      "image_search": "Tìm ảnh từ nguồn chính thức hoặc Wikimedia Commons có giấy phép tự do.",
+      "image_fetch": "Lưu ảnh đã chọn (≤ 5 MB, xoá siêu dữ liệu) kèm ghi công và giấy phép.",
+      "source_snapshot": "Chụp ảnh nguyên bản trang hoặc trang PDF chính thức."
+    },
+    "skill": {
+      "calculation": {
+        "name": "Tính toán",
+        "desc": "Quy trình tính tiền, lãi, phạt, tỷ giá bằng công cụ, không tự nhẩm."
+      },
+      "citation-check": {
+        "name": "Kiểm tra trích dẫn",
+        "desc": "Đối chiếu mọi trích dẫn, con số, link với nguồn đã tra trước khi trả lời."
+      },
+      "clarify": {
+        "name": "Hỏi lại",
+        "desc": "Khi nào và cách hỏi lại người dùng bằng thẻ lựa chọn."
+      },
+      "contract-review": {
+        "name": "Rà soát hợp đồng",
+        "desc": "Rà soát hợp đồng thương mại: rủi ro, điều khoản thiếu, căn cứ pháp lý."
+      },
+      "legal-research": {
+        "name": "Tra cứu pháp lý",
+        "desc": "Quy trình tra cứu văn bản pháp luật Việt Nam trên nguồn chính thức."
+      },
+      "legal-translation": {
+        "name": "Dịch pháp lý",
+        "desc": "Dịch văn bản pháp lý Việt – Anh, giữ thuật ngữ chuẩn."
+      },
+      "long-drafting": {
+        "name": "Soạn văn bản dài",
+        "desc": "Soạn hợp đồng / báo cáo dài theo nhóm: dàn ý, viết, rà soát, sửa, ghép."
+      },
+      "safety": {
+        "name": "An toàn",
+        "desc": "Quy tắc an toàn: chèn lệnh, dữ liệu cá nhân, yêu cầu trái pháp luật."
+      },
+      "tariff-lookup": {
+        "name": "Tra biểu thuế",
+        "desc": "Tra thuế suất nhập khẩu VN / Hoa Kỳ / EU theo mã HS và căn cứ."
+      },
+      "trade-remedy-lookup": {
+        "name": "Tra phòng vệ thương mại",
+        "desc": "Tra biện pháp chống bán phá giá, chống trợ cấp, tự vệ với hàng Việt Nam."
+      },
+      "verify-unknown": {
+        "name": "Xác minh thông tin lạ",
+        "desc": "Xác minh thông tin chưa biết trên nguồn chính thức thay vì đoán."
+      },
+      "company-lookup": {
+        "name": "Tra cứu doanh nghiệp",
+        "desc": "Thẩm định đối tác theo MST hoặc tên trên nguồn chính thức; trình bày điểm lệch như rủi ro."
+      },
+      "archify": {
+        "name": "Sơ đồ Archify",
+        "desc": "Mẫu và quy tắc vẽ sơ đồ quy trình, trình tự, vòng đời, cơ cấu các bên."
+      },
+      "visuals": {
+        "name": "Hình minh hoạ",
+        "desc": "Khi nào chèn sơ đồ, biểu đồ, ảnh; đặt đúng chỗ, có chú thích và nguồn."
+      }
+    }
+  },
+  "assist": {
+    "source": {
+      "gdt": "Cục Thuế – tra cứu người nộp thuế",
+      "dkkd": "Cổng đăng ký doanh nghiệp quốc gia",
+      "other": "Trang chính thức"
+    },
+    "purpose": {
+      "company_lookup": "tra cứu doanh nghiệp",
+      "company_verify": "đối chiếu doanh nghiệp"
+    },
+    "notice": {
+      "gdt": "Trang chính thức yêu cầu xác minh bạn là người thật. Hãy tự thao tác trong khung dưới đây: nhập mã xác nhận trong ảnh rồi bấm {button}. Hệ thống sẽ tự tiếp tục.",
+      "dkkd": "Trang chính thức yêu cầu xác minh bạn là người thật. Hãy tự thao tác trong khung dưới đây: tích ô {box} (làm theo thử thách nếu có) rồi bấm {button}. Hệ thống sẽ tự tiếp tục.",
+      "other": "Trang chính thức yêu cầu xác minh bạn là người thật. Hãy tự thao tác trong khung dưới đây: tích ô / nhập mã rồi bấm Tra cứu. Hệ thống sẽ tự tiếp tục."
+    },
+    "status": {
+      "waiting_user": "Đang chờ bạn",
+      "done": "Đã xác minh – đang đọc kết quả",
+      "cancelled": "Đã huỷ",
+      "timeout": "Hết giờ",
+      "error": "Không mở được trang chính thức"
+    },
+    "chip": {
+      "waiting_user": "Đang chờ bạn xác minh trên trang chính thức",
+      "doneReading": "Đã xác minh – đang đọc kết quả",
+      "done": "Đã xác minh trên trang chính thức",
+      "cancelled": "Đã huỷ bước xác minh",
+      "timeout": "Hết thời gian xác minh",
+      "error": "Không mở được trang chính thức"
+    },
+    "reopen": "Mở lại",
+    "cancel": "Huỷ",
+    "minimize": "Đóng khung (vẫn chờ – mở lại từ dòng trạng thái)",
+    "openTab": "Mở trang chính thức ở tab mới",
+    "zoomFit": "Xem cả trang",
+    "timeLeft": "Còn {time}",
+    "connecting": "Đang kết nối tới trang chính thức…",
+    "canvasLabel": "Trang chính thức – bấm để thao tác",
+    "keyboardLabel": "Gõ phím vào trang chính thức",
+    "clickToType": "bấm vào trang để gõ",
+    "kbdOn": "phím gõ đang gửi tới trang (Esc để thoát)",
+    "slowMode": "chế độ kết nối chậm",
+    "pageSays": "Trang báo:",
+    "blockedNav": "Đã chặn một liên kết dẫn ra ngoài trang chính thức.",
+    "toastDone": "Đã xác minh – hệ thống đang đọc kết quả.",
+    "toastTimeout": "Hết thời gian xác minh trên trang chính thức.",
+    "zoom": "Thu phóng",
+    "zoomIn": "Phóng to",
+    "zoomOut": "Thu nhỏ",
+    "fit": "Vừa khung",
+    "zoomFocus": "Phóng vào ô cần nhập",
+    "resize": "Kéo để đổi kích thước",
+    "pageError": {
+      "rate_limited": "Trang chính thức đang giới hạn số lượt tra – thử lại sau ít phút.",
+      "server_error": "Trang chính thức đang gặp sự cố – thử lại sau ít phút.",
+      "http_error": "Trang chính thức trả về lỗi – thử tải lại trang."
+    },
+    "retry": "Thử lại",
+    "retryIn": "Thử lại sau {s} giây"
+  },
+  "ocr": {
+    "badge": "OCR",
+    "tip": "Đã nhận dạng OCR – có thể sai dấu/chữ",
+    "sourceTip": "Nội dung lấy bằng nhận dạng chữ (OCR) từ bản scan – có thể sai dấu/chữ, cần đối chiếu bản gốc",
+    "pages_other": "{count} trang",
+    "pagesOf": "{n}/{total} trang"
+  },
+  "visuals": {
+    "fullscreen": "Mở toàn màn hình",
+    "downloadPng": "Tải PNG",
+    "downloadSvg": "Tải SVG",
+    "close": "Đóng",
+    "zoom": "Phóng to",
+    "diagram": "Sơ đồ",
+    "image": "Hình ảnh",
+    "chart": "Biểu đồ",
+    "unavailable": "Không tải được hình minh hoạ.",
+    "mermaidError": "Không vẽ được biểu đồ – hiển thị mã nguồn.",
+    "openSource": "Trang nguồn",
+    "license": "Giấy phép"
+  }
+}

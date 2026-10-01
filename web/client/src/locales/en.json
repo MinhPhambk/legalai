@@ -1,0 +1,2421 @@
+{
+  "app": {
+    "title": "LegalAI – Legal assistant",
+    "chatTitle": "{title} – LegalAI",
+    "description": "AI legal assistant for Vietnamese businesses – commercial contracts and international trade remedies."
+  },
+  "common": {
+    "back": "Go back",
+    "home": "Go to home",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "ok": "Confirm",
+    "close": "Close",
+    "closeEsc": "Close (Esc)",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "share": "Share",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copiedShort": "Copied",
+    "copyFailed": "Couldn't copy to the clipboard.",
+    "refresh": "Refresh",
+    "error": "Error",
+    "loading": "Loading…",
+    "loadFailed": "Couldn't load.",
+    "endOfList": "You've reached the end",
+    "showLess": "Show less",
+    "notifications": "Notifications",
+    "dismissNotification": "Dismiss notification",
+    "typeToConfirm": "Type <b>{text}</b> to confirm",
+    "pagination": "Pagination",
+    "prevPage": "Previous page",
+    "nextPage": "Next page",
+    "rowsPerPage": "Rows per page",
+    "perPage": "{n} / page",
+    "items_one": "{count} item",
+    "items_other": "{count} items",
+    "themeToLight": "Switch to light theme",
+    "themeToDark": "Switch to dark theme",
+    "dataLang": {
+      "vi": "Source text in Vietnamese",
+      "en": "Source text in English"
+    }
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "systemLong": "Match system"
+  },
+  "time": {
+    "justNow": "just now",
+    "seconds": "{n}s",
+    "minSec": "{m}m {s}s"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "offline": "Can't reach the server. Check your connection and try again.",
+    "uploadFailed": "Upload failed. Check your connection and try again.",
+    "uploadCancelled": "Upload cancelled.",
+    "stream": {
+      "aborted": "Stopped.",
+      "provider_auth": "The AI model is temporarily unavailable. Please contact your administrator.",
+      "context_overflow": "This conversation is too long. Please start a new chat.",
+      "output_length": "The response exceeded the maximum length.",
+      "model_error": "The AI model is temporarily not responding. Please try again in a few minutes.",
+      "processing_error": "Something went wrong while processing your request. Please try again."
+    }
+  },
+  "auth": {
+    "sessionExpired": "Your session has expired. Please sign in again.",
+    "email": "Email",
+    "emailPlaceholder": "name@company.com",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "passwordsMatch": "Passwords match",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "capsLock": "Caps Lock is on",
+    "forgot": "Forgot password?",
+    "forgotBody": "We don't send password-reset emails. Contact your organization's <b>administrator</b>: they can issue you a temporary password from the Admin console, which you can then change in Settings → Account.",
+    "registrationClosed": "Sign-ups are closed – ask your administrator for an account.",
+    "disclaimer": "For reference only – not a substitute for advice from a qualified lawyer.",
+    "strength": {
+      "label": "Strength: <b>{level}</b>",
+      "needMore_one": "{count} more character needed",
+      "needMore_other": "{count} more characters needed",
+      "tooShort": "Too short",
+      "weak": "Weak",
+      "fair": "Fair",
+      "good": "Good",
+      "strong": "Strong"
+    },
+    "errors": {
+      "emailFormat": "Enter a valid email address (e.g. name@company.com).",
+      "emailRequired": "Enter your email.",
+      "passwordShort": "Password must be at least 8 characters.",
+      "passwordRequired": "Enter your password.",
+      "passwordMismatch": "Passwords don't match."
+    },
+    "login": {
+      "docTitle": "Sign in – LegalAI",
+      "title": "Welcome back",
+      "subtitle": "Sign in to continue working with your legal assistant.",
+      "submit": "Sign in",
+      "busy": "Signing in…",
+      "noAccount": "Don't have an account?",
+      "toRegister": "Sign up"
+    },
+    "register": {
+      "docTitle": "Create account – LegalAI",
+      "title": "Create your account",
+      "subtitle": "Free for members. All you need is an email and a password.",
+      "submit": "Create account",
+      "busy": "Creating account…",
+      "haveAccount": "Already have an account?",
+      "toLogin": "Sign in"
+    },
+    "hero": {
+      "label": "About LegalAI",
+      "title": "The AI legal assistant<br/>for Vietnamese businesses",
+      "caps": {
+        "contracts": {
+          "title": "Commercial contracts",
+          "text": "Q&A, risk review, clause redrafting, obligation and deadline tables."
+        },
+        "remedies": {
+          "title": "Trade remedies",
+          "text": "Anti-dumping, countervailing duties, safeguards and FTAs affecting Vietnamese exports."
+        },
+        "citations": {
+          "title": "Official, cited sources",
+          "text": "Verbatim text from vbpl.vn, trav.gov.vn and the Federal Register – with legal status."
+        }
+      },
+      "demoLabel": "Sample answer",
+      "demoQ": "What is the maximum penalty for breach in a commercial contract?",
+      "demoA": "Up to <b>8% of the value of the breached contractual obligation</b>, except as provided in Article 266",
+      "demoSrc": "vbpl.vn · Article 301, Commercial Law 2005"
+    },
+    "home": "Home",
+    "requestAccess": "No account yet? <a>Request access</a>",
+    "registerClosed": {
+      "title": "Sign-up is closed for now",
+      "body": "During the pilot, accounts are created by an administrator. Send an access request and we will get back to you.",
+      "request": "Request access",
+      "toLogin": "Already have an account? Sign in"
+    }
+  },
+  "sidebar": {
+    "label": "Chat list",
+    "open": "Open chat list",
+    "close": "Close sidebar",
+    "history": "Chat history",
+    "search": "Search",
+    "expertQueue": "Expert queue",
+    "newRequests_one": "{count} new request",
+    "newRequests_other": "{count} new requests",
+    "pinned": "Pinned",
+    "empty": "No chats yet.",
+    "allShown": "All chats loaded",
+    "groups": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "week": "Previous 7 days",
+      "month": "Previous 30 days",
+      "older": "Older"
+    },
+    "renameLabel": "Chat name",
+    "unreadExpert_one": "{count} new expert reply",
+    "unreadExpert_other": "{count} new expert replies",
+    "optionsFor": "Options for “{title}”",
+    "chatOptions": "Chat options",
+    "pin": "Pin",
+    "unpin": "Unpin",
+    "rename": "Rename",
+    "deleteTitle": "Delete chat?",
+    "deleteBody": "“{title}” will be permanently deleted, along with all its versions and share links. This can't be undone.",
+    "toastPinned": "Chat pinned.",
+    "toastUnpinned": "Chat unpinned.",
+    "toastDeleted": "Chat deleted.",
+    "account": "Account",
+    "logout": "Sign out",
+    "showMore": "Show more"
+  },
+  "chat": {
+    "newChat": "New chat",
+    "newChatTip": "New chat ({mod}+Shift+O)",
+    "modelBadge": "FTU Tech Lab AI model",
+    "modelTip": "The assistant runs on the AI model deployed by FTU Tech Lab",
+    "notFound": "Chat not found.",
+    "sentTo": "Sent: “{title}”",
+    "logLabel": "Conversation",
+    "loadingChat": "Loading conversation",
+    "jumpToBottom": "Scroll to bottom",
+    "thinking": "Thinking…",
+    "retrying": "Retrying…",
+    "retryingN": "Retrying (attempt {n})…",
+    "stopped": "Response stopped.",
+    "copyAnswer": "Copy answer",
+    "copyMessage": "Copy message",
+    "editMessage": "Edit message",
+    "editHint": "A new answer will be generated; the previous version stays available.",
+    "attachmentKept": "Attachment will be kept",
+    "regenerate": "Regenerate",
+    "regenerateLabel": "Regenerate answer",
+    "versionOf": "Version {n} of {total}",
+    "prevVersion": "Previous version",
+    "nextVersion": "Next version",
+    "empty": {
+      "title": "How can I help you today?",
+      "subtitle": "Ask about commercial contracts, statutes or trade remedies, or upload a contract for review. Every answer cites official sources."
+    },
+    "examples": {
+      "penalty": "What is the maximum penalty for breach in a commercial contract?",
+      "review": "Review the sale of goods contract I'm uploading",
+      "steel": "What trade remedies apply to galvanized steel exported to the US?",
+      "avoidance": "When can the buyer terminate a contract for the sale of goods?"
+    },
+    "loadOlder": "Load earlier messages",
+    "olderRetry": "Couldn't load – try again",
+    "finalizing": "Finishing the answer…",
+    "noAnswer": "No answer could be produced – try asking again or ask an expert."
+  },
+  "composer": {
+    "inputLabel": "Your question",
+    "placeholder": "Ask about contracts, statutes, trade remedies…",
+    "attach": "Attach files",
+    "attachLabel": "Attach files (.docx, .pdf, .txt, .md)",
+    "attachments": "Attachments",
+    "removeFile": "Remove {name}",
+    "uploading": "Uploading {pct}%",
+    "truncatedShort": "truncated",
+    "hintSend": "to send",
+    "hintNewline": "for a new line",
+    "send": "Send",
+    "stop": "Stop",
+    "stopLabel": "Stop response",
+    "disclaimer": "AI can make mistakes. Check the cited sources.",
+    "dropTitle": "Drop files to attach",
+    "dropHint": ".docx, .pdf, .txt, .md · up to 10 MB",
+    "badType": "“{name}”: only .docx, .pdf, .txt and .md files are supported.",
+    "tooBig": "“{name}” is larger than 10 MB.",
+    "tooMany_one": "You can attach up to {count} file per message.",
+    "tooMany_other": "You can attach up to {count} files per message.",
+    "truncated": "“{name}” has {chars} characters – only the first {sent} are sent to the assistant.",
+    "fileError": "“{name}”: {message}",
+    "pii": {
+      "warn": "Your message seems to contain personal identifiers ({kinds}). Only send it if really necessary.",
+      "fileWarn": "An attachment seems to contain personal identifiers ({kinds}). Only send it if really necessary.",
+      "sendAnyway": "Send",
+      "edit": "Edit",
+      "keep": "Keep file",
+      "removeFiles": "Remove file",
+      "kind": {
+        "cccd": "citizen ID number",
+        "passport": "passport number",
+        "bank": "bank account number",
+        "phone": "phone number"
+      }
+    },
+    "processing": "Reading the file…",
+    "ocrWait": "Waiting for text recognition…",
+    "ocrRunning": "Recognizing text in the scan…",
+    "ocrRunningPages_one": "Recognizing text in the scan… ({count} page)",
+    "ocrRunningPages_other": "Recognizing text in the scan… ({count} pages)",
+    "ocrWaitTip": "Waiting for text recognition (another file is being processed)…",
+    "autoRepair": "Auto re-check",
+    "autoRepairLabel": "Look up again automatically when confidence is low",
+    "autoRepairOnTip": "Look up again when confidence is low: on – the assistant looks up again and updates the answer once.",
+    "autoRepairOffTip": "Look up again when confidence is low: off – click to turn on."
+  },
+  "tools": {
+    "done": "Research complete",
+    "steps_one": "{count} step",
+    "steps_other": "{count} steps",
+    "errors_one": "{count} error",
+    "errors_other": "{count} errors",
+    "planning": "Analysing your question…",
+    "analyzing": "Analyzing results from “{name}”…",
+    "showReasoning": "Show model reasoning ({n})",
+    "hideReasoning": "Hide model reasoning ({n})",
+    "state": {
+      "running": "running",
+      "error": "failed",
+      "done": "done"
+    },
+    "text": {
+      "results_one": "{count} result",
+      "results_other": "{count} results",
+      "relatedArticles_one": "{count} related article",
+      "relatedArticles_other": "{count} related articles",
+      "todos_one": "{count} task",
+      "todos_other": "{count} tasks",
+      "changes_one": "{count} change",
+      "changes_other": "{count} changes",
+      "noFiles": "no files",
+      "article": "Article {n}"
+    },
+    "name": {
+      "_browser": "Browser",
+      "_tool": "Tool",
+      "vbpl_find": "Searched legal documents",
+      "vbpl_document": "Opened document",
+      "vbpl_article": "Read article",
+      "vbpl_search_articles": "Searched provisions",
+      "vbpl_history": "Checked amendment history",
+      "vbpl_verify": "Verified citation",
+      "trav_search": "Searched trade remedy news",
+      "trav_measures": "Checked measures in force",
+      "trav_page": "Read Trade Remedies Authority article",
+      "fedreg_search": "Searched the Federal Register",
+      "fedreg_document": "Read Federal Register document",
+      "chrome_new_page": "Opened web page",
+      "chrome_navigate_page": "Opened web page",
+      "chrome_take_snapshot": "Read web page",
+      "chrome_evaluate_script": "Extracted page content",
+      "chrome_click": "Clicked on page",
+      "chrome_fill": "Filled in page",
+      "chrome_wait_for": "Waited for page",
+      "chrome_list_pages": "Listed tabs",
+      "chrome_select_page": "Switched tab",
+      "skill": "Loaded skill",
+      "document_create": "Created document",
+      "document_edit": "Edited document",
+      "document_read": "Read document",
+      "expert_escalate": "Escalated to an expert",
+      "grounding_check": "Checked confidence",
+      "read": "Read file",
+      "write": "Wrote file",
+      "edit": "Edited file",
+      "glob": "Found files",
+      "grep": "Searched files",
+      "todowrite": "Made a plan",
+      "task": "Delegated to a sub-agent",
+      "eurlex_search": "Searched EUR-Lex",
+      "eurlex_document": "Read EUR-Lex document",
+      "eping_search": "Searched SPS/TBT notifications (ePing)",
+      "eping_notification": "Read WTO notification",
+      "fta_list": "Listed FTAs",
+      "fta_search": "Searched FTA commitments",
+      "fta_document": "Read FTA document",
+      "court_anle_search": "Searched precedents",
+      "court_anle_document": "Read precedent",
+      "court_judgment_search": "Searched judgments",
+      "court_judgment_document": "Read judgment",
+      "clock_now": "Checked date and time",
+      "clock_calc": "Calculated deadline",
+      "about_self": "System information",
+      "safety_scan": "Safety check",
+      "calc_eval": "Calculate",
+      "calc_money_words": "Amount in words",
+      "calc_check_words": "Check amount in words",
+      "calc_interest": "Interest / penalty",
+      "calc_contract_check": "Check contract figures",
+      "fx_rate": "Exchange rate",
+      "fx_convert": "Currency conversion",
+      "web_search": "Web search (official sources)",
+      "web_read": "Read web page",
+      "draft_plan": "Outline",
+      "draft_write": "Write sections",
+      "draft_check": "Cross-check",
+      "draft_fix": "Fix sections",
+      "draft_assemble": "Assemble document",
+      "draft_status": "Drafting progress",
+      "question": "Ask the user",
+      "tariff_vn": "Looked up Vietnam tariff",
+      "tariff_us": "Looked up US tariff (HTS)",
+      "tariff_eu": "Looked up EU tariff (TARIC)",
+      "tariff_search": "Searched HS codes",
+      "invalid": "Invalid tool call",
+      "chrome_close_page": "Closed tab",
+      "chrome_drag": "Dragged on page",
+      "chrome_emulate": "Emulated device",
+      "chrome_fill_form": "Filled in form",
+      "chrome_get_console_message": "Read console message",
+      "chrome_get_css_styles": "Read CSS styles",
+      "chrome_get_network_request": "Read network request",
+      "chrome_handle_dialog": "Handled dialog",
+      "chrome_hover": "Hovered on page",
+      "chrome_lighthouse_audit": "Ran Lighthouse audit",
+      "chrome_list_console_messages": "Listed console messages",
+      "chrome_list_network_requests": "Listed network requests",
+      "chrome_performance_analyze_insight": "Analyzed performance insight",
+      "chrome_performance_start_trace": "Started performance trace",
+      "chrome_performance_stop_trace": "Stopped performance trace",
+      "chrome_press_key": "Pressed key",
+      "chrome_resize_page": "Resized page",
+      "chrome_take_heapsnapshot": "Took heap snapshot",
+      "chrome_take_screenshot": "Took screenshot",
+      "chrome_type_text": "Typed text",
+      "chrome_upload_file": "Uploaded file",
+      "company_lookup": "Company lookup",
+      "company_verify": "Verify company details",
+      "diagram_create": "Draw a diagram",
+      "image_search": "Find an illustration",
+      "image_fetch": "Save an illustration",
+      "source_snapshot": "Capture the original"
+    },
+    "active": {
+      "_fallback": "{name}…",
+      "vbpl_find": "Searching legal documents",
+      "vbpl_document": "Opening document",
+      "vbpl_article": "Reading article",
+      "vbpl_search_articles": "Searching related provisions",
+      "vbpl_history": "Checking amendment history",
+      "vbpl_verify": "Verifying citation",
+      "trav_search": "Searching trade remedy news",
+      "trav_measures": "Checking measures in force",
+      "trav_page": "Reading Trade Remedies Authority article",
+      "fedreg_search": "Searching the Federal Register",
+      "fedreg_document": "Reading Federal Register document",
+      "skill": "Loading skill",
+      "document_create": "Creating document",
+      "document_edit": "Editing document",
+      "document_read": "Reading document",
+      "expert_escalate": "Escalating to an expert",
+      "grounding_check": "Cross-checking sources…",
+      "eurlex_search": "Searching EUR-Lex",
+      "eurlex_document": "Reading EUR-Lex document",
+      "eping_search": "Searching SPS/TBT notifications",
+      "eping_notification": "Reading WTO notification",
+      "fta_list": "Listing FTAs",
+      "fta_search": "Searching FTA commitments",
+      "fta_document": "Reading FTA document",
+      "court_anle_search": "Searching precedents",
+      "court_anle_document": "Reading precedent",
+      "court_judgment_search": "Searching judgments",
+      "court_judgment_document": "Reading judgment",
+      "clock_now": "Checking date and time",
+      "clock_calc": "Calculating deadline",
+      "about_self": "Checking system information",
+      "safety_scan": "Running safety check",
+      "calc_eval": "Calculating",
+      "calc_money_words": "Writing the amount in words",
+      "calc_check_words": "Checking the amount in words",
+      "calc_interest": "Calculating interest / penalty",
+      "calc_contract_check": "Checking contract figures",
+      "fx_rate": "Looking up the exchange rate",
+      "fx_convert": "Converting currency",
+      "web_search": "Searching the web (official sources)",
+      "web_read": "Reading the web page",
+      "draft_plan": "Outlining",
+      "draft_write": "Writing sections",
+      "draft_check": "Cross-checking",
+      "draft_fix": "Fixing sections",
+      "draft_assemble": "Assembling the document",
+      "draft_status": "Checking drafting progress",
+      "question": "Asking the user",
+      "tariff_vn": "Looking up Vietnam tariff",
+      "tariff_us": "Looking up US tariff",
+      "tariff_eu": "Looking up EU tariff",
+      "tariff_search": "Searching HS codes",
+      "company_lookup": "Looking up company",
+      "company_verify": "Verifying company details",
+      "diagram_create": "Drawing a diagram",
+      "image_search": "Finding an illustration",
+      "image_fetch": "Saving an illustration",
+      "source_snapshot": "Capturing the original document"
+    },
+    "count": {
+      "results_one": "{count} result",
+      "results_other": "{count} results",
+      "docs_one": "{count} document",
+      "docs_other": "{count} documents",
+      "articles_one": "{count} article",
+      "articles_other": "{count} articles",
+      "precedents_one": "{count} precedent",
+      "precedents_other": "{count} precedents",
+      "judgments_one": "{count} judgment",
+      "judgments_other": "{count} judgments",
+      "measures_one": "{count} measure",
+      "measures_other": "{count} measures",
+      "news_one": "{count} news item",
+      "news_other": "{count} news items",
+      "notifications_one": "{count} notification",
+      "notifications_other": "{count} notifications",
+      "codes_one": "{count} code",
+      "codes_other": "{count} codes",
+      "tariffLines_one": "{count} tariff line",
+      "tariffLines_other": "{count} tariff lines",
+      "ftas_one": "{count} FTA",
+      "ftas_other": "{count} FTAs",
+      "changes_one": "{count} change",
+      "changes_other": "{count} changes",
+      "tasks_one": "{count} task",
+      "tasks_other": "{count} tasks",
+      "entries_one": "{count} entry",
+      "entries_other": "{count} entries",
+      "items_one": "{count} item",
+      "items_other": "{count} items",
+      "pages_one": "{count} page",
+      "pages_other": "{count} pages"
+    },
+    "res": {
+      "none": "No results",
+      "official_one": "{count} official",
+      "official_other": "{count} official",
+      "allOfficial": "all official",
+      "verify": {
+        "match": "Quote found verbatim",
+        "nomatch": "Quote not found verbatim"
+      },
+      "deadline": "Deadline {date}",
+      "daysLeft_one": "{count} day left",
+      "daysLeft_other": "{count} days left",
+      "overdue_one": "{count} day overdue",
+      "overdue_other": "{count} days overdue",
+      "safety": {
+        "clean": "No risk found",
+        "flagged": "Warnings found"
+      },
+      "error": "The tool reported an error"
+    },
+    "arg": {
+      "version": "v{n}"
+    },
+    "error": {
+      "aborted": "Stopped.",
+      "timeout": "Timed out.",
+      "notFound": "Not found.",
+      "failed": "This step failed."
+    },
+    "status": {
+      "manual_required": "Manual check needed (CAPTCHA)",
+      "invalid_code": "Invalid tax code",
+      "personal_id": "Personal ID – not looked up",
+      "parsed": "Company data read",
+      "unofficial": "Reference data found (unofficial)"
+    }
+  },
+  "sources": {
+    "title": "Sources",
+    "citeN": "Source {n}",
+    "open": "Open source",
+    "looked": "Consulted",
+    "more_one": "Show {count} more source",
+    "more_other": "Show {count} more sources",
+    "accessedOn": "accessed {date}",
+    "site": {
+      "vbpl": "National Database of Legal Documents",
+      "trav": "Trade Remedies Authority of Vietnam",
+      "fedreg": "Federal Register (US)",
+      "govinfo": "GovInfo (US)"
+    },
+    "meta": {
+      "number": "Document no.",
+      "docNumber": "Document no.",
+      "articles": "Provisions",
+      "status": "Legal status",
+      "citation": "Citation",
+      "issued": "Issued",
+      "published": "Published",
+      "accessed": "Accessed",
+      "agency": "Agency"
+    },
+    "status": {
+      "inForce": "In force",
+      "partlyExpired": "Partially expired",
+      "expired": "No longer in force",
+      "notYet": "Not yet in force",
+      "partlySuspended": "Partially suspended",
+      "suspended": "Suspended",
+      "obsolete": "Obsolete",
+      "applicable": "Applicable",
+      "notApplicable": "No longer applicable"
+    },
+    "agency": {
+      "trav": "Trade Remedies Authority of Vietnam"
+    }
+  },
+  "confidence": {
+    "none": "Not automatically verified",
+    "noneTip": "This answer has no grounding_check result – it hasn't been automatically verified against the sources consulted.",
+    "label": "Confidence: {level}",
+    "reasons": "Reasons: {tip}",
+    "claims": "{supported}/{claims} claims match the sources consulted",
+    "level": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "byServer": "automatically verified by the system",
+    "lowWarn": "Some content has no basis in the sources consulted – use with caution:",
+    "why": {
+      "no_sources": "no source was looked up with the tools in this session",
+      "calc_only": "only tool calculations / figures from the document – no legal source was looked up",
+      "bad_quotes_one": "{count} quote is not found verbatim in the sources",
+      "bad_quotes_other": "{count} quotes are not found verbatim in the sources",
+      "unsupported": "{n}/{total} items have no basis",
+      "unmatched": "some links / figures / amounts / document numbers could not be matched with the sources",
+      "source_warnings": "a lookup tool raised a warning about a source document",
+      "unverifiable_links": "some links are outside the automatically verifiable sources",
+      "few_items": "the answer rests on too few verified items",
+      "all_matched": "{n}/{total} items match the sources consulted",
+      "all_matched_calc": "{n}/{total} items match the sources consulted or were computed by the tools ({computed})",
+      "from_memory": "the answer states numbers / figures / quotes without opening any source in this session (from memory)",
+      "ocr_evidence": "some items appear only in OCR-recognized text – check them against the original"
+    }
+  },
+  "report": {
+    "defaultTitle": "Report",
+    "writing": "Writing…",
+    "open": "Open report",
+    "opened": "Open",
+    "sections_one": "{count} section",
+    "sections_other": "{count} sections",
+    "tables_one": "{count} table",
+    "tables_other": "{count} tables",
+    "readTime_one": "~{count} min read",
+    "readTime_other": "~{count} min read",
+    "chars_one": "{count} character",
+    "chars_other": "{count} characters",
+    "sources_one": "{count} source",
+    "sources_other": "{count} sources",
+    "panelLabel": "Report: {title}",
+    "resize": "Drag to resize",
+    "copy": "Copy report",
+    "docxTip": "Download as Word",
+    "pdfTip": "Print or save as PDF",
+    "close": "Close report",
+    "docxDone": ".docx file downloaded.",
+    "docxFailed": "Couldn't export the .docx file.",
+    "exportedOn": "exported {date}",
+    "footer": "Reference information generated by an AI assistant – verify the cited sources before relying on it."
+  },
+  "docs": {
+    "kind": {
+      "contract": "Contract",
+      "report": "Report",
+      "document": "Document",
+      "generic": "Document"
+    },
+    "language": {
+      "vi": "Vietnamese document",
+      "en": "English document",
+      "bilingual": "Bilingual document (Vietnamese – English)"
+    },
+    "uploadNote": "Reformatted to the system's standard template; original formatting is not preserved",
+    "version": "version {n}",
+    "versionNav_one": "Version {n} – {count} version",
+    "versionNav_other": "Version {n} – {count} versions",
+    "uploaded": "uploaded file",
+    "noFiles": "No files",
+    "changesTitle": "Changes from the previous version",
+    "moreChanges_one": "Show {count} more change",
+    "moreChanges_other": "Show {count} more changes",
+    "preview": "Preview",
+    "previewOf": "Preview of {title}",
+    "compare": "Compare with previous",
+    "compareShort": "Compare",
+    "download": "Download .{ext}",
+    "redline": "Redline (.docx)",
+    "redlineShort": "Redline",
+    "redlineTip": "Download the redline (.docx) – open in Word to see Track Changes",
+    "original": "Original file",
+    "originalTip": "Download the file you uploaded",
+    "fullscreen": "Open full screen",
+    "closePreview": "Close preview",
+    "viewMode": "View mode",
+    "loadingPreview": "Loading preview…",
+    "diff": {
+      "loading": "Comparing…",
+      "label": "Comparison of version {from} and {to}",
+      "title": "Comparing v{from} → v{to}",
+      "inserted": "inserted text",
+      "deleted": "deleted text",
+      "same": "Both versions have identical content.",
+      "unchangedLines_one": "{count} unchanged line",
+      "unchangedLines_other": "{count} unchanged lines",
+      "insertedWords_one": "+{count} word",
+      "insertedWords_other": "+{count} words",
+      "deletedWords_one": "−{count} word",
+      "deletedWords_other": "−{count} words",
+      "changes_one": "{count} change",
+      "changes_other": "{count} changes",
+      "onlyChanges": "Show changes only"
+    },
+    "change": {
+      "op": {
+        "edit": "Edited",
+        "add": "Added",
+        "delete": "Deleted",
+        "rewrite": "Rewrote"
+      },
+      "pos": {
+        "after": "after",
+        "before": "before"
+      },
+      "end": "the end of the document",
+      "preamble": "the preamble",
+      "unit": {
+        "article": "Article {n}",
+        "chapter": "Chapter {n}",
+        "section": "Section {n}",
+        "part": "Part {n}",
+        "clause": "Clause {n}"
+      },
+      "clauses_one": "clause {list}",
+      "clauses_other": "clauses {list}",
+      "point": "point {p}",
+      "times_one": "({count} place)",
+      "times_other": "({count} places)"
+    }
+  },
+  "expert": {
+    "navTitle": "Experts",
+    "docTitle": "Expert queue – LegalAI",
+    "escalate": "Escalate to an expert",
+    "escalated": "Escalated to an expert",
+    "askReview": "Ask an expert to review",
+    "toastReplied": "An expert has replied to your request.",
+    "toastNewRequest": "New request in the expert queue.",
+    "dialogTitle": "Escalate to a legal expert",
+    "dialogBody": "A platform expert will read your question, the assistant's answer and the sources it consulted, then reply right in this conversation. Add any context that helps (but no unnecessary confidential details).",
+    "lowWarn": "This answer has low confidence – have an expert review it before relying on it.",
+    "urgencyLabel": "Urgency",
+    "noteLabel": "Note for the expert (optional)",
+    "notePlaceholder": "e.g. contract already signed, value VND 5 billion, supplier 20 days late on delivery…",
+    "submit": "Send request",
+    "sent": "Request {id} sent to an expert.",
+    "progress": "Progress",
+    "reasonLine": "Reason: {reason}",
+    "deadlineLine": "Deadline: {deadline}",
+    "assigneeLine": "Assigned expert: {name}",
+    "replyAuthor": "Expert · {name}",
+    "replyTo": "reply to {id}",
+    "origin": {
+      "youManual": "requested by you",
+      "agent": "suggested by the assistant",
+      "user": "Requested by user",
+      "agentCap": "Suggested by the assistant"
+    },
+    "status": {
+      "new": "New",
+      "inProgress": "In progress",
+      "answered": "Answered",
+      "closed": "Closed"
+    },
+    "urgency": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "urgent": "Urgent"
+    },
+    "urgencyBadge": {
+      "low": "Low priority",
+      "medium": "Medium priority",
+      "high": "High priority",
+      "urgent": "Urgent"
+    },
+    "filter": {
+      "open": "Open",
+      "all": "All"
+    },
+    "queueLabel": "Request queue",
+    "backToList": "Queue",
+    "due": "due {deadline}",
+    "replies_one": "{count} reply",
+    "replies_other": "{count} replies",
+    "unassigned": "unassigned",
+    "empty": "No requests.",
+    "loadFailed": "Couldn't load the queue.",
+    "requestsCount_one": "{count} request",
+    "requestsCount_other": "{count} requests",
+    "pick": "Select a request from the queue to see the conversation, sources and replies.",
+    "case": {
+      "untitled": "Expert request",
+      "unknownOwner": "Unknown requester",
+      "created": "created {when}",
+      "updated": "updated {when}",
+      "claim": "Claim",
+      "claimed": "You've claimed this request.",
+      "assignee": "Assignee",
+      "assigned": "Request assigned.",
+      "unassignedOption": "— Unassigned —",
+      "me": "(me)",
+      "status": "Status",
+      "statusChanged": "Status: {status}.",
+      "closeTitle": "Close request?",
+      "closeBody": "The user can still see the replies; the request moves to Closed.",
+      "closeConfirm": "Close request",
+      "assigneeShort": "Assignee: {name}",
+      "none": "none",
+      "request": "Request",
+      "reason": "Reason",
+      "topic": "Practice area",
+      "deadline": "Deadline",
+      "machineConfidence": "Confidence (automated)",
+      "unverified": "not verified",
+      "summary": "Summary",
+      "sources": "Sources consulted by the assistant",
+      "replies": "Replies",
+      "replyTitle": "Reply to the user",
+      "emptyPreview": "(empty)",
+      "replyPlaceholder": "Your assessment, legal basis, recommendations and what the user should prepare… (Markdown supported)",
+      "replyHint": "Ctrl/⌘+Enter to send · the reply appears in the user's conversation and sets the status to “Answered”.",
+      "sendReply": "Send reply",
+      "replySent": "Reply sent – the user will see it in their conversation right away.",
+      "conversation": "Full conversation",
+      "conversationMissing": "The conversation can't be read (created outside the web app, or deleted)."
+    },
+    "reasonLabel": "Reason",
+    "deadlineLabel": "Deadline",
+    "assigneeLabel": "Assigned expert",
+    "replyAuthorLabel": "Expert",
+    "dueLabel": "due",
+    "reasonCode": {
+      "user_request": "The user asked for an expert review"
+    },
+    "summary": {
+      "note": "User's note",
+      "question": "Question",
+      "attachmentOnly": "(attachments only)",
+      "attachments": "Attachments",
+      "answer": "Assistant's answer (shortened)",
+      "noAnswer": "The assistant has not answered yet."
+    }
+  },
+  "admin": {
+    "title": "Admin",
+    "docTitle": "Admin – LegalAI",
+    "backToChat": "Back to chat",
+    "overview": "Overview",
+    "refreshStats": "Refresh stats",
+    "stats": {
+      "users": "Users",
+      "locked_one": "{count} locked",
+      "locked_other": "{count} locked",
+      "active": "all active",
+      "chats": "Chats",
+      "today_one": "{count} today",
+      "today_other": "{count} today",
+      "questionsToday": "Questions today",
+      "last7d_one": "{count} in the last 7 days",
+      "last7d_other": "{count} in the last 7 days",
+      "running": "Running",
+      "streams_one": "{count} live connection",
+      "streams_other": "{count} live connections",
+      "shares": "Share links"
+    },
+    "agent": {
+      "ok": "Agent is operating normally",
+      "down": "Agent is not responding",
+      "checking": "Checking agent…",
+      "name": "agent “{name}”",
+      "model": "model (admin only): {name} – {provider}",
+      "latency": "{ms} ms response",
+      "eventsUp": "event stream connected",
+      "eventsDown": "event stream disconnected"
+    },
+    "models": {
+      "title": "AI model (admins only)",
+      "desc": "Choose the model used for every new message, edit and regenerated answer (including follow-up suggestions). The list comes from the system configuration. Users never see model names.",
+      "active": "In use",
+      "configDefault": "Config default",
+      "test": "Test",
+      "testing": "Testing…",
+      "testOk": "Working – {ms} ms, tool calling OK.",
+      "testNoTool": "Answered in {ms} ms but did not call the tool correctly: {error}",
+      "testFail": "Failed after {ms} ms: {error}",
+      "setDefault": "Set as default",
+      "saved": "Switched to {name}.",
+      "reset": "Restore the config default model"
+    },
+    "system": "System settings",
+    "allowReg": "Allow sign-ups",
+    "allowRegDesc": "When off, only administrators can create new accounts. Takes effect immediately.",
+    "reasoningUsers": "Let users see model reasoning",
+    "reasoningUsersDesc": "Off by default: reasoning is removed on the server (answer stream, history, exports). Public share pages never include it.",
+    "reasoningOn": "Users can now see model reasoning.",
+    "reasoningOff": "Model reasoning is hidden from users.",
+    "regOpened": "Sign-ups enabled.",
+    "regClosed": "Sign-ups disabled.",
+    "users": "Users",
+    "usersCount_one": "{count} user",
+    "usersCount_other": "{count} users",
+    "searchPlaceholder": "Search by email or name…",
+    "searchLabel": "Search users",
+    "col": {
+      "user": "User",
+      "role": "Role",
+      "status": "Status",
+      "chats": "Chats",
+      "activity": "Activity",
+      "actions": "Actions"
+    },
+    "role": {
+      "admin": "Admin",
+      "expert": "Expert",
+      "member": "Member"
+    },
+    "state": {
+      "locked": "Locked",
+      "active": "Active"
+    },
+    "signedIn": "signed in {when}",
+    "neverUsed": "never used",
+    "you": "(you)",
+    "noMatch": "No users match “{q}”.",
+    "loadFailed": "Couldn't load the user list.",
+    "create": {
+      "title": "Create user",
+      "adminRole": "Administrator",
+      "adminRoleDesc": "Can access the Admin console.",
+      "passwordNote": "A temporary password will be generated and shown once after the account is created.",
+      "submit": "Create",
+      "done": "Account created."
+    },
+    "otp": {
+      "body": "Temporary password for <b>{email}</b>. It's shown <b>only once</b> – send it to the user over a secure channel and remind them to change it in Settings → Account.",
+      "done": "I've saved it",
+      "newPassword": "New password",
+      "created": "Account created"
+    },
+    "reset": {
+      "title": "Reset password?",
+      "body": "{email}'s current password will stop working and all of their sessions will be signed out.",
+      "confirm": "Reset",
+      "tip": "Reset password",
+      "short": "Reset password"
+    },
+    "lock": {
+      "title": "Lock account?",
+      "body": "{email} will be signed out and won't be able to sign in until the account is unlocked.",
+      "confirm": "Lock",
+      "unlock": "Unlock"
+    },
+    "adminRole": {
+      "grantTitle": "Make administrator?",
+      "revokeTitle": "Remove administrator role?",
+      "grantBody": "{email} will be able to manage all accounts.",
+      "revokeBody": "{email} will lose access to the Admin console.",
+      "grant": "Make admin",
+      "revoke": "Remove admin"
+    },
+    "expertRole": {
+      "grant": "Make expert",
+      "revoke": "Remove expert",
+      "granted": "Expert role granted – this user now sees the request queue.",
+      "revoked": "Expert role removed."
+    },
+    "delete": {
+      "title": "Delete user?",
+      "body_one": "The account {email} and its {count} chat, uploaded files and share links will be permanently deleted.",
+      "body_other": "The account {email} and its {count} chats, uploaded files and share links will be permanently deleted.",
+      "done": "User deleted.",
+      "label": "Delete {email}"
+    },
+    "followups": {
+      "title": "Suggested follow-up questions",
+      "desc": "Number of suggested questions under each answer (0 = off). Generated with one short model call after the answer is complete.",
+      "offShort": "Off",
+      "off": "Follow-up suggestions turned off.",
+      "saved_one": "{count} suggested question will be shown.",
+      "saved_other": "{count} suggested questions will be shown."
+    },
+    "grounding": {
+      "server": "Automatic verification by the system",
+      "serverDesc": "When an answer makes legal claims the assistant didn't verify itself, the system checks it against the sources consulted and shows the confidence.",
+      "repair": "Allow looking up again when confidence is low",
+      "repairDesc": "Off by default. When on, each user can turn on “Look up again when confidence is low” (the assistant looks up again and updates the answer once), and the low-confidence warning offers “Look up again now”.",
+      "saved": "Settings saved."
+    },
+    "lib": {
+      "title": "Tools & skills library",
+      "intro": "The tools and skills the assistant uses when answering users: description, parameters, usage and an on / off switch for users.",
+      "reload": "Reload library",
+      "tab": {
+        "tools": "Tools",
+        "skills": "Skills"
+      },
+      "countOff": "{total} · {off} off",
+      "searchTools": "Search tools by name, description…",
+      "searchSkills": "Search skills by name, description…",
+      "searchLabel": "Search the library",
+      "filterLabel": "Filter by status",
+      "filter": {
+        "all": "All",
+        "on": "On",
+        "off": "Off"
+      },
+      "periodLabel": "Statistics period",
+      "period7": "7 days",
+      "period30": "30 days",
+      "noteTools": "Switching on / off applies from every user's next message. Locked tools are always on (safety, verification, date & time).",
+      "noteSkills": "Switching on / off applies from every user's next message. The safety and citation-check skills are always on.",
+      "usageUnavailable": "Usage data is not available right now.",
+      "browserDown": "The assistant's browser is not connected right now – browser tools may fail.",
+      "noMatch": "Nothing matches.",
+      "group": {
+        "vbpl": "Legal documents",
+        "court": "Courts",
+        "remedy": "Trade remedies",
+        "fta": "FTAs",
+        "docs": "Documents",
+        "calc": "Calculation & FX",
+        "web": "Web lookup",
+        "verify": "Verification",
+        "system": "Safety & system",
+        "browser": "Browser",
+        "question": "Clarifying questions",
+        "other": "Other",
+        "tariff": "Tariffs",
+        "company": "Companies",
+        "visuals": "Illustrations"
+      },
+      "locked": "Always on",
+      "lockedTip": "Required for safety / reliability – cannot be switched off",
+      "alwaysOn": "Always on",
+      "on": "On",
+      "off": "Off",
+      "toggleLabel": "On/Off for users: {name}",
+      "savedOn": "“{name}” is now on for users.",
+      "savedOff": "“{name}” is now off for users.",
+      "unused": "Not used in this period",
+      "calls_one": "{n} call",
+      "calls_other": "{n} calls",
+      "errorRate": "{pct}% errors",
+      "median": "median {d}",
+      "lastUsed": "used {when}",
+      "enabledBy": "Switched on by {who} · {when}",
+      "disabledBy": "Switched off by {who} · {when}",
+      "params_one": "Parameters ({count})",
+      "params_other": "Parameters ({count})",
+      "noParams": "No parameters.",
+      "required": "required",
+      "modified": "edited {when}",
+      "view": "View content",
+      "viewTitle": "Skill: {name}",
+      "readOnly": "Read-only – skill content is managed in the system's source files.",
+      "techDesc": "Technical description",
+      "techNote": "Original description written for the AI model (not translated).",
+      "noDesc": "No description yet."
+    },
+    "console": {
+      "navLabel": "Admin sections",
+      "nav": {
+        "overview": "Overview",
+        "users": "Users",
+        "chats": "Chats",
+        "accessLog": "Access log",
+        "experts": "Experts",
+        "models": "AI model",
+        "library": "Tools & skills",
+        "settings": "System settings"
+      },
+      "desc": {
+        "overview": "Key numbers, AI system status and recent activity.",
+        "users": "Create accounts, issue one-time password resets, grant roles, lock or delete users.",
+        "experts": "The expert queue at a glance and the people with the expert role.",
+        "settings": "System-wide switches; changes apply immediately."
+      },
+      "waiting_one": "{count} waiting for the user's answer",
+      "waiting_other": "{count} waiting for the user's answer",
+      "expertOpen": "Open expert requests",
+      "expertNew_one": "{count} new request",
+      "expertNew_other": "{count} new requests",
+      "recent": "Recent activity",
+      "seeAll": "See all",
+      "openQueue": "Open the expert queue",
+      "expertList": "Experts",
+      "manageRoles": "Grant / revoke the role under Users",
+      "noExperts": "Nobody has the expert role yet.",
+      "group": {
+        "access": "Access",
+        "answers": "Answers",
+        "verify": "Verification"
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "sections": "Settings sections",
+    "close": "Close settings",
+    "tabs": {
+      "general": "General",
+      "account": "Account",
+      "data": "Data",
+      "about": "About"
+    },
+    "general": {
+      "language": "Language",
+      "languageDesc": "Interface language; the assistant also answers in this language by default.",
+      "languageName": {
+        "vi": "Tiếng Việt",
+        "en": "English"
+      },
+      "themeDesc": "Applies to this browser.",
+      "fontSize": "Text size",
+      "fontSizeDesc": "Text size in conversations.",
+      "fontSm": "Small",
+      "fontMd": "Medium",
+      "fontLg": "Large",
+      "reasoning": "Expand model reasoning",
+      "reasoningDesc": "Always show the model's reasoning under the research steps instead of collapsing it.",
+      "adminReasoning": "Show model reasoning (administrator)",
+      "adminReasoningDesc": "Only for your admin account, for debugging. Other users see it only when enabled in Admin → System.",
+      "enterToSend": "Enter to send",
+      "enterOn": "Enter sends, Shift+Enter adds a new line.",
+      "enterOff": "Enter adds a new line, Ctrl/⌘+Enter sends.",
+      "followups": "Suggested follow-up questions",
+      "followupsDesc": "Show a few suggested questions under the latest answer.",
+      "autoRepair": "Look up again when confidence is low",
+      "autoRepairDesc": "When an answer has LOW confidence, the assistant looks up again and updates the answer once (the first answer stays available). Off by default."
+    },
+    "account": {
+      "emailDesc": "Used to sign in. Contact your administrator to change it.",
+      "displayName": "Display name",
+      "displayNamePlaceholder": "e.g. Jane Nguyen",
+      "nameSaved": "Display name saved.",
+      "changePassword": "Change password",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmNewPassword": "Confirm new password",
+      "newPasswordShort": "New password must be at least 8 characters.",
+      "passwordChanged": "Password changed. Your other devices have been signed out.",
+      "otherSessions": "Other sessions",
+      "otherSessionsN_one": "Signed in on {count} other device or browser.",
+      "otherSessionsN_other": "Signed in on {count} other devices or browsers.",
+      "noOtherSessions": "No other active sessions.",
+      "logoutAll": "Sign out all",
+      "logoutOthersTitle": "Sign out other devices?",
+      "logoutOthersBody": "All of your other sessions will end immediately.",
+      "loggedOutOthers_one": "Signed out {count} other session.",
+      "loggedOutOthers_other": "Signed out {count} other sessions.",
+      "deleteAccount": "Delete account",
+      "deleteAccountDesc": "Permanently delete your account, all chats, uploaded files and share links.",
+      "deleteConfirm": "Enter your email <b>{email}</b> and password to confirm. This can't be undone.",
+      "deleteForever": "Delete permanently",
+      "deleted": "Your account has been deleted."
+    },
+    "data": {
+      "sharedLinks": "Shared links",
+      "noShares": "You haven't shared any chats yet.",
+      "openLink": "Open link",
+      "moreLinks": "Show more links",
+      "revokeBody": "The link to “{title}” will stop working.",
+      "export": "Export data",
+      "exportDesc": "Download all your chats (the version currently shown) as a .zip file.",
+      "deleteAllRow": "Delete all chats",
+      "deleteAllDesc": "Your account itself is not affected.",
+      "deleteAll": "Delete all",
+      "deleteAllTitle": "Delete all chats?",
+      "deleteAllBody": "All of your chats, their versions and share links will be permanently deleted.",
+      "deleteAllPhrase": "DELETE ALL",
+      "deletedN_one": "Deleted {count} chat.",
+      "deletedN_other": "Deleted {count} chats.",
+      "adminAccess": "Administrators may review chat history for support and quality purposes; every view is logged."
+    },
+    "about": {
+      "lead": "<b>LegalAI</b> is an AI legal assistant for Vietnamese businesses: it answers questions about and reviews <b>commercial contracts</b> (sale of goods, services, agency, distribution, carriage) and researches <b>trade remedies</b> and FTAs affecting exports.",
+      "sources": "Sources",
+      "srcVbpl": "National Database of Legal Documents (verbatim statutes, legal status)",
+      "srcTrav": "Trade Remedies Authority of Vietnam (investigations, early warnings, measures in force)",
+      "srcUs": "official US government documents (AD/CVD, duty rates, margins)",
+      "srcOther": "Other official websites, via the system's own browser",
+      "model": "AI model",
+      "modelName": "The AI model deployed by FTU Tech Lab",
+      "notes": "Please note",
+      "disclaimer": "Answers are AI-generated, for reference only, and not a substitute for advice from a qualified lawyer. Always check citations on the original source (click the numbers [1], [2]…) and confirm the legal status at the time of use."
+    }
+  },
+  "search": {
+    "title": "Search chats",
+    "placeholder": "Search titles and messages…",
+    "inputLabel": "Search terms",
+    "close": "Close search",
+    "results": "Results",
+    "recent": "Recent",
+    "empty": "No chats match “{q}”.",
+    "end": "No more results",
+    "hintSelect": "to navigate",
+    "hintOpen": "to open",
+    "hintClose": "to close"
+  },
+  "share": {
+    "buttonTip": "Share a view-only link",
+    "dialogTitle": "Share chat",
+    "lead": "Create a view-only link to <b>“{title}”</b>. Anyone with the link can see the questions, answers, research steps and sources – no sign-in required, and they can't continue the chat. Attachments show their names only.",
+    "linkLabel": "Share link",
+    "snapshotNote": "Snapshot taken {date}. Messages sent after this aren't included – click “Update” to take a new snapshot.",
+    "create": "Create link",
+    "update": "Update",
+    "view": "View",
+    "revoke": "Revoke",
+    "revokeTitle": "Revoke link?",
+    "revokeBody": "People with the link will no longer be able to view this chat.",
+    "toastCreated": "Link created and copied.",
+    "toastRevoked": "Link revoked.",
+    "badge": "View-only shared chat",
+    "docTitle": "{title} – LegalAI (shared)",
+    "openApp": "Open app",
+    "tryApp": "Try LegalAI",
+    "revokedTitle": "This link has been revoked",
+    "revokedBody": "The owner has stopped sharing this conversation.",
+    "notFoundTitle": "Link not found",
+    "notFoundBody": "This link is incorrect or no longer exists. Check with the person who sent it to you.",
+    "sharedOn": "Shared on {date} · AI-generated content, for reference only.",
+    "end": "End of shared conversation."
+  },
+  "shortcuts": {
+    "title": "Keyboard shortcuts",
+    "search": "Search chats",
+    "newChat": "New chat",
+    "focusInput": "Focus the message box",
+    "send": "Send (can be turned off in Settings)",
+    "newline": "New line",
+    "modSend": "Send when “Enter to send” is off / save an edited message",
+    "close": "Close dialog, report or sidebar",
+    "settings": "Open Settings",
+    "help": "Show these shortcuts",
+    "helpTyping": "Show shortcuts (even while typing)"
+  },
+  "states": {
+    "notFound": {
+      "docTitle": "Page not found – LegalAI",
+      "title": "Page not found",
+      "body": "The page you're looking for doesn't exist or has been moved."
+    },
+    "crash": {
+      "title": "Something went wrong",
+      "body": "The interface ran into an unexpected problem. Your data is safe on the server."
+    },
+    "conn": {
+      "offline": "You're offline. Content will update automatically when you're back online.",
+      "server": "Lost connection to the server. Reconnecting…",
+      "agent": "The assistant is under maintenance or temporarily unavailable. You can still browse your history; try sending again in a few minutes.",
+      "stream": "Reconnecting to the response stream…",
+      "checking": "Checking…"
+    }
+  },
+  "about": {
+    "link": "About & limitations",
+    "title": "About & limitations",
+    "model": "LegalAI runs on the AI model deployed by FTU Tech Lab.",
+    "purpose": {
+      "title": "What LegalAI does",
+      "body": "An AI assistant that helps Vietnamese businesses research and review commercial contracts, trade remedies and FTAs, citing official sources (vbpl.vn, trav.gov.vn, the Federal Register)."
+    },
+    "advice": {
+      "title": "Not legal advice",
+      "body": "Answers are AI-generated, may be wrong or incomplete, and are not a substitute for advice from a qualified lawyer. Check the citations and legal status before relying on them; the confidence badge is only an automated check."
+    },
+    "data": {
+      "title": "Your data",
+      "body": "Chats and uploads are stored on the platform's server; the text of your files is sent together with your question to the AI model deployed by FTU Tech Lab to generate answers. You can export your data, revoke share links or delete everything in Settings → Data. Don't upload confidential or personal information unless necessary."
+    },
+    "escalation": {
+      "title": "Escalating to an expert",
+      "body": "Click “Escalate to an expert” under an answer (the assistant also suggests it when confidence is low). A platform expert reads your question, the answer and the sources consulted, then replies right in the conversation; you can follow the status on the request card."
+    }
+  },
+  "followups": {
+    "title": "Ask next",
+    "label": "Suggested follow-up questions",
+    "loading": "Generating suggested questions…",
+    "ask": "Ask: {q}"
+  },
+  "site": {
+    "tagline": "AI legal assistant for Vietnamese businesses",
+    "meta": {
+      "landing": {
+        "title": "LegalAI – AI legal assistant for Vietnamese businesses",
+        "description": "Answers on Vietnamese law with verbatim citations from official sources, commercial contract drafting and review, and trade-remedy research. A research pilot by FTU Tech Lab, Foreign Trade University."
+      },
+      "brand": {
+        "title": "Brand guidelines – LegalAI",
+        "description": "How to use the LegalAI logo, colours, typography and voice."
+      },
+      "privacy": {
+        "title": "Privacy policy (draft) – LegalAI",
+        "description": "Draft privacy policy of LegalAI during the pilot."
+      },
+      "terms": {
+        "title": "Terms of use (draft) – LegalAI",
+        "description": "Draft terms of use of LegalAI during the pilot."
+      }
+    },
+    "nav": {
+      "home": "LegalAI – Home",
+      "primary": "Main navigation",
+      "features": "Features",
+      "how": "How it works",
+      "demo": "Demo video",
+      "faq": "FAQ",
+      "login": "Sign in",
+      "request": "Request access",
+      "openApp": "Open the app",
+      "menu": "Open menu",
+      "language": "Language",
+      "skip": "Skip to main content",
+      "themeDark": "Switch to dark theme",
+      "themeLight": "Switch to light theme"
+    },
+    "cta": {
+      "mailSubject": "LegalAI access request"
+    },
+    "langName": {
+      "vi": "Tiếng Việt",
+      "en": "English"
+    },
+    "crumbs": {
+      "label": "Breadcrumb",
+      "home": "Home"
+    },
+    "endorse": {
+      "line1": "A product of FTU Tech Lab",
+      "line2": "Foreign Trade University, Hanoi",
+      "ftuAlt": "Logo of Foreign Trade University (Trường Đại học Ngoại thương)",
+      "ftuLink": "Foreign Trade University website (opens in a new tab)"
+    },
+    "sources": {
+      "vbpl": {
+        "name": "vbpl.vn",
+        "what": "Legal documents, validity"
+      },
+      "court": {
+        "name": "People's Courts",
+        "what": "Precedents and judgments"
+      },
+      "trav": {
+        "name": "trav.gov.vn",
+        "what": "Trade Remedies Authority"
+      },
+      "fedreg": {
+        "name": "Federal Register",
+        "what": "United States · govinfo"
+      },
+      "eurlex": {
+        "name": "EUR-Lex",
+        "what": "European Union law"
+      },
+      "eping": {
+        "name": "WTO ePing",
+        "what": "SPS/TBT notifications"
+      },
+      "fta": {
+        "name": "trungtamwto.vn",
+        "what": "FTA commitments"
+      }
+    },
+    "footer": {
+      "product": "Product",
+      "resources": "Resources",
+      "contact": "Contact",
+      "limits": "About & limitations",
+      "brand": "Brand",
+      "privacy": "Privacy (draft)",
+      "terms": "Terms (draft)",
+      "status": "Research pilot",
+      "copyright": "© {year} FTU Tech Lab – Foreign Trade University.",
+      "disclaimer": "LegalAI provides information for reference, not legal advice."
+    }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Research pilot · FTU Tech Lab",
+      "title": "AI legal assistant for <em>Vietnamese businesses</em>",
+      "lead": "Ask about Vietnamese law and international trade and get answers that point to the exact provision, with verbatim quotes from official sources. Draft, review and edit commercial contracts right in the conversation.",
+      "watch": "Watch the demo",
+      "note": "Research pilot – information for reference, not a substitute for a lawyer.",
+      "frameTitle": "Answers with citations",
+      "shotAlt": "LegalAI interface: an answer on when a buyer may terminate a sale-of-goods contract, citing the Commercial Law 2005, with a confidence badge",
+      "steps": {
+        "busy": "Looking up official sources…",
+        "done_one": "{count} research step done",
+        "done_other": "{count} research steps done",
+        "find": "Find the law on vbpl.vn",
+        "article": "Read Article 312, Commercial Law 2005",
+        "verify": "Check verbatim quotes",
+        "ground": "Grounding check: 9/9 claims supported"
+      },
+      "cite": {
+        "source": "Commercial Law 2005 · Article 312",
+        "quote": "4. … chế tài hủy bỏ hợp đồng được áp dụng trong các trường hợp sau đây: … b) Một bên vi phạm cơ bản nghĩa vụ hợp đồng.",
+        "status": "vbpl.vn: partly expired",
+        "confidence": "Confidence: High"
+      }
+    },
+    "sources": {
+      "title": "Looked up live on official sources – every time you ask"
+    },
+    "features": {
+      "eyebrow": "Features",
+      "title": "One assistant for legal questions and contracts",
+      "lead": "LegalAI shows every research step, cites a source for every legal claim and tells you when an expert should take a look.",
+      "research": {
+        "title": "Answers with verbatim citations",
+        "text": "Every claim points to a specific article and clause; hover a citation number to see the exact wording, validity status and lookup date.",
+        "alt": "An answer with citation numbers and a sources panel"
+      },
+      "confidence": {
+        "title": "Confidence computed from evidence",
+        "text": "Before answering, the system checks each legal claim against the sources it fetched. Low confidence suggests escalating to a human expert.",
+        "alt": "Confidence badge and an expert escalation card"
+      },
+      "contracts": {
+        "title": "Draft and edit contracts",
+        "text": "Draft from a brief, import .docx/.pdf files and change only what you ask for; every edit is a new version, exported as DOCX and PDF.",
+        "alt": "Document card with versions v1, v2 and DOCX, PDF downloads"
+      },
+      "trade": {
+        "title": "Trade remedies & international trade",
+        "text": "Look up investigations, anti-dumping, countervailing and safeguard measures, and FTA commitments on official Vietnamese and international sources.",
+        "alt": "An answer about trade-remedy investigations on Vietnamese galvanised steel exported to Australia"
+      },
+      "bilingual": {
+        "title": "Vietnamese – English",
+        "text": "Vietnamese and English interface; bilingual two-column contracts."
+      },
+      "deadline": {
+        "title": "Deadline calculator",
+        "text": "Computes due dates under the Civil Code's rules and explains the calculation."
+      },
+      "safety": {
+        "title": "Safety & privacy",
+        "text": "Declines unlawful requests; warns you before sending personal identifiers such as ID card or bank account numbers."
+      },
+      "followups": {
+        "title": "Follow-up suggestions",
+        "text": "After each answer, a few related questions to dig deeper."
+      }
+    },
+    "contracts": {
+      "eyebrow": "Contracts",
+      "title": "From the first draft to a tracked-changes redline",
+      "lead": "Draft and revise commercial contracts on a standard template, with legal grounds for the key clauses.",
+      "b1": "Draft a contract from a short brief; export Word (.docx) and PDF",
+      "b2": "Upload your own contract (.docx, .pdf, .txt, .md) to review or edit it",
+      "b3": "Targeted edits to the clauses you name – the rest stays untouched",
+      "b4": "Every edit is a new version; compare any two versions word by word",
+      "b5": "Download a tracked-changes redline to send to the other party",
+      "alt": "Version comparison of a contract: insertions underlined, deletions struck through"
+    },
+    "trade": {
+      "eyebrow": "International trade",
+      "title": "Trade remedies, checked at the source",
+      "lead": "Ask about your product and export market; LegalAI searches official databases and links back to the original page.",
+      "b1": "Investigations and measures currently applied to Vietnamese goods",
+      "b2": "US and EU documents related to a case",
+      "b3": "SPS/TBT notifications and tariff commitments under FTAs",
+      "tableLabel": "International trade sources",
+      "colSource": "Source",
+      "colWhat": "What LegalAI looks up",
+      "rows": {
+        "trav": "Trade-remedy investigations and measures (Trade Remedies Authority of Viet Nam)",
+        "fedreg": "US initiation notices and determinations (Federal Register, govinfo)",
+        "eurlex": "EU duty regulations and legislation",
+        "eping": "SPS/TBT measures notified by WTO members",
+        "fta": "Commitments under Viet Nam's free trade agreements"
+      }
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "Three steps, every step visible",
+      "s1": {
+        "title": "Ask a question or upload a contract",
+        "text": "Write in Vietnamese or English as you would to a colleague; attach files when needed."
+      },
+      "s2": {
+        "title": "LegalAI checks official sources",
+        "text": "Research steps appear live: which document, which article, what was verified."
+      },
+      "s3": {
+        "title": "Get a verified answer",
+        "text": "Verbatim citations, a confidence level, downloadable documents – or an expert review."
+      }
+    },
+    "demo": {
+      "eyebrow": "Demo video",
+      "title": "See LegalAI at work",
+      "lead": "A screen recording of the real product replaying recorded conversations (waiting time sped up). Captions in Vietnamese and English.",
+      "download": "Download the video (MP4)",
+      "transcriptTitle": "Video transcript",
+      "transcriptNote": "The video has no voice-over or music; the text above is its captions.",
+      "transcript": {
+        "t1": "The LegalAI landing page – an AI legal assistant for Vietnamese businesses, a research pilot by FTU Tech Lab, Foreign Trade University.",
+        "t2": "Signing in (during the pilot, accounts are created by an administrator).",
+        "t3": "Asking (in Vietnamese): “When may the buyer terminate a contract for the sale of goods?”",
+        "t4": "Research steps appear live: vbpl.vn, Commercial Law 2005, Civil Code 2015… (waiting time sped up).",
+        "t5": "The answer points to the articles with verbatim quotes (hover a citation number); confidence High – 9/9 claims match the sources; follow-up suggestions.",
+        "t6": "Drafting a domestic steel coil sales contract (sped up).",
+        "t7": "Document card: A4 preview, DOCX and PDF downloads.",
+        "t8": "A contract the user uploaded and asked to change in two places: version v1 → v2.",
+        "t9": "Word-level comparison, changes-only view, tracked-changes redline download.",
+        "t10": "Switching the interface to English; a bilingual two-column Vietnamese – English green coffee bean contract.",
+        "t11": "Escalating an answer to an expert: the request card shows its reference and status.",
+        "t12": "LegalAI · FTU Tech Lab – Foreign Trade University. Information for reference, not legal advice."
+      }
+    },
+    "bilingual": {
+      "eyebrow": "Bilingual",
+      "title": "Work in Vietnamese or English",
+      "lead": "Pick your interface language; draft bilingual two-column contracts for deals with foreign partners.",
+      "b1": "Interface, messages and exports in the language you choose",
+      "b2": "Vietnamese – English contracts in two columns, with the prevailing version stated",
+      "b3": "Law quotes stay verbatim in Vietnamese, explained in your language",
+      "docTitle": "HỢP ĐỒNG MUA BÁN CÀ PHÊ NHÂN · GREEN COFFEE BEAN SALES CONTRACT",
+      "viHead": "Điều 4. Phạt vi phạm và bồi thường thiệt hại",
+      "viText": "1. Phạt vi phạm: bên vi phạm nghĩa vụ thanh toán hoặc nghĩa vụ giao hàng phải trả cho bên bị vi phạm một khoản tiền phạt bằng …% giá trị phần nghĩa vụ hợp đồng bị vi phạm [cần thương lượng].",
+      "enHead": "Article 4. Penalty for Breach and Compensation for Damage",
+      "enText": "1. Penalty: a party breaching its payment or delivery obligation shall pay the aggrieved party a penalty equal to …% of the value of the breached part of the contractual obligation [to be negotiated].",
+      "docNote": "Excerpt from a contract LegalAI drafted during testing (the “…” blanks are left for the parties to negotiate)."
+    },
+    "about": {
+      "eyebrow": "About the project",
+      "title": "Research on AI for business legal work",
+      "text": "LegalAI is a research project of FTU Tech Lab (FTL), Foreign Trade University, Hanoi: an AI legal platform that helps Vietnamese small and medium-sized enterprises draft, negotiate and perform commercial contracts and handle trade remedies and international trade issues."
+    },
+    "limits": {
+      "title": "Limitations",
+      "l1": "This is a research pilot; answers may be wrong or incomplete. Check the cited sources before relying on them.",
+      "l2": "LegalAI is not a lawyer and does not give legal advice; important matters should be reviewed by an expert.",
+      "l3": "Confidence only measures how well the claims match the sources consulted – it does not guarantee a correct conclusion.",
+      "l4": "Official sources can be temporarily unavailable; the answer says so when that happens.",
+      "l5": "Scanned PDFs without a text layer are not supported yet."
+    },
+    "faq": {
+      "eyebrow": "FAQ",
+      "title": "Frequently asked questions",
+      "advice": {
+        "q": "Does LegalAI replace a lawyer?",
+        "a": "No. LegalAI is a research pilot that provides sourced information for reference, not legal advice. For high-value or high-risk matters, use the “Escalate to expert” button or consult a lawyer."
+      },
+      "sources": {
+        "q": "Where does LegalAI get its information?",
+        "a": "It looks up official sources live when you ask: vbpl.vn (legal documents), the courts' precedent and judgment portals, the Trade Remedies Authority (trav.gov.vn), the Federal Register/govinfo, EUR-Lex, WTO ePing and trungtamwto.vn (FTA commitments). Every citation shows its source and lookup date."
+      },
+      "confidence": {
+        "q": "How is confidence calculated?",
+        "a": "Before answering, an automatic check compares each legal claim in the answer with the text fetched from the sources. The result (high, medium, low) appears under the answer with its reasons. It measures agreement with sources, not correctness."
+      },
+      "data": {
+        "q": "How is my data handled?",
+        "a": "Conversations and uploaded files are stored on the server running LegalAI. The text of a file is extracted on the server and sent with your question to the AI model deployed by FTU Tech Lab. You can delete conversations, export your data and revoke share links at any time. The detailed policy is still a draft."
+      },
+      "model": {
+        "q": "Which AI model does LegalAI run on?",
+        "a": "LegalAI runs on a large language model deployed by FTU Tech Lab; the Lab does not disclose the name of the underlying model. Your questions and the text of attached files are processed on infrastructure operated by FTU Tech Lab and its technical service providers to generate answers. The interface warns you before you send personal identifiers such as ID card or bank account numbers – only send them if really necessary."
+      },
+      "access": {
+        "q": "How can I try it?",
+        "a": "During the pilot, accounts are created by an administrator (public sign-up is off). Request access via the contact email at the bottom of this page."
+      },
+      "files": {
+        "q": "Which file formats are supported?",
+        "a": "Upload .docx, .pdf, .txt or .md files up to 10 MB. Documents created by LegalAI export to .docx and .pdf, with a tracked-changes redline for every edit. Scanned PDFs are not supported yet."
+      },
+      "language": {
+        "q": "Can I use it in English?",
+        "a": "Yes. The interface is available in Vietnamese and English; you can ask in English and draft bilingual Vietnamese – English contracts in two columns."
+      }
+    },
+    "cta": {
+      "title": "Try LegalAI during the pilot",
+      "text": "We are inviting businesses and legal professionals to try it and share feedback."
+    }
+  },
+  "legal": {
+    "draftBadge": "Draft",
+    "draftNote": "This text is a draft for the pilot phase. It has not been legally reviewed and may change. Please do not treat it as a final commitment.",
+    "contactH": "Contact",
+    "contactP": "Questions about this text:",
+    "updated": "Last updated: 26 September 2026 (draft).",
+    "privacy": {
+      "title": "Privacy policy",
+      "intro": "How LegalAI – a pilot by FTU Tech Lab, Foreign Trade University – collects and processes data when you use the service.",
+      "s1": {
+        "h": "Data we store",
+        "p": "Your email and a hashed password (the original password is never stored), display name and interface settings; conversation content; files you upload and the text extracted from them; documents LegalAI creates; expert escalation requests and replies."
+      },
+      "s2": {
+        "h": "Why we use it",
+        "p": "To answer your questions, create and edit documents at your request, forward requests to experts when you choose to, and improve the product as part of the research."
+      },
+      "s3": {
+        "h": "AI model and technical service providers",
+        "p": "Your questions and the text of attached files are processed by the AI model infrastructure operated by FTU Tech Lab and its technical service providers to generate answers. The interface warns you before you send personal identifiers. When researching, LegalAI visits official source websites but does not send your personal data to them."
+      },
+      "s4": {
+        "h": "Storage and security",
+        "p": "Data is stored on the server running LegalAI. Sessions use httpOnly cookies; passwords are hashed with scrypt; connections from the Internet use HTTPS."
+      },
+      "s5": {
+        "h": "Administrator access",
+        "p": "FTU Tech Lab administrators may review conversations and uploaded documents for user support, quality and safety purposes. Every such access is logged (who viewed it, when, and what was viewed)."
+      },
+      "s6": {
+        "h": "Your rights",
+        "p": "You can view, export and delete your conversations, revoke share links and ask an administrator to delete your account."
+      },
+      "s7": {
+        "h": "Retention",
+        "p": "Data is kept for the duration of the pilot or until you delete it. Specific periods will be set in the final version."
+      },
+      "s8": {
+        "h": "Changes",
+        "p": "This policy may be updated; the final version will be published on this page."
+      }
+    },
+    "terms": {
+      "title": "Terms of use",
+      "intro": "Conditions for using LegalAI during the research pilot of FTU Tech Lab, Foreign Trade University.",
+      "s1": {
+        "h": "Nature of the service",
+        "p": "LegalAI is a research tool that provides legal information for reference. It is not a law firm and does not provide legal advice."
+      },
+      "s2": {
+        "h": "Accounts",
+        "p": "Accounts are created by an administrator during the pilot. You are responsible for keeping your password secret and for activity under your account."
+      },
+      "s3": {
+        "h": "Acceptable use",
+        "p": "Do not use LegalAI for unlawful purposes, to evade legal obligations, or to submit content you are not entitled to share."
+      },
+      "s4": {
+        "h": "Accuracy",
+        "p": "Answers may be wrong, incomplete or out of date. Check the cited sources; you are responsible for how you use the information."
+      },
+      "s5": {
+        "h": "Generated documents",
+        "p": "Documents drafted by LegalAI are drafts for you to review and edit; have them reviewed by a qualified person before signing."
+      },
+      "s6": {
+        "h": "Service interruptions",
+        "p": "The pilot service may be interrupted, changed or discontinued without notice."
+      },
+      "s7": {
+        "h": "Changes",
+        "p": "These terms may be updated; the final version will be published on this page."
+      }
+    }
+  },
+  "brand": {
+    "eyebrow": "Brand",
+    "title": "The LegalAI brand",
+    "lead": "A short guide to using the LegalAI logo, colours, typography and voice consistently. The key colour is FTU red, used sparingly on a black, white and grey interface.",
+    "toc": "Contents",
+    "logo": {
+      "title": "Logo",
+      "lead": "Mark + “LegalAI” wordmark. Use the colour version on light backgrounds, colour-on-dark or white on dark backgrounds, and black for single-colour print.",
+      "rationaleTitle": "Idea",
+      "rationale": "A balance built from simple geometry – beam, pillar, base and two pans – whose fulcrum is a four-point spark: the law, weighed with AI assistance. Heavy strokes and no hairlines keep it legible at 16 px; a rounded square (25% radius) in FTU red. The “LegalAI” wordmark is Be Vietnam Pro Bold converted to outlines.",
+      "variants": {
+        "horizontalColor": "Horizontal – colour",
+        "horizontalColorOnDark": "Horizontal – colour on dark",
+        "stackedColor": "Stacked – colour",
+        "horizontalBlack": "Horizontal – black",
+        "horizontalWhite": "Horizontal – white",
+        "horizontalRed": "Horizontal – red",
+        "markColor": "Mark – colour",
+        "markBlack": "Mark – black",
+        "markWhite": "Mark – white"
+      }
+    },
+    "space": {
+      "title": "Clear space & minimum size",
+      "clear": "Keep clear space of at least 1/4 of the mark's height around the logo.",
+      "min": "Mark at least 16 px (the favicon uses a pixel-snapped drawing); horizontal lockup at least 96 px wide.",
+      "minLockup": "96 px"
+    },
+    "donts": {
+      "title": "Don'ts",
+      "stretch": "Don't stretch or distort the proportions.",
+      "recolor": "Don't recolour outside the palette.",
+      "rotate": "Don't rotate the logo.",
+      "effects": "Don't add shadows, outlines or effects.",
+      "busy": "Don't place it on busy, low-contrast backgrounds.",
+      "combine": "Don't merge it with the FTU emblem into a new logo."
+    },
+    "color": {
+      "title": "Colour",
+      "lead": "FTU red #C20B11 (taken from the University's official logo) is the only accent: primary buttons, the mark, links, focus rings and key highlights. Everything else is black, white and grey.",
+      "red": "Red (brand)",
+      "neutral": "Neutral",
+      "status": "Status",
+      "pairs": "Colour pairs used in the interface (WCAG)",
+      "brandNote": "brand colour",
+      "darkLinkNote": "links on dark",
+      "light": "light",
+      "dark": "dark",
+      "theme": "Theme",
+      "pair": "Roles",
+      "sample": "Sample",
+      "ratio": "Contrast",
+      "usage": "Contrast ratios are computed from the hex values (WCAG 2.x formula). On dark backgrounds, red text and links use lighter tints (red 300/400) to meet AA; primary buttons keep #C20B11 with white text."
+    },
+    "type": {
+      "title": "Typography",
+      "lead": "Be Vietnam Pro (SIL Open Font License) – designed for Vietnamese with full diacritics. Bold headings with slightly tight tracking; body text at 15–16 px.",
+      "sample": "Trợ lý pháp lý AI",
+      "sampleLong": "Hợp đồng mua bán hàng hoá quốc tế – điều khoản phạt vi phạm và bồi thường thiệt hại."
+    },
+    "voice": {
+      "title": "Voice & tone",
+      "lead": "Clear, honest, grounded and respectful – in Vietnamese and in English.",
+      "say": "Say",
+      "avoid": "Avoid",
+      "clear": {
+        "title": "Clear",
+        "text": "Short sentences; explain terms when needed.",
+        "do": "“The buyer may terminate when the seller commits a fundamental breach.”",
+        "dont": "“Pursuant to the relevant applicable regulations…”"
+      },
+      "honest": {
+        "title": "Honest",
+        "text": "State limitations and how certain we are.",
+        "do": "“Confidence: medium – one claim was not found in the sources.”",
+        "dont": "“100% legally correct.”"
+      },
+      "grounded": {
+        "title": "Grounded",
+        "text": "Every legal claim comes with a source.",
+        "do": "“Under Article 301 of the Commercial Law 2005 …”",
+        "dont": "Quoting figures or penalty rates without a source."
+      },
+      "respectful": {
+        "title": "Respectful",
+        "text": "Polite, non-judgemental, never alarmist.",
+        "do": "“You may want an expert to review this clause.”",
+        "dont": "“You will lose the case if…”"
+      }
+    },
+    "ui": {
+      "title": "UI examples",
+      "primary": "Primary button",
+      "secondary": "Secondary",
+      "link": "Link",
+      "label": "Field label",
+      "placeholder": "Ask a question…",
+      "confHigh": "Confidence: High",
+      "confMid": "Medium",
+      "confLow": "Low",
+      "status": "In force"
+    },
+    "endorse": {
+      "title": "Foreign Trade University logo",
+      "lead": "LegalAI is a product of FTU Tech Lab, Foreign Trade University. The University's logo appears only in this endorsement area.",
+      "r1": "Use the official logo file as is – no redrawing, recolouring, cropping or inverting.",
+      "r2": "On dark backgrounds, place it on a white rounded plate.",
+      "r3": "Keep it separate from the LegalAI logo; never combine them into one mark.",
+      "r4": "“FTU Tech Lab” is set as plain text – it has no logo of its own."
+    },
+    "downloads": {
+      "title": "Downloads",
+      "zip": "Download the LegalAI logo kit (.zip)",
+      "note": "SVG and PNG files of every logo version plus a README. The Foreign Trade University logo is not included."
+    }
+  },
+  "adminChats": {
+    "title": "Chat history",
+    "desc": "Every user's conversations (read-only). Each time you open a chat or preview / download another user's document, it is recorded in the access log.",
+    "keyword": "Keyword (title or content)",
+    "user": "User email",
+    "from": "From",
+    "to": "To",
+    "col": {
+      "user": "User",
+      "title": "Title",
+      "created": "Created",
+      "updated": "Updated",
+      "turns": "Turns",
+      "flags": "Has"
+    },
+    "docs": "documents",
+    "escalated": "escalated",
+    "empty": "No matching conversations.",
+    "count_one": "{count} conversation",
+    "count_other": "{count} conversations",
+    "back": "Admin",
+    "banner": "Viewing as administrator – read-only · {email}",
+    "viewerTitle": "{title} – admin view",
+    "older": "Load earlier turns",
+    "end": "End of conversation · read-only"
+  },
+  "accessLog": {
+    "title": "Access log",
+    "desc": "Administrator views of other users' conversations and previews / downloads of their documents.",
+    "col": {
+      "time": "Time",
+      "admin": "Administrator",
+      "action": "Action",
+      "owner": "Chat owner",
+      "chat": "Conversation"
+    },
+    "action": {
+      "view": "view",
+      "preview": "document preview",
+      "download": "document download"
+    },
+    "deleted": "(deleted)",
+    "empty": "No access recorded yet.",
+    "count_one": "{count} entry",
+    "count_other": "{count} entries"
+  },
+  "question": {
+    "label": "Clarifying question",
+    "chip": "Your choice needed",
+    "step": "Question {n}/{total}",
+    "other": "Other…",
+    "otherLabel": "Other answer",
+    "recommended": "Recommended",
+    "multiHint": "Select all that apply",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "skip": "Skip",
+    "sending": "Sending…",
+    "keysHint": "Keys 1–9 to choose · Enter to continue",
+    "answered": "You chose",
+    "unanswered": "No answer",
+    "dismissed": "Question skipped – the assistant stopped here.",
+    "stopped": "The question wasn't answered (stopped).",
+    "waitingUser": "Waiting for the user to answer.",
+    "preparing": "Preparing the question…",
+    "composerHint": "Answer the question above to continue",
+    "sendFailed": "Couldn't send the answer: {message}"
+  },
+  "repair": {
+    "previous": "Original answer (before re-verification)",
+    "updated": "Looked up again and updated",
+    "running": "Looking things up again to verify…",
+    "now": "Look up again now",
+    "nowTip": "The assistant looks up the unsupported items again and updates the answer (once)."
+  },
+  "draft": {
+    "label": "Drafting progress: {title}",
+    "stepsLabel": "Drafting steps",
+    "kind": {
+      "contract": "Contract",
+      "report": "Report",
+      "document": "Document"
+    },
+    "lang": {
+      "vi": "VI",
+      "en": "EN",
+      "bilingual": "VI–EN"
+    },
+    "phase": {
+      "plan": "Outlining…",
+      "write": "Writing sections…",
+      "check": "Cross-checking…",
+      "fix": "Fixing sections…",
+      "assemble": "Assembling the document…",
+      "done": "Done",
+      "failed": "Drafting failed",
+      "between": "Moving to the next step…",
+      "paused": "Stopped"
+    },
+    "step": {
+      "plan": "Outline",
+      "write": "Write sections",
+      "check": "Cross-check",
+      "fix": "Fix",
+      "assemble": "Assemble file"
+    },
+    "state": {
+      "done": "done",
+      "current": "in progress",
+      "failed": "failed",
+      "todo": "not started"
+    },
+    "sec": {
+      "pending": "waiting",
+      "writing": "writing",
+      "written": "written",
+      "failed": "failed",
+      "checked": "checked",
+      "fixed": "fixed"
+    },
+    "sectionsDone": "{done}/{total} sections",
+    "words_one": "{n} word",
+    "words_other": "{n} words",
+    "noIssues": "No open issues",
+    "errors_one": "{count} error",
+    "errors_other": "{count} errors",
+    "warnings_one": "{count} warning",
+    "warnings_other": "{count} warnings",
+    "suggestions_one": "{count} suggestion",
+    "suggestions_other": "{count} suggestions",
+    "rounds_one": "{count} fix round",
+    "rounds_other": "{count} fix rounds",
+    "secIssues_one": "{count} issue",
+    "secIssues_other": "{count} issues",
+    "showSections_one": "Show {count} section",
+    "showSections_other": "Show {count} sections",
+    "hideSections_one": "Hide {count} section",
+    "hideSections_other": "Hide {count} sections",
+    "docReady": "Created the document {title} (version {v})",
+    "openDoc": "Go to document",
+    "failedDetail": "Details from the tool:"
+  },
+  "cards": {
+    "calc": {
+      "result": "Result",
+      "interest": "Interest",
+      "penalty": "Penalty",
+      "words": "In words",
+      "formula": {
+        "penalty": "penalty = penalty rate × value of the breached obligation",
+        "simple_year": "interest = principal × annual rate × days / {denom}",
+        "simple_day": "interest = principal × daily rate × days",
+        "monthly": "interest compounded monthly",
+        "daily": "interest compounded daily"
+      },
+      "kind": {
+        "loan": "Loan interest",
+        "late_payment": "Late-payment interest"
+      },
+      "period": "{from} → {to} ({days} days)",
+      "days_one": "{count} day",
+      "days_other": "{count} days",
+      "rate": {
+        "year": "{rate} per year",
+        "month": "{rate} per month",
+        "day": "{rate} per day"
+      },
+      "comp": {
+        "simple": "simple interest",
+        "monthly": "compounded monthly",
+        "daily": "compounded daily"
+      },
+      "rounding_one": "Rounded to {count} decimal place (half-up)",
+      "rounding_other": "Rounded to {count} decimal places (half-up)",
+      "unrounded": "Before rounding: {v}",
+      "total": "Principal + interest: {v}",
+      "warn": {
+        "penalty_cap": "The penalty rate {rate} exceeds the {cap} cap of the Commercial Law 2005 (Article 301) – a suggested basis, verify before citing.",
+        "loan_cap": "The interest rate {rate} per year exceeds the {cap} per-year cap of the Civil Code 2015 (Article 468) – a suggested basis, verify before citing."
+      }
+    },
+    "steps_one": "Steps ({count})",
+    "steps_other": "Steps ({count})",
+    "details": "Details",
+    "standard": "Standard wording",
+    "check": {
+      "ok": "Matches",
+      "style": "Value matches, wording differs",
+      "mismatch": "Does not match",
+      "unread": "Could not read",
+      "said": "The words read: {v}",
+      "words": "Words in the document"
+    },
+    "contract": {
+      "errors_one": "{count} error",
+      "errors_other": "{count} errors",
+      "warnings_one": "{count} warning",
+      "warnings_other": "{count} warnings",
+      "passed": "{passed}/{checks} checks passed",
+      "total": "Contract value found: {v}"
+    },
+    "fx": {
+      "rateOn": "Rate on {date}",
+      "convert": "Conversion",
+      "ways_one": "Conversion methods ({count})",
+      "ways_other": "Conversion methods ({count})",
+      "reference": "Reference rate – cite the source and date when using it.",
+      "src": {
+        "sbv_central": "SBV central rate",
+        "sbv_ref": "SBV reference rate",
+        "sbv_cross": "SBV cross rate (customs valuation)",
+        "vcb": "Vietcombank",
+        "vcb_cash": "Vietcombank cash buying rate",
+        "vcb_transfer": "Vietcombank transfer buying rate",
+        "vcb_sell": "Vietcombank selling rate",
+        "sbv_ref_buy": "SBV reference (buying)",
+        "sbv_ref_sell": "SBV reference (selling)",
+        "other": "Other source"
+      },
+      "crossVia": "Cross conversion: {a} / {b}",
+      "buySell": "buy {buy} – sell {sell} VND",
+      "vcbRates": "cash buy {cash} · transfer buy {transfer} · sell {sell} VND",
+      "dateOf": "as of {date}",
+      "validFrom": "valid {from} – {to}",
+      "errors_one": "{count} source unavailable",
+      "errors_other": "{count} sources unavailable"
+    },
+    "web": {
+      "official": "Official source",
+      "unofficial": "Unofficial",
+      "date": "dated {date}",
+      "officialGroup": "under",
+      "noDate": "publication date not shown"
+    },
+    "tariff": {
+      "market": {
+        "vn": "Vietnam tariff",
+        "us": "US tariff (HTS)",
+        "eu": "EU tariff (TARIC)"
+      },
+      "year": "year {year}",
+      "origin": "origin {origin}",
+      "dest": "into {dest}",
+      "col": {
+        "mfn": "MFN (preferential)",
+        "normal": "Standard rate",
+        "export": "Export duty",
+        "fta": "{fta} preferential",
+        "general": "Column 1 – General (NTR/MFN)",
+        "special": "Special (preference programmes)",
+        "col2": "Column 2",
+        "third_country": "Third-country duty (MFN)",
+        "preference": "Tariff preference",
+        "lvc": "Low-value consignment duty",
+        "quota": "Tariff quota",
+        "antidumping": "Anti-dumping duty",
+        "countervailing": "Countervailing duty",
+        "safeguard": "Safeguard duty",
+        "additional": "Additional duty",
+        "other": "Other measure"
+      },
+      "free": "Free (0%)",
+      "ergaOmnes": "all origins",
+      "annex": "{year} rate from the annex",
+      "period": "{from} – {to}",
+      "since": "since {from}",
+      "quota": "quota {n}",
+      "stale": "other period",
+      "extraDuties_one": "{count} Chapter 99 heading names Vietnam (additional duty) – the General rate alone is not the total duty.",
+      "extraDuties_other": "{count} Chapter 99 headings name Vietnam (additional duties) – the General rate alone is not the total duty.",
+      "amended_one": "{count} amending document mentions this code – check it before relying on the rate.",
+      "amended_other": "{count} amending documents mention this code – check them before relying on the rate.",
+      "lines_one": "Tariff lines ({count})",
+      "lines_other": "Tariff lines ({count})",
+      "unit": "unit: {unit}",
+      "more_one": "… {count} more line",
+      "more_other": "… {count} more lines",
+      "note": "Rates as published by the official source – cite the source and the lookup date when using them."
+    },
+    "legacy": {
+      "calc": "Calculation",
+      "check": "Amount-in-words check",
+      "contract": "Figures check",
+      "fx": "Exchange rate",
+      "web": "Web page"
+    },
+    "company": {
+      "mode": {
+        "lookup": "Company lookup",
+        "verify": "Company verification",
+        "verifyUnofficial": "Checked against unofficial sources"
+      },
+      "taxCode": "Tax code",
+      "checksum": {
+        "valid": "Valid format",
+        "validBranch": "Valid branch code",
+        "invalid": "Wrong check digit",
+        "format": "Invalid format",
+        "branchZero": "Invalid branch number",
+        "personal_id": "Personal ID number"
+      },
+      "checksumHint": "A math check only – it does not show that the code was issued or that the company is active.",
+      "byName": "By name",
+      "date": "Checked on {date}",
+      "manual": {
+        "title": "Official sources require a verification code – please look it up yourself",
+        "body": "The tool does not bypass verification codes (CAPTCHA), so the company details have not been verified automatically.",
+        "stepsTitle": "How to check",
+        "step1Code": "Open an official portal below and enter tax code {code}.",
+        "step1Name": "Open an official portal below and enter the company name.",
+        "step2": "Complete the verification code, search, then open the company page.",
+        "step3": "Copy the basic information and paste it into the chat to compare."
+      },
+      "portal": {
+        "dkkd": "National Business Registration Portal",
+        "dkkd_egazette": "Business registration e-gazette",
+        "gdt": "Tax Department – taxpayer lookup"
+      },
+      "portalHint": {
+        "dkkd": "name, status, legal representative, address",
+        "dkkd_egazette": "change history, suspension, dissolution",
+        "gdt": "taxpayer status, tax office"
+      },
+      "gate": {
+        "captcha": "CAPTCHA",
+        "open": "No CAPTCHA seen",
+        "blocked": "Blocks automated access",
+        "error": "Not checked"
+      },
+      "newTab": "opens in a new tab",
+      "confirm": "Confirm on an official portal",
+      "invalid": "Invalid tax code – check it again on the contract, invoice or business registration certificate.",
+      "personal": "This is a personal ID number – the tool only looks up companies and does not process personal data.",
+      "field": {
+        "name": "Company name",
+        "nameEn": "Foreign-language name",
+        "short": "Short name",
+        "code": "Enterprise code",
+        "tax_code": "Tax code",
+        "status": "Status",
+        "legalType": "Legal form",
+        "regDate": "Founded",
+        "address": "Head office",
+        "representative": "Legal representative",
+        "mainLine": "Main business line",
+        "taxAuthority": "Tax office"
+      },
+      "status": {
+        "active": "Active",
+        "temporarily_suspended": "Temporarily suspended",
+        "not_at_address": "Not operating at registered address",
+        "dissolving": "Dissolution in progress",
+        "dissolved": "Dissolved",
+        "bankrupt": "Bankrupt",
+        "revoked": "Registration certificate revoked",
+        "ceased_pending_closure": "Ceased, tax code not yet closed",
+        "tax_code_closed": "Tax code closed",
+        "ceased": "Ceased operations",
+        "other": "Other status"
+      },
+      "origin": {
+        "user_paste": "Source: data the user pasted from an official portal",
+        "aggregator": "Unofficial source – may be out of date; confirm on an official portal before signing",
+        "official": "Official source – you passed the verification on the official site yourself; the system read the result page."
+      },
+      "sources": "Reference sources",
+      "unofficial": "unofficial",
+      "fetched": "fetched {date}",
+      "cross": {
+        "agree": "Sources agree",
+        "disagree": "Sources disagree"
+      },
+      "codeMismatch": "The tax code in the pasted text differs from the one looked up – it may be another company page.",
+      "col": {
+        "field": "Item",
+        "expected": "In the contract",
+        "official": "Official record",
+        "reference": "Reference record",
+        "result": "Result",
+        "unofficial": "Unofficial sources"
+      },
+      "notLooked": "not looked up",
+      "result": {
+        "match": "Match",
+        "partial": "Partial match",
+        "mismatch": "Mismatch",
+        "not_checked": "Not checked",
+        "unclear": "Partial / unclear"
+      },
+      "summary": {
+        "match": "All details match",
+        "partial": "Some details partly match",
+        "mismatch": "Some details do not match"
+      },
+      "risksTitle": "Risks / to do",
+      "risk": {
+        "mismatch": "{field}: does not match – ask the counterparty to explain or correct the contract.",
+        "partial": "{field}: partial match – write it exactly as registered.",
+        "representative": "The signatory differs from the legal representative – a valid power of attorney is needed.",
+        "statusHigh": "Status “{status}” – high risk, clarify before signing.",
+        "statusVeryHigh": "Status “{status}” – very high risk, do not sign.",
+        "checksum": "The tax code in the contract is invalid – ask the counterparty to confirm it.",
+        "branch": "A 13-digit code belongs to a dependent unit without legal personality – the contract should be in the company name (the branch signs under authorisation).",
+        "conflict": "{field}: the unofficial sources differ – confirm on an official portal.",
+        "unclear": "{field}: partial match or the sources disagree – confirm on an official portal."
+      },
+      "risksMore_one": "The answer lists {count} point to note.",
+      "risksMore_other": "The answer lists {count} points to note.",
+      "summaryUnofficial": {
+        "match": "Matches unofficial sources",
+        "partial": "Partial / unclear (unofficial)",
+        "mismatch": "Some details do not match (unofficial)"
+      },
+      "conflict": "Sources do not agree",
+      "updated": "site says updated {date}",
+      "candidates": "Companies suggested by aggregator sites",
+      "lookupThis": "Look up this code",
+      "candidatesHint": "Pick a tax code and ask to “Look up this code” for details, then confirm on an official portal.",
+      "skipped": "Not used",
+      "skip": {
+        "robots": "blocked by robots.txt",
+        "challenge": "anti-bot page",
+        "not_found": "no data",
+        "code_mismatch": "returned another company",
+        "error": "access error"
+      },
+      "sourcesOfficial": "Official source",
+      "assist": {
+        "cancelled": "The verification on the official site was cancelled – not confirmed officially.",
+        "timeout": "The verification on the official site timed out – not confirmed officially.",
+        "not_found": "The official site found no record for this code – check the tax code.",
+        "unparsed": "Verified, but the result page couldn't be read – check it on the official portal yourself.",
+        "error": "Couldn't open the official site right now."
+      }
+    }
+  },
+  "library": {
+    "tool": {
+      "vbpl_find": "Finds central legal documents on vbpl.vn by title or number.",
+      "vbpl_document": "Opens a document on vbpl.vn: attributes, legal status, list of articles.",
+      "vbpl_article": "Quotes one article verbatim with the document's legal status.",
+      "vbpl_search_articles": "Finds the articles of one document that contain a keyword.",
+      "vbpl_history": "Validity history and amending / replacing documents.",
+      "vbpl_verify": "Checks that a quote appears verbatim on vbpl.vn.",
+      "court_anle_search": "Searches published precedents (anle.toaan.gov.vn).",
+      "court_anle_document": "Reads a precedent: status, situation, legal solution, verbatim text.",
+      "court_judgment_search": "Searches published judgments (congbobanan.toaan.gov.vn).",
+      "court_judgment_document": "Reads a judgment: parties, reasoning, decision, legal basis.",
+      "trav_search": "Searches trade-remedy news on trav.gov.vn.",
+      "trav_measures": "Looks up trade-remedy measures in force (early-warning database).",
+      "trav_page": "Reads an article on trav.gov.vn.",
+      "fedreg_search": "Searches the US Federal Register.",
+      "fedreg_document": "Reads a Federal Register document: duty rates, margins, deposits.",
+      "eurlex_search": "Searches EU legal acts (EUR-Lex).",
+      "eurlex_document": "Reads an EU act: Article 1, duty tables.",
+      "eping_search": "Searches WTO SPS/TBT notifications (ePing).",
+      "eping_notification": "Reads one SPS/TBT notification.",
+      "fta_list": "Lists Vietnam's free trade agreements.",
+      "fta_search": "Searches FTA texts and commitments (trungtamwto.vn).",
+      "fta_document": "Reads an FTA text or file.",
+      "tariff_vn": "Looks up Vietnam's import / export tariff by HS code, with the legal basis.",
+      "tariff_us": "Looks up the US tariff (HTS – USITC) by HS code.",
+      "tariff_eu": "Looks up the EU tariff (TARIC via Access2Markets) by HS code.",
+      "tariff_search": "Suggests HS codes from a product description.",
+      "document_create": "Creates a Word / PDF document (contract, report…).",
+      "document_edit": "Edits a created or uploaded document into a new version.",
+      "document_read": "Reads the content of a document.",
+      "draft_plan": "Long drafting – outline.",
+      "draft_write": "Long drafting – writes sections in parallel.",
+      "draft_check": "Long drafting – cross-check.",
+      "draft_fix": "Long drafting – fixes flagged sections.",
+      "draft_assemble": "Long drafting – assembles the document.",
+      "draft_status": "Long drafting progress.",
+      "calc_eval": "Exact calculator for amounts and rates.",
+      "calc_interest": "Computes interest, late-payment interest and penalties.",
+      "calc_money_words": "Writes an amount in words.",
+      "calc_check_words": "Checks an amount in words against the figure.",
+      "calc_contract_check": "Checks contract figures (price tables, payments, words).",
+      "fx_rate": "Looks up official exchange rates (SBV, Vietcombank).",
+      "fx_convert": "Converts currencies at official rates.",
+      "web_search": "Web search, official sources first.",
+      "web_read": "Reads a web page / PDF and flags official sources.",
+      "grounding_check": "Checks the answer against the sources consulted and computes confidence.",
+      "expert_escalate": "Escalates the question to a legal expert.",
+      "clock_now": "Current date and time (Vietnam time).",
+      "clock_calc": "Computes deadlines per the Civil Code, with public holidays.",
+      "about_self": "Information about the assistant and its limits.",
+      "safety_scan": "Safety check of content (prompt injection, personal data).",
+      "question": "Asks the user a clarifying question with choices.",
+      "chrome_click": "Clicks an element on the page.",
+      "chrome_close_page": "Closes a tab.",
+      "chrome_drag": "Drags an element.",
+      "chrome_emulate": "Emulates a device / network.",
+      "chrome_evaluate_script": "Runs a script to extract page content.",
+      "chrome_fill": "Fills in one input.",
+      "chrome_fill_form": "Fills in several form fields.",
+      "chrome_get_console_message": "Reads one console message.",
+      "chrome_get_css_styles": "Reads an element's CSS styles.",
+      "chrome_get_network_request": "Reads one network request.",
+      "chrome_handle_dialog": "Handles a page dialog.",
+      "chrome_hover": "Hovers over an element.",
+      "chrome_lighthouse_audit": "Audits the page with Lighthouse.",
+      "chrome_list_console_messages": "Lists console messages.",
+      "chrome_list_network_requests": "Lists network requests.",
+      "chrome_list_pages": "Lists the open tabs.",
+      "chrome_navigate_page": "Opens an address in the current tab.",
+      "chrome_new_page": "Opens a new tab.",
+      "chrome_performance_analyze_insight": "Analyzes a performance insight.",
+      "chrome_performance_start_trace": "Starts a performance trace.",
+      "chrome_performance_stop_trace": "Stops the performance trace.",
+      "chrome_press_key": "Presses a key on the page.",
+      "chrome_resize_page": "Resizes the page window.",
+      "chrome_select_page": "Switches to another tab.",
+      "chrome_take_heapsnapshot": "Takes a heap snapshot.",
+      "chrome_take_screenshot": "Takes a screenshot of the page.",
+      "chrome_take_snapshot": "Reads the page structure and text.",
+      "chrome_type_text": "Types text into the page.",
+      "chrome_upload_file": "Uploads a file to the page.",
+      "chrome_wait_for": "Waits for text to appear on the page.",
+      "company_lookup": "Checks a tax code and guides the company lookup on official portals; reads data the user pastes from the result page.",
+      "company_verify": "Compares a contract party's name, address and representative with the company record.",
+      "diagram_create": "Draws process, sequence and party-structure diagrams (layout-checked, PNG / SVG download).",
+      "image_search": "Finds images on official sources or freely licensed Wikimedia Commons files.",
+      "image_fetch": "Saves a chosen image (≤ 5 MB, metadata stripped) with credit and license.",
+      "source_snapshot": "Captures the original official page or PDF page as an image."
+    },
+    "skill": {
+      "calculation": {
+        "name": "Calculation",
+        "desc": "How to compute amounts, interest, penalties and FX with the tools, never by hand."
+      },
+      "citation-check": {
+        "name": "Citation check",
+        "desc": "Checks every quote, figure and link against the sources before answering."
+      },
+      "clarify": {
+        "name": "Clarify",
+        "desc": "When and how to ask the user a clarifying question."
+      },
+      "contract-review": {
+        "name": "Contract review",
+        "desc": "Reviews commercial contracts: risks, missing clauses, legal basis."
+      },
+      "legal-research": {
+        "name": "Legal research",
+        "desc": "Research workflow for Vietnamese law on official sources."
+      },
+      "legal-translation": {
+        "name": "Legal translation",
+        "desc": "Vietnamese–English legal translation with standard terminology."
+      },
+      "long-drafting": {
+        "name": "Long drafting",
+        "desc": "Team-style drafting of long contracts / reports: outline, write, check, fix, assemble."
+      },
+      "safety": {
+        "name": "Safety",
+        "desc": "Safety rules: prompt injection, personal data, unlawful requests."
+      },
+      "tariff-lookup": {
+        "name": "Tariff lookup",
+        "desc": "Looks up VN / US / EU import duty rates by HS code with the legal basis."
+      },
+      "trade-remedy-lookup": {
+        "name": "Trade remedy lookup",
+        "desc": "Looks up anti-dumping, countervailing and safeguard measures on Vietnamese goods."
+      },
+      "verify-unknown": {
+        "name": "Verify unknowns",
+        "desc": "Verifies unknown information on official sources instead of guessing."
+      },
+      "company-lookup": {
+        "name": "Company lookup",
+        "desc": "Counterparty due diligence by tax code or name on official sources; presents discrepancies as risks."
+      },
+      "archify": {
+        "name": "Archify diagrams",
+        "desc": "Templates and rules for process, sequence, lifecycle and party-structure diagrams."
+      },
+      "visuals": {
+        "name": "Illustrations",
+        "desc": "When to add diagrams, charts and images; placed in context with caption and source."
+      }
+    }
+  },
+  "assist": {
+    "source": {
+      "gdt": "Tax Department – taxpayer lookup",
+      "dkkd": "National Business Registration Portal",
+      "other": "Official site"
+    },
+    "purpose": {
+      "company_lookup": "company lookup",
+      "company_verify": "company check"
+    },
+    "notice": {
+      "gdt": "The official site needs to verify that you are a person. Operate the page in the frame below yourself: type the code shown in the picture, then press {button}. The system continues automatically.",
+      "dkkd": "The official site needs to verify that you are a person. Operate the page in the frame below yourself: tick {box} (complete the challenge if one appears), then press {button}. The system continues automatically.",
+      "other": "The official site needs to verify that you are a person. Operate the page in the frame below yourself: tick the box / type the code, then press Search. The system continues automatically."
+    },
+    "status": {
+      "waiting_user": "Waiting for you",
+      "done": "Verified – reading the result",
+      "cancelled": "Cancelled",
+      "timeout": "Timed out",
+      "error": "Couldn't open the official site"
+    },
+    "chip": {
+      "waiting_user": "Waiting for you to verify on the official site",
+      "doneReading": "Verified – reading the result",
+      "done": "Verified on the official site",
+      "cancelled": "Verification cancelled",
+      "timeout": "Verification timed out",
+      "error": "Couldn't open the official site"
+    },
+    "reopen": "Reopen",
+    "cancel": "Cancel",
+    "minimize": "Close the window (still waiting – reopen from the status line)",
+    "openTab": "Open the official site in a new tab",
+    "zoomFit": "Show the whole page",
+    "timeLeft": "{time} left",
+    "connecting": "Connecting to the official site…",
+    "canvasLabel": "Official site – click to operate it",
+    "keyboardLabel": "Type into the official site",
+    "clickToType": "click the page to type",
+    "kbdOn": "your keys go to the page (Esc to leave)",
+    "slowMode": "slow connection mode",
+    "pageSays": "The page says:",
+    "blockedNav": "A link leading outside the official site was blocked.",
+    "toastDone": "Verified – the system is reading the result.",
+    "toastTimeout": "The verification on the official site timed out.",
+    "zoom": "Zoom",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "fit": "Fit",
+    "zoomFocus": "Zoom to the box to fill in",
+    "resize": "Drag to resize",
+    "pageError": {
+      "rate_limited": "The official site is limiting the number of lookups – try again in a few minutes.",
+      "server_error": "The official site is having problems – try again in a few minutes.",
+      "http_error": "The official site returned an error – try reloading the page."
+    },
+    "retry": "Try again",
+    "retryIn": "Try again in {s} s"
+  },
+  "ocr": {
+    "badge": "OCR",
+    "tip": "Text recognized by OCR – accents or letters may be wrong",
+    "sourceTip": "Content recognized by OCR from a scan – accents or letters may be wrong; check against the original",
+    "pages_one": "{count} page",
+    "pages_other": "{count} pages",
+    "pagesOf": "{n} of {total} pages"
+  },
+  "visuals": {
+    "fullscreen": "Full screen",
+    "downloadPng": "Download PNG",
+    "downloadSvg": "Download SVG",
+    "close": "Close",
+    "zoom": "Zoom",
+    "diagram": "Diagram",
+    "image": "Image",
+    "chart": "Chart",
+    "unavailable": "The illustration could not be loaded.",
+    "mermaidError": "The chart could not be drawn – showing its source.",
+    "openSource": "Source page",
+    "license": "License"
+  }
+}

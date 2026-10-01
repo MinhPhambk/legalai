@@ -1,0 +1,2432 @@
+{
+ "generatedAt": "2026-09-27T13:56:41.758Z",
+ "testedAt": "2026-09-27 20:28–20:41 (GMT+7)",
+ "hardware": {
+  "app": "Laptop AMD Ryzen 5 3550H 4 nhân / 8 luồng, 30 GB RAM, Windows 10 Pro",
+  "model": "Qwen3.6-35B-A3B FP8 trên máy chủ GPUStack riêng (gpustack.chimai.io)"
+ },
+ "notes": [
+  "Kịch bản C (soạn hợp đồng dài) không đo: lượt chạy bị dừng giữa chừng, không có số liệu tổng hợp.",
+  "Nhóm 'opencode' trong raw = hệ harness agent; 'otherChrome' = Chrome cá nhân trên máy tính (không thuộc hệ thống)."
+ ],
+ "gpuprobe": {
+  "model": "qwen3.6-35b-a3b-fp8",
+  "host": "gpustack.chimai.io",
+  "prompt": "Giải thích ngắn gọn (khoảng 150 từ) khái niệm phạt vi phạm hợp đồng trong Luật Thương mại 2005 của Việt Nam.",
+  "maxTokens": 256,
+  "levels": [
+   {
+    "concurrency": 1,
+    "ok": 1,
+    "fail": 0,
+    "wallS": 2.83,
+    "totalTokens": 230,
+    "aggTps": 81.4,
+    "perReqTpsP50": 127.8,
+    "ttftP50": 1.03,
+    "ttftMax": 1.03,
+    "latP50": 2.83,
+    "latMax": 2.83,
+    "errors": []
+   },
+   {
+    "concurrency": 4,
+    "ok": 4,
+    "fail": 0,
+    "wallS": 3.59,
+    "totalTokens": 872,
+    "aggTps": 242.7,
+    "perReqTpsP50": 96.9,
+    "ttftP50": 1.23,
+    "ttftMax": 1.27,
+    "latP50": 3.33,
+    "latMax": 3.59,
+    "errors": []
+   },
+   {
+    "concurrency": 8,
+    "ok": 8,
+    "fail": 0,
+    "wallS": 4.12,
+    "totalTokens": 1790,
+    "aggTps": 434.9,
+    "perReqTpsP50": 88.3,
+    "ttftP50": 1.28,
+    "ttftMax": 1.3,
+    "latP50": 3.75,
+    "latMax": 4.11,
+    "errors": []
+   },
+   {
+    "concurrency": 16,
+    "ok": 16,
+    "fail": 0,
+    "wallS": 4.49,
+    "totalTokens": 3435,
+    "aggTps": 765.7,
+    "perReqTpsP50": 78.7,
+    "ttftP50": 1.46,
+    "ttftMax": 1.54,
+    "latP50": 4.18,
+    "latMax": 4.48,
+    "errors": []
+   },
+   {
+    "concurrency": 32,
+    "ok": 32,
+    "fail": 0,
+    "wallS": 6.05,
+    "totalTokens": 7063,
+    "aggTps": 1166.7,
+    "perReqTpsP50": 63.6,
+    "ttftP50": 1.63,
+    "ttftMax": 2.87,
+    "latP50": 5.18,
+    "latMax": 6.05,
+    "errors": []
+   }
+  ],
+  "at": "2026-09-27T13:28:28.078Z"
+ },
+ "stages": {
+  "A1": {
+   "name": "A1",
+   "scenario": "A",
+   "concurrency": 1,
+   "via": "local",
+   "base": "http://127.0.0.1:3000",
+   "stoppedEarly": null,
+   "deadlineMin": 10,
+   "startedAt": "2026-09-27T13:29:06.142Z",
+   "durationS": 89.7,
+   "pre": {
+    "waitedS": 0,
+    "activeRuns": 0
+   },
+   "success": 1,
+   "total": 1,
+   "successRate": 1,
+   "timeouts": 0,
+   "errors": 0,
+   "createMsP50": 141,
+   "createMsMax": 141,
+   "loginMsP50": 117,
+   "firstStepS": {
+    "p50": 9.6,
+    "p90": 9.6,
+    "max": 9.6
+   },
+   "firstTextS": {
+    "p50": 9.6,
+    "p90": 9.6,
+    "max": 9.6
+   },
+   "finalS": {
+    "p50": 82,
+    "p90": 82,
+    "max": 82,
+    "min": 82
+   },
+   "toolCalls": {
+    "avg": 10,
+    "max": 10,
+    "errors": 0
+   },
+   "llmCalls": {
+    "avg": 11,
+    "total": 11
+   },
+   "grounding": {
+    "cao": 1
+   },
+   "questionsAnswered": 0,
+   "tokens": {
+    "in": 519269,
+    "out": 5004,
+    "outTpsStage": 55.8,
+    "perCallDecodeTpsP50": 71.9,
+    "llmCallMsP50": 7513,
+    "llmCallMsP90": 12257
+   },
+   "machine": {
+    "cpuAvg": 37,
+    "cpuMax": 100,
+    "freeMBmin": 16396,
+    "freeMBstart": 17118,
+    "groups": {
+     "web": {
+      "wsMBmax": 221,
+      "wsMBstart": 218,
+      "pmMBmax": 239,
+      "nMax": 3,
+      "cpuCoreAvg": 0.01
+     },
+     "opencode": {
+      "wsMBmax": 719,
+      "wsMBstart": 655,
+      "pmMBmax": 994,
+      "nMax": 3,
+      "cpuCoreAvg": 0.21
+     },
+     "sandboxChrome": {
+      "wsMBmax": 992,
+      "wsMBstart": 630,
+      "pmMBmax": 859,
+      "nMax": 10,
+      "cpuCoreAvg": 0.06
+     },
+     "ocrChrome": {
+      "wsMBmax": 460,
+      "wsMBstart": 460,
+      "pmMBmax": 267,
+      "nMax": 8,
+      "cpuCoreAvg": 0.01
+     },
+     "otherChrome": {
+      "wsMBmax": 3835,
+      "wsMBstart": 3417,
+      "pmMBmax": 3711,
+      "nMax": 32,
+      "cpuCoreAvg": 1.65
+     }
+    }
+   },
+   "activeRunsMax": 1,
+   "chromePagesMax": 2,
+   "chromePagesStart": 1,
+   "statsLatencyMsP50": 78,
+   "statsLatencyMsMax": 332,
+   "http429": 0,
+   "label": "A1 · 1 người",
+   "selfCheck": {
+    "skillLoaded": 1,
+    "groundingCheckCalled": 1,
+    "lookupToolsAvg": 5,
+    "lookupToolsMedian": 5,
+    "verdictOrigin": {
+     "model": 1
+    },
+    "thapRuns": 0,
+    "thapServer": 0,
+    "thapFlaggedQuotes": 0,
+    "thapFlaggedQuotesVerbatimInSource": 0,
+    "thapFlaggedQuotesCallouts": 0,
+    "inTokPerLlmCall": 47206
+   },
+   "runs": [
+    {
+     "user": 1,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 9.6,
+     "finalS": 82,
+     "toolCalls": 10,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_document": 1,
+      "vbpl_article": 2,
+      "skill": 1,
+      "grounding_check": 4,
+      "vbpl_verify": 1
+     },
+     "llmCalls": 11,
+     "answerChars": 1129,
+     "grounding": "cao",
+     "groundingOrigin": "model",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "model",
+      "claims": 5,
+      "supported": 5,
+      "unsupported": 0,
+      "reasons": [
+       "5/5 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    }
+   ]
+  },
+  "A5": {
+   "name": "A5",
+   "scenario": "A",
+   "concurrency": 5,
+   "via": "local",
+   "base": "http://127.0.0.1:3000",
+   "stoppedEarly": null,
+   "deadlineMin": 10,
+   "startedAt": "2026-09-27T13:31:13.433Z",
+   "durationS": 61.8,
+   "pre": {
+    "waitedS": 0,
+    "activeRuns": 0
+   },
+   "success": 5,
+   "total": 5,
+   "successRate": 1,
+   "timeouts": 0,
+   "errors": 0,
+   "createMsP50": 142,
+   "createMsMax": 165,
+   "loginMsP50": 139,
+   "firstStepS": {
+    "p50": 7.1,
+    "p90": 18.2,
+    "max": 18.2
+   },
+   "firstTextS": {
+    "p50": 7.1,
+    "p90": 18.2,
+    "max": 18.2
+   },
+   "finalS": {
+    "p50": 37,
+    "p90": 52.8,
+    "max": 52.8,
+    "min": 25
+   },
+   "toolCalls": {
+    "avg": 4,
+    "max": 8,
+    "errors": 0
+   },
+   "llmCalls": {
+    "avg": 5,
+    "total": 25
+   },
+   "grounding": {
+    "thấp": 3,
+    "cao": 2
+   },
+   "questionsAnswered": 0,
+   "tokens": {
+    "in": 1007294,
+    "out": 8343,
+    "outTpsStage": 135,
+    "perCallDecodeTpsP50": 42.6,
+    "llmCallMsP50": 5913,
+    "llmCallMsP90": 13538
+   },
+   "machine": {
+    "cpuAvg": 34,
+    "cpuMax": 69,
+    "freeMBmin": 16603,
+    "freeMBstart": 16646,
+    "groups": {
+     "web": {
+      "wsMBmax": 243,
+      "wsMBstart": 221,
+      "pmMBmax": 272,
+      "nMax": 3,
+      "cpuCoreAvg": 0.02
+     },
+     "opencode": {
+      "wsMBmax": 787,
+      "wsMBstart": 700,
+      "pmMBmax": 1070,
+      "nMax": 3,
+      "cpuCoreAvg": 0.4
+     },
+     "sandboxChrome": {
+      "wsMBmax": 646,
+      "wsMBstart": 628,
+      "pmMBmax": 526,
+      "nMax": 9,
+      "cpuCoreAvg": 0.05
+     },
+     "ocrChrome": {
+      "wsMBmax": 460,
+      "wsMBstart": 460,
+      "pmMBmax": 267,
+      "nMax": 8,
+      "cpuCoreAvg": 0
+     },
+     "otherChrome": {
+      "wsMBmax": 3945,
+      "wsMBstart": 3945,
+      "pmMBmax": 3756,
+      "nMax": 31,
+      "cpuCoreAvg": 1.13
+     }
+    }
+   },
+   "activeRunsMax": 5,
+   "chromePagesMax": 2,
+   "chromePagesStart": 1,
+   "statsLatencyMsP50": 69,
+   "statsLatencyMsMax": 310,
+   "http429": 0,
+   "label": "A5 · 5 người",
+   "selfCheck": {
+    "skillLoaded": 0,
+    "groundingCheckCalled": 2,
+    "lookupToolsAvg": 3.6,
+    "lookupToolsMedian": 3,
+    "verdictOrigin": {
+     "server": 3,
+     "model": 2
+    },
+    "thapRuns": 3,
+    "thapServer": 2,
+    "thapFlaggedQuotes": 3,
+    "thapFlaggedQuotesVerbatimInSource": 2,
+    "thapFlaggedQuotesCallouts": 0,
+    "inTokPerLlmCall": 40292
+   },
+   "runs": [
+    {
+     "user": 1,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 11.5,
+     "finalS": 29,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 902,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 4,
+      "supported": 4,
+      "unsupported": 0,
+      "reasons": [
+       "4/4 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 2,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 18.2,
+     "finalS": 37,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2
+     },
+     "llmCalls": 4,
+     "answerChars": 1254,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 8,
+      "supported": 3,
+      "unsupported": 5,
+      "reasons": [
+       "2 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "5/8 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 2,
+      "flaggedQuotesVerbatimInSource": 2,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 3,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 3.9,
+     "finalS": 40.2,
+     "toolCalls": 5,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 2,
+      "grounding_check": 1
+     },
+     "llmCalls": 6,
+     "answerChars": 1751,
+     "grounding": "cao",
+     "groundingOrigin": "model",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "model",
+      "claims": 3,
+      "supported": 3,
+      "unsupported": 0,
+      "reasons": [
+       "3/3 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 4,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 3.2,
+     "finalS": 25,
+     "toolCalls": 1,
+     "tools": {
+      "vbpl_find": 1
+     },
+     "llmCalls": 2,
+     "answerChars": 1124,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 4,
+      "supported": 0,
+      "unsupported": 4,
+      "reasons": [
+       "không có nguồn nào được tra bằng công cụ trong phiên này",
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "4/4 mục chưa có căn cứ",
+       "câu trả lời nêu số hiệu / con số / trích dẫn nhưng chưa mở nguồn nào trong phiên (trả lời theo trí nhớ)"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 5,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 7.1,
+     "finalS": 52.8,
+     "toolCalls": 8,
+     "tools": {
+      "vbpl_find": 3,
+      "vbpl_article": 1,
+      "vbpl_verify": 1,
+      "grounding_check": 1,
+      "vbpl_document": 1,
+      "vbpl_history": 1
+     },
+     "llmCalls": 9,
+     "answerChars": 1093,
+     "grounding": "thấp",
+     "groundingOrigin": "model",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "model",
+      "claims": 3,
+      "supported": 2,
+      "unsupported": 1,
+      "reasons": [
+       "1/3 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    }
+   ]
+  },
+  "A10": {
+   "name": "A10",
+   "scenario": "A",
+   "concurrency": 10,
+   "via": "local",
+   "base": "http://127.0.0.1:3000",
+   "stoppedEarly": null,
+   "deadlineMin": 10,
+   "startedAt": "2026-09-27T13:32:40.144Z",
+   "durationS": 62,
+   "pre": {
+    "waitedS": 0,
+    "activeRuns": 0
+   },
+   "success": 10,
+   "total": 10,
+   "successRate": 1,
+   "timeouts": 0,
+   "errors": 0,
+   "createMsP50": 127,
+   "createMsMax": 174,
+   "loginMsP50": 121,
+   "firstStepS": {
+    "p50": 7,
+    "p90": 15.4,
+    "max": 28
+   },
+   "firstTextS": {
+    "p50": 7,
+    "p90": 15.4,
+    "max": 28
+   },
+   "finalS": {
+    "p50": 35.8,
+    "p90": 51,
+    "max": 52.5,
+    "min": 28.2
+   },
+   "toolCalls": {
+    "avg": 3.5,
+    "max": 5,
+    "errors": 0
+   },
+   "llmCalls": {
+    "avg": 4.4,
+    "total": 44
+   },
+   "grounding": {
+    "thấp": 7,
+    "cao": 2,
+    "trung bình": 1
+   },
+   "questionsAnswered": 0,
+   "tokens": {
+    "in": 1754511,
+    "out": 12804,
+    "outTpsStage": 206.6,
+    "perCallDecodeTpsP50": 29.6,
+    "llmCallMsP50": 7552,
+    "llmCallMsP90": 15002
+   },
+   "machine": {
+    "cpuAvg": 30,
+    "cpuMax": 68,
+    "freeMBmin": 16626,
+    "freeMBstart": 16795,
+    "groups": {
+     "web": {
+      "wsMBmax": 262,
+      "wsMBstart": 238,
+      "pmMBmax": 311,
+      "nMax": 3,
+      "cpuCoreAvg": 0.03
+     },
+     "opencode": {
+      "wsMBmax": 829,
+      "wsMBstart": 693,
+      "pmMBmax": 1129,
+      "nMax": 3,
+      "cpuCoreAvg": 0.44
+     },
+     "sandboxChrome": {
+      "wsMBmax": 648,
+      "wsMBstart": 636,
+      "pmMBmax": 540,
+      "nMax": 9,
+      "cpuCoreAvg": 0.09
+     },
+     "ocrChrome": {
+      "wsMBmax": 460,
+      "wsMBstart": 460,
+      "pmMBmax": 267,
+      "nMax": 8,
+      "cpuCoreAvg": 0
+     },
+     "otherChrome": {
+      "wsMBmax": 3755,
+      "wsMBstart": 3750,
+      "pmMBmax": 3495,
+      "nMax": 30,
+      "cpuCoreAvg": 0.74
+     }
+    }
+   },
+   "activeRunsMax": 10,
+   "chromePagesMax": 2,
+   "chromePagesStart": 1,
+   "statsLatencyMsP50": 67,
+   "statsLatencyMsMax": 1326,
+   "http429": 0,
+   "label": "A10 · 10 người",
+   "selfCheck": {
+    "skillLoaded": 0,
+    "groundingCheckCalled": 1,
+    "lookupToolsAvg": 3.4,
+    "lookupToolsMedian": 3,
+    "verdictOrigin": {
+     "server": 9,
+     "model": 1
+    },
+    "thapRuns": 7,
+    "thapServer": 7,
+    "thapFlaggedQuotes": 9,
+    "thapFlaggedQuotesVerbatimInSource": 4,
+    "thapFlaggedQuotesCallouts": 3,
+    "inTokPerLlmCall": 39875
+   },
+   "runs": [
+    {
+     "user": 1,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 7,
+     "finalS": 34.2,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2
+     },
+     "llmCalls": 4,
+     "answerChars": 1097,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 7,
+      "supported": 4,
+      "unsupported": 3,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "3/7 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 1
+     }
+    },
+    {
+     "user": 2,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 6.7,
+     "finalS": 28.2,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 863,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 5,
+      "supported": 3,
+      "unsupported": 2,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "2/5 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 3,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 12.8,
+     "finalS": 38.1,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 1348,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 9,
+      "supported": 5,
+      "unsupported": 4,
+      "reasons": [
+       "2 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "4/9 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 2,
+      "flaggedQuotesVerbatimInSource": 2,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 4,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 9.6,
+     "finalS": 29.1,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 746,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 3,
+      "supported": 2,
+      "unsupported": 1,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "1/3 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 5,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 5.8,
+     "finalS": 40.1,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2,
+      "vbpl_history": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 1288,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 5,
+      "supported": 3,
+      "unsupported": 2,
+      "reasons": [
+       "2 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "2/5 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 2,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 1
+     }
+    },
+    {
+     "user": 6,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 6.1,
+     "finalS": 46.9,
+     "toolCalls": 5,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_document": 1,
+      "vbpl_article": 2,
+      "grounding_check": 1
+     },
+     "llmCalls": 6,
+     "answerChars": 1202,
+     "grounding": "cao",
+     "groundingOrigin": "model",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "model",
+      "claims": 3,
+      "supported": 3,
+      "unsupported": 0,
+      "reasons": [
+       "3/3 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 7,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 28,
+     "finalS": 52.5,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 1360,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 6,
+      "supported": 3,
+      "unsupported": 3,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "3/6 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 1
+     }
+    },
+    {
+     "user": 8,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 13.4,
+     "finalS": 32.6,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 572,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 2,
+      "supported": 2,
+      "unsupported": 0,
+      "reasons": [
+       "2/2 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 9,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 15.4,
+     "finalS": 51,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2,
+      "vbpl_history": 1
+     },
+     "llmCalls": 5,
+     "answerChars": 944,
+     "grounding": "trung bình",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "trung bình",
+      "origin": "server",
+      "claims": 1,
+      "supported": 1,
+      "unsupported": 0,
+      "reasons": [
+       "câu trả lời dựa trên quá ít căn cứ đã kiểm chứng"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 10,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 4.9,
+     "finalS": 35.8,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_document": 1,
+      "vbpl_article": 2
+     },
+     "llmCalls": 5,
+     "answerChars": 1073,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 4,
+      "supported": 3,
+      "unsupported": 1,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    }
+   ]
+  },
+  "A20": {
+   "name": "A20",
+   "scenario": "A",
+   "concurrency": 20,
+   "via": "local",
+   "base": "http://127.0.0.1:3000",
+   "stoppedEarly": null,
+   "deadlineMin": 10,
+   "startedAt": "2026-09-27T13:34:08.219Z",
+   "durationS": 160.9,
+   "pre": {
+    "waitedS": 0,
+    "activeRuns": 0
+   },
+   "success": 20,
+   "total": 20,
+   "successRate": 1,
+   "timeouts": 0,
+   "errors": 0,
+   "createMsP50": 119,
+   "createMsMax": 236,
+   "loginMsP50": 118,
+   "firstStepS": {
+    "p50": 16.1,
+    "p90": 23.8,
+    "max": 33.3
+   },
+   "firstTextS": {
+    "p50": 16.1,
+    "p90": 23.8,
+    "max": 33.3
+   },
+   "finalS": {
+    "p50": 59.4,
+    "p90": 72.9,
+    "max": 149.5,
+    "min": 39
+   },
+   "toolCalls": {
+    "avg": 4.8,
+    "max": 23,
+    "errors": 1
+   },
+   "llmCalls": {
+    "avg": 5.5,
+    "total": 111
+   },
+   "grounding": {
+    "thấp": 8,
+    "cao": 11,
+    "trung bình": 1
+   },
+   "questionsAnswered": 0,
+   "tokens": {
+    "in": 4757106,
+    "out": 31187,
+    "outTpsStage": 193.8,
+    "perCallDecodeTpsP50": 22.9,
+    "llmCallMsP50": 9417,
+    "llmCallMsP90": 22244
+   },
+   "machine": {
+    "cpuAvg": 29,
+    "cpuMax": 95,
+    "freeMBmin": 16397,
+    "freeMBstart": 16937,
+    "groups": {
+     "web": {
+      "wsMBmax": 307,
+      "wsMBstart": 261,
+      "pmMBmax": 327,
+      "nMax": 3,
+      "cpuCoreAvg": 0.03
+     },
+     "opencode": {
+      "wsMBmax": 1039,
+      "wsMBstart": 706,
+      "pmMBmax": 1371,
+      "nMax": 3,
+      "cpuCoreAvg": 0.45
+     },
+     "sandboxChrome": {
+      "wsMBmax": 820,
+      "wsMBstart": 634,
+      "pmMBmax": 705,
+      "nMax": 10,
+      "cpuCoreAvg": 0.12
+     },
+     "ocrChrome": {
+      "wsMBmax": 460,
+      "wsMBstart": 460,
+      "pmMBmax": 268,
+      "nMax": 8,
+      "cpuCoreAvg": 0
+     },
+     "otherChrome": {
+      "wsMBmax": 3975,
+      "wsMBstart": 3516,
+      "pmMBmax": 3600,
+      "nMax": 37,
+      "cpuCoreAvg": 0.6
+     }
+    }
+   },
+   "activeRunsMax": 20,
+   "chromePagesMax": 3,
+   "chromePagesStart": 1,
+   "statsLatencyMsP50": 68,
+   "statsLatencyMsMax": 453,
+   "http429": 0,
+   "label": "A20 · 20 người",
+   "selfCheck": {
+    "skillLoaded": 0,
+    "groundingCheckCalled": 2,
+    "lookupToolsAvg": 4.6,
+    "lookupToolsMedian": 4,
+    "verdictOrigin": {
+     "server": 18,
+     "model": 2
+    },
+    "thapRuns": 8,
+    "thapServer": 8,
+    "thapFlaggedQuotes": 7,
+    "thapFlaggedQuotesVerbatimInSource": 4,
+    "thapFlaggedQuotesCallouts": 0,
+    "inTokPerLlmCall": 42857
+   },
+   "runs": [
+    {
+     "user": 1,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 4.7,
+     "finalS": 39,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 931,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 4,
+      "supported": 2,
+      "unsupported": 2,
+      "reasons": [
+       "2 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "2/4 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 2,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 2,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 14.8,
+     "finalS": 68.9,
+     "toolCalls": 6,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 2,
+      "vbpl_article": 2,
+      "grounding_check": 1
+     },
+     "llmCalls": 7,
+     "answerChars": 1066,
+     "grounding": "cao",
+     "groundingOrigin": "model",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "model",
+      "claims": 2,
+      "supported": 2,
+      "unsupported": 0,
+      "reasons": [
+       "2/2 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 3,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 27,
+     "finalS": 72.9,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2,
+      "vbpl_history": 1
+     },
+     "llmCalls": 5,
+     "answerChars": 1015,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 4,
+      "supported": 4,
+      "unsupported": 0,
+      "reasons": [
+       "4/4 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 4,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 18.5,
+     "finalS": 42.5,
+     "toolCalls": 2,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 3,
+     "answerChars": 847,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 5,
+      "supported": 2,
+      "unsupported": 3,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "3/5 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 5,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 18.2,
+     "finalS": 59.4,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 1177,
+     "grounding": "trung bình",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "trung bình",
+      "origin": "server",
+      "claims": 5,
+      "supported": 4,
+      "unsupported": 1,
+      "reasons": [
+       "một số link / con số / số tiền / số hiệu chưa đối chiếu được với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 6,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 22.5,
+     "finalS": 65.4,
+     "toolCalls": 6,
+     "tools": {
+      "vbpl_find": 2,
+      "vbpl_search_articles": 2,
+      "vbpl_document": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 7,
+     "answerChars": 966,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 3,
+      "supported": 3,
+      "unsupported": 0,
+      "reasons": [
+       "3/3 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 7,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 16.1,
+     "finalS": 64.7,
+     "toolCalls": 5,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 2,
+      "vbpl_history": 1
+     },
+     "llmCalls": 6,
+     "answerChars": 923,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 7,
+      "supported": 4,
+      "unsupported": 3,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "3/7 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 8,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 10.4,
+     "finalS": 61.5,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_document": 1,
+      "vbpl_article": 2
+     },
+     "llmCalls": 5,
+     "answerChars": 1424,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 5,
+      "supported": 3,
+      "unsupported": 2,
+      "reasons": [
+       "2/5 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 9,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 10.1,
+     "finalS": 42.8,
+     "toolCalls": 2,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 3,
+     "answerChars": 2088,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 2,
+      "supported": 2,
+      "unsupported": 0,
+      "reasons": [
+       "2/2 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 10,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 16.7,
+     "finalS": 77.4,
+     "toolCalls": 5,
+     "tools": {
+      "vbpl_find": 2,
+      "vbpl_article": 2,
+      "vbpl_history": 1
+     },
+     "llmCalls": 6,
+     "answerChars": 1745,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 4,
+      "supported": 4,
+      "unsupported": 0,
+      "reasons": [
+       "4/4 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 11,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 21,
+     "finalS": 55.7,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 905,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 6,
+      "supported": 4,
+      "unsupported": 2,
+      "reasons": [
+       "2/6 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 12,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 16.1,
+     "finalS": 42.4,
+     "toolCalls": 2,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 3,
+     "answerChars": 1103,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 3,
+      "supported": 3,
+      "unsupported": 0,
+      "reasons": [
+       "3/3 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 13,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 23.1,
+     "finalS": 149.5,
+     "toolCalls": 23,
+     "tools": {
+      "vbpl_find": 12,
+      "vbpl_article": 2,
+      "vbpl_history": 1,
+      "web_search": 4,
+      "vbpl_document": 1,
+      "web_read": 3
+     },
+     "llmCalls": 22,
+     "answerChars": 2073,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 5,
+      "supported": 5,
+      "unsupported": 0,
+      "reasons": [
+       "5/5 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 14,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 13.1,
+     "finalS": 56.7,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_document": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 1431,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 5,
+      "supported": 4,
+      "unsupported": 1,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 15,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 8.3,
+     "finalS": 46.9,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_document": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 1223,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 3,
+      "supported": 3,
+      "unsupported": 0,
+      "reasons": [
+       "3/3 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 16,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 10.2,
+     "finalS": 71.8,
+     "toolCalls": 6,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_document": 1,
+      "vbpl_article": 2,
+      "grounding_check": 2
+     },
+     "llmCalls": 6,
+     "answerChars": 1388,
+     "grounding": "cao",
+     "groundingOrigin": "model",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "model",
+      "claims": 2,
+      "supported": 2,
+      "unsupported": 0,
+      "reasons": [
+       "2/2 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 17,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 23.8,
+     "finalS": 58.9,
+     "toolCalls": 3,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 901,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 4,
+      "supported": 4,
+      "unsupported": 0,
+      "reasons": [
+       "4/4 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 18,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 14.3,
+     "finalS": 64.2,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 1,
+      "vbpl_article": 2
+     },
+     "llmCalls": 5,
+     "answerChars": 1309,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 4,
+      "supported": 3,
+      "unsupported": 1,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 19,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 12.5,
+     "finalS": 57.5,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2,
+      "vbpl_history": 1
+     },
+     "llmCalls": 5,
+     "answerChars": 980,
+     "grounding": "cao",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "server",
+      "claims": 3,
+      "supported": 3,
+      "unsupported": 0,
+      "reasons": [
+       "3/3 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 20,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 33.3,
+     "finalS": 66.7,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 3
+     },
+     "llmCalls": 4,
+     "answerChars": 1444,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 7,
+      "supported": 4,
+      "unsupported": 3,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "3/7 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    }
+   ]
+  },
+  "B10": {
+   "name": "B10",
+   "scenario": "B",
+   "concurrency": 10,
+   "via": "local",
+   "base": "http://127.0.0.1:3000",
+   "stoppedEarly": null,
+   "deadlineMin": 10,
+   "startedAt": "2026-09-27T13:37:30.583Z",
+   "durationS": 143.6,
+   "pre": {
+    "waitedS": 0,
+    "activeRuns": 0
+   },
+   "success": 10,
+   "total": 10,
+   "successRate": 1,
+   "timeouts": 0,
+   "errors": 0,
+   "createMsP50": 122,
+   "createMsMax": 140,
+   "loginMsP50": 110,
+   "firstStepS": {
+    "p50": 10.7,
+    "p90": 52.5,
+    "max": 87.2
+   },
+   "firstTextS": {
+    "p50": 12.2,
+    "p90": 52.5,
+    "max": 87.7
+   },
+   "finalS": {
+    "p50": 84.9,
+    "p90": 128,
+    "max": 135,
+    "min": 56.9
+   },
+   "toolCalls": {
+    "avg": 7.7,
+    "max": 18,
+    "errors": 0
+   },
+   "llmCalls": {
+    "avg": 6.2,
+    "total": 62
+   },
+   "grounding": {
+    "thấp": 8,
+    "cao": 1,
+    "trung bình": 1
+   },
+   "questionsAnswered": 1,
+   "tokens": {
+    "in": 2630588,
+    "out": 30133,
+    "outTpsStage": 209.9,
+    "perCallDecodeTpsP50": 28.5,
+    "llmCallMsP50": 8713,
+    "llmCallMsP90": 31442
+   },
+   "machine": {
+    "cpuAvg": 34,
+    "cpuMax": 79,
+    "freeMBmin": 15860,
+    "freeMBstart": 16841,
+    "groups": {
+     "web": {
+      "wsMBmax": 370,
+      "wsMBstart": 296,
+      "pmMBmax": 404,
+      "nMax": 3,
+      "cpuCoreAvg": 0.03
+     },
+     "opencode": {
+      "wsMBmax": 989,
+      "wsMBstart": 697,
+      "pmMBmax": 1360,
+      "nMax": 3,
+      "cpuCoreAvg": 0.42
+     },
+     "sandboxChrome": {
+      "wsMBmax": 2185,
+      "wsMBstart": 638,
+      "pmMBmax": 1709,
+      "nMax": 22,
+      "cpuCoreAvg": 0.19
+     },
+     "ocrChrome": {
+      "wsMBmax": 460,
+      "wsMBstart": 460,
+      "pmMBmax": 267,
+      "nMax": 8,
+      "cpuCoreAvg": 0
+     },
+     "otherChrome": {
+      "wsMBmax": 3867,
+      "wsMBstart": 3583,
+      "pmMBmax": 3519,
+      "nMax": 35,
+      "cpuCoreAvg": 0.73
+     }
+    }
+   },
+   "activeRunsMax": 10,
+   "chromePagesMax": 6,
+   "chromePagesStart": 1,
+   "statsLatencyMsP50": 69,
+   "statsLatencyMsMax": 599,
+   "http429": 0,
+   "label": "B10 · 10 câu khác nhau",
+   "selfCheck": {
+    "skillLoaded": 0,
+    "groundingCheckCalled": 1,
+    "lookupToolsAvg": 7.4,
+    "lookupToolsMedian": 6,
+    "verdictOrigin": {
+     "server": 9,
+     "model": 1
+    },
+    "thapRuns": 8,
+    "thapServer": 8,
+    "thapFlaggedQuotes": 19,
+    "thapFlaggedQuotesVerbatimInSource": 7,
+    "thapFlaggedQuotesCallouts": 3,
+    "inTokPerLlmCall": 42429
+   },
+   "runs": [
+    {
+     "user": 1,
+     "tag": "penalty",
+     "ok": true,
+     "firstTextS": 9.3,
+     "finalS": 56.9,
+     "toolCalls": 8,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 3,
+      "vbpl_article": 4
+     },
+     "llmCalls": 6,
+     "answerChars": 2232,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 3,
+      "supported": 2,
+      "unsupported": 1,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "1/3 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 2,
+     "tag": "huy-bo",
+     "ok": true,
+     "firstTextS": 10.7,
+     "finalS": 84.9,
+     "toolCalls": 9,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 2,
+      "vbpl_document": 1,
+      "vbpl_article": 5
+     },
+     "llmCalls": 7,
+     "answerChars": 4967,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 6,
+      "supported": 3,
+      "unsupported": 3,
+      "reasons": [
+       "3 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "3/6 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 3,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 1
+     }
+    },
+    {
+     "user": 3,
+     "tag": "thoi-hieu",
+     "ok": true,
+     "firstTextS": 14.3,
+     "finalS": 61.8,
+     "toolCalls": 6,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_document": 1,
+      "vbpl_article": 3,
+      "vbpl_history": 1
+     },
+     "llmCalls": 6,
+     "answerChars": 2238,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 2,
+      "supported": 1,
+      "unsupported": 1,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "1/2 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 4,
+     "tag": "an-le",
+     "ok": true,
+     "firstTextS": 7.4,
+     "finalS": 64.3,
+     "toolCalls": 3,
+     "tools": {
+      "court_anle_search": 2,
+      "court_anle_document": 1
+     },
+     "llmCalls": 4,
+     "answerChars": 3651,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 7,
+      "supported": 3,
+      "unsupported": 4,
+      "reasons": [
+       "3 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "4/7 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 3,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 1
+     }
+    },
+    {
+     "user": 5,
+     "tag": "pvtm-thep",
+     "ok": true,
+     "firstTextS": 18.2,
+     "finalS": 135,
+     "toolCalls": 17,
+     "tools": {
+      "trav_measures": 5,
+      "trav_search": 4,
+      "fedreg_search": 5,
+      "fedreg_document": 3
+     },
+     "llmCalls": 9,
+     "answerChars": 4307,
+     "grounding": "trung bình",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "trung bình",
+      "origin": "server",
+      "claims": 18,
+      "supported": 16,
+      "unsupported": 2,
+      "reasons": [
+       "một số link / con số / số tiền / số hiệu chưa đối chiếu được với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 6,
+     "tag": "lai-cham-tra",
+     "ok": true,
+     "firstTextS": 52.5,
+     "finalS": 57.4,
+     "toolCalls": 1,
+     "tools": {
+      "question": 1
+     },
+     "llmCalls": 2,
+     "answerChars": 335,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 5,
+      "supported": 0,
+      "unsupported": 5,
+      "reasons": [
+       "không có nguồn nào được tra bằng công cụ trong phiên này",
+       "5/5 mục chưa có căn cứ",
+       "câu trả lời nêu số hiệu / con số / trích dẫn nhưng chưa mở nguồn nào trong phiên (trả lời theo trí nhớ)"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 7,
+     "tag": "thue-hs",
+     "ok": true,
+     "firstTextS": 9.4,
+     "finalS": 107.6,
+     "toolCalls": 4,
+     "tools": {
+      "tariff_vn": 1,
+      "grounding_check": 2,
+      "vbpl_document": 1
+     },
+     "llmCalls": 5,
+     "answerChars": 1334,
+     "grounding": "cao",
+     "groundingOrigin": "model",
+     "groundingDetail": {
+      "level": "cao",
+      "origin": "model",
+      "claims": 5,
+      "supported": 5,
+      "unsupported": 0,
+      "reasons": [
+       "5/5 căn cứ đều khớp với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 8,
+     "tag": "soan-hd-ngan",
+     "ok": true,
+     "firstTextS": 87.7,
+     "finalS": 106,
+     "toolCalls": 1,
+     "tools": {
+      "document_create": 1
+     },
+     "llmCalls": 2,
+     "answerChars": 1915,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 1,
+      "supported": 0,
+      "unsupported": 1,
+      "reasons": [
+       "không có nguồn nào được tra bằng công cụ trong phiên này",
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "1/1 mục chưa có căn cứ",
+       "câu trả lời nêu số hiệu / con số / trích dẫn nhưng chưa mở nguồn nào trong phiên (trả lời theo trí nhớ)"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 1
+     }
+    },
+    {
+     "user": 9,
+     "tag": "hieu-luc",
+     "ok": true,
+     "firstTextS": 17,
+     "finalS": 99.3,
+     "toolCalls": 10,
+     "tools": {
+      "vbpl_find": 4,
+      "web_search": 1,
+      "vbpl_document": 1,
+      "vbpl_search_articles": 2,
+      "vbpl_article": 2
+     },
+     "llmCalls": 11,
+     "answerChars": 1785,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 8,
+      "supported": 7,
+      "unsupported": 1,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 10,
+     "tag": "trong-tai",
+     "ok": true,
+     "firstTextS": 12.2,
+     "finalS": 128,
+     "toolCalls": 18,
+     "tools": {
+      "vbpl_find": 3,
+      "vbpl_article": 8,
+      "vbpl_document": 1,
+      "vbpl_search_articles": 6
+     },
+     "llmCalls": 10,
+     "answerChars": 4868,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 16,
+      "supported": 5,
+      "unsupported": 11,
+      "reasons": [
+       "9 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "11/16 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 9,
+      "flaggedQuotesVerbatimInSource": 3,
+      "flaggedQuotesAreCallouts": 0
+     }
+    }
+   ]
+  },
+  "T5": {
+   "name": "T5",
+   "scenario": "A",
+   "concurrency": 5,
+   "via": "tunnel",
+   "base": "tunnel",
+   "stoppedEarly": null,
+   "deadlineMin": 10,
+   "startedAt": "2026-09-27T13:40:26.987Z",
+   "durationS": 57.4,
+   "pre": {
+    "waitedS": 0,
+    "activeRuns": 0
+   },
+   "success": 5,
+   "total": 5,
+   "successRate": 1,
+   "timeouts": 0,
+   "errors": 0,
+   "createMsP50": 303,
+   "createMsMax": 308,
+   "loginMsP50": 215,
+   "firstStepS": {
+    "p50": 14,
+    "p90": 16.2,
+    "max": 16.2
+   },
+   "firstTextS": {
+    "p50": 14,
+    "p90": 16.2,
+    "max": 16.2
+   },
+   "finalS": {
+    "p50": 38.4,
+    "p90": 47.2,
+    "max": 47.2,
+    "min": 33.4
+   },
+   "toolCalls": {
+    "avg": 4.2,
+    "max": 5,
+    "errors": 0
+   },
+   "llmCalls": {
+    "avg": 5,
+    "total": 25
+   },
+   "grounding": {
+    "thấp": 3,
+    "trung bình": 2
+   },
+   "questionsAnswered": 0,
+   "tokens": {
+    "in": 975007,
+    "out": 8471,
+    "outTpsStage": 147.7,
+    "perCallDecodeTpsP50": 36.1,
+    "llmCallMsP50": 5521,
+    "llmCallMsP90": 14842
+   },
+   "machine": {
+    "cpuAvg": 24,
+    "cpuMax": 86,
+    "freeMBmin": 16403,
+    "freeMBstart": 16502,
+    "groups": {
+     "web": {
+      "wsMBmax": 371,
+      "wsMBstart": 371,
+      "pmMBmax": 405,
+      "nMax": 3,
+      "cpuCoreAvg": 0.03
+     },
+     "opencode": {
+      "wsMBmax": 1069,
+      "wsMBstart": 988,
+      "pmMBmax": 1437,
+      "nMax": 3,
+      "cpuCoreAvg": 0.31
+     },
+     "sandboxChrome": {
+      "wsMBmax": 653,
+      "wsMBstart": 639,
+      "pmMBmax": 536,
+      "nMax": 9,
+      "cpuCoreAvg": 0.07
+     },
+     "ocrChrome": {
+      "wsMBmax": 460,
+      "wsMBstart": 460,
+      "pmMBmax": 267,
+      "nMax": 8,
+      "cpuCoreAvg": 0
+     },
+     "otherChrome": {
+      "wsMBmax": 3483,
+      "wsMBstart": 3465,
+      "pmMBmax": 3267,
+      "nMax": 28,
+      "cpuCoreAvg": 0.8
+     }
+    }
+   },
+   "activeRunsMax": 5,
+   "chromePagesMax": 2,
+   "chromePagesStart": 1,
+   "statsLatencyMsP50": 54,
+   "statsLatencyMsMax": 180,
+   "http429": 0,
+   "label": "T5 · 5 người qua tunnel",
+   "selfCheck": {
+    "skillLoaded": 0,
+    "groundingCheckCalled": 0,
+    "lookupToolsAvg": 4.2,
+    "lookupToolsMedian": 4,
+    "verdictOrigin": {
+     "server": 5
+    },
+    "thapRuns": 3,
+    "thapServer": 3,
+    "thapFlaggedQuotes": 2,
+    "thapFlaggedQuotesVerbatimInSource": 2,
+    "thapFlaggedQuotesCallouts": 0,
+    "inTokPerLlmCall": 39000
+   },
+   "runs": [
+    {
+     "user": 1,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 14,
+     "finalS": 43.3,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2,
+      "vbpl_history": 1
+     },
+     "llmCalls": 5,
+     "answerChars": 1245,
+     "grounding": "trung bình",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "trung bình",
+      "origin": "server",
+      "claims": 5,
+      "supported": 4,
+      "unsupported": 1,
+      "reasons": [
+       "một số link / con số / số tiền / số hiệu chưa đối chiếu được với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 2,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 8.9,
+     "finalS": 38.4,
+     "toolCalls": 5,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2,
+      "vbpl_verify": 1,
+      "vbpl_history": 1
+     },
+     "llmCalls": 5,
+     "answerChars": 1208,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 6,
+      "supported": 4,
+      "unsupported": 2,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "2/6 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 3,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 3.9,
+     "finalS": 33.4,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2,
+      "vbpl_history": 1
+     },
+     "llmCalls": 5,
+     "answerChars": 1386,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 7,
+      "supported": 4,
+      "unsupported": 3,
+      "reasons": [
+       "1 đoạn trích không có nguyên văn trong nguồn đã tra",
+       "3/7 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 1,
+      "flaggedQuotesVerbatimInSource": 1,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 4,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 16.2,
+     "finalS": 37,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_search_articles": 2,
+      "vbpl_article": 1
+     },
+     "llmCalls": 5,
+     "answerChars": 1071,
+     "grounding": "thấp",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "thấp",
+      "origin": "server",
+      "claims": 6,
+      "supported": 4,
+      "unsupported": 2,
+      "reasons": [
+       "2/6 mục chưa có căn cứ"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    },
+    {
+     "user": 5,
+     "tag": "same",
+     "ok": true,
+     "firstTextS": 15.4,
+     "finalS": 47.2,
+     "toolCalls": 4,
+     "tools": {
+      "vbpl_find": 1,
+      "vbpl_article": 2,
+      "vbpl_verify": 1
+     },
+     "llmCalls": 5,
+     "answerChars": 1403,
+     "grounding": "trung bình",
+     "groundingOrigin": "server",
+     "groundingDetail": {
+      "level": "trung bình",
+      "origin": "server",
+      "claims": 5,
+      "supported": 4,
+      "unsupported": 1,
+      "reasons": [
+       "một số link / con số / số tiền / số hiệu chưa đối chiếu được với nguồn đã tra"
+      ],
+      "flaggedQuotes": 0,
+      "flaggedQuotesVerbatimInSource": 0,
+      "flaggedQuotesAreCallouts": 0
+     }
+    }
+   ]
+  }
+ }
+}

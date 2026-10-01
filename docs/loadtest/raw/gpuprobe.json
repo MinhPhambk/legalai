@@ -1,0 +1,79 @@
+{
+  "model": "qwen3.6-35b-a3b-fp8",
+  "host": "gpustack.chimai.io",
+  "prompt": "Giải thích ngắn gọn (khoảng 150 từ) khái niệm phạt vi phạm hợp đồng trong Luật Thương mại 2005 của Việt Nam.",
+  "maxTokens": 256,
+  "levels": [
+    {
+      "concurrency": 1,
+      "ok": 1,
+      "fail": 0,
+      "wallS": 2.83,
+      "totalTokens": 230,
+      "aggTps": 81.4,
+      "perReqTpsP50": 127.8,
+      "ttftP50": 1.03,
+      "ttftMax": 1.03,
+      "latP50": 2.83,
+      "latMax": 2.83,
+      "errors": []
+    },
+    {
+      "concurrency": 4,
+      "ok": 4,
+      "fail": 0,
+      "wallS": 3.59,
+      "totalTokens": 872,
+      "aggTps": 242.7,
+      "perReqTpsP50": 96.9,
+      "ttftP50": 1.23,
+      "ttftMax": 1.27,
+      "latP50": 3.33,
+      "latMax": 3.59,
+      "errors": []
+    },
+    {
+      "concurrency": 8,
+      "ok": 8,
+      "fail": 0,
+      "wallS": 4.12,
+      "totalTokens": 1790,
+      "aggTps": 434.9,
+      "perReqTpsP50": 88.3,
+      "ttftP50": 1.28,
+      "ttftMax": 1.3,
+      "latP50": 3.75,
+      "latMax": 4.11,
+      "errors": []
+    },
+    {
+      "concurrency": 16,
+      "ok": 16,
+      "fail": 0,
+      "wallS": 4.49,
+      "totalTokens": 3435,
+      "aggTps": 765.7,
+      "perReqTpsP50": 78.7,
+      "ttftP50": 1.46,
+      "ttftMax": 1.54,
+      "latP50": 4.18,
+      "latMax": 4.48,
+      "errors": []
+    },
+    {
+      "concurrency": 32,
+      "ok": 32,
+      "fail": 0,
+      "wallS": 6.05,
+      "totalTokens": 7063,
+      "aggTps": 1166.7,
+      "perReqTpsP50": 63.6,
+      "ttftP50": 1.63,
+      "ttftMax": 2.87,
+      "latP50": 5.18,
+      "latMax": 6.05,
+      "errors": []
+    }
+  ],
+  "at": "2026-09-27T13:28:28.078Z"
+}

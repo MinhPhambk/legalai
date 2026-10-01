@@ -1,0 +1,95 @@
+[0m
+> legal · deepseek-ai/deepseek-v4.1-flash
+[0m
+[0m→ [0mSkill "contract-review"
+I'll start by loading the contract-review skill and reading the contract file.
+[0m✱ [0mGlob "**/hop-dong-mau-mua-ban-thep.md"[90m 1 match[0m
+[0m→ [0mRead hop-dong-mau-mua-ban-thep.md
+<｜DSML｜ calls>
+[0m→ [0mSkill "legal-research"
+[0m⚙ [0mvbpl_find {"query":"Luật Thương mại 2005"}
+[0m⚙ [0mvbpl_find {"query":"Bộ luật Dân sự 2015"}
+Contract identified: domestic steel sale contract, Bên B is buyer. Governing law is Luật Thương mại 2005. Let me research the key legal bases on vbpl.vn.
+[0m⚙ [0mvbpl_find {"query":"Bộ luật Dân sự số 91/2015/QH13"}
+<｜DSML｜ calls>
+[0m⚙ [0mvbpl_document {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_history {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_search_articles {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","keywords":"phạt vi phạm"}
+[0m⚙ [0mvbpl_search_articles {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","keywords":"chuyển rủi ro"}
+Luật Thương mại 2005 is "Hết hiệu lực một phần" — I must check which parts. Let me check its history and search key articles.
+[0m⚙ [0mvbpl_search_articles {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","keywords":"kiểm tra hàng hóa"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"301"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"300"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"306"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"57"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"40"}
+Now let me pull the original text of the key articles.
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"44"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"39"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"52"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"55"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"294"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"312"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"318"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"317"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"62"}
+[0m⚙ [0mchrome_list_pages Unknown
+<｜DSML｜ calls>
+[0m⚙ [0mvbpl_search_articles {"url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942","keywords":"phạt vi phạm"}
+[0m⚙ [0mvbpl_search_articles {"url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942","keywords":"đơn phương chấm dứt hợp đồng"}
+[0m⚙ [0mvbpl_document {"url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942","article":"418"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942","article":"428"}
+<｜DSML｜ calls>
+[0m⚙ [0mchrome_evaluate_script {"pageId":1,"function":"() => { const t = document.body.innerText; const idx = t.indexOf('Hết hiệu lực một phần'); const idx2 = t.indexOf('hết hiệu lực'); let out = ''; if (idx>=0) out += t.substring(Math.max(0,idx-600), idx+800); else if (idx2>=0) out += t.substring(Math.max(0,idx2-600), idx2+800); else out='NO MATCH'; return out; }"}
+[0m⚙ [0mvbpl_find {"query":"Luật Quản lý ngoại thương 05/2017/QH14"}
+Partial expiry is due to Luật Quản lý ngoại thương 2017. Let me verify which LTM articles were repealed.
+<｜DSML｜ calls>
+[0m⚙ [0mvbpl_search_articles {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-quan-ly-ngoai-thuong-so-05-2017-qh14--123028","keywords":"hiệu lực thi hành"}
+[0m⚙ [0mvbpl_search_articles {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-quan-ly-ngoai-thuong-so-05-2017-qh14--123028","keywords":"bãi bỏ Luật Thương mại"}
+[0m⚙ [0mvbpl_article {"article":"112","url":"https://vbpl.vn/van-ban/chi-tiet/luat-quan-ly-ngoai-thuong-so-05-2017-qh14--123028"}
+[0m⚙ [0mvbpl_article {"article":"296","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"50","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"43","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"302","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+The partial expiry affects only LTM arts. 28(3), 29(3), 30(3), 31, 33, 242–247 — none of my cited articles. Let me pull a few remaining provisions.
+[0m⚙ [0mvbpl_article {"article":"307","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+I have the legal basis. Now let me run the mandatory citation-check and verify quotes.
+[0m→ [0mSkill "citation-check"
+[0m⚙ [0mvbpl_verify {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","quote":"Mức phạt đối với vi phạm nghĩa vụ hợp đồng hoặc tổng mức phạt đối với nhiều vi phạm do các bên thỏa thuận trong hợp đồng, nhưng không quá 8% giá trị phần nghĩa vụ hợp đồng bị vi phạm"}
+[0m⚙ [0mvbpl_verify {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","quote":"bên bị vi phạm hợp đồng có quyền yêu cầu trả tiền lãi trên số tiền chậm trả đó theo lãi suất nợ quá hạn trung bình trên thị trường tại thời điểm thanh toán tương ứng với thời gian chậm trả"}
+[0m⚙ [0mvbpl_verify {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","quote":"rủi ro về mất mát hoặc hư hỏng hàng hóa được chuyển cho bên mua khi hàng hoá đã được giao cho bên mua hoặc người được bên mua ủy quyền đã nhận hàng tại địa điểm đó"}
+[0m⚙ [0mvbpl_verify {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","quote":"bên bán phải chịu trách nhiệm về bất kỳ khiếm khuyết nào của hàng hoá đã có trước thời điểm chuyển rủi ro cho bên mua, kể cả trường hợp khiếm khuyết đó được phát hiện sau thời điểm chuyển rủi ro"}
+[0m⚙ [0mvbpl_verify {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","quote":"Sáu tháng, kể từ ngày giao hàng đối với khiếu nại về chất lượng hàng hóa"}
+[0m⚙ [0mvbpl_verify {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","quote":"Giải quyết tại Trọng tài hoặc Tòa án"}
+[0m⚙ [0mvbpl_verify {"url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942","quote":"Một bên có quyền đơn phương chấm dứt thực hiện hợp đồng và không phải bồi thường thiệt hại khi bên kia vi phạm nghiêm trọng nghĩa vụ trong hợp đồng hoặc các bên có thỏa thuận hoặc pháp luật có quy định"}
+Verifying the quoted excerpts on the source pages.
+[0m⚙ [0mvbpl_verify {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-quan-ly-ngoai-thuong-so-05-2017-qh14--123028","quote":"Bãi bỏ khoản 3 Ðiều 28, khoản 3 Ðiều 29, khoản 3 Ðiều 30, các điều 31, 33, 242, 243, 244, 245, 246 và 247 của Luật Thương mại số 36/2005/QH11."}
+All citations verified. Now writing the report.
+[0m
+[0m← [0mWrite out/hop-dong-mau-mua-ban-thep-ra-soat.md
+Wrote file successfully.
+[0m
+Đã hoàn tất rà soát và ghi báo cáo ra `workspace/out/hop-dong-mau-mua-ban-thep-ra-soat.md`.
+
+## Tóm tắt nhanh
+
+**Hợp đồng mua bán hàng hóa nội địa (thép), Bên B là bên mua. Luật áp dụng: Luật Thương mại 2005 + BLDS 2015.**
+
+### 5 rủi ro lớn nhất cho Bên B
+1. **Điều 3.2 – chuyển rủi ro từ ngày ký** (rủi ro 5): Bên B gánh mất mát/hư hỏng khi Bên A vẫn giữ hàng — trái mặc định Điều 57 LTM (rủi ro chuyển khi nhận hàng).
+2. **Điều 4 – tước mọi quyền khiếu nại chất lượng** (rủi ro 5): xung đột Điều 40 LTM (bên bán chịu khuyết tật có trước chuyển rủi ro, kể cả phát hiện sau) và Điều 318 (6 tháng).
+3. **Điều 5.1 – phạt 15% vượt trần 8%** (rủi ro 5): phần vượt nguy cơ vô hiệu theo Điều 301 LTM; lãi 0,2%/ngày (≈73%/năm) quá cao so với Điều 306.
+4. **Điều 6 – Bên A đơn phương chấm dứt bất cứ lúc nào, không bồi thường** (rủi ro 5): trái nguyên tắc Điều 428 BLDS 2015.
+5. **Điều 2.1 – Bên A tự điều chỉnh giá** + **Điều 1** số lượng "khoảng 500 tấn"/quy cách không ghi cụ thể (rủi ro 4 và 3).
+
+### Điểm pháp lý đáng chú ý
+- Luật Thương mại 2005 có trạng thái **"Hết hiệu lực một phần"**, nhưng phần bị bãi bỏ (bởi Luật Quản lý ngoại thương 2017, khoản 3 Điều 28/29/30 và các Điều 31, 33, 242–247) **không liên quan** đến mọi điều được trích trong báo cáo → các căn cứ nêu vẫn còn hiệu lực.
+
+### Kiểm tra trích dẫn
+Toàn bộ đoạn trích đã được `vbpl_verify` xác nhận **KHỚP** trên vbpl.vn ngày 26/09/2026.
+
+**Độ tin cậy: CAO.**
+**Khuyến nghị tham vấn luật sư: CÓ** — giá trị hợp đồng lớn (ước ~7,5 tỷ đồng, dù hợp đồng chưa ghi tổng giá trị), nhiều điều khoản nguy cơ vô hiệu/bất lợi nghiêm trọng, cần ý kiến trước khi ký và soạn bản sửa để đàm phán.
+
+Báo cáo gồm đầy đủ: bảng rà soát 10 điều khoản (kèm mức rủi ro, căn cứ link, gợi ý sửa), danh mục điều khoản còn thiếu, bảng nghĩa vụ – thời hạn, và thứ tự ưu tiên đàm phán.

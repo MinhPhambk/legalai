@@ -1,0 +1,50 @@
+[0m
+> legal · deepseek-ai/deepseek-v4.1-flash
+[0m
+[0m→ [0mSkill "contract-review"
+[0m→ [0mSkill "legal-research"
+Tôi sẽ giúp bạn soạn hợp đồng phân phối độc quyền. Đây là công việc cần tra cứu căn cứ pháp lý trực tiếp. Tôi bắt đầu bằng việc nạp quy trình chuyên môn.
+[0m⚙ [0mvbpl_find {"query":"Luật Thương mại 2005"}
+[0m⚙ [0mvbpl_find {"query":"Luật Cạnh tranh 2018"}
+[0m⚙ [0mvbpl_find {"query":"36/2005/QH11"}
+[0m⚙ [0mvbpl_find {"query":"Bộ luật Dân sự 2015"}
+Tôi sẽ bắt đầu tra cứu căn cứ pháp lý trên vbpl.vn cho các điều khoản quan trọng. Các luật điều chỉnh gồm Luật Thương mại 2005 (mua bán hàng hóa, đại lý/phân phối), Luật Cạnh tranh 2018 (thỏa thuận độc quyền phân phối/hạn chế cạnh tranh).
+[0m⚙ [0mvbpl_find {"query":"Bộ luật Dân sự số 91/2015/QH13"}
+Đã có link Luật Thương mại 2005 và Luật Cạnh tranh 2018. Tiếp tục tra cứu nội dung các điều khoản quan trọng.
+[0m⚙ [0mvbpl_document {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-canh-tranh-so-23-2018-qh14--133401"}
+[0m⚙ [0mvbpl_document {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_history {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"301"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"306"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"294"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117","article":"55"}
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-canh-tranh-so-23-2018-qh14--133401","article":"11"}
+Đã có đặc tính văn bản. Lưu ý Luật Thương mại 2005 "Hết hiệu lực một phần" — cần kiểm tra điều nào bị sửa. Tôi trích các điều khoản quan trọng và kiểm tra lịch sử hiệu lực.
+[0m⚙ [0mvbpl_article {"url":"https://vbpl.vn/van-ban/chi-tiet/luat-canh-tranh-so-23-2018-qh14--133401","article":"12"}
+[0m⚙ [0mvbpl_article {"article":"166","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"168","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"169","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"173","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"175","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"8","url":"https://vbpl.vn/van-ban/chi-tiet/luat-canh-tranh-so-23-2018-qh14--133401"}
+[0m⚙ [0mvbpl_article {"article":"116","url":"https://vbpl.vn/van-ban/chi-tiet/luat-canh-tranh-so-23-2018-qh14--133401"}
+Tôi tra thêm các điều về đại lý/phân phối, hành vi cấm trong cạnh tranh, và các quy định của Bộ luật Dân sự 2015 về hợp đồng.
+[0m⚙ [0mvbpl_document {"url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942"}
+[0m⚙ [0mvbpl_article {"article":"117","url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942"}
+[0m⚙ [0mvbpl_article {"article":"119","url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942"}
+[0m⚙ [0mvbpl_article {"article":"398","url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942"}
+[0m⚙ [0mvbpl_article {"article":"357","url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942"}
+[0m⚙ [0mvbpl_article {"article":"418","url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942"}
+[0m⚙ [0mvbpl_article {"article":"419","url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942"}
+[0m⚙ [0mvbpl_article {"article":"300","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"307","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"302","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+Tôi trích các quy định của Bộ luật Dân sự 2015 và một số điều còn lại của Luật Thương mại.
+[0m⚙ [0mvbpl_article {"article":"50","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+[0m⚙ [0mvbpl_article {"article":"13","url":"https://vbpl.vn/van-ban/chi-tiet/luat-canh-tranh-so-23-2018-qh14--133401"}
+[0m⚙ [0mvbpl_article {"article":"14","url":"https://vbpl.vn/van-ban/chi-tiet/luat-canh-tranh-so-23-2018-qh14--133401"}
+[0m⚙ [0mvbpl_article {"article":"468","url":"https://vbpl.vn/van-ban/chi-tiet/bo-luat-dan-su-so-91-2015-qh13--95942"}
+[0m⚙ [0mvbpl_find {"query":"Nghị định 35/2006/NĐ-CP Luật Thương mại"}
+[0m⚙ [0mvbpl_article {"article":"171","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}
+Tôi tra thêm quy định về miễn trừ thỏa thuận hạn chế cạnh tranh, mức lãi suất, và nghị định hướng dẫn Luật Thương mại về đại lý/phân phối.
+[0m⚙ [0mvbpl_article {"article":"177","url":"https://vbpl.vn/van-ban/chi-tiet/luat-thuong-mai-so-36-2005-qh11--26117"}

@@ -1,0 +1,198 @@
+/* Admin console shell (AdminPage.jsx): left sub-navigation on desktop, scrollable tab strip ≤ 768 px. */
+.adm-shell {
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  max-width: 1320px;
+  margin: 0 auto;
+  min-width: 0;
+}
+.adm-nav {
+  position: sticky;
+  top: var(--adm-top-h, 58px);
+  align-self: start;
+  max-height: calc(100dvh - var(--adm-top-h, 58px));
+  overflow-y: auto;
+  padding: 20px 12px 24px 20px;
+}
+.adm-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.adm-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  color: var(--text-2, var(--text));
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.adm-nav-item:hover {
+  background: var(--bg-muted);
+  color: var(--text);
+}
+.adm-nav-item.on {
+  background: var(--bg-muted);
+  color: var(--text);
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--brand, var(--accent));
+}
+.adm-nav-item svg {
+  flex: none;
+  color: var(--text-3);
+}
+.adm-nav-item.on svg {
+  color: var(--text);
+}
+.adm-content.admin-main {
+  max-width: 1060px;
+  width: 100%;
+  margin: 0;
+  padding: 24px 24px 60px;
+}
+.adm-content .admin-section-head h2 {
+  font-size: 18px;
+}
+.adm-note {
+  margin: -4px 0 14px;
+}
+.stat-link {
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.stat-link:hover {
+  border-color: var(--border-strong);
+}
+.agent-status .adm-status-link {
+  margin-left: auto;
+  flex: none;
+}
+.adm-card {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  min-width: 0;
+}
+.adm-card > h3,
+.adm-card-head h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+}
+.adm-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.adm-card .switch-row,
+.adm-card .set-row {
+  border-bottom: 0;
+}
+.adm-recent {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+}
+.adm-recent li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  font-size: 13.5px;
+  min-width: 0;
+}
+.adm-recent li:first-child {
+  border-top: 0;
+}
+.adm-recent li > a,
+.adm-recent li > .u-email {
+  flex: 1 1 220px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+.adm-recent li > a:hover {
+  text-decoration: underline;
+}
+.adm-recent .muted {
+  font-size: 12.5px;
+  overflow-wrap: anywhere;
+}
+.adm-empty {
+  margin: 6px 0 2px;
+  font-size: 13px;
+}
+@media (max-width: 768px) {
+  .adm-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .adm-nav {
+    position: sticky;
+    top: var(--adm-top-h, 57px);
+    z-index: 4;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px 12px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    scrollbar-width: none;
+  }
+  .adm-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .adm-nav ul {
+    display: flex;
+    gap: 4px;
+    width: max-content;
+  }
+  .adm-nav-item {
+    padding: 7px 11px;
+    font-size: 13.5px;
+    border-radius: 999px;
+  }
+  .adm-nav-item.on {
+    box-shadow: none;
+    background: var(--text);
+    color: var(--bg);
+  }
+  .adm-nav-item.on svg {
+    color: var(--bg);
+  }
+  .adm-content.admin-main {
+    padding: 16px 16px 48px;
+  }
+}
+/* Icons inside the horizontally scrolling tab strip / wide tables: let the scroll container (not the svg box)
+   do the clipping. */
+.admin svg {
+  overflow: visible;
+}
+.adm-content .stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 560px) {
+  .adm-content .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

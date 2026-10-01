@@ -1,0 +1,8 @@
+node_modules/
+.sandbox/
+.env
+
+# never publish
+THONG-TIN-TRUY-CAP.txt
+tools/cloudflared.exe
+web/screenshots/

@@ -1,0 +1,311 @@
+/* Drafting progress card (DraftCard.jsx). App tokens → light / dark follow the theme. */
+.draft-card {
+  margin: 10px 0 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  animation: fade-up 0.3s var(--ease-out, ease) both;
+}
+.draft-card.running {
+  border-color: var(--border-strong);
+}
+.draft-card.failed {
+  border-color: var(--brand, var(--accent));
+}
+.draft-head {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  min-width: 0;
+}
+.draft-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--bg-muted);
+  color: var(--text);
+}
+.draft-card.failed .draft-icon {
+  color: var(--brand, var(--accent));
+}
+.draft-headtext {
+  min-width: 0;
+  flex: 1;
+}
+.draft-title {
+  font-weight: 700;
+  font-size: 14.5px;
+  overflow-wrap: anywhere;
+}
+.draft-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--text-3);
+}
+.draft-chip {
+  padding: 1px 7px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-2, var(--text));
+}
+.draft-phase {
+  color: var(--text-2, var(--text));
+  font-weight: 600;
+}
+.draft-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  counter-reset: none;
+}
+.draft-step {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-3);
+  min-width: 0;
+}
+.draft-step::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  right: calc(50% + 14px);
+  width: calc(100% - 22px);
+  height: 2px;
+  background: var(--border);
+}
+.draft-step:first-child::before {
+  display: none;
+}
+.draft-step.done::before,
+.draft-step.current::before,
+.draft-step.failed::before {
+  background: var(--text);
+}
+.draft-step-mark {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-strong);
+  background: var(--surface);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.draft-step.done .draft-step-mark {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+.draft-step.current .draft-step-mark {
+  border-color: var(--text);
+  color: var(--text);
+}
+.draft-step.failed .draft-step-mark {
+  border-color: var(--brand, var(--accent));
+  color: var(--brand, var(--accent));
+}
+.draft-step.done,
+.draft-step.current {
+  color: var(--text);
+}
+.draft-step.current .draft-step-name {
+  font-weight: 700;
+}
+.draft-step-name {
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+.draft-step-time {
+  font-size: 11px;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.draft-progress {
+  display: grid;
+  gap: 6px;
+}
+.draft-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg-muted);
+  overflow: hidden;
+}
+.draft-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--text);
+  transition: width 0.4s var(--ease-out, ease);
+}
+.draft-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 12.5px;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.draft-issues {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px 8px;
+}
+.draft-issues .sev-err {
+  color: var(--brand, var(--text));
+}
+.draft-issues .sev-warn {
+  color: var(--text);
+}
+.draft-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 4px 2px 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--text-2, var(--text));
+  cursor: pointer;
+  border-radius: 6px;
+}
+.draft-section-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.draft-sec {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 6px;
+  border-radius: 8px;
+  font-size: 13px;
+  min-width: 0;
+}
+.draft-sec:nth-child(odd) {
+  background: var(--bg-soft);
+}
+.draft-sec-icon {
+  flex: none;
+  width: 14px;
+  display: inline-grid;
+  place-items: center;
+  color: var(--text-3);
+  align-self: center;
+}
+.draft-sec.written .draft-sec-icon,
+.draft-sec.checked .draft-sec-icon,
+.draft-sec.fixed .draft-sec-icon {
+  color: var(--text);
+}
+.draft-sec.failed .draft-sec-icon {
+  color: var(--brand, var(--accent));
+}
+.draft-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+.draft-sec-name {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.draft-sec-meta {
+  flex: none;
+  display: inline-flex;
+  gap: 8px;
+  font-size: 11.5px;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.draft-sec-issues {
+  color: var(--text);
+  font-weight: 600;
+}
+.draft-error {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  font-size: 12.5px;
+  color: var(--brand, var(--text));
+  overflow-wrap: anywhere;
+}
+.draft-doc {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  min-width: 0;
+}
+.draft-doc > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.doc-card.flash {
+  animation: draft-flash 1.4s ease-out 1;
+}
+@keyframes draft-flash {
+  0%,
+  30% {
+    box-shadow: 0 0 0 3px var(--brand, var(--accent));
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+@media (max-width: 480px) {
+  .draft-card {
+    padding: 12px;
+  }
+  .draft-step {
+    font-size: 11px;
+  }
+  .draft-step-time {
+    display: none;
+  }
+  .draft-sec-meta span:not(.draft-sec-issues):not(.sr-only) {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .draft-card,
+  .doc-card.flash,
+  .draft-bar span {
+    animation: none;
+    transition: none;
+  }
+}

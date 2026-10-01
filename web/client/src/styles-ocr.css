@@ -1,0 +1,80 @@
+/* ---- OCR badge (v11): text recognised from a scanned PDF – upload chips, attachment pills, document cards,
+   tool steps, result cards. Amber = "check against the original"; stays one line, never widens its row. ---- */
+.ocr-badge {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  max-width: 100%;
+  vertical-align: baseline;
+  white-space: nowrap;
+  font-size: 11px;
+  line-height: 1.35;
+  color: var(--warning);
+}
+.ocr-tag {
+  flex: none;
+  padding: 0 5px;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--warning) 55%, transparent);
+  background: color-mix(in srgb, var(--warning) 10%, transparent);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.ocr-pages {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-3);
+}
+/* the pill's own span rule (ellipsis) must not clip the badge */
+.file-pill .ocr-badge,
+.file-pill .ocr-badge span {
+  overflow: visible;
+  flex: none;
+}
+.file-pill .ocr-badge .sr-only {
+  overflow: hidden;
+}
+.chip-sub .ocr-badge {
+  vertical-align: baseline;
+}
+.chip.is-ocr .chip-icon {
+  background: color-mix(in srgb, var(--warning) 16%, var(--bg-muted));
+  color: var(--warning);
+}
+/* OCR of a scan in progress (can take ~2.5 s/page): indeterminate bar instead of the full upload bar */
+.chip.is-ocr-run .chip-progress {
+  transform: none !important;
+  background: linear-gradient(90deg, transparent 0 30%, var(--text) 30% 60%, transparent 60%) 0 0 / 200% 100%;
+  animation: ocr-run 1.4s linear infinite;
+}
+@keyframes ocr-run {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chip.is-ocr-run .chip-progress {
+    animation: none;
+    background: var(--text);
+    opacity: 0.4;
+  }
+}
+.step-result .step-ocr {
+  margin-left: 6px;
+}
+.step-result .step-chrome + .step-ocr,
+.step-result > .step-ocr:first-child {
+  margin-left: 0;
+}
+.step-result .step-chrome + .step-ocr {
+  margin-left: 6px;
+}
+.doc-kind .ocr-badge {
+  text-transform: none;
+  letter-spacing: 0;
+}

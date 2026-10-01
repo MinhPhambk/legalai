@@ -1,0 +1,386 @@
+/* ---- i18n: language toggle, document language badge, longer English strings ------------------- */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  padding: 2px;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+}
+.lang-toggle button {
+  min-width: 34px;
+  height: 26px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-3);
+  font: 600 11.5px/1 var(--font);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.15s var(--ease), color 0.15s var(--ease);
+}
+.lang-toggle button:hover {
+  color: var(--text);
+}
+.lang-toggle button.on {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+.lang-toggle button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 1px;
+}
+
+/* Sign-in / sign-up: top-right corner of the form column. */
+.auth-main {
+  position: relative;
+}
+.auth-lang {
+  position: absolute;
+  top: max(14px, env(safe-area-inset-top));
+  right: 16px;
+  z-index: 2;
+}
+
+/* Document card language badge (VI / EN / VI–EN). */
+.doc-lang {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 6px;
+  height: 17px;
+  border-radius: 5px;
+  border: 1px solid var(--border-strong);
+  color: var(--text-2);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  white-space: nowrap;
+}
+.doc-kind {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+
+/* English labels are longer: let admin / expert header buttons and filter chips shrink gracefully. */
+.admin-top .btn span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 520px) {
+  .admin-top .btn span {
+    display: none;
+  }
+}
+@media (max-width: 380px) {
+  .share-top {
+    gap: 8px;
+    padding-left: 12px;
+    padding-right: 10px;
+  }
+  .share-lang button {
+    min-width: 28px;
+    padding: 0 6px;
+  }
+}
+
+/* ---- personal-identifier warning ------------------------------------------------------------- */
+.pii-warn {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  margin: 0 auto 8px;
+  max-width: var(--col);
+  padding: 9px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+  font-size: 13px;
+  color: var(--text);
+  animation: fu-in 0.2s var(--ease-out);
+}
+.pii-warn > svg {
+  flex: none;
+  color: #b45309;
+}
+.pii-warn-text {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+.pii-warn-actions {
+  display: inline-flex;
+  gap: 6px;
+  margin-left: auto;
+}
+.composer-about {
+  margin-left: 6px;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- about dialog ------------------------------------------------------------------------------ */
+.about-dialog .about-sec h3 {
+  margin: 16px 0 4px;
+  font-size: 14px;
+}
+.about-dialog .about-sec p {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+/* ---- follow-up suggestions ----------------------------------------------------------------------- */
+.followups {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  margin: 6px 0 4px;
+}
+.followups-title {
+  width: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-3);
+}
+.followup {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 6px;
+  max-width: 100%;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 13.5px/1.35 var(--font);
+  text-align: left;
+  cursor: pointer;
+  opacity: 0;
+  animation: fu-in 0.35s var(--ease-out) forwards;
+  transition: background 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.followup svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--text-3);
+}
+.followup span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.followup:hover:not(:disabled) {
+  background: var(--hover);
+  border-color: var(--border-strong);
+}
+.followup:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.followup:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.followups.is-pending {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.followup-skel {
+  display: block;
+  height: 32px;
+  border-radius: 999px;
+  max-width: 100%;
+}
+@keyframes fu-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .followup {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* The account menu gained an item (About & limitations): keep it inside short landscape screens. */
+.user-pop {
+  max-height: calc(100dvh - 72px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* ---- admin: model switcher (admin only) ------------------------------------------------------- */
+.adm-models .set-row-desc {
+  margin: 0 0 10px;
+}
+.adm-model-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.adm-model {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  min-width: 0;
+}
+.adm-model.active {
+  border-color: var(--accent);
+}
+.adm-model-main {
+  min-width: 0;
+  flex: 1;
+}
+.adm-model-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+.adm-model-dot {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid var(--border-strong);
+}
+.adm-model-dot.on {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.adm-model-sub {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--text-3);
+  overflow-wrap: anywhere;
+}
+.adm-model-test {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--text-2);
+  overflow-wrap: anywhere;
+}
+.adm-model-test.ok {
+  color: var(--text);
+  font-weight: 600;
+}
+.adm-model-test.bad {
+  color: var(--accent);
+}
+.adm-model-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: none;
+}
+.adm-model-reset {
+  margin-top: 10px;
+}
+@media (max-width: 640px) {
+  .adm-model {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ---- admin: chat history, access log, read-only viewer ------------------------------------------ */
+.adm-note {
+  margin: 0 0 10px;
+}
+.adm-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.adm-filters .admin-search {
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.adm-filters .admin-search input {
+  min-width: 0;
+  width: 100%;
+}
+.adm-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-2);
+  flex: 0 1 auto;
+  min-width: 0;
+}
+.adm-date input {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 5px 8px;
+  min-width: 0;
+  max-width: 100%;
+}
+.adm-chat-row {
+  cursor: pointer;
+}
+.adm-chat-row:hover td {
+  background: color-mix(in srgb, var(--text) 4%, transparent);
+}
+.adm-chat-title {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.adm-chat-title:hover {
+  text-decoration: underline;
+}
+.admin-viewer .share-top {
+  gap: 10px;
+}
+.adm-ro-badge {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  text-align: left;
+}
+.adm-older {
+  margin: 0 auto 12px;
+  display: flex;
+}
+.set-admin-note {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+@media (max-width: 600px) {
+  .adm-date {
+    flex: 1 1 100%;
+  }
+  .adm-date input {
+    flex: 1;
+  }
+}

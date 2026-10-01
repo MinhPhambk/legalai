@@ -1,0 +1,42 @@
+{
+ "at": "2026-09-27T13:56:58.260Z",
+ "users": [
+  "loadtest-01@legalai.local",
+  "loadtest-02@legalai.local",
+  "loadtest-03@legalai.local",
+  "loadtest-04@legalai.local",
+  "loadtest-05@legalai.local",
+  "loadtest-06@legalai.local",
+  "loadtest-07@legalai.local",
+  "loadtest-08@legalai.local",
+  "loadtest-09@legalai.local",
+  "loadtest-10@legalai.local",
+  "loadtest-11@legalai.local",
+  "loadtest-12@legalai.local",
+  "loadtest-13@legalai.local",
+  "loadtest-14@legalai.local",
+  "loadtest-15@legalai.local",
+  "loadtest-16@legalai.local",
+  "loadtest-17@legalai.local",
+  "loadtest-18@legalai.local",
+  "loadtest-19@legalai.local",
+  "loadtest-20@legalai.local"
+ ],
+ "sessions": 54,
+ "escalations": 0,
+ "removedFiles": 57,
+ "promptRows": 54,
+ "leftovers": {
+  "users": 0,
+  "chats": 0,
+  "prompts": 0,
+  "uploads": 0,
+  "sessions": 0,
+  "branches": 0,
+  "followups": 0,
+  "opencodeSessions": 0,
+  "uploadDirs": 0,
+  "outputDirs": 0,
+  "evidenceFiles": 0
+ }
+}

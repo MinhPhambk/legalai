@@ -1,0 +1,293 @@
+/* Admin → tools & skills library (AdminLibrary.jsx). Uses the app tokens, so light / dark follow the theme. */
+.lib-intro {
+  margin: -4px 0 12px;
+}
+.lib-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.lib-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: none;
+  color: var(--text-3);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.lib-tab:hover {
+  color: var(--text);
+}
+.lib-tab.on {
+  color: var(--text);
+  border-bottom-color: var(--brand, var(--accent));
+}
+.lib-count {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--bg-muted);
+  color: var(--text-2, var(--text-3));
+  font-variant-numeric: tabular-nums;
+}
+.lib-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.lib-search {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+.lib-search input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+.lib-toolbar .segmented {
+  flex: none;
+  max-width: 100%;
+}
+.lib-note {
+  font-size: 12.5px;
+  color: var(--text-3);
+  margin: 10px 0 12px;
+}
+.lib-note.warn {
+  color: var(--text);
+  padding: 8px 12px;
+  border: 1px dashed var(--border-strong);
+  border-radius: 10px;
+}
+.lib-group + .lib-group {
+  margin-top: 14px;
+}
+.lib-group h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+.lib-group-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px 4px 2px;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.lib-group-btn .lib-chev {
+  transition: transform 0.15s var(--ease-out, ease);
+}
+.lib-group-btn[aria-expanded="false"] .lib-chev {
+  transform: rotate(-90deg);
+}
+.lib-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.lib-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  min-width: 0;
+}
+.lib-item.off {
+  background: var(--bg-soft);
+}
+.lib-item.off .lib-title strong {
+  color: var(--text-3);
+}
+.lib-main {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+}
+.lib-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  font-size: 14px;
+  min-width: 0;
+}
+.lib-title .status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.lib-code {
+  font-size: 12px;
+  color: var(--text-3);
+  overflow-wrap: anywhere;
+}
+.lib-desc {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-2, var(--text));
+  overflow-wrap: anywhere;
+}
+.lib-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+.lib-usage {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  font-variant-numeric: tabular-nums;
+}
+.lib-usage .lib-err {
+  color: var(--text);
+  font-weight: 600;
+}
+.lib-changed {
+  font-style: italic;
+}
+.lib-details {
+  margin-top: 2px;
+  font-size: 12.5px;
+}
+.lib-details summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  color: var(--text-3);
+  list-style: none;
+  border-radius: 6px;
+}
+.lib-details summary::-webkit-details-marker {
+  display: none;
+}
+.lib-details summary svg {
+  transform: rotate(-90deg);
+  transition: transform 0.15s;
+}
+.lib-details[open] summary svg {
+  transform: none;
+}
+.lib-fulldesc {
+  margin: 8px 0 4px;
+  color: var(--text-3);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.lib-params {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+.lib-params li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: var(--bg-soft);
+  min-width: 0;
+}
+.lib-pname {
+  font-weight: 600;
+}
+.lib-ptype {
+  color: var(--text-3);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11.5px;
+}
+.lib-pdesc,
+.lib-penum {
+  flex-basis: 100%;
+  color: var(--text-3);
+  overflow-wrap: anywhere;
+}
+.lib-penum {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11.5px;
+}
+.lib-noparams {
+  margin: 8px 0 0;
+}
+.lib-view {
+  justify-self: start;
+  margin-top: 2px;
+}
+.lib-ctl {
+  flex: none;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  min-width: 64px;
+}
+.lib-ctl-text {
+  font-size: 11.5px;
+  color: var(--text-3);
+  text-align: center;
+}
+.lib-ctl .switch.busy {
+  opacity: 0.6;
+}
+.lib-empty {
+  padding: 16px 4px;
+}
+.lib-skill-dialog {
+  width: min(820px, 100%);
+}
+.lib-skill-md {
+  font-size: 14px;
+}
+.lib-skill-md pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.lib-skill-md table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
+@media (max-width: 560px) {
+  .lib-item {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .lib-toolbar .segmented {
+    flex: 1 1 100%;
+  }
+  .lib-toolbar .segmented button {
+    flex: 1;
+  }
+  .lib-ctl {
+    min-width: 52px;
+  }
+}

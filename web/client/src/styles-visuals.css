@@ -1,0 +1,57 @@
+/* Visuals in answers (components/Visuals.jsx): diagrams (sandboxed frame), images (own endpoint), mermaid charts. */
+.md [data-vis] { display: block; margin: 14px 0 18px; }
+.md span[data-vis="image"] { display: block; }
+.md [data-vis="mermaid"][data-ready] > pre { display: none; }
+.md [data-vis="mermaid"]:not([data-ready]):not([data-failed]) > pre { opacity: 0.55; }
+
+.vis-figure { margin: 0; display: flex; flex-direction: column; gap: 8px; max-width: 100%; }
+.vis-figure figcaption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; font-size: 13px; line-height: 1.45; color: var(--text-2); }
+.vis-caption { font-weight: 500; color: var(--text); min-width: 0; overflow-wrap: anywhere; }
+.vis-credit { display: block; width: 100%; font-size: 12px; color: var(--text-3); overflow-wrap: anywhere; }
+.vis-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.vis-credit a:hover { color: var(--text); }
+.vis-actions { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-left: auto; }
+.vis-actions .btn { display: inline-flex; align-items: center; gap: 5px; text-decoration: none; }
+
+.vis-zoom { all: unset; display: block; cursor: zoom-in; max-width: 100%; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); background: var(--bg-soft); }
+.vis-zoom:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.vis-zoom img { display: block; max-width: 100%; height: auto; max-height: 520px; object-fit: contain; margin: 0 auto; }
+.vis-chart .vis-zoom { background: transparent; padding: 8px; box-sizing: border-box; }
+.vis-chart .vis-zoom img { max-height: 560px; }
+
+.vis-frame-wrap { position: relative; width: 100%; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden; background: var(--bg-soft); }
+.vis-frame-wrap iframe, .vis-full-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; background: transparent; }
+.vis-skeleton { position: absolute; inset: 0; background: linear-gradient(90deg, var(--skeleton-a), var(--skeleton-b), var(--skeleton-a)); background-size: 200% 100%; animation: vis-shimmer 1.4s linear infinite; }
+@keyframes vis-shimmer { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .vis-skeleton { animation: none; } }
+
+.vis-missing, .vis-mermaid-error { display: block; font-size: 12.5px; color: var(--text-3); font-style: italic; margin: 4px 0; }
+.vis-orphans { display: flex; flex-direction: column; gap: 18px; margin: 12px 0; }
+
+/* lightbox */
+.vis-lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(0, 0, 0, 0.78); display: flex; align-items: center; justify-content: center; padding: 48px 16px 16px; box-sizing: border-box; animation: vis-fade 0.16s var(--ease-out); }
+@keyframes vis-fade { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .vis-lightbox { animation: none; } }
+.vis-lightbox-close { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 999px; border: 0; background: rgba(255, 255, 255, 0.14); color: #fff; display: grid; place-items: center; cursor: pointer; }
+.vis-lightbox-close:hover { background: rgba(255, 255, 255, 0.24); }
+.vis-lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.vis-lightbox-body { max-width: min(1400px, 100%); max-height: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; overflow: auto; }
+.vis-lightbox-body.wide { width: min(1600px, 100%); }
+.vis-lightbox-img { max-width: 100%; max-height: calc(100vh - 150px); object-fit: contain; border-radius: 8px; background: #fff; }
+.vis-lightbox-svg { width: 100%; height: auto; background: transparent; }
+.vis-full-frame { position: relative; width: 100%; max-height: calc(100vh - 140px); border-radius: 8px; overflow: hidden; background: var(--bg-soft); }
+.vis-lightbox-cap { color: #eee; font-size: 13px; text-align: center; max-width: 900px; display: flex; flex-direction: column; gap: 3px; }
+.vis-lightbox-cap .vis-caption { color: #fff; }
+.vis-lightbox-cap .vis-credit { color: #bbb; }
+
+@media (max-width: 640px) {
+  .vis-actions { margin-left: 0; }
+  .vis-actions .btn { padding-inline: 8px; }
+  .vis-zoom img { max-height: 420px; }
+}
+
+.vis-frame-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; border-radius: var(--radius-sm); }
+.vis-frame-scroll:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+@media (max-width: 640px) {
+  .vis-frame-scroll .vis-frame-wrap { min-width: var(--vis-min, 560px); }
+}

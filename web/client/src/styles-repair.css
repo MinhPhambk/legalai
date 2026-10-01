@@ -1,0 +1,82 @@
+/* ---- Opt-in "look up again" (27/09/2026): composer switch + "Tra lại ngay" on the low-confidence warning ---- */
+.composer-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  height: 30px;
+  padding: 0 8px 0 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-3);
+  font-size: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
+}
+.composer-toggle:hover {
+  color: var(--text-2);
+  background: var(--bg-muted);
+}
+.composer-toggle:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 1px;
+}
+.composer-toggle.on {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--text) 35%, var(--border));
+}
+.composer-toggle-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mini-switch {
+  position: relative;
+  flex: none;
+  width: 22px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--border);
+  transition: background-color 0.15s;
+}
+.mini-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  transition: transform 0.15s var(--ease, ease);
+}
+.composer-toggle.on .mini-switch {
+  background: var(--success);
+}
+.composer-toggle.on .mini-switch::after {
+  transform: translateX(10px);
+}
+@media (max-width: 360px) {
+  /* smallest phones: icon + switch only (the full name stays in aria-label / title) */
+  .composer-toggle-label {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mini-switch,
+  .mini-switch::after {
+    transition: none;
+  }
+}
+.conf-repair {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.conf-repair:disabled {
+  opacity: 0.6;
+  cursor: default;
+}

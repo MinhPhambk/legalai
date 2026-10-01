@@ -1,0 +1,127 @@
+[0m
+> legal · deepseek-ai/deepseek-v4.1-flash
+[0m
+[0m→ [0mSkill "trade-remedy-lookup"
+<｜DSML｜ calls>
+<｜DSML｜ calls>
+[0m⚙ [0mtrav_measures {"product":"galvanized","market":"Hoa Kỳ"}
+[0m⚙ [0mfedreg_search {"query":"corrosion-resistant steel galvanized antidumping Vietnam","agency":"ITA","order":"newest"}
+[0m⚙ [0mtrav_search {"query":"thép mạ kẽm","market":"Hoa Kỳ"}
+[0m⚙ [0mtrav_measures {"product":"thép","market":"Hoa Kỳ"}
+[0m⚙ [0mfedreg_search {"query":"corrosion-resistant steel products Vietnam final determination","agency":"ITA","limit":20}
+[0m⚙ [0mtrav_search {"query":"thép","market":"Hoa Kỳ"}
+<｜DSML｜ calls>
+[0m⚙ [0mfedreg_search {"query":"A-552-826 corrosion-resistant steel Vietnam"}
+[0m⚙ [0mfedreg_document {"id":"2025-23431"}
+[0m⚙ [0mfedreg_document {"id":"2025-23430"}
+[0m⚙ [0mfedreg_document {"id":"2026-05808"}
+[0m⚙ [0mfedreg_document {"id":"2025-16612"}
+[0m⚙ [0mfedreg_document {"id":"2025-16613"}
+[0m⚙ [0mfedreg_search {"query":"corrosion-resistant steel Vietnam A-552-843","order":"newest","limit":15}
+[0m⚙ [0mtrav_search {"query":"chống ăn mòn"}
+[0m⚙ [0mtrav_search {"query":"mạ kẽm"}
+[0m⚙ [0mtrav_search {"query":"7210"}
+[0m⚙ [0mtrav_page {"url":"https://trav.gov.vn/default.aspx?page=news-detail&do=detail&id=241b22ea-1168-46b1-b3fc-02c530f025b2"}
+[0m⚙ [0mtrav_search {"query":"CORE","market":"Hoa Kỳ"}
+<｜DSML｜ calls>
+[0m⚙ [0mtrav_search {"query":"chống lẩn tránh","market":"Hoa Kỳ"}
+[0m→ [0mSkill "citation-check"
+# Thép mạ kẽm (HS 7210) Việt Nam → Hoa Kỳ: biện pháp PVTM, mức thuế, việc cần làm
+
+*Tính đến ngày tra cứu 26/09/2026.*
+
+## 1. Kết luận nhanh
+
+Thép mạ kẽm mã HS **7210.41 / 7210.49** (và các mã 7210.30, 7210.61, 7210.69, 7210.70, 7210.90, 7212.x, 7226.99) thuộc phạm vi sản phẩm **thép chống ăn mòn (Corrosion-Resistant Steel – "CORE")**. Hàng CORE của Việt Nam hiện đang chịu **đồng thời 2 lệnh thuế đang có hiệu lực**, ban hành ngày **19/12/2025**:
+
+| Biện pháp | Vụ việc | Văn bản | Ngày hiệu lực |
+|---|---|---|---|
+| Chống bán phá giá (AD) | **A-552-843** | FR Doc 2025-23431, 90 FR 59494 | 19/12/2025 |
+| Chống trợ cấp (CVD) | **C-552-844** | FR Doc 2025-23430, 90 FR 59488 | 19/12/2025 |
+
+Ngoài ra, ngày **25/03/2026** DOC đã **khởi xướng điều tra chống lẩn tránh** (country-wide) với 2 lệnh trên (FR Doc 2026-05808, 91 FR 14530) — đang tiếp tục, chưa có kết luận.
+
+## 2. Biên độ phá giá (AD) – vụ A-552-843
+
+Nguồn: **FR Doc 2025-23431**, 90 FR 59494, đăng 19/12/2025 (lệnh AD), và kết luận cuối cùng **FR Doc 2025-16612**, 90 FR 42223. Biên độ tính theo giá trị thay thế (Hoa Kỳ coi Việt Nam là nền kinh tế phi thị trường).
+
+| Nhà xuất khẩu / sản xuất | Biên độ phá giá & tỷ lệ ký quỹ (%) |
+|---|---|
+| Hoa Sen Group / Hoa Sen Nghệ An… | 110,19 |
+| Ton Dong A Corporation | 87,07 |
+| China Steel and Nippon Steel Viet Nam JSC | 94,89 |
+| Hoa Phat Steel Sheet LLC | 94,89 |
+| Maruichi Sun Steel JSC | 94,89 |
+| Nam Kim Steel JSC | 94,89 |
+| Pomina Flat Steel JSC | 94,89 |
+| Sam Hwan Vina Co., Ltd | 94,89 |
+| Southern Steel Sheet Co., Ltd | 94,89 |
+| Tay Nam Steel Mfg & Trading Co., Ltd | 94,89 |
+| TVP Steel Trading JSC | 94,89 |
+| Viet Phap Steel Corrugated JSC | 94,89 |
+| **Vietnam-Wide Entity** (không chứng minh độc lập) | **162,96** (AFA) |
+
+Các doanh nghiệp không được điều tra riêng trong 30 ngày từ khởi xướng sẽ **không được hưởng thuế suất riêng** mà bị áp mức chung (tới 162,96%).
+
+## 3. Mức trợ cấp (CVD) – vụ C-552-844
+
+Nguồn: **FR Doc 2025-23430**, 90 FR 59488 (lệnh CVD) và kết luận cuối cùng **FR Doc 2025-16613**, 90 FR 42207.
+
+| Công ty | Mức trợ cấp (% ad valorem) |
+|---|---|
+| Hoa Sen Group | 0,30 – **de minimis** (không thu ký quỹ CVD) |
+| Ton Dong A Corporation | 1,29 |
+| 190 Steel Pipe Co Ltd | 257,83 (AFA) |
+| Vietnam Steel Pipe Co., Ltd | 257,83 (AFA) |
+| Vina One Steel Manufacturing Corp | 257,83 (AFA) |
+| VNSTEEL – Thang Long Coated Sheets JSC | 257,83 (AFA) |
+| VNSTEEL – Vietnam Steel Corp | 257,83 (AFA) |
+| **All Others** | 1,29 |
+
+## 4. Tổng tỷ lệ ký quỹ minh họa (AD + CVD)
+
+> *Lưu ý: AD và CVD là 2 lệnh riêng, ký quỹ tại hải quan = tổng hai phần. Các con số dưới đây là phép cộng từ 2 văn bản nêu trên.*
+
+| Doanh nghiệp | AD | CVD | Tổng ký quỹ |
+|---|---|---|---|
+| Hoa Sen Group | 110,19 | 0 (de minimis) | **~110,19%** |
+| Ton Dong A | 87,07 | 1,29 | **~88,36%** |
+| Nam Kim, Hoa Phat Steel Sheet, Maruichi Sun, Pomina, Sam Hwan Vina… | 94,89 | 1,29 | **~96,18%** |
+| Vietnam-Wide Entity | 162,96 | (AFA nếu không hợp tác) | **rất cao** |
+
+## 5. Chống lẩn tránh (đang điều tra)
+
+- **FR Doc 2026-05808**, 91 FR 14530, đăng 25/03/2026: DOC khởi xướng điều tra chống lẩn tránh country-wide xem CORE **hoàn thiện tại Indonesia** từ **thép cán nguội (CRS) sản xuất tại Việt Nam** có lẩn tránh 2 lệnh AD/CVD với CORE Việt Nam hay không.
+- DOC giữ nguyên việc tạm dừng giải phóng hàng và áp ký quỹ theo mức của lệnh; nếu kết luận khẳng định, CBP sẽ mở rộng phạm vi áp thuế và truy thu ký quỹ cho lô chưa giải phóng.
+- Đây là rủi ro lớn với doanh nghiệp có chuỗi cung ứng xuất khẩu qua nước thứ ba.
+
+## 6. Doanh nghiệp xuất khẩu cần làm gì
+
+Theo khuyến nghị của Cục Phòng vệ thương mại (bài ngày 02/10/2024):
+- **Hợp tác đầy đủ** với DOC; bất hợp tác có thể bị áp **chứng cứ sẵn có bất lợi (AFA)** với mức thuế cao nhất (AD 162,96%, CVD tới 257,83%).
+- **Đăng ký tài khoản IA ACCESS** tại `access.trade.gov` để theo dõi và nộp tài liệu.
+- **Xin thuế suất riêng rẽ (separate rate)** trong vụ AD (chứng minh không chịu kiểm soát của Chính phủ) — hạn 30 ngày từ khởi xướng.
+- **Đa dạng hóa thị trường, mặt hàng**; theo dõi diễn biến vụ việc; cập nhật thông tin cho Cục PVTM.
+- **Về chống lẩn tránh**: rà soát chứng từ chứng minh xuất xứ/nguồn nguyên liệu; tìm hiểu **cơ chế tự xác nhận (self-certification)** của Hoa Kỳ để không bị áp thuế chống lẩn tránh; tuyệt đối không gian lận xuất xứ.
+- Liên hệ: Phòng Xử lý PVTM nước ngoài, Cục PVTM, 23 Ngô Quyền, Hoàn Kiếm, Hà Nội.
+
+## 7. FTA / thuế khác
+
+- Hoa Kỳ **không có FTA** với Việt Nam → không có thuế ưu đãi; hàng vẫn chịu **thuế MFN** theo HTSUS cộng các khoản trên.
+- Ngoài phạm vi PVTM, thép còn có thể chịu **thuế theo Mục 232 (Section 232)** và các biện pháp thuế quan khác của Hoa Kỳ — nội dung này **chưa được tra cứu trong phạm vi câu trả lời này**, đề nghị tra riêng nếu cần.
+
+---
+
+**Nguồn đã tra (26/09/2026):**
+- Lệnh AD: https://www.federalregister.gov/documents/2025/12/19/2025-23431/corrosion-resistant-steel-products-from-brazil-and-mexico-amended-final-antidumping-duty (GPO: https://www.govinfo.gov/content/pkg/FR-2025-12-19/html/2025-23431.htm)
+- Lệnh CVD: https://www.federalregister.gov/documents/2025/12/19/2025-23430/certain-corrosion-resistant-steel-products-from-brazil-canada-mexico-and-the-socialist-republic-of (GPO: https://www.govinfo.gov/content/pkg/FR-2025-12-19/html/2025-23430.htm)
+- Kết luận cuối cùng AD: https://www.federalregister.gov/documents/2025/08/29/2025-16612/…
+- Kết luận cuối cùng CVD: https://www.federalregister.gov/documents/2025/08/29/2025-16613/…
+- Khởi xướng chống lẩn tránh: https://www.federalregister.gov/documents/2026/03/25/2026-05808/…
+- Cục PVTM: https://trav.gov.vn/default.aspx?page=news-detail&do=detail&id=241b22ea-1168-46b1-b3fc-02c530f025b2 ; CSDL cảnh báo sớm: http://canhbaosom.trav.gov.vn/GetInterventions/Index?...
+
+**Độ tin cậy: cao** – mức thuế lấy trực tiếp từ lệnh AD/CVD và kết luận cuối cùng đã đối chiếu trên bản GPO/Federal Register; phạm vi mã HS đối chiếu với Cục PVTM; cả 2 lệnh đang có hiệu lực tại ngày tra cứu.
+
+**Khuyến nghị tham vấn luật sư:** Có – doanh nghiệp đang nằm trong vùng rủi ro của **cả lệnh thuế đang áp lẫn cuộc điều tra chống lẩn tránh mới (2026)** với hạn chót, cơ chế tự xác nhận và nguy cơ truy thu; cần luật sư thương mại Hoa Kỳ/nhóm PVTM để kịp thời trả lời bản câu hỏi và bảo vệ mức thuế riêng.
+
+*Lưu ý: thông tin tham khảo, không thay thế tư vấn pháp lý chính thức.*

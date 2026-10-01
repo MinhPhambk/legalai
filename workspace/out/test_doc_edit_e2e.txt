@@ -1,0 +1,28 @@
+[0m
+> legal-web · deepseek-ai/deepseek-v4.1-flash
+[0m
+[0m⚙ [0mdocument_create {"title":"Biên bản thử nghiệm","markdown":"# Biên bản thử nghiệm\n\n## Điều 1. Mục đích\n\nThử nghiệm tính năng.\n\n## Điều 2. Thời hạn\n\nThanh toán trong 15 ngày.\n\n## Điều 3. Hiệu lực\n\nCó hiệu lực từ ngày ký.\n","kind":"van-ban"}
+[0m⚙ [0mdocument_read {"id":"20260926035947-512aa5"}
+[0m⚙ [0mdocument_edit {"id":"20260926035947-512aa5","edits":[{"op":"replace","find":"Thanh toán trong 15 ngày.","text":"Thanh toán trong 30 ngày kể từ ngày nhận hóa đơn."},{"op":"delete","section":"Điều 3"}],"note":"Theo yêu cầu: đổi thời hạn thanh toán 15 → 30 ngày kể từ ngày nhận hóa đơn; xoá Điều 3 (Hiệu lực)"}
+[0m⚙ [0mdocument_read {"id":"20260926035956-ab8a24"}
+<｜DSML｜ calls>
+Xong cả hai bước.
+
+**Kết quả**
+
+| Mục | Giá trị |
+|---|---|
+| Tài liệu | Biên bản thử nghiệm (kind `van-ban`) |
+| Mã phiên bản 1 (gốc) | `20260926035947-512aa5` |
+| **Mã phiên bản 2 (hiện hành)** | **`20260926035956-ab8a24`** |
+| Truy vết | phiên bản 2 sửa từ `20260926035947-512aa5` (cùng `root_id`) |
+
+**Danh sách thay đổi (2 thay đổi)**
+1. **Sửa Điều 2 – Thời hạn:** `Thanh toán trong 15 ngày.` → `Thanh toán trong 30 ngày kể từ ngày nhận hóa đơn.`
+2. **Xoá Điều 3 – Hiệu lực** (bỏ toàn bộ mục và nội dung `Có hiệu lực từ ngày ký.`).
+
+**Nội dung còn lại sau sửa:** Điều 1. Mục đích – *Thử nghiệm tính năng.*; Điều 2. Thời hạn – *Thanh toán trong 30 ngày kể từ ngày nhận hóa đơn.*
+
+**Tệp kèm theo (phiên bản 2):** DOCX, PDF và tệp **DOCX theo dõi thay đổi (Track Changes)** — mở trong Word để xem từng chỗ thêm/xoá và duyệt.
+
+Lưu ý: đây là thao tác tài liệu thuần túy (không có nội dung pháp lý cần tra cứu), nên không kèm căn cứ luật. Lần sửa tiếp theo hãy dùng `document_read` → `document_edit` với **mã tài liệu mới `20260926035956-ab8a24`**.

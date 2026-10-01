@@ -1,0 +1,106 @@
+[0m
+> legal · deepseek-ai/deepseek-v4.1-flash
+[0m
+I'll help you look up the trade remedy measures on Vietnamese galvanized steel (HS 7210) exported to the US. Let me load the specialized skill first.
+[0m→ [0mSkill "trade-remedy-lookup"
+<｜DSML｜ calls>
+[0m⚙ [0mtrav_search {"query":"thép mạ kẽm","market":"Hoa Kỳ","category":"foreign"}
+[0m⚙ [0mtrav_measures {"product":"thép mạ kẽm","market":"Hoa Kỳ"}
+[0m⚙ [0mfedreg_search {"query":"corrosion-resistant steel products antidumping Vietnam","agency":"ITA","order":"newest"}
+[0m⚙ [0mtrav_measures {"hs":"7210","market":"Hoa Kỳ"}
+[0m⚙ [0mfedreg_document {"id":"2026-05808","focus":"Vietnam"}
+[0m⚙ [0mfedreg_search {"query":"corrosion-resistant steel products Vietnam antidumping countervailing duty order","agency":"ITA","order":"newest"}
+[0m⚙ [0mfedreg_search {"query":"A-552-843 corrosion-resistant steel Vietnam administrative review","order":"newest"}
+[0m⚙ [0mtrav_search {"query":"chống ăn mòn","market":"Hoa Kỳ"}
+[0m⚙ [0mfedreg_search {"query":"Certain Corrosion-Resistant Steel Products From Vietnam final determination antidumping countervailing","agency":"ITA","order":"newest"}
+[0m⚙ [0mfedreg_search {"query":"corrosion-resistant steel products Vietnam antidumping duty order 2025","order":"newest"}
+[0m⚙ [0mtrav_search {"query":"thép CORE","category":"foreign"}
+[0m⚙ [0mtrav_search {"query":"CORE","market":"Hoa Kỳ"}
+[0m⚙ [0mfedreg_document {"id":"2025-23431","focus":"Vietnam"}
+[0m⚙ [0mfedreg_document {"id":"2025-23430","focus":"Vietnam"}
+[0m⚙ [0mfedreg_document {"id":"2025-16613","focus":"Vietnam"}
+[0m⚙ [0mfedreg_search {"query":"Certain Corrosion-Resistant Steel Products Vietnam final affirmative determination less-than-fair-value A-552-843","agency":"ITA","order":"oldest"}
+[0m⚙ [0mfedreg_document {"id":"2025-16612","focus":"7210"}
+[0m⚙ [0mfedreg_search {"query":"CORE Vietnam administrative review initiation A-552-843 C-552-844","agency":"ITA","order":"newest"}
+<｜DSML｜ calls>
+[0m⚙ [0mfedreg_search {"query":"galvanized steel Vietnam antidumping","agency":"ITA","order":"newest"}
+[0m⚙ [0mtrav_page {"url":"https://trav.gov.vn/default.aspx?page=news-detail&do=detail&id=241b22ea-1168-46b1-b3fc-02c530f025b2"}
+[0m⚙ [0mfedreg_document {"id":"2025-23431","focus":"162.96","max_chars":9000}
+[0m⚙ [0mfedreg_document {"id":"2025-23430","focus":"All Others","max_chars":9000}
+[0m⚙ [0mtrav_search {"query":"thép chống ăn mòn","category":"foreign"}
+[0m⚙ [0mtrav_search {"query":"tôn mạ","market":"Hoa Kỳ"}
+[0m⚙ [0mfedreg_document {"id":"2025-23431","focus":"All Others","max_chars":12000}
+<｜DSML｜ calls>
+[0m⚙ [0mfedreg_document {"id":"2025-16612","focus":"Vietnam-wide","max_chars":10000}
+I have the core data. Let me run the mandatory citation verification before answering.
+[0m→ [0mSkill "citation-check"
+# Thép mạ kẽm (HS 7210) của Việt Nam xuất sang Hoa Kỳ — tình trạng biện pháp phòng vệ thương mại
+
+**Tính đến ngày tra cứu 26/09/2026.** Lưu ý: HS 7210 là nhóm rộng; sản phẩm "thép mạ kẽm/tôn mạ" thuộc định nghĩa **thép chống ăn mòn (Certain Corrosion-Resistant Steel Products – CORE)** của Hoa Kỳ. Dưới đây là các biện pháp đang áp dụng với CORE từ Việt Nam.
+
+## 1. Các biện pháp đang có hiệu lực
+
+| Biện pháp | Loại | Cơ quan / Số vụ việc | Trạng thái & ngày |
+|---|---|---|---|
+| Thuế chống bán phá giá (AD) | AD | DOC/ITA — **A-552-843** | Lệnh áp thuế ban hành **19/12/2025** (90 FR 59494), hiệu lực từ 19/12/2025 |
+| Thuế chống trợ cấp (CVD) | CVD | DOC/ITA — **C-552-844** | Lệnh áp thuế ban hành **19/12/2025** (90 FR 59488), hiệu lực từ 19/12/2025 |
+| Điều tra chống lẩn tránh (toàn quốc) | Chống lẩn tránh | DOC/ITA — **A-552-843 / C-552-844** | Khởi xướng **25/3/2026** (91 FR 14530) |
+
+**Phạm vi sản phẩm (scope):** thép dẹt cán, phủ/mạ kim loại chống ăn mòn như **kẽm**, nhôm, hợp kim kẽm–nhôm–niken–sắt… (tức bao gồm tôn/thép **mạ kẽm**), kể cả đã sơn, tráng vecni, dán phim. Mã HS trong thông báo khởi xướng gồm: **7210.30, 7210.41, 7210.49, 7210.61, 7210.69, 7210.70, 7210.90** (và 7212.20, 7212.30, 7212.40, 7212.50, 7212.60, 7226.99).
+
+> Bối cảnh lịch sử: trước đó CORE của Việt Nam từng bị kết luận **lẩn tránh** thuế CBPG/CTC đang áp với CORE nhập khẩu từ Hàn Quốc và Đài Loan (kết luận cuối cùng 2019). Do vậy doanh nghiệp cần phân biệt: sản phẩm có thể vừa/nếu trước đây bị áp theo lệnh của Hàn Quốc–Đài Loan, nay đã có lệnh riêng cho Việt Nam.
+
+## 2. Mức thuế theo doanh nghiệp
+
+**Thuế chống bán phá giá (tỷ lệ ký quỹ – cash deposit rate):**
+
+| Nhà xuất khẩu / sản xuất | Biên độ phá giá (%) |
+|---|---|
+| Hoa Sen Group (và các công ty liên quan) | **110,19** |
+| Ton Dong A Corporation | **87,07** |
+| China Steel and Nippon Steel Viet Nam; Hoa Phat Steel Sheet; Maruichi Sun Steel; Nam Kim Steel; Pomina Flat Steel; Sam Hwan Vina; Southern Steel Sheet; Tay Nam Steel… | **94,89** |
+| **Vietnam-wide entity** (doanh nghiệp không được thuế suất riêng) | **162,96** (áp dụng AFA) |
+
+**Thuế chống trợ cấp (mức trợ cấp – subsidy rate):**
+
+| Công ty | Mức trợ cấp (%) |
+|---|---|
+| Hoa Sen Group | 0,30 (*de minimis* – được **loại trừ** khỏi lệnh CVD) |
+| Ton Dong A Corporation | 1,29 |
+| 190 Steel Pipe; Vietnam Steel Pipe; Vina One; VNSTEEL–Thang Long; VNSTEEL–Vietnam Steel Corp | 257,83 (AFA) |
+| All Others | 1,29 |
+
+Do Việt Nam bị Hoa Kỳ coi là **nền kinh tế phi thị trường**, doanh nghiệp không nộp đơn xin thuế suất riêng rẽ hoặc bị từ chối sẽ chịu mức **Vietnam-wide 162,96%** — rất cao. Mức 94,89% áp cho nhiều doanh nghiệp có thuế suất riêng.
+
+## 3. Điểm mới cần lưu ý: điều tra chống lẩn tránh (3/2026)
+
+DOC khởi xướng điều tra chống lẩn tránh **toàn quốc** để xác định liệu CORE **hoàn thiện tại Indonesia** từ **thép cán nguội (CRS) sản xuất tại Việt Nam** có lẩn tránh lệnh AD/CVD với CORE Việt Nam hay không. Trong thời gian điều tra, DOC chỉ đạo CBP **tiếp tục treo thanh toán (suspension of liquidation)** và áp mức ký quỹ như khi hàng thuộc scope.
+
+## 4. Doanh nghiệp xuất khẩu cần làm gì
+
+1. **Xác định sản phẩm có thuộc scope CORE không** — đối chiếu mã HS *và* mô tả kỹ thuật (độ dày, chiều rộng, kim loại phủ). Không phải mọi hàng 7210 đều bị áp; nhưng phần lớn thép mạ kẽm thì thuộc.
+2. **Đăng ký tài khoản ACCESS** với DOC (https://access.trade.gov) để theo dõi vụ việc, nộp tài liệu.
+3. **Chủ động xin rà soát hành chính (administrative review)** hằng năm khi có thông báo cơ hội yêu cầu rà soát — đây là cơ chế để được xem xét lại biên độ thực tế và hoàn thuế, vì mức thuế hiện hành rất cao. (Lệnh mới ban hành 12/2025, nên tính đến nay chưa có kết quả rà soát.)
+4. **Hợp tác đầy đủ với DOC**, tránh bị áp **AFA** (dữ liệu bất lợi) — chính là nguyên nhân mức 162,96% (AD) và 257,83% (CVD).
+5. **Chuẩn bị hồ sơ xuất xứ – truy xuất nguồn gốc** nguyên liệu (HRC/CRS), đặc biệt nếu có công đoạn/gia công tại nước thứ ba (nhất là Indonesia) để chứng minh không lẩn tránh; **không** thực hiện hành vi gian lận xuất xứ.
+6. **Phối hợp với Cục Phòng vệ thương mại** (Bộ Công Thương) để được hỗ trợ và cập nhật diễn biến.
+7. **Đa dạng hóa thị trường xuất khẩu** để giảm phụ thuộc vào Hoa Kỳ.
+8. **Về thuế ưu đãi:** Việt Nam và Hoa Kỳ **không có FTA song phương**, nên hàng vào Hoa Kỳ chịu thuế MFN + AD/CVD, không có ưu đãi FTA.
+
+## 5. Nguồn đã tra (26/09/2026)
+
+- Lệnh AD – *Corrosion-Resistant Steel Products… Antidumping Duty Orders*, FR Doc 2025-23431, 90 FR 59494 (19/12/2025): https://www.federalregister.gov/documents/2025/12/19/2025-23431/corrosion-resistant-steel-products-from-brazil-and-mexico-amended-final-antidumping-duty — bản GPO: https://www.govinfo.gov/content/pkg/FR-2025-12-19/html/2025-23431.htm
+- Lệnh CVD – *Certain Corrosion-Resistant Steel Products… Countervailing Duty Orders*, FR Doc 2025-23430, 90 FR 59488 (19/12/2025): https://www.federalregister.gov/documents/2025/12/19/2025-23430/certain-corrosion-resistant-steel-products-from-brazil-canada-mexico-and-the-socialist-republic-of — bản GPO: https://www.govinfo.gov/content/pkg/FR-2025-12-19/html/2025-23430.htm
+- Kết luận cuối cùng AD (A-552-843), FR Doc 2025-16612 (29/8/2025): https://www.federalregister.gov/documents/2025/08/29/2025-16612/certain-corrosion-resistant-steel-products-from-the-socialist-republic-of-vietnam-final-affirmative
+- Kết luận cuối cùng CVD (C-552-844), FR Doc 2025-16613 (29/8/2025): https://www.federalregister.gov/documents/2025/08/29/2025-16613/certain-corrosion-resistant-steel-products-from-the-socialist-republic-of-vietnam-final-affirmative
+- Khởi xướng điều tra chống lẩn tránh, FR Doc 2026-05808, 91 FR 14530 (25/3/2026): https://www.federalregister.gov/documents/2026/03/25/2026-05808/certain-corrosion-resistant-steel-products-from-the-socialist-republic-of-vietnam-initiation-of
+- Cục PVTM – bài "Hoa Kỳ khởi xướng điều tra kép… thép CORE nhập khẩu từ Việt Nam" (02/10/2024): https://trav.gov.vn/default.aspx?page=news-detail&do=detail&id=241b22ea-1168-46b1-b3fc-02c530f025b2
+- CSDL cảnh báo sớm Cục PVTM (HS 7210, Hoa Kỳ → Việt Nam): http://canhbaosom.trav.gov.vn/GetInterventions/Index?vJCountryID=221&vAffCountryID=228&vInForce=1&vTypeID=-1&Sectors=1&vSort=7&Commodities=7210
+
+---
+
+**Độ tin cậy: cao** – Mức thuế và tình trạng biện pháp lấy trực tiếp từ văn bản gốc của DOC đăng trên Federal Register (bản GPO), đối chiếu với dữ liệu Cục PVTM; các mốc ngày trùng khớp.
+
+**Khuyến nghị tham vấn luật sư:** Doanh nghiệp **đang bị áp thuế AD/CVD ở mức rất cao** (đặc biệt nếu chưa có thuế suất riêng → 162,96% AD) và có **điều tra chống lẩn tránh đang mở**, cần luật sư thương mại Hoa Kỳ hỗ trợ chiến lược xin thuế suất riêng, tham gia rà soát hành chính và chứng minh không lẩn tránh.
+
+Lưu ý: thông tin tham khảo, không thay thế tư vấn pháp lý chính thức. Biện pháp và mức thuế thay đổi nhanh — cần tra cứu lại tại thời điểm giao dịch.

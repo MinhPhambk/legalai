@@ -1,0 +1,379 @@
+/* Core styles loaded on every page (public site + app): design tokens (app + brand), base reset,
+   page transitions, splash, logo. The app screens add styles-app (app-styles.js) when they load. */
+/* LegalAI web – strictly grayscale, Be Vietnam Pro. */
+:root {
+  --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  --bg: #ffffff;
+  --bg-soft: #f8f8f8;
+  --bg-muted: #f0f0f0;
+  --surface: #ffffff;
+  --elevated: #ffffff;
+  --border: #e6e6e6;
+  --border-strong: #cfcfcf;
+  --text: #121212;
+  --text-2: #4d4d4d;
+  --text-3: #8c8c8c;
+  --accent: #121212;
+  --accent-fg: #ffffff;
+  --hover: rgba(0, 0, 0, 0.045);
+  --press: rgba(0, 0, 0, 0.085);
+  --bubble: #f1f1f1;
+  --code-bg: #f4f4f4;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 6px 24px -6px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.05), 0 24px 60px -12px rgba(0, 0, 0, 0.22);
+  --overlay: rgba(0, 0, 0, 0.32);
+  --skeleton-a: #efefef;
+  --skeleton-b: #f8f8f8;
+  --ring: #121212;
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --col: 760px;
+  --sidebar: 272px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f0f0f;
+    --bg-soft: #151515;
+    --bg-muted: #1d1d1d;
+    --surface: #171717;
+    --elevated: #1c1c1c;
+    --border: #282828;
+    --border-strong: #3a3a3a;
+    --text: #f2f2f2;
+    --text-2: #b5b5b5;
+    --text-3: #7c7c7c;
+    --accent: #f2f2f2;
+    --accent-fg: #0f0f0f;
+    --hover: rgba(255, 255, 255, 0.055);
+    --press: rgba(255, 255, 255, 0.1);
+    --bubble: #202020;
+    --code-bg: #1b1b1b;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px -6px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.4), 0 24px 60px -12px rgba(0, 0, 0, 0.8);
+    --overlay: rgba(0, 0, 0, 0.6);
+    --skeleton-a: #1c1c1c;
+    --skeleton-b: #262626;
+    --ring: #f2f2f2;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --bg-soft: #151515;
+  --bg-muted: #1d1d1d;
+  --surface: #171717;
+  --elevated: #1c1c1c;
+  --border: #282828;
+  --border-strong: #3a3a3a;
+  --text: #f2f2f2;
+  --text-2: #b5b5b5;
+  --text-3: #7c7c7c;
+  --accent: #f2f2f2;
+  --accent-fg: #0f0f0f;
+  --hover: rgba(255, 255, 255, 0.055);
+  --press: rgba(255, 255, 255, 0.1);
+  --bubble: #202020;
+  --code-bg: #1b1b1b;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 28px -6px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 2px 6px rgba(0, 0, 0, 0.4), 0 24px 60px -12px rgba(0, 0, 0, 0.8);
+  --overlay: rgba(0, 0, 0, 0.6);
+  --skeleton-a: #1c1c1c;
+  --skeleton-b: #262626;
+  --ring: #f2f2f2;
+  color-scheme: dark;
+}
+
+/* ---- base ------------------------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+}
+.theme-switching,
+.theme-switching * {
+  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease) !important;
+}
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+button:disabled {
+  cursor: not-allowed;
+}
+a {
+  color: inherit;
+}
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+::selection {
+  background: var(--text);
+  color: var(--bg);
+}
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+kbd {
+  font-family: var(--mono);
+  font-size: 0.78em;
+  padding: 0 0.35em;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  color: var(--text-2);
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---- page transitions ------------------------------------------------------------------------- */
+.page {
+  height: 100%;
+}
+.page-in {
+  animation: page-in 0.38s var(--ease-out) both;
+}
+.page-out {
+  animation: page-out 0.17s ease-in both;
+}
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.995);
+  }
+}
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.995);
+  }
+}
+
+.splash {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+/* ---- logo --------------------------------------------------------------------------------------- */
+.logo-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  flex: none;
+}
+.logo-mark.lg {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+}
+.logo-mark.xl {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+}
+.pulse {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% {
+    transform: scale(0.92);
+    opacity: 0.6;
+  }
+}
+.brand-name {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+
+/* ---- brand tokens (see styles-brand.css / site/tokens.js) ------------------------------------------ */
+:root {
+  --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --red-50: #fef2f2;
+  --red-100: #fde3e3;
+  --red-200: #fac7c8;
+  --red-300: #f49a9d;
+  --red-400: #ec6468;
+  --red-500: #dd2f35;
+  --red-600: #c20b11;
+  --red-700: #9e0a0f;
+  --red-800: #7d0c10;
+  --red-900: #5c0c0f;
+
+  --brand: #c20b11;
+  --brand-hover: #b70a0f;
+  --brand-press: #9e0a0f;
+  --on-brand: #ffffff;
+  --brand-soft: #fef2f2;
+  --brand-soft-border: #fac7c8;
+  --brand-text: #c20b11; /* links / emphasis on neutral backgrounds */
+  --ring: #c20b11;
+  --text-3: #6b6b6b; /* AA on white and on --bg-soft */
+
+  --success: #15803d;
+  --warning: #b45309;
+  --error: #b42318;
+  --info: #1d4ed8;
+
+  /* spacing (8 px scale) + radii */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --brand-hover: #d0141a;
+    --brand-press: #a80b10;
+    --brand-soft: #2a1112;
+    --brand-soft-border: #5c1a1c;
+    --brand-text: #f49a9d;
+    --ring: #ec6468;
+    --text-3: #8f8f8f;
+    --success: #4ade80;
+    --warning: #fbbf24;
+    --error: #f97066;
+    --info: #7aa2f7;
+  }
+}
+:root[data-theme="dark"] {
+  --brand-hover: #d0141a;
+  --brand-press: #a80b10;
+  --brand-soft: #2a1112;
+  --brand-soft-border: #5c1a1c;
+  --brand-text: #f49a9d;
+  --ring: #ec6468;
+  --text-3: #8f8f8f;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --error: #f97066;
+  --info: #7aa2f7;
+}
+
+
+/* ---- logo ----------------------------------------------------------------------------------------- */
+.logo-mark {
+  background: transparent;
+  color: inherit;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+}
+.logo-mark.inv {
+  background: transparent;
+}
+.logo-svg {
+  display: block;
+  flex: none;
+}
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--lockup, 28px) * 0.3);
+  color: var(--text);
+  text-decoration: none;
+}
+.lockup-word {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: calc(var(--lockup, 28px) * 0.66);
+  line-height: 1;
+}
+
+
+/* FTU endorsement logo: always on white (never inverted / recoloured). */
+.ftu-plate {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 8px 12px;
+  line-height: 0;
+}
+.ftu-plate img {
+  display: block;
+  height: 36px;
+  width: auto;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .ftu-plate.bare {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+:root[data-theme="light"] .ftu-plate.bare {
+  padding-left: 0;
+  padding-right: 0;
+}
+

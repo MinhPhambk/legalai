@@ -1,0 +1,152 @@
+/* LegalAI brand layer (v6): FTU red as the single accent on the black / white / grey UI.
+   Tokens mirror client/src/site/tokens.js (checked by scripts/brand-contrast.mjs). Loaded last. */
+/* ---- primary actions ------------------------------------------------------------------------------ */
+.btn.primary {
+  background: var(--brand);
+  color: var(--on-brand);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 1px 2px rgba(120, 8, 12, 0.25);
+}
+.btn.primary:hover:not(:disabled) {
+  opacity: 1;
+  background: var(--brand-hover);
+}
+.btn.primary:active:not(:disabled) {
+  background: var(--brand-press);
+}
+.send-btn {
+  background: var(--brand);
+  color: var(--on-brand);
+}
+.send-btn:hover:not(:disabled) {
+  background: var(--brand-hover);
+}
+.send-btn:disabled {
+  background: var(--text);
+  color: var(--bg);
+  opacity: 0.2;
+}
+.send-btn.stop {
+  background: var(--text);
+  color: var(--bg);
+}
+::selection {
+  background: color-mix(in srgb, var(--brand) 22%, transparent);
+  color: inherit;
+}
+.md a {
+  text-decoration-color: color-mix(in srgb, var(--brand-text) 55%, transparent);
+}
+.md a:hover {
+  color: var(--brand-text);
+  text-decoration-color: currentColor;
+}
+.auth-switch a,
+.link-btn:not(.subtle) {
+  color: var(--brand-text);
+}
+
+/* ---- auth pages ------------------------------------------------------------------------------------ */
+.auth-hero {
+  background: #111111;
+  color: #f5f5f5;
+  --accent: #111111;
+  --accent-fg: #f5f5f5;
+}
+.auth-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -35% auto;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(closest-side, rgba(194, 11, 17, 0.42), rgba(194, 11, 17, 0.08) 60%, transparent);
+  pointer-events: none;
+}
+.auth-hero .hero-cap-icon {
+  color: #f49a9d;
+}
+.auth-hero .src-num,
+.auth-hero .cite {
+  background: var(--brand);
+  color: #fff;
+}
+.auth-home {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.auth-home:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+.auth-main {
+  position: relative;
+}
+.auth-endorse {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  font-size: 12.5px;
+  color: var(--text-3);
+  text-align: center;
+}
+.auth-endorse .ftu-plate {
+  padding: 6px 10px;
+}
+.auth-endorse .ftu-plate img {
+  height: 46px; /* ≥ 200 px wide: the file has small text */
+}
+.auth-request {
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--text-2);
+  text-align: center;
+}
+.auth-request a {
+  color: var(--brand-text);
+  font-weight: 600;
+}
+
+/* ---- sidebar brand ------------------------------------------------------------------------------ */
+.sidebar .brand .logo-mark,
+.share-top .brand .logo-mark {
+  width: auto;
+  height: auto;
+}
+.empty .logo-mark,
+.splash .logo-mark {
+  background: transparent;
+}
+
+/* ---- citations / focus accents ------------------------------------------------------------------ */
+.md a.cite:hover,
+.md a.cite:focus-visible {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.input:focus,
+.field input:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 18%, transparent);
+}
+.composer:focus-within {
+  border-color: color-mix(in srgb, var(--ring) 45%, var(--border-strong));
+}
+
+/* Long step summaries (e.g. English "Researched · 16 steps, 1 error") must not push the chevron out at 320 px. */
+.steps-count {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

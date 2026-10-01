@@ -1,0 +1,102 @@
+/* Source data inside UI chrome (DataText.jsx): original-language text marked as data + a small language tag. */
+.data {
+  min-width: 0;
+}
+.data-q > .data-v::before {
+  content: "“";
+}
+.data-q > .data-v::after {
+  content: "”";
+}
+.data-doc > .data-v,
+.data-q > .data-v {
+  font-style: italic;
+}
+.lang-tag {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 0 4px;
+  border: 1px solid var(--border-strong, var(--border));
+  border-radius: 4px;
+  font-size: 9.5px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  vertical-align: 1px;
+  color: var(--text-3);
+  background: var(--surface);
+  white-space: nowrap;
+}
+.data-code {
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+/* Step lines: chrome pieces and separators inside the arg / result cells. */
+.step-sep {
+  color: var(--text-3);
+}
+.step-chrome.ok,
+.step-status.ok {
+  color: var(--ok, #2f7d4f);
+}
+.step-chrome.bad,
+.step-status.bad {
+  color: var(--brand, var(--accent));
+}
+.step-status.warn {
+  color: var(--warning, #b45309);
+}
+.step-error-detail {
+  color: var(--text-3);
+}
+/* Result cards: formula line, amount in words, meta line, tariff tables. */
+.rc-formula {
+  margin: 0;
+  display: grid;
+  gap: 3px;
+  color: var(--text-3);
+  font-size: 12px;
+}
+.rc-words {
+  margin: 0;
+  font-style: italic;
+  overflow-wrap: anywhere;
+}
+.rc-meta {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.rc-src-name {
+  font-weight: 600;
+}
+.rc-tariff-rates li.stale {
+  opacity: 0.72;
+}
+.rc-tariff-rates .rc-badge {
+  margin-left: 6px;
+}
+.rc-tariff-lines {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+.rc-tariff-lines li {
+  overflow-wrap: anywhere;
+}
+.rc-tariff-lines .data-code {
+  font-weight: 600;
+  margin-right: 4px;
+}
+/* Library: technical (untranslated) description behind a toggle. */
+.lib-tech .lib-technote {
+  margin: 4px 0 6px;
+  font-size: 12px;
+}
+.lib-params-title {
+  margin: 8px 0 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
