@@ -4,9 +4,10 @@ import { useApp } from "../settings.jsx"
 import { useT } from "../i18n.jsx"
 import { Popover, useConfirm } from "./ui.jsx"
 import {
-  IconClose, IconInfo, IconKeyboard, IconLogo, IconLogout, IconMonitor, IconMoon, IconMore, IconNew, IconPencil, IconPin, IconSearch, IconSettings,
+  IconClose, IconInfo, IconKeyboard, IconLogout, IconMonitor, IconMoon, IconMore, IconNew, IconPencil, IconPin, IconSearch, IconSettings,
   IconShare, IconShield, IconSun, IconTrash, IconChevron, Spinner,
 } from "./Icons.jsx"
+import { TechlabLogo } from "./Logo.jsx"
 
 function ChatItem({ chat, active, onSelect, onRename, onDelete, onPin, onShare }) {
   const t = useT()
@@ -198,9 +199,7 @@ export default function Sidebar({ open, onClose, chats, loading, activeId, onNew
               onNew()
             }}
           >
-            <span className="logo-mark">
-              <IconLogo size={18} />
-            </span>
+            <TechlabLogo height={28} />
             <span className="brand-name">LegalAI</span>
           </a>
           <button className="icon-btn sidebar-close" onClick={onClose} aria-label={t("sidebar.close")}>

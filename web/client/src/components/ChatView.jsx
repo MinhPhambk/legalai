@@ -11,7 +11,8 @@ import { DocumentPanel, EscalateDialog, EscalationCard, ExpertReply, Followups }
 import ReportPanel from "./ReportPanel.jsx"
 import { AssistChip, AssistPopup } from "./AssistPopup.jsx"
 import { useToast } from "./ui.jsx"
-import { IconArrowDown, IconArrowUp, IconBook, IconClip, IconGavel, IconGlobe, IconLogo, IconScan, Spinner } from "./Icons.jsx"
+import { IconArrowDown, IconArrowUp, IconBook, IconClip, IconGavel, IconGlobe, IconScan, Spinner } from "./Icons.jsx"
+import { TechlabLogo } from "./Logo.jsx"
 
 const EXAMPLES = [
   { k: "penalty", icon: <IconGavel size={18} /> },
@@ -762,9 +763,7 @@ export default function ChatView({ chatId, onChatCreated, onActivity, onTitle, o
               <MessagesSkeleton />
             ) : empty ? (
               <div className="empty">
-                <span className="logo-mark xl float-in">
-                  <IconLogo size={30} />
-                </span>
+                <TechlabLogo height={64} className="float-in" />
                 <h1 className="empty-title">{t("chat.empty.title")}</h1>
                 <p className="empty-sub">{t("chat.empty.subtitle")}</p>
                 <div className="examples">

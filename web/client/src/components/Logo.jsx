@@ -1,26 +1,30 @@
-// LegalAI logo mark (see scripts/brand-build.mjs – same geometry): a balance whose fulcrum is a spark.
-// `tile` = the rounded brand-red square; without it, only the glyph in currentColor (for icon slots).
-export function LogoMark({ size = 28, tile = true, className = "", title }) {
-  const a11y = title ? { role: "img", "aria-label": title } : { "aria-hidden": "true", focusable: "false" }
+// LegalAI square mark (see scripts/brand-build.mjs): the official TECHLAB logo centred on a tile of its own red.
+// `tile` is kept for API compatibility (the logo always comes with its red tile).
+export function LogoMark({ size = 28, className = "", title }) {
   return (
-    <svg className={`logo-svg ${className}`} width={size} height={size} viewBox="0 0 32 32" {...a11y}>
-      {title ? <title>{title}</title> : null}
-      {tile ? <rect width="32" height="32" rx="8" fill="var(--brand, #C20B11)" /> : null}
-      <path d="M6.5 12.5h19M16 12.5V25M11 25h10" fill="none" stroke={tile ? "#fff" : "currentColor"} strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-      <path
-        d="M4.8 16.5h8.4a4.2 4.2 0 0 1-8.4 0ZM18.8 16.5h8.4a4.2 4.2 0 0 1-8.4 0ZM16 3.8Q16.9 7.6 20.6 8.4 16.9 9.2 16 13 15.1 9.2 11.4 8.4 15.1 7.6 16 3.8Z"
-        fill={tile ? "#fff" : "currentColor"}
-      />
-    </svg>
+    <img
+      className={`logo-svg ${className}`}
+      src="/brand/legalai-mark-color.svg"
+      width={size}
+      height={size}
+      alt={title || ""}
+      aria-hidden={title ? undefined : "true"}
+      draggable="false"
+    />
   )
 }
 
-/** Mark + "LegalAI" wordmark (live text in Be Vietnam Pro Bold). */
+/** TECHLAB logo (official raster, /brand/techlab-logo.png) + "LegalAI" wordmark (live text in Be Vietnam Pro Bold). */
 export function Lockup({ size = 28, className = "" }) {
   return (
     <span className={`lockup ${className}`} style={{ "--lockup": `${size}px` }}>
-      <LogoMark size={size} />
+      <img className="lockup-techlab" src="/brand/techlab-logo.png" alt="FTU Tech Lab" height={size} width={Math.round((size * 377) / 152)} />
       <span className="lockup-word">LegalAI</span>
     </span>
   )
+}
+
+/** The official TECHLAB logo on its own (in-app brand slots: sidebar, auth, empty state, splash). */
+export function TechlabLogo({ height = 28, className = "" }) {
+  return <img className={`techlab-logo ${className}`} src="/brand/techlab-logo.png" alt="FTU Tech Lab" height={height} width={Math.round((height * 377) / 152)} draggable="false" />
 }

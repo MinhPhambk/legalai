@@ -973,6 +973,88 @@ export const eu = tool({
 })
 
 // =====================================================================================================
+// tariff_eu_requirements – Access2Markets "Import requirements" + "Taxes" for one product / origin / destination
+// =====================================================================================================
+// /api/v2/document/list → the requirements that apply to the CN code (type g = general customs documents, s = product-
+// specific: SPS, contaminants, labelling, technical standards, CITES…, "Voluntary – …" = voluntary schemes) – the list
+// needs an 8/10-digit CN code (HS6 alone returns only the general documents), so the code is first resolved to its
+// leaves like tariff_eu. /api/taxes/get → VAT / excise of the destination member state with the official note.
+const REQ_TYPE: Record<string, string> = { g: "Chứng từ / thủ tục hải quan chung", s: "Yêu cầu riêng cho sản phẩm (SPS, an toàn, nhãn mác, tiêu chuẩn kỹ thuật…)" }
+export const eu_requirements = tool({
+  description:
+    "YÊU CẦU NHẬP KHẨU VÀO EU theo mã HS/CN và nước xuất xứ (dữ liệu Access2Markets – Ủy ban châu Âu, trade.ec.europa.eu): danh sách chứng từ hải quan chung (hóa đơn, tờ khai, chứng từ xuất xứ ưu đãi…) và YÊU CẦU RIÊNG cho sản phẩm (kiểm soát an toàn thực phẩm / SPS, dư lượng thuốc BVTV, thủy sản, nhãn mác, hóa chất hạn chế, tiêu chuẩn kỹ thuật, CITES, chứng nhận tự nguyện như hữu cơ), cùng THUẾ GTGT (VAT) và THUẾ TIÊU THỤ ĐẶC BIỆT của nước thành viên nhập khẩu. Dùng cùng tariff_eu (thuế nhập khẩu) khi tư vấn xuất khẩu sang EU. Chỉ là danh mục yêu cầu + link trang chính thức để đọc chi tiết, không phải toàn văn quy định.",
+  args: {
+    hs: tool.schema.string().describe("Mã HS/CN, VD '0901.11', '0306 17', '6403 99' (nên ≥ 6 số)"),
+    origin: tool.schema.string().optional().describe("Mã ISO 2 chữ nước xuất xứ (mặc định VN)"),
+    destination: tool.schema.string().optional().describe("Nước thành viên EU nhập khẩu, ISO 2 chữ (mặc định FR) – VAT / thuế TTĐB khác nhau giữa các nước"),
+  },
+  async execute({ hs, origin, destination }, context) {
+    const bad = badCode(hs, 4, 10)
+    if (bad) return bad
+    const d = digits(hs)
+    const org = iso2(origin)
+    const dest = iso2(destination, "FR")
+    try {
+      return await withPage(async (page) => {
+        let c = d.length % 2 ? d.slice(0, -1) : d
+        while (c.length > 4 && c.endsWith("00")) c = c.slice(0, -2)
+        const { leaves, path } = await euLeaves(page, c, dest, 6)
+        if (!leaves.length) return `Không tìm thấy mã ${dotEU(d)} trong Danh mục của EU (Access2Markets, tra ngày ${today()}). Kiểm tra lại mã hoặc dùng tariff_search(query, market="eu").`
+        const humanUrl = (code: string) => `${A2M}/en/results?product=${code}&origin=${org}&destination=${dest}`
+        // Requirements per leaf (usually identical inside one heading): union, noting codes that differ.
+        const seen = new Map<string, { label: string; type: string; leaves: string[] }>()
+        const used = leaves.slice(0, 3)
+        for (const leaf of used) {
+          const cn8 = leaf.code.slice(0, 8)
+          const list: any[] = (await a2mJson(page, `/api/v2/document/list?destinationCountry=${dest}&originCountry=${org}&product=${cn8}&lang=EN`)) ?? []
+          for (const it of list) {
+            if (!it?.code || it.type === "o") continue
+            const e = seen.get(it.code) ?? { label: String(it.label ?? it.code), type: String(it.type ?? ""), leaves: [] }
+            e.leaves.push(dotEU(leaf.code))
+            seen.set(it.code, e)
+          }
+        }
+        const taxes: any[] = (await a2mJson(page, `/api/taxes/get/${used[0].code.slice(0, 8)}/${org}/${dest}`)) ?? []
+        const out: string[] = []
+        out.push(`YÊU CẦU NHẬP KHẨU EU (Access2Markets – Ủy ban châu Âu) – mã ${dotEU(d)} – xuất xứ ${org}${org === "VN" ? " (Việt Nam)" : ""} → ${dest}`)
+        if (path.length) out.push(`Nhóm: ${path.map((p) => clip(p, 150)).join(" › ")}`)
+        out.push(`Mã CN đã tra: ${used.map((l) => dotEU(l.code)).join(", ")}${leaves.length > used.length ? ` (còn ${leaves.length - used.length} mã con khác – nhập mã chi tiết hơn nếu cần)` : ""}`)
+        out.push(`Nguồn (đọc nội dung từng yêu cầu ở tab "Import requirements"): ${humanUrl(used[0].code)}`)
+        let nReq = 0
+        for (const type of ["s", "g", ...[...new Set([...seen.values()].map((v) => v.type))].filter((t) => t !== "s" && t !== "g")]) {
+          const items = [...seen.entries()].filter(([, v]) => v.type === type)
+          if (!items.length) continue
+          out.push("")
+          out.push(`${REQ_TYPE[type] ?? `Nhóm "${type}"`}:`)
+          for (const [code, v] of items) {
+            nReq++
+            const partial = v.leaves.length < used.length ? ` (chỉ với mã ${v.leaves.join(", ")})` : ""
+            out.push(`  - ${v.label}${/^Voluntary/i.test(v.label) ? " – tự nguyện" : ""}${partial} [${code}]`)
+          }
+        }
+        out.push("")
+        out.push(`THUẾ NỘI ĐỊA tại ${dest} (thu khi nhập khẩu, ngoài thuế nhập khẩu của tariff_eu):`)
+        if (!taxes.length) out.push("  (không có dữ liệu thuế cho mã này)")
+        for (const t of taxes) {
+          const name = t.taxType === "VAT" ? "Thuế GTGT (VAT)" : t.taxType === "EXC" ? "Thuế tiêu thụ đặc biệt (excise)" : String(t.taxLabel ?? t.taxType)
+          out.push(`  - ${name}: ${t.taxRate && t.taxRate !== "-" ? t.taxRate : "không áp dụng"}${t.revisionDate ? ` (dữ liệu sửa đổi ${t.revisionDate})` : ""}`)
+          if (t.noteFileContent) out.push(`    ghi chú: ${clip(stripHtml(String(t.noteFileContent)).replace(/\s+/g, " "), 400)}`)
+        }
+        out.push("")
+        out.push(`LƯU Ý: danh mục do Access2Markets tổng hợp theo mã CN, tra ngày ${today()}; mỗi yêu cầu có văn bản EU / quốc gia gốc – đọc chi tiết trên trang nguồn hoặc eurlex_* trước khi khẳng định nghĩa vụ cụ thể. Quy tắc xuất xứ ưu đãi EVFTA: fta_search("quy tắc xuất xứ", fta="EVFTA").`)
+        out.push(CITE)
+        const text = out.join("\n")
+        recordEvidence(context?.sessionID, { url: humanUrl(used[0].code), title: `EU import requirements ${dotEU(d)} ${org}→${dest}`, text, source: "trade.ec.europa.eu", meta: { hs: d, origin: org, alt_urls: used.map((l) => humanUrl(l.code)) } })
+        return withUi(text, { res: count(nReq, "results") })
+      })
+    } catch (e: any) {
+      if (e instanceof Blocked) return `Không tra được yêu cầu nhập khẩu EU: ${e.message}. Không nêu yêu cầu theo trí nhớ; thử lại sau.`
+      throw e
+    }
+  },
+})
+
+// =====================================================================================================
 // tariff_search – description → candidate HS codes (suggestions)
 // =====================================================================================================
 type VnEntry = { code: string; desc: string; path: string; rate: string }

@@ -17,6 +17,7 @@ description: BẮT BUỘC cho mọi yêu cầu – danh tính trung thực (abou
 
 ## 2. Ngày giờ và thời hạn
 - Mọi câu có "hôm nay", "hiện nay", "hiện hành", "còn hạn không", "đã quá hạn chưa", "còn hiệu lực không" → gọi `clock_now`; trong câu trả lời ghi "tính đến ngày dd/mm/yyyy".
+- **Thứ trong tuần** (Thứ Hai … Chủ nhật / Monday … Sunday) **chép nguyên văn** từ kết quả `clock_now` / `clock_calc`, **không bao giờ tự suy ra** từ ngày tháng (rất dễ sai); ngày nào công cụ không nêu thứ thì không ghi thứ. Máy chủ tự kiểm tra thứ ↔ ngày trong câu trả lời và yêu cầu sửa nếu sai.
 - Mọi phép tính ngày (hạn thanh toán, hạn giao hàng, thời hạn khiếu nại, thời hiệu khởi kiện, thời hạn bảo hành, hạn nộp bản trả lời câu hỏi điều tra / ý kiến trong vụ việc phòng vệ thương mại…) → `clock_calc`, **không tự nhẩm**:
   - "trong vòng N ngày kể từ ngày X" → `clock_calc(from="X", add_days=N)` (ngày X không tính – Điều 147 BLDS; ngày cuối rơi vào ngày nghỉ → ngày làm việc tiếp theo – Điều 148);
   - "N ngày làm việc" → `business_days=N`; "N tháng / N năm" → `add_months` / `add_years`;

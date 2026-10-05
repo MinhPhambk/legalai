@@ -11,6 +11,7 @@ import { api } from "../api.js"
 import { useT } from "../i18n.jsx"
 import { useThemePref } from "../theme.js"
 import { IconClose, IconDownload, IconExpand, IconExternal } from "./Icons.jsx"
+import { repairMermaid } from "../mermaid-fix.js"
 
 /** { chatId } | { token } of the conversation the answer belongs to. */
 export const VisualScope = createContext(null)
@@ -237,7 +238,15 @@ async function renderMermaidNow(code, theme) {
     })
     mermaidTheme = theme
   }
-  await mermaid.parse(code)
+  // Model-written flowcharts often break on unquoted "( )" / "{ }" in labels or a literal "\n": retry once repaired.
+  try {
+    await mermaid.parse(code)
+  } catch (e) {
+    const fixed = repairMermaid(code)
+    if (!fixed) throw e
+    await mermaid.parse(fixed)
+    code = fixed
+  }
   const { svg } = await mermaid.render(`mmd-${++seq}`, code)
   // standalone image: explicit size from the viewBox, no scripts / foreign objects / external refs survive
   const vb = svg.match(/viewBox="[-\d.]+\s+[-\d.]+\s+([\d.]+)\s+([\d.]+)"/)
@@ -248,6 +257,7 @@ async function renderMermaidNow(code, theme) {
     .replace(/<foreignObject[\s\S]*?<\/foreignObject>/gi, "")
     .replace(/\son\w+="[^"]*"/gi, "")
     .replace(/<svg\b([^>]*?)\swidth="[^"]*"/, "<svg$1")
+    .replace(/<svg\b([^>]*?)\sheight="[^"]*"/, "<svg$1") // mermaid may set height too: a duplicate attribute breaks the image
     .replace(/<svg\b([^>]*?)\sstyle="[^"]*"/, "<svg$1")
     .replace(/^<svg\b/, `<svg width="${w}" height="${h}"`)
   return { url: `data:image/svg+xml;charset=utf-8,${encodeURIComponent(clean)}`, w, h }

@@ -296,6 +296,11 @@
       "vbpl_search_articles": "Tìm điều khoản",
       "vbpl_history": "Tra lịch sử hiệu lực",
       "vbpl_verify": "Kiểm chứng trích dẫn",
+      "chinhphu_search": "Tìm văn bản mới (Cổng Chính phủ)",
+      "chinhphu_document": "Mở văn bản (Cổng Chính phủ)",
+      "chinhphu_article": "Đọc điều luật (OCR)",
+      "chinhphu_search_articles": "Tìm điều khoản (Cổng Chính phủ)",
+      "chinhphu_verify": "Kiểm chứng trích dẫn (Cổng Chính phủ)",
       "trav_search": "Tìm tin phòng vệ thương mại",
       "trav_measures": "Tra biện pháp đang áp dụng",
       "trav_page": "Đọc bài Cục Phòng vệ thương mại",
@@ -357,6 +362,7 @@
       "tariff_vn": "Tra biểu thuế Việt Nam",
       "tariff_us": "Tra biểu thuế Hoa Kỳ (HTS)",
       "tariff_eu": "Tra biểu thuế EU (TARIC)",
+      "tariff_eu_requirements": "Tra yêu cầu nhập khẩu EU",
       "tariff_search": "Tìm mã HS",
       "invalid": "Lệnh gọi công cụ không hợp lệ",
       "chrome_close_page": "Đóng tab",
@@ -395,6 +401,11 @@
       "vbpl_search_articles": "Đang tìm điều khoản liên quan",
       "vbpl_history": "Đang tra lịch sử hiệu lực",
       "vbpl_verify": "Đang kiểm chứng trích dẫn",
+      "chinhphu_search": "Đang tìm văn bản trên Cổng Chính phủ",
+      "chinhphu_document": "Đang mở văn bản và nhận dạng chữ",
+      "chinhphu_article": "Đang đọc điều luật",
+      "chinhphu_search_articles": "Đang tìm điều khoản liên quan",
+      "chinhphu_verify": "Đang kiểm chứng trích dẫn",
       "trav_search": "Đang tìm tin phòng vệ thương mại",
       "trav_measures": "Đang tra biện pháp đang áp dụng",
       "trav_page": "Đang đọc bài của Cục Phòng vệ thương mại",
@@ -440,6 +451,7 @@
       "tariff_vn": "Đang tra biểu thuế Việt Nam",
       "tariff_us": "Đang tra biểu thuế Hoa Kỳ",
       "tariff_eu": "Đang tra biểu thuế EU",
+      "tariff_eu_requirements": "Đang tra yêu cầu nhập khẩu EU",
       "tariff_search": "Đang tìm mã HS",
       "company_lookup": "Đang tra cứu doanh nghiệp",
       "company_verify": "Đang đối chiếu thông tin doanh nghiệp",
@@ -537,14 +549,16 @@
     },
     "agency": {
       "trav": "Cục Phòng vệ thương mại"
-    }
+    },
+    "titleCount": "Nguồn ({count})",
+    "citedOf": "{cited} được trích trong câu trả lời, {looked} đã tra thêm"
   },
   "confidence": {
     "none": "Chưa kiểm chứng tự động",
     "noneTip": "Câu trả lời này không có kết quả grounding_check – chưa được kiểm chứng tự động với nguồn đã tra.",
     "label": "Độ tin cậy: {level}",
     "reasons": "Lý do: {tip}",
-    "claims": "{supported}/{claims} căn cứ khớp nguồn đã tra",
+    "claims": "{supported}/{claims} mục kiểm chứng khớp nguồn",
     "level": {
       "high": "Cao",
       "medium": "Trung bình",
@@ -564,7 +578,8 @@
       "all_matched": "{n}/{total} căn cứ đều khớp với nguồn đã tra",
       "all_matched_calc": "{n}/{total} căn cứ đều khớp với nguồn đã tra hoặc do công cụ tính ({computed})",
       "from_memory": "câu trả lời nêu số hiệu / con số / trích dẫn nhưng chưa mở nguồn nào trong phiên (trả lời theo trí nhớ)",
-      "ocr_evidence": "một số căn cứ chỉ có trong văn bản nhận dạng OCR – cần đối chiếu bản gốc"
+      "ocr_evidence": "một số căn cứ chỉ có trong văn bản nhận dạng OCR – cần đối chiếu bản gốc",
+      "partial_quotes_other": "{count} đoạn trích chỉ khớp một phần với nguồn (diễn đạt lại, không phải nguyên văn)"
     }
   },
   "report": {
@@ -1580,11 +1595,12 @@
       "title": "Logo",
       "lead": "Biểu tượng + chữ “LegalAI”. Dùng bản màu trên nền sáng, bản màu-trên-nền-tối hoặc trắng trên nền tối, bản đen khi in một màu.",
       "rationaleTitle": "Ý tưởng",
-      "rationale": "Một chiếc cân được dựng bằng hình học đơn giản – dầm, trụ, đế và hai đĩa cân – với điểm tựa là một tia sáng bốn cánh: pháp luật được cân nhắc với sự trợ giúp của AI. Nét dày, không chi tiết mảnh để đọc rõ ở 16 px; ô vuông bo góc 25% màu đỏ FTU. Chữ “LegalAI” dùng Be Vietnam Pro Bold, chuyển thành đường nét.",
+      "rationale": "Biểu tượng của LegalAI là chính logo TECHLAB của FTU Tech Lab (file chính thức, giữ nguyên), đặt giữa ô vuông cùng màu đỏ #B71B21 nên logo và ô liền một khối. Đầu trang, chân trang và ảnh chia sẻ dùng logo TECHLAB cạnh chữ LegalAI. Logo là ảnh chính thức nên không có biến thể đổi màu – chỉ dùng trên nền sáng hoặc nền tối.",
       "variants": {
         "horizontalColor": "Ngang – màu",
         "horizontalColorOnDark": "Ngang – màu trên nền tối",
         "stackedColor": "Xếp dọc – màu",
+        "stackedColorOnDark": "Xếp dọc – màu trên nền tối",
         "horizontalBlack": "Ngang – đen",
         "horizontalWhite": "Ngang – trắng",
         "horizontalRed": "Ngang – đỏ",
@@ -1679,7 +1695,7 @@
       "r1": "Dùng đúng tệp logo chính thức, không vẽ lại, đổi màu, cắt xén hay đảo màu.",
       "r2": "Trên nền tối, đặt logo trên tấm nền trắng bo góc.",
       "r3": "Đặt tách biệt với logo LegalAI, không ghép thành một logo chung.",
-      "r4": "“FTU Tech Lab” viết bằng chữ thường – không có logo riêng."
+      "r4": "Logo TECHLAB dùng đúng file chính thức, không đổi màu, không cắt, không kéo giãn."
     },
     "downloads": {
       "title": "Tải xuống",
@@ -2110,6 +2126,11 @@
       "vbpl_search_articles": "Tìm các điều có chứa từ khóa trong một văn bản.",
       "vbpl_history": "Lịch sử hiệu lực và văn bản sửa đổi, thay thế.",
       "vbpl_verify": "Kiểm tra đoạn trích có đúng nguyên văn trên vbpl.vn.",
+      "chinhphu_search": "Tìm văn bản trên vanban.chinhphu.vn (kể cả văn bản rất mới) theo trích yếu hoặc số hiệu.",
+      "chinhphu_document": "Thuộc tính văn bản trên vanban.chinhphu.vn và danh sách điều (toàn văn PDF được OCR).",
+      "chinhphu_article": "Nội dung một điều từ PDF đính kèm, gắn nhãn OCR.",
+      "chinhphu_search_articles": "Tìm các điều có chứa từ khóa trong một văn bản trên vanban.chinhphu.vn.",
+      "chinhphu_verify": "Kiểm tra đoạn trích có trong toàn văn trên vanban.chinhphu.vn.",
       "court_anle_search": "Tìm án lệ đã công bố (anle.toaan.gov.vn).",
       "court_anle_document": "Đọc một án lệ: trạng thái, tình huống, giải pháp pháp lý, nguyên văn.",
       "court_judgment_search": "Tìm bản án, quyết định đã công bố (congbobanan.toaan.gov.vn).",
@@ -2129,6 +2150,7 @@
       "tariff_vn": "Tra biểu thuế xuất nhập khẩu Việt Nam theo mã HS, kèm căn cứ.",
       "tariff_us": "Tra biểu thuế Hoa Kỳ (HTS – USITC) theo mã HS.",
       "tariff_eu": "Tra biểu thuế EU (TARIC qua Access2Markets) theo mã HS.",
+      "tariff_eu_requirements": "Danh mục yêu cầu nhập khẩu vào EU (SPS, nhãn mác, tiêu chuẩn, chứng từ) và VAT / thuế tiêu thụ đặc biệt theo mã HS (Access2Markets).",
       "tariff_search": "Tìm mã HS theo mô tả hàng hóa (gợi ý).",
       "document_create": "Tạo tài liệu Word / PDF (hợp đồng, báo cáo…).",
       "document_edit": "Sửa tài liệu đã tạo hoặc tải lên, tạo phiên bản mới.",

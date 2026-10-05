@@ -20,6 +20,7 @@ import { activeModelId, promptModel } from "./models.mjs"
 import { EventLog, POLL } from "./poll.mjs"
 import { applyLibraryPermissions, disabledSkillsNote } from "./library.mjs"
 import { groundingForTurns } from "./experts.mjs"
+import { weekdayIssues, weekdayPrompt } from "./weekday.mjs"
 import { REPAIR_DISABLED, annotateModelVerdict, autoRepairFor, autoRepairOn, finalPrompt, isFinalPrompt, isHiddenPrompt, isRepairPrompt, looksLegal, repairPrompt, reportItems, serverCheck, serverGroundingOn } from "./grounding.mjs"
 
 /** One `system` line per run: without it the model mostly writes its clarifying questions as text (docs/QUESTION_TOOL.md §5). */
@@ -266,6 +267,15 @@ export function registerChatRoutes(app, { oc, states, json, upstreamError }) {
     const { k, repaired, tail, answer } = lt
     if (!tail.length || tail.some((m) => m.info?.error)) return false // failed or stopped
     if (!answer) return false
+    // A weekday that does not match its date ("Thứ Bảy, 04/10/2026" for a Sunday) is fixed once per user turn,
+    // independent of the opt-in grounding repair: it is a deterministic error and the rewrite needs no look-ups.
+    if (!repaired) {
+      const wd = weekdayIssues(answer)
+      if (wd.length) {
+        console.log(`[weekday] ${sid} turn ${k}: ${wd.map((x) => `${x.date} said ${x.said}, is ${x.actualVi}`).join("; ")} – asking for a correction`)
+        return startRepair(sid, run, branch, k, { level: "weekday", items: [], origin: "weekday" }, false, weekdayPrompt(wd, run.locale || "vi"))
+      }
+    }
     const checks = tail.flatMap((m) => m.parts || []).filter((p) => p.type === "tool" && p.tool === "grounding_check" && p.state?.status === "completed")
     let verdict = null
     if (checks.length) {
@@ -288,7 +298,7 @@ export function registerChatRoutes(app, { oc, states, json, upstreamError }) {
     return startRepair(sid, run, branch, k, verdict)
   }
   /** One repair per user turn (automatic or "Tra lại ngay"): a hidden (synthetic) prompt in the same session. */
-  async function startRepair(sid, run, branch, k, verdict, manual = false) {
+  async function startRepair(sid, run, branch, k, verdict, manual = false, text = null) {
     const locale = run.locale || "vi"
     const model = promptModel()
     repairAt.set(sid, Date.now())
@@ -297,7 +307,7 @@ export function registerChatRoutes(app, { oc, states, json, upstreamError }) {
       await oc.request("POST", `/session/${encodeURIComponent(sid)}/prompt_async`, {
         agent: config.agent,
         ...(model ? { model } : {}),
-        parts: [{ type: "text", text: repairPrompt(verdict.items || [], locale), synthetic: true }],
+        parts: [{ type: "text", text: text || repairPrompt(verdict.items || [], locale), synthetic: true }],
         ...(await libraryPromptFields(sid, locale)),
       })
     } catch (e) {
@@ -305,7 +315,7 @@ export function registerChatRoutes(app, { oc, states, json, upstreamError }) {
       repairAt.delete(sid)
       throw e
     }
-    console.log(`[grounding] ${manual ? "on-demand" : "automatic"} repair turn started for ${sid} (turn ${k}, ${verdict.origin} verdict thấp)`)
+    console.log(`[grounding] ${manual ? "on-demand" : "automatic"} repair turn started for ${sid} (turn ${k}, ${verdict.origin} verdict ${verdict.level})`)
     hub.broadcast(branch.chat_id, { type: "repair", branchId: branch.id, turn: k })
     return true
   }

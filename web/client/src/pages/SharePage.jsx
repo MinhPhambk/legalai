@@ -5,11 +5,12 @@ import { buildTurns } from "../components/ChatView.jsx"
 import { AssistantTurn, MessagesSkeleton, UserMessage } from "../components/Messages.jsx"
 import ReportPanel from "../components/ReportPanel.jsx"
 import { DocumentPanel } from "../components/Extras.jsx"
-import { IconLink, IconLogo, IconMoon, IconSun } from "../components/Icons.jsx"
+import { IconLink, IconMoon, IconSun } from "../components/Icons.jsx"
 import { useThemePref, useTitle } from "../lib.js"
 import { fmtDate, useT } from "../i18n.jsx"
 import LanguageToggle from "../components/LanguageToggle.jsx"
 import { useApp } from "../settings.jsx"
+import { TechlabLogo } from "../components/Logo.jsx"
 
 function useNoIndex() {
   useEffect(() => {
@@ -43,9 +44,7 @@ export default function SharePage({ token, signedIn }) {
     <div className={`share-page ${report != null || doc ? "with-report" : ""}`}>
       <header className="share-top">
         <a className="brand" href="/">
-          <span className="logo-mark">
-            <IconLogo size={18} />
-          </span>
+          <TechlabLogo height={28} />
           <span className="brand-name">LegalAI</span>
         </a>
         <span className="share-badge">

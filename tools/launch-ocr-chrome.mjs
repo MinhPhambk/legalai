@@ -22,9 +22,12 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PORT = process.env.OCR_CHROME_PORT ?? '9334';
-const EXE = process.env.OCR_CHROME_EXE ?? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const WIN = process.platform === 'win32';
+const EXE = process.env.OCR_CHROME_EXE ?? (WIN ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' : '/usr/bin/google-chrome-stable');
 const PROFILE = process.env.OCR_CHROME_PROFILE ?? path.join(ROOT, '.sandbox', 'ocr-chrome-profile'); // override only for experiments / extra instances
-const DLL = 'chrome_screen_ai.dll';
+const DLL = WIN ? 'chrome_screen_ai.dll' : 'libchromescreenai.so';
+// Linux servers have no screen: the headed OCR Chrome draws into the Xvfb display of legalai-xvfb.service.
+if (!WIN && !process.env.DISPLAY) process.env.DISPLAY = process.env.OCR_DISPLAY ?? ':99';
 
 const verDirs = (dir) => {
   try {
@@ -52,9 +55,11 @@ export function seedScreenAi() {
   const have = verDirs(own);
   if (have.length) return { ok: true, version: have[0], seeded: false, dir: path.join(own, have[0]) };
   const local = process.env.LOCALAPPDATA ?? (process.env.USERPROFILE ? path.join(process.env.USERPROFILE, 'AppData', 'Local') : '');
+  // Linux: the installed component lives in ~/.config/google-chrome/screen_ai (download it once via chrome://components).
+  const installed = WIN ? path.join(local, 'Google', 'Chrome', 'User Data', 'screen_ai') : path.join(process.env.REAL_HOME ?? process.env.HOME ?? '', '.config', 'google-chrome', 'screen_ai');
   // parallel worker profiles (<profile>-wN) copy the primary OCR profile's component; otherwise the installed one
   const primary = path.join(ROOT, '.sandbox', 'ocr-chrome-profile', 'screen_ai');
-  let src = path.join(local, 'Google', 'Chrome', 'User Data', 'screen_ai');
+  let src = installed;
   if (path.resolve(own) !== path.resolve(primary) && verDirs(primary).length) src = primary;
   const vers = verDirs(src);
   if (!vers.length) return { ok: false, reason: `OCR unavailable: Chrome "Screen AI" component not found (${path.join(src, '<ver>', DLL)}). Open any scanned PDF once in your normal Chrome (it downloads the component), then retry.` };

@@ -53,10 +53,12 @@ const inst = (i: number): Inst => ({ i, port: String(+PORT() + i), profile: i ? 
 async function portUp(port = PORT()) {
   try { return (await fetch("http://127.0.0.1:" + port + "/json/version", { signal: AbortSignal.timeout(1500) })).ok } catch { return false }
 }
+// Screen AI library file name per platform (Windows DLL / Linux shared object).
+const SCREEN_AI_LIB = process.platform === "win32" ? "chrome_screen_ai.dll" : "libchromescreenai.so"
 function componentVersion(profile = PROFILE): string | null {
   try {
     const d = path.join(profile, "screen_ai")
-    return fs.readdirSync(d).filter((v) => fs.existsSync(path.join(d, v, "chrome_screen_ai.dll"))).sort().pop() ?? null
+    return fs.readdirSync(d).filter((v) => fs.existsSync(path.join(d, v, SCREEN_AI_LIB))).sort().pop() ?? null
   } catch { return null }
 }
 const starting = new Map<string, Promise<void>>()
@@ -98,7 +100,7 @@ export async function ocrHealth(opts: { start?: boolean } = {}): Promise<{ ok: b
     if (opts.start === false) { if (!(await portUp())) throw new OcrUnavailable("OCR Chrome không chạy (127.0.0.1:" + PORT() + ")") }
     else await ensureChrome()
     const component = componentVersion()
-    if (!component) throw new OcrUnavailable("OCR unavailable: thiếu thành phần Screen AI (chrome_screen_ai.dll) trong .sandbox/ocr-chrome-profile/screen_ai")
+    if (!component) throw new OcrUnavailable("OCR unavailable: thiếu thành phần Screen AI (" + SCREEN_AI_LIB + ") trong .sandbox/ocr-chrome-profile/screen_ai")
     return { ok: true, port: PORT(), component, parallel: parallelK() }
   } catch (e: any) {
     return { ok: false, port: PORT(), component: componentVersion(), parallel: parallelK(), reason: String(e?.message ?? e) }
@@ -259,7 +261,7 @@ export async function ocrPdf(input: Buffer | Uint8Array | string, opts: OcrOptio
   const timeoutMs = tmo(opts.pages?.length ? Math.max(...opts.pages) : maxPages)
   return serial(() => withLock(async () => {
     await ensureChrome()
-    if (!componentVersion()) throw new OcrUnavailable("OCR unavailable: thiếu thành phần Screen AI (chrome_screen_ai.dll) trong .sandbox/ocr-chrome-profile/screen_ai")
+    if (!componentVersion()) throw new OcrUnavailable("OCR unavailable: thiếu thành phần Screen AI (" + SCREEN_AI_LIB + ") trong .sandbox/ocr-chrome-profile/screen_ai")
     const warnings: string[] = []
     const entry: CacheEntry = { sha256: sha, engine: OCR_ENGINE, totalPages: hit?.totalPages ?? 0, pages: { ...(hit?.pages ?? {}) }, at: Date.now() }
     let want: number[] = []

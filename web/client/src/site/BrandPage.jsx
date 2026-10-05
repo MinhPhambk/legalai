@@ -10,12 +10,8 @@ const LOGOS = [
   { k: "horizontal-color", bg: "light" },
   { k: "horizontal-color-on-dark", bg: "dark" },
   { k: "stacked-color", bg: "light" },
-  { k: "horizontal-black", bg: "light" },
-  { k: "horizontal-white", bg: "dark" },
-  { k: "horizontal-red", bg: "light" },
+  { k: "stacked-color-on-dark", bg: "dark" },
   { k: "mark-color", bg: "light" },
-  { k: "mark-black", bg: "light" },
-  { k: "mark-white", bg: "dark" },
 ]
 const camel = (k) => k.replace(/-(\w)/g, (m, c) => c.toUpperCase())
 const ratio = (r) => `${r.toFixed(2)}:1`

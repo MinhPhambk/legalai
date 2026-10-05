@@ -34,7 +34,7 @@ const NAME_RE = /^[a-z][a-z0-9_]{0,63}$/
 const SKILL_RE = /^[a-z0-9][a-z0-9-]{0,63}$/
 
 export function toolGroup(name) {
-  if (name.startsWith("vbpl_")) return "vbpl"
+  if (name.startsWith("vbpl_") || name.startsWith("chinhphu_")) return "vbpl"
   if (name.startsWith("court_")) return "court"
   if (/^(trav|fedreg|eurlex|eping)_/.test(name)) return "remedy"
   if (name.startsWith("fta_")) return "fta"

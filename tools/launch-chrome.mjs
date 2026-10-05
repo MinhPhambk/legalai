@@ -10,12 +10,13 @@
 // Usage: node tools/launch-chrome.mjs
 import fs from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer-core';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PORT = process.env.CHROME_PORT ?? '9333';
-const EXE = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
+const EXE = process.env.CHROME_EXE ?? (process.platform === 'win32' ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' : '/usr/bin/google-chrome-stable');
 const MODE = ['offscreen', 'headless', 'window'].includes(process.env.CHROME_MODE) ? process.env.CHROME_MODE : 'offscreen';
 const HEADLESS = MODE === 'headless';
 const MODE_ARGS = {
@@ -29,6 +30,10 @@ const NO_THROTTLE = ['--disable-backgrounding-occluded-windows', '--disable-rend
 // Headless Chrome announces itself as "HeadlessChrome" in its user agent, which some government sites
 // block – present the regular desktop Chrome UA of the installed version instead.
 function desktopUserAgent() {
+  if (process.platform !== 'win32') {
+    const major = execFileSync(EXE, ['--version'], { encoding: 'utf8' }).match(/(\d+)\./)?.[1] ?? '140';
+    return `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/${major}.0.0.0 Safari/537.36`;
+  }
   const dir = path.dirname(EXE);
   const version = fs.readdirSync(dir).filter((d) => /^\d+\.\d+\.\d+\.\d+$/.test(d)).sort((a, b) => b.localeCompare(a, undefined, { numeric: true }))[0];
   const major = version?.split('.')[0] ?? '140';

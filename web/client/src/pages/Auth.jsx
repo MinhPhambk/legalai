@@ -5,7 +5,8 @@ import { navigate, useTitle } from "../lib.js"
 import { Trans, useLocale, useT } from "../i18n.jsx"
 import { CONTACT_EMAIL } from "../site/config.js"
 import LanguageToggle from "../components/LanguageToggle.jsx"
-import { IconAlert, IconCheck, IconEye, IconEyeOff, IconGavel, IconGlobe, IconInfo, IconLogo, IconQuote, Spinner } from "../components/Icons.jsx"
+import { IconAlert, IconCheck, IconEye, IconEyeOff, IconGavel, IconGlobe, IconInfo, IconQuote, Spinner } from "../components/Icons.jsx"
+import { TechlabLogo } from "../components/Logo.jsx"
 
 const EMAIL_RE = /^[^\s@<>()"',;:]{1,64}@[^\s@<>()"',;:]{1,190}\.[a-z]{2,}$/i
 
@@ -295,9 +296,7 @@ export default function AuthPage({ mode, allowRegistration, onAuthed }) {
       <aside className="auth-hero" aria-label={t("auth.hero.label")}>
         <div className="auth-hero-inner">
           <div className="auth-brand">
-            <span className="logo-mark lg inv">
-              <IconLogo size={24} />
-            </span>
+            <TechlabLogo height={40} />
             <span className="brand-name">LegalAI</span>
           </div>
           <h2 className="hero-title">
@@ -336,9 +335,7 @@ export default function AuthPage({ mode, allowRegistration, onAuthed }) {
         </a>
         <LanguageToggle className="auth-lang" />
         <div className="auth-mobile-brand">
-          <span className="logo-mark">
-            <IconLogo size={18} />
-          </span>
+          <TechlabLogo height={28} />
           <span className="brand-name">LegalAI</span>
         </div>
         <div className="auth-card">

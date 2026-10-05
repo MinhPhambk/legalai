@@ -47,8 +47,8 @@ export class SessionState {
     return this.docNames.get(url) || slugName(url)
   }
   learn(tool, output) {
-    if (typeof output !== "string" || !tool.startsWith("vbpl_")) return
-    for (const m of output.matchAll(/Văn bản: ([^\n]+)\n(?:[^\n]*\n)?Link: (https:\/\/vbpl\.vn\S+)/g)) this.docNames.set(m[2], short(m[1], 70))
+    if (typeof output !== "string" || !/^(vbpl|chinhphu)_/.test(tool)) return
+    for (const m of output.matchAll(/Văn bản: ([^\n]+)\n(?:[^\n]*\n)?Link: (https:\/\/(?:vbpl\.vn|vanban\.chinhphu\.vn)\S+)/g)) this.docNames.set(m[2], short(m[1], 70))
   }
 }
 
@@ -73,7 +73,7 @@ export const normUrl = (u) => {
  * does not describe a single document.
  */
 export function sourceMeta(tool, input = {}, output, metadata) {
-  const m = rawSourceMeta(tool, input, output)
+  const m = rawSourceMeta(tool, input, output) || genericSourceMeta(tool, input, output, metadata)
   if (!m) return null
   // Language-neutral companions (the browser formats dates and localizes the status / agency).
   const ui = metadata?.ui?.doc && typeof metadata.ui.doc === "object" ? metadata.ui.doc : {}
@@ -87,6 +87,21 @@ export function sourceMeta(tool, input = {}, output, metadata) {
   m.lang = lang
   if (m.title) m.titleLang = langOf(m.title, lang) || lang
   return m
+}
+// Any other lookup tool that OPENED a page / document (not a search result list): the URL from its UI metadata,
+// its "Link:" / "Nguồn:" line, or its url argument – so every looked-up source is listed, not only vbpl / FR / TRAV.
+const NOT_A_SOURCE = /(^|_)(search|find|list|check|now|calc|eval|interest|money_words|scan|create|update|edit|draft|question)(_|$)|^(grounding_check|about_self|clock_|calc_|safety_|expert_|diagram_|image_|draft_|document_|question|skill|bash|read|glob|grep|write|edit|todo)/
+function genericSourceMeta(tool, input = {}, output, metadata) {
+  if (NOT_A_SOURCE.test(tool)) return null
+  const out = typeof output === "string" ? output : ""
+  if (!out || /^Lỗi:|^Không (tìm thấy|tra được|mở được)/.test(out.trim())) return null
+  const ui = metadata?.ui || {}
+  const fromLine = out.match(/^(?:Link|Nguồn|Source|URL|Trang)(?: \([^)]*\))?:\s*(https?:\/\/\S+)/m)?.[1]
+  const url = ui.doc?.url || ui.card?.url || fromLine || (typeof input.url === "string" && /^https?:/.test(input.url) ? input.url : "")
+  if (!url || !/^https?:\/\//.test(url)) return null
+  const dataV = (x) => (x && typeof x === "object" ? x.v : x) || ""
+  const title = dataV(ui.doc?.title) || dataV(ui.card?.title) || line(out, "Văn bản") || line(out, "Tiêu đề") || line(out, "Title") || out.split("\n")[0]
+  return { url: normUrl(url.replace(/[)>\].,;]+$/, "")), kind: "web", title: short(String(title).replace(/^[A-ZĐÀ-Ỹ ]{6,}\s*\([^)]*\)\s*[–-]\s*/u, ""), 140), number: "", accessed: line(out, "Ngày tra cứu") }
 }
 function rawSourceMeta(tool, input = {}, output) {
   const out = typeof output === "string" ? output : ""
@@ -106,6 +121,25 @@ function rawSourceMeta(tool, input = {}, output) {
       status: short(statusLine.split("·")[0], 60),
       effective: line(out, "Ngày có hiệu lực") || statusLine.match(/Ngày có hiệu lực: ([^\s·]+)/)?.[1] || "",
       issued: line(out, "Ngày ban hành"),
+      agency: line(out, "Cơ quan ban hành"),
+      article: art ? short(art, 120) : "",
+      accessed: line(out, "Ngày tra cứu"),
+    }
+  }
+  if (tool === "chinhphu_document" || tool === "chinhphu_article") {
+    // vanban.chinhphu.vn: no legal status on the site (the "Tình trạng hiệu lực" line is a note, not a status).
+    const url = line(out, "Link") || input.url
+    if (!url) return null
+    const title = line(out, "Văn bản")
+    const art = tool === "chinhphu_article" ? out.match(/--- (?:NGUYÊN VĂN|NỘI DUNG \(OCR\)) ---\s*\n+([^\n]+)/)?.[1] : ""
+    return {
+      url: normUrl(url),
+      kind: "vbpl",
+      title: short(title, 140),
+      number: line(out, "Số ký hiệu") || title.match(/\d+\/\d{4}\/[A-ZĐ0-9-]+/)?.[0] || "",
+      status: "",
+      effective: "",
+      issued: line(out, "Ngày ban hành").replace(/-/g, "/"),
       agency: line(out, "Cơ quan ban hành"),
       article: art ? short(art, 120) : "",
       accessed: line(out, "Ngày tra cứu"),
@@ -183,7 +217,14 @@ function toolLabel(tool, input = {}, st) {
   const url = typeof input.url === "string" ? input.url : ""
   switch (tool) {
     case "vbpl_find":
+    case "chinhphu_search":
       return short(input.query)
+    case "chinhphu_document":
+      return url ? st.docName(url) : ""
+    case "chinhphu_article":
+      return [input.article ? `Điều ${stripUnit(input.article, "article")}` : "", url ? st.docName(url) : ""].filter(Boolean).join(" · ")
+    case "chinhphu_search_articles":
+      return [input.keywords ? `“${short(input.keywords, 50)}”` : "", url ? st.docName(url) : ""].filter(Boolean).join(" · ")
     case "vbpl_document":
     case "vbpl_history":
       return url ? st.docName(url) : ""
@@ -193,6 +234,7 @@ function toolLabel(tool, input = {}, st) {
     case "vbpl_search_articles":
       return [input.keywords ? `“${short(input.keywords, 50)}”` : "", url ? st.docName(url) : ""].filter(Boolean).join(" · ")
     case "vbpl_verify":
+    case "chinhphu_verify":
       return input.quote ? `“${short(input.quote, 70)}”` : ""
     case "skill":
       return short(input.name)

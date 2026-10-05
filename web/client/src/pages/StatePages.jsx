@@ -2,16 +2,15 @@ import { Component, useEffect, useRef, useState } from "react"
 import { api } from "../api.js"
 import { navigate, useTitle } from "../route.js"
 import { t, useT } from "../i18n.jsx"
-import { IconAlert, IconLogo, IconRefresh, IconWifiOff, Spinner } from "../components/Icons.jsx"
+import { IconAlert, IconRefresh, IconWifiOff, Spinner } from "../components/Icons.jsx"
+import { TechlabLogo } from "../components/Logo.jsx"
 
 export function NotFound() {
   const t = useT()
   useTitle(t("states.notFound.docTitle"))
   return (
     <div className="state-page full">
-      <span className="logo-mark xl float-in">
-        <IconLogo size={30} />
-      </span>
+      <TechlabLogo height={64} className="float-in" />
       <span className="state-code">404</span>
       <h1>{t("states.notFound.title")}</h1>
       <p>{t("states.notFound.body")}</p>
@@ -147,9 +146,7 @@ export function Splash() {
   const t = useT()
   return (
     <div className="splash" aria-label={t("common.loading")}>
-      <span className="logo-mark xl pulse">
-        <IconLogo size={30} />
-      </span>
+      <TechlabLogo height={64} className="pulse" />
     </div>
   )
 }

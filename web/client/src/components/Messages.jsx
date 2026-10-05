@@ -27,7 +27,7 @@ const Html = memo(function Html({ html, streaming, className = "" }) {
 
 // ---- answer model: segments + citation registry + sources ---------------------------------------
 /** Steps / text segments of one assistant turn, answer HTML with citation chips, and the source list. */
-export function buildAnswer(messages) {
+export function buildAnswer(messages, sourceMessages = messages) {
   const segs = []
   const drafts = new Map() // draftId -> draft segment (one progress card per draft, placed where it started)
   for (const m of messages) {
@@ -57,7 +57,8 @@ export function buildAnswer(messages) {
   }
   const registry = new Map()
   for (const s of segs) if (s.kind === "text") s.html = citeify(renderMarkdown(s.text), registry)
-  const meta = collectSources(messages)
+  // looked-up sources of the whole turn (also the part before an automatic repair, shown collapsed)
+  const meta = collectSources(sourceMessages)
   const sources = [...registry.entries()].map(([key, e]) => ({ ...(meta.get(key) || {}), ...e, key, cited: true }))
   let n = sources.length
   for (const [key, m] of meta) if (!registry.has(key)) sources.push({ ...m, key, n: ++n, cited: false })
@@ -71,8 +72,22 @@ export const sourceStatus = (s) => statusLabel(s?.statusCode || statusCodeOf(s?.
 /** ISO date → locale format; legacy dd/mm/yyyy strings stay as they are. */
 const srcDate = (iso, raw) => (iso ? fmtDate(iso + "T00:00:00") : raw || "")
 /** Title of a source as data (the document's own language). */
+/** Readable name for a link without a title: last path segment + the query values that identify the page
+ *  (…/access-to-markets/en/results?product=0306179220&origin=VN&destination=FR → "results · 0306179220 · VN · FR"). */
+export function urlLabel(url) {
+  try {
+    const u = new URL(url)
+    const seg = decodeURIComponent(u.pathname.split("/").filter(Boolean).pop() || "")
+      .replace(/\.(html?|aspx?|jsp|php)$/i, "").replace(/--\d+$/, "").replace(/[-_]+/g, " ").trim()
+    const vals = [...u.searchParams].filter(([k]) => !/^(utm_|lang|locale|ref|fbclid|gclid)/i.test(k)).map(([, v]) => decodeURIComponent(v).replace(/^CELEX:/i, "CELEX "))
+    const label = [seg, ...vals].filter(Boolean).join(" · ")
+    return label.length > 90 ? label.slice(0, 89) + "…" : label || u.hostname
+  } catch {
+    return url
+  }
+}
 export function SourceTitle({ s }) {
-  const v = s.title || s.label || s.url
+  const v = s.title || s.label || urlLabel(s.url)
   return <Data v={v} lang={s.title ? s.titleLang || s.lang : guessLang(v)} />
 }
 
@@ -284,14 +299,17 @@ function CiteCard({ card, onEnter, onLeave }) {
 
 export function SourcesList({ sources }) {
   const t = useT()
-  const [all, setAll] = useState(false)
   if (!sources.length) return null
-  const shown = all ? sources : sources.slice(0, 6)
+  const cited = sources.filter((s) => s.cited).length
+  // Every source is listed (cited ones first, numbered like the chips in the answer, then the other looked-up ones).
   return (
     <section className="sources" aria-label={t("sources.title")}>
-      <h4 className="sources-title">{t("sources.title")}</h4>
+      <h4 className="sources-title">
+        {t("sources.titleCount", { count: sources.length })}
+        {cited < sources.length && <span className="sources-sub"> · {t("sources.citedOf", { cited, looked: sources.length - cited })}</span>}
+      </h4>
       <ol className="source-grid">
-        {shown.map((s) => (
+        {sources.map((s) => (
           <li key={s.key}>
             <a className={`source-card ${s.cited ? "" : "uncited"}`} href={s.url} target="_blank" rel="noopener noreferrer nofollow" data-cite={s.key} title={s.url}>
               <span className="src-site">
@@ -306,11 +324,6 @@ export function SourcesList({ sources }) {
           </li>
         ))}
       </ol>
-      {sources.length > 6 && (
-        <button className="link-btn sources-more" onClick={() => setAll((a) => !a)}>
-          {all ? t("common.showLess") : t("sources.more", { count: sources.length - 6 })}
-        </button>
-      )}
     </section>
   )
 }
@@ -677,20 +690,20 @@ export function AssistantTurn(props) {
       <div className="repair-note" role="note">
         <IconRefresh size={14} /> {t("repair.updated")}
       </div>
-      <AssistantTurnBody {...props} messages={messages.slice(split)} />
+      <AssistantTurnBody {...props} messages={messages.slice(split)} sourceMessages={messages} />
     </div>
   )
 }
 
 function AssistantTurnBody({
   messages, active, retry, versions, isLast, onRegenerate, onSwitch, onOpenReport, onReportDetected, reportOpen, readOnly, showReasoning, busy,
-  grounding, onEscalate, escalated, scope, docVersions, onPreviewDoc, openDocId, docsKey, question, repairing, finalizing, nested, onRepairNow,
+  grounding, onEscalate, escalated, scope, docVersions, onPreviewDoc, openDocId, docsKey, question, repairing, finalizing, nested, onRepairNow, sourceMessages,
 }) {
   const toast = useToast()
   const t = useT()
   const [copied, setCopied] = useState(false)
   const rootRef = useRef(null)
-  const model = useMemo(() => buildAnswer(messages), [messages])
+  const model = useMemo(() => buildAnswer(messages, sourceMessages || messages), [messages, sourceMessages])
   const { segs, answer, sources, byKey } = model
   const artifacts = useMemo(() => turnArtifacts(messages).map((a) => (a.legacy ? { ...a, version: docVersions?.get(a.id) || 1 } : a)), [messages, docVersions])
   // A generated document already carries the long content → the answer text is just its summary.

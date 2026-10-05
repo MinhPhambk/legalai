@@ -47,17 +47,51 @@ function splitTranslations(answer: string): { text: string; translations: string
   return { text: out + answer.slice(last), translations }
 }
 
+// Markdown / labels the model adds around a verbatim passage are not part of the source text:
+// "**Khoản 1:** Bên bán …", "- …", "[Điều 5](https://…)", "*nghiêng*", trailing "(Nguồn: …)".
+function cleanQuote(raw: string) {
+  return raw
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // [text](url) → text
+    .replace(/\s*\((?:Nguồn|Source|theo|trích)[^)]*\)\s*$/i, "") // trailing source note
+    .replace(/[*_`]+/g, "") // bold / italic / code markers
+    .replace(/^\s*(?:[-+•]|\d{1,2}[.)])\s+/, "") // list marker
+    .replace(/^\s*(?:(?:Khoản|Điểm|Điều|Article|Clause|Paragraph)\s+[\w.]+(?:\s+(?:Điều|Article)\s+\d+\w?)?|Nguyên văn|Quy định)\s*[:–-]\s*/i, "") // "Khoản 1:" label
+    .replace(/^["“«'‘\s]+|["”»'’\s]+$/g, "")
+    .trim()
+}
+// Lines that look like quotes (blockquote / quotation marks) but are notes, links or emphasis.
+const NOT_A_QUOTE = /^(?:Nguồn|Source|Lưu ý|Note|Ghi chú|Tóm tắt|Kết luận|Khuyến nghị|Tính đến|As of|Trích|Theo|Căn cứ|Quote)(?=[\s:–-]|$)|https?:\/\/|^[^\p{L}\d]|:\s*$/iu
+// A blockquote used as a callout for the assistant's own words (explanation, advice, arrows, questions).
+const ADVISORY = /→|=>|\?\s*$|^(?:Nói cách khác|Hiểu đơn giản|Tức là|Nghĩa là|Ví dụ|In other words|For example|Lưu ý|Khuyến nghị|Mẹo|Gợi ý)(?=[\s:,–-]|$)|\b(?:bạn|doanh nghiệp (?:nên|cần)|chúng tôi|tôi khuyên|you should)\b/iu
+
+/** Word n-grams of a normalized text (for near-verbatim matching of quotes). */
+const words = (s: string) => s.split(/[^\p{L}\p{N}%]+/u).filter(Boolean)
+function ngrams(ws: string[], n: number) {
+  const out: string[] = []
+  for (let i = 0; i + n <= ws.length; i++) out.push(ws.slice(i, i + n).join(" "))
+  return out
+}
+
 function extractClaims(fullAnswer: string) {
   const { text: answer, translations } = splitTranslations(fullAnswer)
   // links / figures / identifiers inside a translation still count (they must be the same as in the source)
   const all = fullAnswer
   const urls = [...new Set([...all.matchAll(/https?:\/\/[^\s<>()\[\]]+/g)].map((m) => stripUrl(m[0])))]
   const quotes = new Set<string>()
-  for (const m of answer.matchAll(/[“"«]([^”"»\n]{30,600})[”"»]/g)) quotes.add(m[1].trim())
+  const addQuote = (raw: string) => {
+    const q = cleanQuote(raw)
+    if (q.length >= 30 && !NOT_A_QUOTE.test(q)) quotes.add(q)
+  }
   for (const line of answer.split("\n")) {
-    const q = line.match(/^\s*>\s*(.+)$/)?.[1]?.replace(/^[*_"“«]+|[*_"”»]+$/g, "").trim()
-    // a highlighted result line ("> Tiền lãi = **765,75 USD**") is a formula, not a quotation of a source
-    if (q && q.length >= 30 && !/^\*\*?(Nguồn|Lưu ý)/.test(q) && !/\s=\s/.test(q)) quotes.add(q.replace(/^["“«]|["”»]$/g, ""))
+    // Quotation marks are paired in order along the line ("a" … "b" never yields the text between them):
+    // curly / guillemet pairs, and straight quotes taken two by two.
+    for (const m of line.matchAll(/“([^”]{30,600})”|«([^»]{30,600})»/g)) addQuote(m[1] ?? m[2])
+    const straight = line.split('"')
+    for (let i = 1; i < straight.length - 1; i += 2) if (straight[i].length >= 30 && straight[i].length <= 600) addQuote(straight[i])
+    const q = line.match(/^\s*>\s*(.+)$/)?.[1]
+    // a highlighted result line ("> Tiền lãi = **765,75 USD**") is a formula, not a quotation of a source;
+    // a blockquote that is the assistant's own note / explanation is not a quotation either
+    if (q && !/\s=\s/.test(q) && !/["“«]/.test(q) && !ADVISORY.test(cleanQuote(q))) addQuote(q)
   }
   // numbers inside links ("t%E1%BB%B7-gi%C3%A1") are not figures
   const noUrls = all.replace(/https?:\/\/[^\s<>()\[\]]+/g, " ")
@@ -164,14 +198,29 @@ export const check = tool({
       const listed = !hit && (listedCorpus.includes(norm(b)) || corpus.includes(norm(b)))
       return { u, ok: hit, listed, checkable: CHECKABLE.test(u), ocr: hit && ocrOnlyKeys.has(canonicalKey(u)) }
     })
+    // Near-verbatim matching: share of the quote's word 4-grams found in the sources (built only when needed).
+    let gramSet: Set<string> | null = null
+    const coverage = (nq: string) => {
+      gramSet ??= new Set(ngrams(words(corpus), 4))
+      const g = ngrams(words(nq), 4)
+      return g.length ? g.filter((x) => gramSet!.has(x)).length / g.length : 0
+    }
     const quoteRes = quotes.map((q) => {
       const nq = norm(q).replace(/^["']|["']$/g, "")
-      const inText = (c: string) => !!c && (c.includes(nq) || (nq.length > 80 && c.includes(nq.slice(0, 80)) && c.includes(nq.slice(-60))))
-      const src = inText(corpus)
+      // a quote shortened with "…" / "..." / "[…]": every fragment (≥ 12 chars) must be verbatim in the source
+      // (a template's blanks "[tên công ty]" / "[…]" are cut the same way)
+      const frags = nq.split(/\s*(?:…|\.\.\.+|\[[^\]]{0,60}\]|\(…\))\s*/).map((f) => f.replace(/^[,;:.\s]+|[,;:.\s]+$/g, "")).filter((f) => f.length >= 12)
+      const inText = (c: string) => !!c && (c.includes(nq) || (nq.length > 80 && c.includes(nq.slice(0, 80)) && c.includes(nq.slice(-60))) || (frags.length > 1 && frags.every((f) => c.includes(f))))
+      let src = inText(corpus)
+      // near-verbatim (≥ 85 % of 4-grams: a changed diacritic, punctuation, a word dropped) counts as the source text
+      const cov = src ? 1 : coverage(nq)
+      const near = !src && cov >= 0.85
+      if (near) src = true
       // a passage quoted from the user's own document, or text produced by a calc tool (amount in words)
       const doc = !src && inText(docCorpus)
       const calc = !src && !doc && inText(calcCorpus)
-      return { q, ok: src || doc || calc, doc, calc, ocr: (src && hasOcr && !inText(plainCorpus)) || (doc && docOcr && !inText(docPlainCorpus)) }
+      // not supported: "partial" (half of it is in the sources – paraphrase / mixed with commentary) vs "invented"
+      return { q, ok: src || doc || calc, doc, calc, near, partial: !src && !doc && !calc && cov >= 0.5, ocr: (src && hasOcr && !near && !inText(plainCorpus)) || (doc && docOcr && !inText(docPlainCorpus)) }
     })
     // A percentage counts only when the source shows the same number as a percentage ("8%", "8 %",
     // "8 percent", "tám phần trăm" is not handled) – or, for rate tables (Federal Register / EUR-Lex list
@@ -187,7 +236,15 @@ export const check = tool({
       const calc = !src && !!calcCorpus && pct.test(calcCorpus)
       return { f, ok: src || calc, calc, ocr: src && hasOcr && !pct.test(plainCorpus) && !(!!tableCorpus && bare.test(tableCorpus)) }
     })
-    const idRes = ids.map((id) => ({ id, ok: corpus.includes(norm(id)), ocr: hasOcr && corpus.includes(norm(id)) && !plainCorpus.includes(norm(id)) }))
+    // A document number also counts when it is the number of a document that was opened (its title / link slug,
+    // e.g. vbpl.vn/…/bo-luat-dan-su-so-91-2015-qh13--95942) – article pages do not repeat the number in their text.
+    const idMeta = norm(opened.map((e) => `${e.title ?? ""} ${decodeURIComponent(e.url).replace(/[-_]/g, " ")}`).join("\n"))
+    const idSlug = (id: string) => norm(id).replace(/[\/\-.]+/g, " ").replace(/đ/g, "d")
+    const idRes = ids.map((id) => {
+      const inText = corpus.includes(norm(id))
+      const inMeta = !inText && (idMeta.includes(norm(id)) || idMeta.replace(/đ/g, "d").includes(idSlug(id)))
+      return { id, ok: inText || inMeta, ocr: hasOcr && inText && !plainCorpus.includes(norm(id)) }
+    })
     // Money amounts: in an opened source, computed by a calc tool, or verbatim in the user's document.
     const amtRes = amounts.map((a) => {
       const forms = amountForms(a.num, a.value, a.scale).map(esc)
@@ -223,8 +280,14 @@ export const check = tool({
     let level: "cao" | "trung bình" | "thấp" = "cao"
     if (!opened.length && !(calcEv.length && supported)) { level = "thấp"; reasons.push("không có nguồn nào được tra bằng công cụ trong phiên này"); why.push({ code: "no_sources" }) }
     else if (!opened.length) { level = "trung bình"; reasons.push("chỉ có kết quả tính bằng công cụ / số liệu của tài liệu, không có nguồn pháp lý nào được tra"); why.push({ code: "calc_only" }) }
-    if (bad.quotes.length) { level = "thấp"; reasons.push(`${bad.quotes.length} đoạn trích không có nguyên văn trong nguồn đã tra`); why.push({ code: "bad_quotes", n: bad.quotes.length }) }
-    if (unsupported && claims && unsupported / claims > 0.3) { level = "thấp"; reasons.push(`${unsupported}/${claims} mục chưa có căn cứ`); why.push({ code: "unsupported", n: unsupported, total: claims }) }
+    // Only a quote that is NOT in the sources at all (< 50 % of its wording) is an invented quote → thấp.
+    // A partly matching one (paraphrase presented as a quote) counts as unsupported and caps the level at trung bình.
+    const invented = bad.quotes.filter((x) => !x.partial)
+    const partialQ = bad.quotes.filter((x) => x.partial)
+    if (invented.length) { level = "thấp"; reasons.push(`${invented.length} đoạn trích không có trong nguồn đã tra`); why.push({ code: "bad_quotes", n: invented.length }) }
+    if (level === "cao" && partialQ.length) { level = "trung bình"; reasons.push(`${partialQ.length} đoạn trích chỉ khớp một phần với nguồn (diễn đạt lại, không phải nguyên văn)`); why.push({ code: "partial_quotes", n: partialQ.length }) }
+    // ≥ 2 unsupported items and > 30 %: a single unsupported item in a short answer (1/3) is not "thấp" – it caps at trung bình.
+    if (unsupported >= 2 && claims && unsupported / claims > 0.3) { level = "thấp"; reasons.push(`${unsupported}/${claims} mục chưa có căn cứ`); why.push({ code: "unsupported", n: unsupported, total: claims }) }
     if (level === "cao" && (bad.urls.length || bad.figures.length || bad.ids.length || bad.amounts.length)) { level = "trung bình"; reasons.push("một số link / con số / số tiền / số hiệu chưa đối chiếu được với nguồn đã tra"); why.push({ code: "unmatched" }) }
     if (level === "cao" && ocrItems.length) { level = "trung bình"; reasons.push(`${ocrItems.length} căn cứ chỉ có trong văn bản nhận dạng OCR từ bản scan (có thể sai dấu/chữ – cần đối chiếu bản gốc)`); why.push({ code: "ocr_evidence", n: ocrItems.length }) }
     if (level === "cao" && warnings.length) { level = "trung bình"; reasons.push("công cụ tra cứu có cảnh báo về văn bản nguồn"); why.push({ code: "source_warnings" }) }
@@ -268,7 +331,9 @@ export const check = tool({
       list("Tính bằng công cụ (calc_* / fx_convert trong phiên này – ghi rõ \"tính bằng công cụ\" kèm công thức)", computed),
       list("Số tiền / đoạn trích lấy nguyên văn từ tài liệu của người dùng", fromDoc),
       list("Căn cứ chỉ có trong văn bản OCR từ bản scan (khớp, nhưng độ tin cậy tối đa TRUNG BÌNH – ghi rõ \"theo bản OCR, cần đối chiếu bản gốc\")", ocrItems),
-      list("Đoạn trích KHÔNG có nguyên văn trong nguồn (phải trích lại bằng công cụ hoặc bỏ)", bad.quotes.map((x) => x.q)),
+      list("Đoạn trích KHÔNG có nguyên văn trong nguồn (phải trích lại bằng công cụ hoặc bỏ)", bad.quotes.filter((x) => !x.partial).map((x) => x.q)),
+      list("Đoạn trích chỉ khớp một phần (đặt trong ngoặc kép như nguyên văn nhưng đã diễn đạt lại – trích đúng nguyên văn hoặc bỏ ngoặc kép)", bad.quotes.filter((x) => x.partial).map((x) => x.q)),
+      list("Đoạn trích gần đúng nguyên văn (khác dấu câu / vài chữ – nên chép lại đúng từ công cụ)", quoteRes.filter((x) => x.near).map((x) => x.q)),
       list("Link chưa được mở bằng công cụ (mở bằng công cụ tương ứng hoặc bỏ)", bad.urls.map((x) => x.u)),
       list("Link chỉ thấy trong danh sách kết quả tìm kiếm, chưa mở văn bản", bad.urlsOnlyListed.map((x) => x.u)),
       list("Link ngoài nguồn kiểm chứng tự động", bad.urlsUnverifiable.map((x) => x.u)),
@@ -281,7 +346,7 @@ export const check = tool({
         : "→ Ghi đúng mức độ tin cậy này (kèm lý do) ở cuối câu trả lời.",
       researchStep,
       allComputed ? "→ Chỉ có phép tính (không có nguồn pháp lý): nếu câu trả lời có nhận định pháp lý (mức trần, nghĩa vụ, thời hạn, căn cứ) thì BẮT BUỘC tra bằng vbpl_* hoặc web_search → web_read trước; nếu chỉ là phép tính thì ghi rõ \"(tính bằng công cụ)\"." : "",
-      level === "thấp" ? "→ Độ tin cậy THẤP: đề nghị người dùng chuyển cho chuyên gia (dùng expert_escalate nếu người dùng đồng ý hoặc tình huống thuộc diện bắt buộc)." : "",
+      level === "thấp" ? "→ Độ tin cậy THẤP: nói rõ trong câu trả lời phần nào chưa xác minh được. Chỉ đề nghị chuyển chuyên gia (expert_escalate) khi phần chưa xác minh là kết luận chính của câu trả lời, hoặc tình huống thuộc diện bắt buộc theo skill citation-check / safety – không đề nghị chuyển chuyên gia chỉ vì một vài chi tiết phụ." : "",
     ].filter(Boolean).join("\n")
     // Keep the verdict with the session so the web UI can show the computed confidence.
     recordEvidence(context?.sessionID, { url: "grounding://check", text: JSON.stringify({ level, reasons, why, claims, supported, unsupported, computed: computed.length, round, gap: mustResearch }), source: "grounding" })

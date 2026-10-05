@@ -36,7 +36,7 @@ Archify lỗi sau 2 lần sửa → dùng mermaid. Không có ảnh phù hợp �
 - Nhãn trong hình và chú thích dùng **ngôn ngữ câu trả lời**. Nguồn / căn cứ pháp lý vẫn ghi trong phần chữ (link đã mở), hình không thay trích dẫn.
 
 ## 4. Mermaid (hiển thị ngay trong giao diện)
-Viết khối code với ngôn ngữ `mermaid`. Giữ đơn giản (≤ 15 nút), nhãn ngắn, đặt nhãn có dấu câu / ngoặc trong `"…"`. Không dùng `click`, `href`, `%%{init}%%`, HTML trong nhãn (không `<br/>` – xuống dòng không cần thiết); mọi chữ của một nút nằm TRONG dấu ngoặc của nút (`B{"ITC sơ bộ – 45 ngày"}`), không viết gì sau dấu đóng ngoặc. Sai cú pháp → giao diện chỉ hiện mã.
+Viết khối code với ngôn ngữ `mermaid`. Giữ đơn giản (≤ 15 nút), nhãn ngắn. **Luôn đặt MỌI nhãn nút trong ngoặc kép**: `A["Bắt đầu (vi phạm)"]`, `B{"Có thỏa thuận?"}` – ngoặc `( )`, `{ }`, `[ ]`, dấu `:` không nằm trong `"…"` làm hỏng sơ đồ. Không viết `\n` trong nhãn (rút gọn nhãn thay vì xuống dòng). Không dùng `click`, `href`, `%%{init}%%`, HTML trong nhãn (không `<br/>` – xuống dòng không cần thiết); mọi chữ của một nút nằm TRONG dấu ngoặc của nút (`B{"ITC sơ bộ – 45 ngày"}`), không viết gì sau dấu đóng ngoặc. Sai cú pháp → giao diện chỉ hiện mã.
 ```mermaid
 timeline
     title Mốc điều tra chống bán phá giá (Hoa Kỳ)

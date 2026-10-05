@@ -199,22 +199,27 @@ const q = (v, lang) => (str(v).trim() ? { t: "q", v: str(v), lang: langOf(v, lan
 const code = (v) => (str(v).trim() ? { t: "code", v: str(v) } : null)
 const urlArg = (u) => (str(u).trim() ? { t: "url", v: str(u).replace(/^https?:\/\//, "") } : null)
 const TOOL_LANG = (tool) =>
-  /^(vbpl|court|trav|fta|company)_/.test(tool) || tool === "tariff_vn" ? "vi" : /^(fedreg|eurlex|eping)_/.test(tool) || tool === "tariff_us" || tool === "tariff_eu" ? "en" : undefined
+  /^(vbpl|chinhphu|court|trav|fta|company)_/.test(tool) || tool === "tariff_vn" ? "vi" : /^(fedreg|eurlex|eping)_/.test(tool) || tool === "tariff_us" || tool === "tariff_eu" || tool === "tariff_eu_requirements" ? "en" : undefined
 
 function argsOf(tool, input = {}, st, output) {
   const url = str(input.url)
   const doc = () => (url && st ? { t: "doc", v: st.docName(url), lang: "vi" } : null)
   switch (tool) {
     case "vbpl_find":
+    case "chinhphu_search":
       return [q(input.query, "vi")]
     case "vbpl_document":
     case "vbpl_history":
+    case "chinhphu_document":
       return [doc()]
     case "vbpl_article":
+    case "chinhphu_article":
       return [input.article != null && str(input.article).trim() ? { t: "art", n: str(input.article).replace(UNIT_ART, "").trim() } : null, doc()]
     case "vbpl_search_articles":
+    case "chinhphu_search_articles":
       return [q(input.keywords, "vi"), doc()]
     case "vbpl_verify":
+    case "chinhphu_verify":
       return [q(input.quote, "vi")]
     case "court_anle_search":
       return [q(input.query, "vi")]
@@ -244,6 +249,7 @@ function argsOf(tool, input = {}, st, output) {
     case "tariff_vn":
     case "tariff_us":
     case "tariff_eu":
+    case "tariff_eu_requirements":
       return [code(input.hs)]
     case "tariff_search":
       return [q(input.query), code(input.market ? String(input.market).toUpperCase() : "")]
@@ -347,7 +353,14 @@ function legacyRes(tool, out) {
       const n = (sec.match(/^- (?!\()/gm) || []).length
       return n ? { t: "count", n, unit: "entries" } : { t: "none" }
     }
+    case "chinhphu_search":
+      return countOr(out, "docs")
+    case "chinhphu_search_articles": {
+      const n = (out.match(/^- Điều/gm) || []).length
+      return n ? { t: "count", n, unit: "articles" } : { t: "none" }
+    }
     case "vbpl_verify":
+    case "chinhphu_verify":
       return /^KHỚP\b/.test(out) ? { t: "verify", code: "match" } : /^KHÔNG KHỚP/.test(out) ? { t: "verify", code: "nomatch" } : null
     case "court_anle_search":
       return countOr(out, "precedents")
@@ -451,7 +464,7 @@ export function ocrOf(ui) {
 export { TOOL_LANG }
 
 // ---- confidence reasons (grounding_check verdicts) ---------------------------------------------------------
-const WHY_CODES = ["no_sources", "calc_only", "bad_quotes", "unsupported", "unmatched", "source_warnings", "unverifiable_links", "few_items", "all_matched", "from_memory", "ocr_evidence"]
+const WHY_CODES = ["partial_quotes", "no_sources", "calc_only", "bad_quotes", "unsupported", "unmatched", "source_warnings", "unverifiable_links", "few_items", "all_matched", "from_memory", "ocr_evidence"]
 /** Vietnamese reason sentences of older verdicts → the codes newer verdicts carry in `why`. */
 export function whyOf(reasons) {
   const out = []

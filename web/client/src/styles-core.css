@@ -344,6 +344,12 @@ kbd {
   color: var(--text);
   text-decoration: none;
 }
+.lockup-techlab {
+  display: block;
+  height: var(--lockup, 28px);
+  width: auto;
+  flex: none;
+}
 .lockup-word {
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -377,3 +383,20 @@ kbd {
   padding-right: 0;
 }
 
+
+/* Official TECHLAB logo in in-app brand slots (raster – never recoloured, small radius only). */
+.techlab-logo {
+  display: block;
+  width: auto;
+  flex: none;
+  border-radius: 3px;
+}
+.empty .techlab-logo {
+  margin: 0 auto 18px;
+}
+.sources-sub {
+  font-weight: 400;
+  color: var(--text-3, #6b6b6b);
+  text-transform: none;
+  letter-spacing: 0;
+}

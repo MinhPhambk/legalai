@@ -32,7 +32,7 @@ Lấy lại nguyên văn theo nguồn:
 
 ## 3. Chuyển chuyên gia – `expert_escalate`
 **Bắt buộc gọi `expert_escalate`** (rồi báo mã yêu cầu cho người dùng) khi có ít nhất một điều:
-- Độ tin cậy từ `grounding_check` là **THẤP** sau khi đã sửa.
+- Độ tin cậy từ `grounding_check` vẫn là **THẤP** sau khi đã tra lại và sửa, **và** phần chưa xác minh là kết luận chính của câu trả lời (mức phạt, nghĩa vụ, thời hạn, thuế suất được hỏi…). THẤP chỉ vì chi tiết phụ → bỏ hoặc ghi "chưa xác minh được" cho chi tiết đó, không chuyển chuyên gia.
 - Đang có tranh chấp, sắp khởi kiện / trọng tài, hoặc cần đánh giá chứng cứ.
 - Doanh nghiệp đang bị điều tra phòng vệ thương mại và có **hạn chót** (bản câu hỏi, rà soát…) trong vòng 30 ngày.
 - Có dấu hiệu vi phạm hình sự / xử phạt hành chính.

@@ -17,6 +17,16 @@ Chỉ kết luận "văn bản không quy định" sau khi `vbpl_search_articles
 Nếu văn bản "Hết hiệu lực một phần" (hoặc có dấu hiệu bị sửa đổi): gọi `vbpl_history` để lấy các văn bản sửa đổi / bãi bỏ / thay thế; với từng văn bản đó, `vbpl_find` → `vbpl_search_articles` (từ khóa: số điều cần trích, VD "Điều 301", hoặc tên chế định) để xác nhận điều cần trích **có bị sửa hay không**, và nói rõ kết quả kiểm tra này trong câu trả lời.
 Ngày tra cứu: dùng đúng ngày mà công cụ trả về.
 
+## Văn bản mới / chưa có trên vbpl.vn (vanban.chinhphu.vn) → công cụ `chinhphu_*`
+Dùng khi `vbpl_find` không thấy văn bản (thường là luật, nghị định ban hành trong vài tháng gần đây, VD Luật Thương mại điện tử 122/2025/QH15, Luật Đầu tư 143/2025/QH15) hoặc khi cần văn bản chỉ đạo điều hành của Chính phủ / Thủ tướng:
+1. `chinhphu_search` – tìm theo trích yếu hoặc **số hiệu** (lọc năm nếu cần) → link thật `https://vanban.chinhphu.vn/?pageid=27160&docid=…`.
+2. `chinhphu_document` – số ký hiệu, ngày ban hành, loại, cơ quan, người ký, trích yếu, tệp đính kèm và danh sách Điều. Toàn văn là **PDF scan được OCR** (lần đầu 1–2 phút với văn bản dài, sau đó dùng lại).
+3. `chinhphu_search_articles` → `chinhphu_article` – nội dung điều cần trích; `chinhphu_verify` trong `citation-check`.
+Bắt buộc khi dùng kết quả `chinhphu_*`:
+- Nội dung là **văn bản OCR** (có thể sai dấu/chữ): khi trích, ghi rõ "(văn bản nhận dạng OCR từ bản scan trên vanban.chinhphu.vn)"; độ tin cậy tối đa TRUNG BÌNH.
+- Trang này **không có tình trạng hiệu lực**: thử `vbpl_find` theo số hiệu để lấy tình trạng; nếu vbpl.vn chưa có, nói rõ "chưa xác minh được tình trạng hiệu lực" và nêu ngày có hiệu lực ghi trong điều khoản hiệu lực thi hành của văn bản (thường là điều cuối).
+- Văn bản đã có trên vbpl.vn thì ưu tiên trích nguyên văn bằng `vbpl_article` (văn bản gốc, không OCR).
+
 ## Các trang khác → `web_search` / `web_read`, rồi mới MCP `chrome`
 Trang chưa có công cụ riêng: ưu tiên `web_search(query)` (mặc định chỉ nguồn chính thức) → `web_read(url, focus)` (nội dung được `grounding_check` ghi nhận; skill `verify-unknown`). Chỉ khi cần thao tác trên trang (điền ô tìm kiếm, bấm nút) mới dùng các công cụ của MCP `chrome` (mở trang, snapshot, điền ô tìm kiếm, bấm, chạy script đọc nội dung).
 Chrome là **trình duyệt sandbox của dự án** (profile riêng, không đăng nhập tài khoản nào), đã được mở sẵn.
@@ -32,7 +42,7 @@ Cách làm hiệu quả với văn bản dài (VD toàn văn một bộ luật):
 | Loại | Trang |
 |---|---|
 | Văn bản pháp luật VN (nguồn chính, có tình trạng hiệu lực) | `vbpl.vn` |
-| Văn bản mới ban hành | `congbao.chinhphu.vn`, `vanban.chinhphu.vn`, `chinhphu.vn` |
+| Văn bản mới ban hành | `vanban.chinhphu.vn` (công cụ `chinhphu_*`), `congbao.chinhphu.vn`, `chinhphu.vn` |
 | Pháp điển | `phapdien.moj.gov.vn` |
 | Án lệ, bản án | `anle.toaan.gov.vn`, `congbobanan.toaan.gov.vn` |
 | Phòng vệ thương mại | `trav.gov.vn`, `canhbaosom.trav.gov.vn`, `moit.gov.vn` |

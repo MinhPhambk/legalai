@@ -20,36 +20,28 @@ const pub = path.join(web, "client", "public")
 const out = path.join(pub, "brand")
 const require = createRequire(path.join(web, "..", "package.json"))
 const puppeteer = require("puppeteer-core")
-const CHROME = process.env.CHROME_PATH || "C:/Program Files/Google/Chrome/Application/chrome.exe"
+const CHROME = process.env.CHROME_PATH || (process.platform === "win32" ? "C:/Program Files/Google/Chrome/Application/chrome.exe" : "/usr/bin/google-chrome-stable")
 const ONLY = process.env.BRAND_ONLY || ""
 fs.mkdirSync(out, { recursive: true })
 
 // ---- palette (see client/src/site/tokens.js) --------------------------------------------------------
 const RED = "#C20B11"
+const TL_RED = "#B71B21" // FTU Tech Lab logo red (the TECHLAB banner) – tile of the FTL mark
 const INK = "#121212"
 const WHITE = "#FFFFFF"
 
 // ---- the mark ---------------------------------------------------------------------------------------
-// 32-unit grid. A balance (beam, pillar, base, two pans) whose fulcrum is a four-point spark:
-// "the law, weighed with AI assistance". Rounded tile r=8 (25%).
-const GLYPH_STROKES = "M6.5 12.5h19M16 12.5V25M11 25h10" // beam, pillar, base (stroke 2.6, round caps)
-const GLYPH_FILLS = "M4.8 16.5h8.4a4.2 4.2 0 0 1-8.4 0ZM18.8 16.5h8.4a4.2 4.2 0 0 1-8.4 0ZM16 3.8Q16.9 7.6 20.6 8.4 16.9 9.2 16 13 15.1 9.2 11.4 8.4 15.1 7.6 16 3.8Z"
-/** Glyph only (no tile), drawn in `color`. */
-const glyph = (color) =>
-  `<path d="${GLYPH_STROKES}" fill="none" stroke="${color}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="${GLYPH_FILLS}" fill="${color}"/>`
-/**
- * Tile + glyph at (x, y) with size s. `knock` = glyph cut out of the tile (single-colour variants)
- * instead of painted in `fg`.
- */
-function markAt({ x = 0, y = 0, s = 32, tile, fg, knock = false, id = "m" }) {
+// The official TECHLAB logo (raster from the Lab's deck, 377×152, used unchanged) centred on a square tile of its
+// own red (#B71B21 = the logo background, so tile and logo read as one block). 32-unit grid, r=6.
+const TECHLAB_PNG = path.join(out, "techlab-logo.png")
+const TL_W = 377, TL_H = 152
+const techlabHref = () => `data:image/png;base64,${fs.readFileSync(TECHLAB_PNG).toString("base64")}`
+/** Square mark (tile + logo) at (x, y) with size s. */
+function markAt({ x = 0, y = 0, s = 32, rx = 6 }) {
   const k = s / 32
-  const tr = `translate(${x} ${y}) scale(${k})`
-  if (!knock) return `<g transform="${tr}"><rect width="32" height="32" rx="8" fill="${tile}"/>${glyph(fg)}</g>`
-  return `<defs><mask id="${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32"><rect width="32" height="32" rx="8" fill="#fff"/>${glyph("#000")}</mask></defs><g transform="${tr}"><rect width="32" height="32" rx="8" fill="${tile}" mask="url(#${id})"/></g>`
+  const w = 29, h = (w * TL_H) / TL_W
+  return `<g transform="translate(${x} ${y}) scale(${k})"><rect width="32" height="32" rx="${rx}" fill="${TL_RED}"/><image href="${techlabHref()}" x="1.5" y="${(32 - h) / 2}" width="${w}" height="${h}"/></g>`
 }
-
-// Pixel-snapped 16 px mark for favicon.ico / tiny UI (the 32-grid glyph blurs at 16 px).
-const MARK16 = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" shape-rendering="crispEdges"><rect width="16" height="16" rx="4" fill="${RED}"/><g fill="#fff"><rect x="7" y="2" width="2" height="4"/><rect x="6" y="3" width="4" height="2"/><rect x="3" y="6" width="10" height="1"/><rect x="7" y="7" width="2" height="5"/><rect x="5" y="12" width="6" height="1"/><rect x="2" y="8" width="5" height="1"/><rect x="3" y="9" width="3" height="1"/><rect x="9" y="8" width="5" height="1"/><rect x="10" y="9" width="3" height="1"/></g></svg>`
 
 // ---- wordmark -----------------------------------------------------------------------------------------
 const fontFile = path.join(web, "node_modules", "@fontsource", "be-vietnam-pro", "files", "be-vietnam-pro-latin-700-normal.woff")
@@ -76,42 +68,35 @@ const svg = (w, h, body, title = "LegalAI") =>
   `<svg xmlns="http://www.w3.org/2000/svg" width="${round(w)}" height="${round(h)}" viewBox="0 0 ${round(w)} ${round(h)}" role="img" aria-label="${title}"><title>${title}</title>${body}</svg>\n`
 const round = (n) => Math.round(n * 100) / 100
 
-const VARIANTS = {
-  // name: [tile, glyph (null = knocked out), wordmark]
-  color: [RED, WHITE, INK], // default, on light backgrounds
-  "color-on-dark": [RED, WHITE, WHITE],
-  black: [INK, null, INK],
-  white: [WHITE, null, WHITE],
-  red: [RED, null, RED],
-}
+// The TECHLAB logo is an official raster: no recoloured variants – light and dark backgrounds only.
+const VARIANTS = { color: INK, "color-on-dark": WHITE } // name: wordmark colour
 
+/** TECHLAB logo + "LegalAI" wordmark side by side (site header / OG). */
 function horizontal(v) {
-  const [tile, fg, word] = VARIANTS[v]
+  const word = VARIANTS[v]
   const H = 40
+  const lw = (TL_W / TL_H) * H
   const size = 29
   const wm = wordmark(size)
-  const gap = 11
-  const tx = H + gap - wm.left
+  const gap = 12
+  const tx = lw + gap - wm.left
   const baseline = H / 2 + wm.capHeight / 2
-  const W = tx + wm.right
-  return svg(W, H, markAt({ s: H, tile, fg, knock: !fg, id: `m-${v}-h` }) + `<path transform="translate(${round(tx)} ${round(baseline)})" d="${wm.d}" fill="${word}"/>`)
+  return svg(tx + wm.right, H, `<image href="${techlabHref()}" x="0" y="0" width="${round(lw)}" height="${H}"/><path transform="translate(${round(tx)} ${round(baseline)})" d="${wm.d}" fill="${word}"/>`, "FTU Tech Lab · LegalAI")
 }
+/** TECHLAB logo above the "LegalAI" wordmark. */
 function stacked(v) {
-  const [tile, fg, word] = VARIANTS[v]
-  const M = 64
+  const word = VARIANTS[v]
   const size = 34
   const wm = wordmark(size)
   const ww = wm.right - wm.left
-  const W = Math.max(M, ww)
+  const lw = Math.max(ww, 160), lh = (lw * TL_H) / TL_W
+  const W = Math.max(lw, ww)
   const gap = 14
-  const baseline = M + gap + wm.capHeight
-  const H = baseline + size * 0.26 // room for the "g" descender
-  return svg(W, H, markAt({ x: (W - M) / 2, s: M, tile, fg, knock: !fg, id: `m-${v}-s` }) + `<path transform="translate(${round((W - ww) / 2 - wm.left)} ${round(baseline)})" d="${wm.d}" fill="${word}"/>`)
+  const baseline = lh + gap + wm.capHeight
+  const H = baseline + size * 0.26
+  return svg(W, H, `<image href="${techlabHref()}" x="${round((W - lw) / 2)}" y="0" width="${round(lw)}" height="${round(lh)}"/><path transform="translate(${round((W - ww) / 2 - wm.left)} ${round(baseline)})" d="${wm.d}" fill="${word}"/>`, "FTU Tech Lab · LegalAI")
 }
-function markOnly(v) {
-  const [tile, fg] = VARIANTS[v]
-  return svg(32, 32, markAt({ s: 32, tile, fg, knock: !fg, id: `m-${v}` }), "LegalAI")
-}
+const markOnly = () => svg(32, 32, markAt({ s: 32 }), "FTU Tech Lab · LegalAI")
 
 // ---- rendering helpers ---------------------------------------------------------------------------------
 let browser
@@ -213,33 +198,33 @@ if (ONLY !== "og") {
   for (const v of Object.keys(VARIANTS)) {
     files[`legalai-horizontal-${v}.svg`] = horizontal(v)
     files[`legalai-stacked-${v}.svg`] = stacked(v)
-    files[`legalai-mark-${v === "color-on-dark" ? "color" : v}.svg`] = markOnly(v)
   }
-  files["legalai-mark-16.svg"] = MARK16
+  files["legalai-mark-color.svg"] = markOnly()
+  // Drop files of the former (balance / FTL) mark and its recoloured variants.
+  for (const f of fs.readdirSync(out)) if (/^legalai-.*\.(svg|png)$/.test(f) && !(f.replace(/\.png$/, ".svg") in files)) fs.unlinkSync(path.join(out, f))
   for (const [f, s] of Object.entries(files)) fs.writeFileSync(path.join(out, f), s)
 
   // PNG exports (2× of a comfortable size) for decks / documents.
-  for (const f of Object.keys(files).filter((f) => !f.includes("-16"))) {
+  for (const f of Object.keys(files)) {
     const [w, h] = dims(files[f])
     const k = f.includes("mark") ? 512 / w : f.includes("stacked") ? 640 / w : 960 / w
     await png(files[f], Math.round(w * k), Math.round(h * k), path.join(out, f.replace(/\.svg$/, ".png")))
   }
 
   // Favicons / app icons.
-  fs.writeFileSync(path.join(pub, "favicon.svg"), markOnly("color"))
-  const i16 = await png(MARK16, 16, 16)
-  const i32 = await png(markOnly("color"), 32, 32)
-  const i48 = await png(markOnly("color"), 48, 48)
+  fs.writeFileSync(path.join(pub, "favicon.svg"), markOnly())
+  const i16 = await png(markOnly(), 16, 16)
+  const i32 = await png(markOnly(), 32, 32)
+  const i48 = await png(markOnly(), 48, 48)
   fs.writeFileSync(path.join(pub, "favicon.ico"), ico([{ size: 16, buf: i16 }, { size: 32, buf: i32 }, { size: 48, buf: i48 }]))
-  // Full-bleed squares (iOS / Android apply their own mask). Glyph at ~62% (touch) / 50% (maskable safe zone).
+  // Full-bleed squares (iOS / Android apply their own mask): logo at 80% (touch) / 62% (maskable safe zone) width.
   const square = (scale) => {
-    const g = 32 * scale
-    const o = (32 - g) / 2
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="${RED}"/><g transform="translate(${o} ${o}) scale(${scale})">${glyph(WHITE)}</g></svg>`
+    const w = 32 * scale, h = (w * TL_H) / TL_W
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="${TL_RED}"/><image href="${techlabHref()}" x="${(32 - w) / 2}" y="${(32 - h) / 2}" width="${w}" height="${h}"/></svg>`
   }
   await png(square(0.8), 180, 180, path.join(pub, "apple-touch-icon.png"))
-  await png(markOnly("color"), 192, 192, path.join(pub, "icon-192.png"))
-  await png(markOnly("color"), 512, 512, path.join(pub, "icon-512.png"))
+  await png(markOnly(), 192, 192, path.join(pub, "icon-192.png"))
+  await png(markOnly(), 512, 512, path.join(pub, "icon-512.png"))
   await png(square(0.62), 512, 512, path.join(pub, "icon-maskable-512.png"))
   fs.writeFileSync(
     path.join(pub, "site.webmanifest"),
@@ -253,7 +238,7 @@ if (ONLY !== "og") {
         scope: "/",
         display: "standalone",
         background_color: "#ffffff",
-        theme_color: RED,
+        theme_color: TL_RED,
         icons: [
           { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
           { src: "/icon-512.png", sizes: "512x512", type: "image/png" },
@@ -279,11 +264,11 @@ if (ONLY !== "og") {
       "",
       "legalai-horizontal-*.svg|png  logo ngang / horizontal lockup",
       "legalai-stacked-*.svg|png     logo xếp dọc / stacked lockup",
-      "legalai-mark-*.svg|png        biểu tượng / mark only",
-      "Variants: color (light backgrounds), color-on-dark, black, white, red.",
+      "legalai-mark-color.svg|png    biểu tượng vuông / square mark (TECHLAB logo on its red tile)",
+      "Variants: color (light backgrounds), color-on-dark (white wordmark). The TECHLAB logo is an official raster – never recolour it.",
       "Clear space = 1/4 of the mark height on every side. Minimum size: mark 16 px, horizontal lockup 96 px wide.",
-      "Brand red #C20B11 (FTU red). Typeface: Be Vietnam Pro (SIL Open Font License).",
-      "Do not recolour, stretch, rotate, add effects or combine the LegalAI mark with the FTU emblem.",
+      "Tech Lab red #B71B21 (logo / tile); UI red #C20B11 (FTU red). Typeface: Be Vietnam Pro (SIL Open Font License).",
+      "Do not recolour, stretch, crop, rotate or add effects to the TECHLAB logo; do not combine it with the FTU emblem.",
       "See /brand for the full guideline.",
       "",
     ].join("\n"),

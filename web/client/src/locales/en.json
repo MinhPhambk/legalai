@@ -308,6 +308,11 @@
       "vbpl_search_articles": "Searched provisions",
       "vbpl_history": "Checked amendment history",
       "vbpl_verify": "Verified citation",
+      "chinhphu_search": "Searched new documents (Government portal)",
+      "chinhphu_document": "Opened document (Government portal)",
+      "chinhphu_article": "Read article (OCR)",
+      "chinhphu_search_articles": "Searched provisions (Government portal)",
+      "chinhphu_verify": "Verified citation (Government portal)",
       "trav_search": "Searched trade remedy news",
       "trav_measures": "Checked measures in force",
       "trav_page": "Read Trade Remedies Authority article",
@@ -369,6 +374,7 @@
       "tariff_vn": "Looked up Vietnam tariff",
       "tariff_us": "Looked up US tariff (HTS)",
       "tariff_eu": "Looked up EU tariff (TARIC)",
+      "tariff_eu_requirements": "Looked up EU import requirements",
       "tariff_search": "Searched HS codes",
       "invalid": "Invalid tool call",
       "chrome_close_page": "Closed tab",
@@ -407,6 +413,11 @@
       "vbpl_search_articles": "Searching related provisions",
       "vbpl_history": "Checking amendment history",
       "vbpl_verify": "Verifying citation",
+      "chinhphu_search": "Searching the Government portal",
+      "chinhphu_document": "Opening document and recognising text",
+      "chinhphu_article": "Reading article",
+      "chinhphu_search_articles": "Searching related provisions",
+      "chinhphu_verify": "Verifying citation",
       "trav_search": "Searching trade remedy news",
       "trav_measures": "Checking measures in force",
       "trav_page": "Reading Trade Remedies Authority article",
@@ -452,6 +463,7 @@
       "tariff_vn": "Looking up Vietnam tariff",
       "tariff_us": "Looking up US tariff",
       "tariff_eu": "Looking up EU tariff",
+      "tariff_eu_requirements": "Looking up EU import requirements",
       "tariff_search": "Searching HS codes",
       "company_lookup": "Looking up company",
       "company_verify": "Verifying company details",
@@ -569,14 +581,16 @@
     },
     "agency": {
       "trav": "Trade Remedies Authority of Vietnam"
-    }
+    },
+    "titleCount": "Sources ({count})",
+    "citedOf": "{cited} cited in the answer, {looked} also looked up"
   },
   "confidence": {
     "none": "Not automatically verified",
     "noneTip": "This answer has no grounding_check result – it hasn't been automatically verified against the sources consulted.",
     "label": "Confidence: {level}",
     "reasons": "Reasons: {tip}",
-    "claims": "{supported}/{claims} claims match the sources consulted",
+    "claims": "{supported}/{claims} checked items match the sources",
     "level": {
       "high": "High",
       "medium": "Medium",
@@ -597,7 +611,9 @@
       "all_matched": "{n}/{total} items match the sources consulted",
       "all_matched_calc": "{n}/{total} items match the sources consulted or were computed by the tools ({computed})",
       "from_memory": "the answer states numbers / figures / quotes without opening any source in this session (from memory)",
-      "ocr_evidence": "some items appear only in OCR-recognized text – check them against the original"
+      "ocr_evidence": "some items appear only in OCR-recognized text – check them against the original",
+      "partial_quotes_one": "1 quote only partly matches the source (paraphrased, not verbatim)",
+      "partial_quotes_other": "{count} quotes only partly match the source (paraphrased, not verbatim)"
     }
   },
   "report": {
@@ -1643,11 +1659,12 @@
       "title": "Logo",
       "lead": "Mark + “LegalAI” wordmark. Use the colour version on light backgrounds, colour-on-dark or white on dark backgrounds, and black for single-colour print.",
       "rationaleTitle": "Idea",
-      "rationale": "A balance built from simple geometry – beam, pillar, base and two pans – whose fulcrum is a four-point spark: the law, weighed with AI assistance. Heavy strokes and no hairlines keep it legible at 16 px; a rounded square (25% radius) in FTU red. The “LegalAI” wordmark is Be Vietnam Pro Bold converted to outlines.",
+      "rationale": "LegalAI's mark is FTU Tech Lab's own TECHLAB logo (the official file, unchanged), centred on a square tile of the same red (#B71B21) so logo and tile read as one block. The header, footer and social images show the TECHLAB logo next to the LegalAI wordmark. The logo is an official raster, so there are no recoloured variants – use it on light or dark backgrounds only.",
       "variants": {
         "horizontalColor": "Horizontal – colour",
         "horizontalColorOnDark": "Horizontal – colour on dark",
         "stackedColor": "Stacked – colour",
+        "stackedColorOnDark": "Stacked – colour on dark",
         "horizontalBlack": "Horizontal – black",
         "horizontalWhite": "Horizontal – white",
         "horizontalRed": "Horizontal – red",
@@ -1742,7 +1759,7 @@
       "r1": "Use the official logo file as is – no redrawing, recolouring, cropping or inverting.",
       "r2": "On dark backgrounds, place it on a white rounded plate.",
       "r3": "Keep it separate from the LegalAI logo; never combine them into one mark.",
-      "r4": "“FTU Tech Lab” is set as plain text – it has no logo of its own."
+      "r4": "Use the official TECHLAB logo file unchanged – no recolouring, cropping or stretching."
     },
     "downloads": {
       "title": "Downloads",
@@ -2195,6 +2212,11 @@
       "vbpl_search_articles": "Finds the articles of one document that contain a keyword.",
       "vbpl_history": "Validity history and amending / replacing documents.",
       "vbpl_verify": "Checks that a quote appears verbatim on vbpl.vn.",
+      "chinhphu_search": "Finds documents on vanban.chinhphu.vn (including very recent ones) by summary or number.",
+      "chinhphu_document": "Document attributes on vanban.chinhphu.vn and its list of articles (scanned PDF read with OCR).",
+      "chinhphu_article": "One article from the attached PDF, labelled as OCR text.",
+      "chinhphu_search_articles": "Finds the articles of one vanban.chinhphu.vn document that contain a keyword.",
+      "chinhphu_verify": "Checks that a quote appears in the vanban.chinhphu.vn full text.",
       "court_anle_search": "Searches published precedents (anle.toaan.gov.vn).",
       "court_anle_document": "Reads a precedent: status, situation, legal solution, verbatim text.",
       "court_judgment_search": "Searches published judgments (congbobanan.toaan.gov.vn).",
@@ -2214,6 +2236,7 @@
       "tariff_vn": "Looks up Vietnam's import / export tariff by HS code, with the legal basis.",
       "tariff_us": "Looks up the US tariff (HTS – USITC) by HS code.",
       "tariff_eu": "Looks up the EU tariff (TARIC via Access2Markets) by HS code.",
+      "tariff_eu_requirements": "EU import requirements (SPS, labelling, standards, documents) and VAT / excise by HS code (Access2Markets).",
       "tariff_search": "Suggests HS codes from a product description.",
       "document_create": "Creates a Word / PDF document (contract, report…).",
       "document_edit": "Edits a created or uploaded document into a new version.",

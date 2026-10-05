@@ -79,7 +79,7 @@ export function reportItems(report) {
   const out = []
   let on = false
   for (const line of String(report || "").split("\n")) {
-    if (/^(Đoạn trích KHÔNG|Link chưa được mở|Con số không thấy|Số tiền không thấy|Số hiệu không thấy)/.test(line)) on = true
+    if (/^(Đoạn trích KHÔNG|Đoạn trích chỉ khớp một phần|Link chưa được mở|Con số không thấy|Số tiền không thấy|Số hiệu không thấy)/.test(line)) on = true
     else if (!/^\s+- /.test(line)) on = false
     else if (on) out.push(line.replace(/^\s+- /, "").trim())
   }
