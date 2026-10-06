@@ -583,7 +583,21 @@
       "trav": "Trade Remedies Authority of Vietnam"
     },
     "titleCount": "Sources ({count})",
-    "citedOf": "{cited} cited in the answer, {looked} also looked up"
+    "citedOf": "{cited} cited in the answer, {looked} also looked up",
+    "citedN_one": "{count} cited in the answer",
+    "citedN_other": "{count} cited in the answer",
+    "lookedN_one": "{count} also looked up",
+    "lookedN_other": "{count} also looked up",
+    "notOpenedN_one": "{count} linked but not opened",
+    "notOpenedN_other": "{count} linked but not opened",
+    "externalN_one": "{count} outside the automatically checked sources",
+    "externalN_other": "{count} outside the automatically checked sources",
+    "state": {
+      "notOpened": "⚠ Not opened – link only",
+      "notOpenedTip": "The assistant linked this page without opening it with a lookup tool, so its content was not checked.",
+      "external": "Outside automatically checked sources",
+      "externalTip": "This site is not one the system can check automatically – verify it yourself."
+    }
   },
   "confidence": {
     "none": "Not automatically verified",
@@ -652,7 +666,9 @@
       "low": "Much of the content has no basis in the sources consulted – do not rely on it yet; look it up again or ask an expert."
     },
     "whyItems": "could not match {items}",
-    "whyMore": " and {n} more"
+    "whyMore": " and {n} more",
+    "unverifiable_one": "{count} link outside the automatically checked sources",
+    "unverifiable_other": "{count} links outside the automatically checked sources"
   },
   "report": {
     "defaultTitle": "Report",

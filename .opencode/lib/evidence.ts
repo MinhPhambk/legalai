@@ -18,16 +18,54 @@ export function recordEvidence(sessionID: string | undefined, e: Evidence) {
   if (!sessionID || !e?.url || !e.text) return
   try {
     fs.mkdirSync(dir(), { recursive: true })
-    fs.appendFileSync(fileOf(sessionID), JSON.stringify({ ...e, text: e.text.slice(0, 400_000), at: Date.now() }) + "\n")
+    const f = fileOf(sessionID)
+    // Start on a fresh line if an earlier write was cut off (interrupted process): records are never glued together.
+    let lead = ""
+    try {
+      const fd = fs.openSync(f, "r")
+      try { const st = fs.fstatSync(fd); if (st.size) { const b = Buffer.alloc(1); fs.readSync(fd, b, 0, 1, st.size - 1); if (b[0] !== 0x0a) lead = "\n" } } finally { fs.closeSync(fd) }
+    } catch {}
+    fs.appendFileSync(f, lead + JSON.stringify({ ...e, text: e.text.slice(0, 400_000), at: Date.now() }) + "\n")
   } catch {
     /* evidence logging must never break a lookup */
   }
 }
 
+/**
+ * Evidence lines → records. A broken line (write cut off, or two records glued on one line) never discards the
+ * rest of the file: every record that still parses is kept – a whole session must not look like "no sources".
+ */
+/** A record cut off mid-write: keep its url / title / source and the text up to the cut (marked meta.truncated). */
+function salvage(part: string): Evidence | null {
+  const str = (k: string, open = false) => {
+    const m = part.match(new RegExp(`"${k}":"((?:[^"\\\\]|\\\\.)*)${open ? '(?:"|$)' : '"'}`))
+    if (!m) return undefined
+    try { return JSON.parse(`"${m[1].replace(/\\(u[0-9a-fA-F]{0,3})?$/, "")}"`) as string } catch { return undefined }
+  }
+  const url = str("url"), source = str("source"), text = str("text", true)
+  if (!url || !text) return null
+  return { url, title: str("title"), text, source: source ?? "unknown", meta: { truncated: true } }
+}
+
+export function parseEvidence(raw: string): Evidence[] {
+  const out: Evidence[] = []
+  for (const line of raw.split("\n")) {
+    if (!line.trim()) continue
+    try { out.push(JSON.parse(line)); continue } catch {}
+    // glued: '…cut-off record{"url":…}' – recover the complete records that follow the cut
+    for (const part of line.split(/(?=\{"url":)/)) {
+      try { out.push(JSON.parse(part)); continue } catch {}
+      const cut = salvage(part)
+      if (cut) out.push(cut)
+    }
+  }
+  return out
+}
+
 export function loadEvidence(sessionID: string | undefined): Evidence[] {
   if (!sessionID) return []
   try {
-    return fs.readFileSync(fileOf(sessionID), "utf8").split("\n").filter(Boolean).map((l) => JSON.parse(l))
+    return parseEvidence(fs.readFileSync(fileOf(sessionID), "utf8"))
   } catch {
     return []
   }

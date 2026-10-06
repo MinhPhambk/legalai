@@ -298,32 +298,47 @@ function CiteCard({ card, onEnter, onLeave }) {
   )
 }
 
-export function SourcesList({ sources }) {
+// Link status from the grounding check of this answer (server: the same result the badge level comes from).
+const LINK_STATE = { listed: "notOpened", missing: "notOpened", external: "external" }
+export function SourcesList({ sources, links }) {
   const t = useT()
   if (!sources.length) return null
+  const state = new Map((links || []).map((x) => [normUrl(x.u), x.s]))
+  const stateOf = (s) => (s.cited ? LINK_STATE[state.get(s.key)] || "" : "")
   const cited = sources.filter((s) => s.cited).length
-  // Every source is listed (cited ones first, numbered like the chips in the answer, then the other looked-up ones).
+  const notOpened = sources.filter((s) => stateOf(s) === "notOpened").length
+  const external = sources.filter((s) => stateOf(s) === "external").length
+  const parts = [
+    cited ? t("sources.citedN", { count: cited }) : "",
+    sources.length - cited ? t("sources.lookedN", { count: sources.length - cited }) : "",
+    notOpened ? t("sources.notOpenedN", { count: notOpened }) : "",
+    external ? t("sources.externalN", { count: external }) : "",
+  ].filter(Boolean)
+  // Every source is listed: cited ones first (numbered like the chips in the answer), then the other looked-up ones.
   return (
     <section className="sources" aria-label={t("sources.title")}>
       <h4 className="sources-title">
         {t("sources.titleCount", { count: sources.length })}
-        {cited < sources.length && <span className="sources-sub"> · {t("sources.citedOf", { cited, looked: sources.length - cited })}</span>}
+        {parts.length > 0 && <span className="sources-sub"> · {parts.join(" · ")}</span>}
       </h4>
       <ol className="source-grid">
-        {sources.map((s) => (
-          <li key={s.key}>
-            <a className={`source-card ${s.cited ? "" : "uncited"}`} href={s.url} target="_blank" rel="noopener noreferrer nofollow" data-cite={s.key} title={s.url}>
-              <span className="src-site">
-                <span className="src-num">{s.n}</span>
-                <span className="src-site-name">{sourceSite(s.url)}</span>
-              </span>
-              <span className="src-title">
-                <SourceTitle s={s} />
-              </span>
-              <SourceSub s={s} />
-            </a>
-          </li>
-        ))}
+        {sources.map((s) => {
+          const st = stateOf(s)
+          return (
+            <li key={s.key}>
+              <a className={`source-card ${s.cited ? "" : "uncited"} ${st ? "src-" + st : ""}`} href={s.url} target="_blank" rel="noopener noreferrer nofollow" data-cite={s.key} title={st ? t(`sources.state.${st}Tip`) : s.url}>
+                <span className="src-site">
+                  <span className="src-num">{s.n}</span>
+                  <span className="src-site-name">{sourceSite(s.url)}</span>
+                </span>
+                <span className="src-title">
+                  <SourceTitle s={s} />
+                </span>
+                {st ? <span className="src-sub src-state">{t(`sources.state.${st}`)}</span> : <SourceSub s={s} />}
+              </a>
+            </li>
+          )
+        })}
       </ol>
     </section>
   )
@@ -845,7 +860,7 @@ function AssistantTurnBody({
         </div>
       )}
       {aborted && !active && <div className="msg-stopped">{t("chat.stopped")}</div>}
-      {!active && sources.length > 0 && <SourcesList sources={sources} />}
+      {!active && sources.length > 0 && <SourcesList sources={sources} links={grounding?.links} />}
       {showConf && (
         <div className={`answer-foot ${low ? "is-low" : ""}`}>
           <ConfidenceBadge verdict={grounding || null} open={checksOpen} onToggle={grounding?.checks?.length ? () => setChecksOpen((o) => !o) : undefined} />

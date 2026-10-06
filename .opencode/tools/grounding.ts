@@ -270,6 +270,9 @@ export const check = tool({
     const supported = urlRes.filter((x) => x.ok).length + quoteRes.filter((x) => x.ok).length + figRes.filter((x) => x.ok).length + idRes.filter((x) => x.ok).length + amtRes.filter((x) => x.ok).length
     const claims = urlRes.length + quoteRes.length + figRes.length + idRes.length + amtRes.length
     const unsupported = bad.urls.length + bad.quotes.length + bad.figures.length + bad.ids.length + bad.amounts.length
+    // One denominator everywhere (badge, reasons, the 30 % rule): items that CAN be checked automatically.
+    // Links outside the checkable sources are counted apart ("unverifiable"), never as unsupported.
+    const checkable = claims - bad.urlsUnverifiable.length
 
     // Level: any invented quote or no evidence at all → thấp; unsupported links/figures/ids or tool
     // warnings → at most trung bình; otherwise cao when the answer rests on several verified items.
@@ -287,13 +290,13 @@ export const check = tool({
     if (invented.length) { level = "thấp"; reasons.push(`${invented.length} đoạn trích không có trong nguồn đã tra`); why.push({ code: "bad_quotes", n: invented.length }) }
     if (level === "cao" && partialQ.length) { level = "trung bình"; reasons.push(`${partialQ.length} đoạn trích chỉ khớp một phần với nguồn (diễn đạt lại, không phải nguyên văn)`); why.push({ code: "partial_quotes", n: partialQ.length }) }
     // ≥ 2 unsupported items and > 30 %: a single unsupported item in a short answer (1/3) is not "thấp" – it caps at trung bình.
-    if (unsupported >= 2 && claims && unsupported / claims > 0.3) { level = "thấp"; reasons.push(`${unsupported}/${claims} mục chưa có căn cứ`); why.push({ code: "unsupported", n: unsupported, total: claims }) }
+    if (unsupported >= 2 && checkable && unsupported / checkable > 0.3) { level = "thấp"; reasons.push(`${unsupported}/${checkable} mục chưa có căn cứ`); why.push({ code: "unsupported", n: unsupported, total: checkable }) }
     if (level === "cao" && (bad.urls.length || bad.figures.length || bad.ids.length || bad.amounts.length)) { level = "trung bình"; reasons.push("một số link / con số / số tiền / số hiệu chưa đối chiếu được với nguồn đã tra"); why.push({ code: "unmatched" }) }
     if (level === "cao" && ocrItems.length) { level = "trung bình"; reasons.push(`${ocrItems.length} căn cứ chỉ có trong văn bản nhận dạng OCR từ bản scan (có thể sai dấu/chữ – cần đối chiếu bản gốc)`); why.push({ code: "ocr_evidence", n: ocrItems.length }) }
     if (level === "cao" && warnings.length) { level = "trung bình"; reasons.push("công cụ tra cứu có cảnh báo về văn bản nguồn"); why.push({ code: "source_warnings" }) }
     if (level === "cao" && bad.urlsUnverifiable.length) { level = "trung bình"; reasons.push("có link ngoài các nguồn kiểm chứng tự động được"); why.push({ code: "unverifiable_links" }) }
     if (level === "cao" && supported < 2) { level = "trung bình"; reasons.push("câu trả lời dựa trên quá ít căn cứ đã kiểm chứng"); why.push({ code: "few_items" }) }
-    if (level === "cao") { reasons.push(`${supported}/${claims} căn cứ đều khớp với nguồn đã tra${computed.length ? ` hoặc do công cụ tính (${computed.length})` : ""}`); why.push({ code: "all_matched", n: supported, total: claims, ...(computed.length ? { computed: computed.length } : {}) }) }
+    if (level === "cao") { reasons.push(`${supported}/${checkable} căn cứ đều khớp với nguồn đã tra${computed.length ? ` hoặc do công cụ tính (${computed.length})` : ""}`); why.push({ code: "all_matched", n: supported, total: checkable, ...(computed.length ? { computed: computed.length } : {}) }) }
     // States numbers / document numbers / quotes although nothing was opened in this session → from memory.
     if (!opened.length && (bad.ids.length || bad.figures.length || bad.amounts.length || bad.quotes.length)) {
       level = "thấp"; reasons.push("câu trả lời nêu số hiệu / con số / trích dẫn nhưng chưa mở nguồn nào trong phiên (trả lời theo trí nhớ)"); why.push({ code: "from_memory" })
@@ -368,8 +371,13 @@ export const check = tool({
       ...urlRes.map((x): Check => ({ k: "link", t: x.u, ok: x.ok, why: x.ok ? (x.ocr ? "ocr" : "opened") : x.listed ? "listed" : x.checkable ? "not_opened" : "unverifiable", src: x.ok ? srcWhere((_t, e) => canonicalKey(e.url) === canonicalKey(x.u) || baseUrl(e.url) === baseUrl(x.u)) : undefined })),
     ].slice(0, 40).map((c) => ({ ...c, t: c.t.length > 300 ? c.t.slice(0, 300) + "…" : c.t }))
     // Keep the verdict with the session so the web UI can show the computed confidence.
-    recordEvidence(context?.sessionID, { url: "grounding://check", text: JSON.stringify({ level, reasons, why, claims, supported, unsupported, computed: computed.length, round, gap: mustResearch, checks }), source: "grounding" })
+    // Per-link status for the web UI (source cards): the SAME result the level was computed from, so the source list
+    // and the badge can never disagree. ok = opened and matched · listed = only seen in search results ·
+    // missing = never opened · external = outside the automatically checkable sources.
+    const links = urlRes.slice(0, 60).map((x) => ({ u: x.u, s: x.ok ? "ok" : x.listed ? "listed" : x.checkable ? "missing" : "external" }))
+    const unverifiable = bad.urlsUnverifiable.length
+    recordEvidence(context?.sessionID, { url: "grounding://check", text: JSON.stringify({ level, reasons, why, claims, checkable, supported, unsupported, unverifiable, computed: computed.length, round, gap: mustResearch, checks, links }), source: "grounding" })
     const LEVEL_CODE = { cao: "high", "trung bình": "medium", thấp: "low" } as const
-    return withUi(report, { res: { t: "level", code: LEVEL_CODE[level] }, verdict: { level: LEVEL_CODE[level], why, claims, supported, unsupported, checks } })
+    return withUi(report, { res: { t: "level", code: LEVEL_CODE[level] }, verdict: { level: LEVEL_CODE[level], why, claims, supported, unsupported, unverifiable, checks } })
   },
 })

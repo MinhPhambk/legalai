@@ -400,3 +400,14 @@ kbd {
   text-transform: none;
   letter-spacing: 0;
 }
+.source-card.src-notOpened {
+  border-style: dashed;
+  border-color: var(--warn, #b45309);
+}
+.src-state {
+  color: var(--warn, #b45309);
+  font-weight: 500;
+}
+.source-card.src-external .src-state {
+  color: var(--text-3, #6b6b6b);
+}

@@ -9,7 +9,7 @@ import { OcrBadge } from "./OcrBadge.jsx"
 import { IconAlert, IconCheck, IconClose, IconCompare, IconDownload, IconExpand, IconEye, IconFile, IconGavel, IconLeft, IconReport, IconRight, IconShield, IconUser, Spinner } from "./Icons.jsx"
 
 // ---- confidence badge ----------------------------------------------------------------------------
-const WHY = ["no_sources", "calc_only", "bad_quotes", "unsupported", "unmatched", "source_warnings", "unverifiable_links", "few_items", "all_matched", "from_memory", "ocr_evidence"]
+const WHY = ["partial_quotes", "no_sources", "calc_only", "bad_quotes", "unsupported", "unmatched", "source_warnings", "unverifiable_links", "few_items", "all_matched", "from_memory", "ocr_evidence"]
 /** Reasons of a grounding verdict in the UI language (codes in `why`; older verdicts: none → no tooltip text). */
 export function confidenceReasons(v) {
   const why = (v?.why || []).filter((w) => WHY.includes(w.code))
@@ -103,11 +103,13 @@ export function ConfidenceBadge({ verdict, open = false, onToggle }) {
         <i className={lv === LEVEL_HIGH ? "on" : ""} />
       </span>
       {t("confidence.label", { level: LEVEL_KEY[lv] ? t(`confidence.level.${LEVEL_KEY[lv]}`) : lv })}
-      {verdict.claims > 0 && (
+      {verdict.claims - (verdict.unverifiable || 0) > 0 && (
+        // denominator = items that CAN be checked automatically; links outside those sources are counted apart
         <span className="conf-sub">
-          · {t("confidence.claims", { supported: verdict.supported, claims: verdict.claims })}
+          · {t("confidence.claims", { supported: verdict.supported, claims: verdict.claims - (verdict.unverifiable || 0) })}
         </span>
       )}
+      {verdict.unverifiable > 0 && <span className="conf-sub"> · {t("confidence.unverifiable", { count: verdict.unverifiable })}</span>}
       {verdict.origin === "server" && <span className="conf-sub"> · {t("confidence.byServer")}</span>}
       {onToggle && (
         <button type="button" className="conf-more" aria-expanded={open} onClick={onToggle}>

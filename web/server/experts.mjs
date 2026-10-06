@@ -56,6 +56,9 @@ function readGrounding(sid) {
               })),
             }
           : {}),
+        // per-link status of the same check (source cards) and links outside the automatically checkable sources
+        ...(Array.isArray(v.links) ? { links: v.links.slice(0, 60).filter((x) => x && typeof x.u === "string" && /^https?:\/\//.test(x.u) && ["ok", "listed", "missing", "external"].includes(x.s)).map((x) => ({ u: x.u.slice(0, 500), s: x.s })) } : {}),
+        ...(Number.isInteger(v.unverifiable) && v.unverifiable > 0 ? { unverifiable: v.unverifiable } : {}),
       })
     } catch {}
   }

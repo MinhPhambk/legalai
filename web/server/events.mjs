@@ -98,13 +98,18 @@ function genericSourceMeta(tool, input = {}, output, metadata) {
   if (NOT_A_SOURCE.test(tool)) return null
   const out = typeof output === "string" ? output : ""
   if (!out || /^Lỗi:|^Không (tìm thấy|tra được|mở được)/.test(out.trim())) return null
+  // a redirect hint ("Link eur-lex.europa.eu: dùng eurlex_document(…)") opened nothing
+  if (/\bdùng\s+[a-z]+_[a-z_]+\s*\(|\buse\s+[a-z]+_[a-z_]+\s*\(/i.test(out.split("\n").slice(0, 3).join(" ")) && out.length < 1500) return null
   const ui = metadata?.ui || {}
   const fromLine = out.match(/^(?:Link|Nguồn|Source|URL|Trang)(?: \([^)]*\))?:\s*(https?:\/\/\S+)/m)?.[1]
   const url = ui.doc?.url || ui.card?.url || fromLine || (typeof input.url === "string" && /^https?:/.test(input.url) ? input.url : "")
   if (!url || !/^https?:\/\//.test(url)) return null
   const dataV = (x) => (x && typeof x === "object" ? x.v : x) || ""
-  const title = dataV(ui.doc?.title) || dataV(ui.card?.title) || line(out, "Văn bản") || line(out, "Tiêu đề") || line(out, "Title") || out.split("\n")[0]
-  return { url: normUrl(url.replace(/[)>\].,;]+$/, "")), kind: "web", title: short(String(title).replace(/^[A-ZĐÀ-Ỹ ]{6,}\s*\([^)]*\)\s*[–-]\s*/u, ""), 140), number: "", accessed: line(out, "Ngày tra cứu") }
+  const title = dataV(ui.doc?.title) || dataV(ui.card?.title) || line(out, "Văn bản") || line(out, "Tiêu đề") || line(out, "Title") || out.split("\n").find((l) => l.trim() && !/^\s*[(\[]/.test(l)) || ""
+  // markdown / heading residue is not a title ("## Pages", "---"): then the browser names the card from its link
+  let tt = String(title).replace(/^[A-ZĐÀ-Ỹ ]{6,}\s*\([^)]*\)\s*[–-]\s*/u, "").replace(/^[#>*\-_=\s|]+/, "").trim()
+  if (tt.length < 12 || /^(pages?|menu|home|trang chủ|untitled|kết quả|results?)$/i.test(tt)) tt = ""
+  return { url: normUrl(url.replace(/[)>\].,;]+$/, "")), kind: "web", title: short(tt, 140), number: "", accessed: line(out, "Ngày tra cứu") }
 }
 function rawSourceMeta(tool, input = {}, output) {
   const out = typeof output === "string" ? output : ""

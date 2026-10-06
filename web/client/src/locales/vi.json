@@ -551,7 +551,17 @@
       "trav": "Cục Phòng vệ thương mại"
     },
     "titleCount": "Nguồn ({count})",
-    "citedOf": "{cited} được trích trong câu trả lời, {looked} đã tra thêm"
+    "citedOf": "{cited} được trích trong câu trả lời, {looked} đã tra thêm",
+    "citedN": "{count} được dẫn trong câu trả lời",
+    "lookedN": "{count} đã tra thêm",
+    "notOpenedN": "{count} chỉ được dẫn link, chưa mở",
+    "externalN": "{count} ngoài nguồn kiểm chứng tự động",
+    "state": {
+      "notOpened": "⚠ Chưa mở – chỉ được dẫn link",
+      "notOpenedTip": "Trợ lý dẫn link này nhưng chưa mở trang bằng công cụ tra cứu, nên nội dung chưa được đối chiếu.",
+      "external": "Ngoài nguồn kiểm chứng tự động",
+      "externalTip": "Trang này không thuộc các nguồn hệ thống tự đối chiếu được – hãy tự kiểm tra."
+    }
   },
   "confidence": {
     "none": "Chưa kiểm chứng tự động",
@@ -618,7 +628,8 @@
       "low": "Nhiều nội dung chưa có căn cứ trong nguồn đã tra – chưa nên dùng; hãy tra lại hoặc nhờ chuyên gia."
     },
     "whyItems": "chưa đối chiếu được {items}",
-    "whyMore": " và {n} mục khác"
+    "whyMore": " và {n} mục khác",
+    "unverifiable": "{count} link ngoài nguồn kiểm chứng tự động"
   },
   "report": {
     "defaultTitle": "Báo cáo",
