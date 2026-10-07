@@ -27,7 +27,7 @@ export function ConfidenceWhy({ verdict }) {
   const lv = verdict.level === LEVEL_HIGH ? "high" : verdict.level === LEVEL_LOW ? "low" : "medium"
   let reasons = confidenceReasons(verdict) || (verdict.reasons || []).join("; ")
   // With per-item results, name the items instead of the generic "some links / figures … did not match".
-  const bad = (verdict.checks || []).filter((c) => !c.ok)
+  const bad = (verdict.checks || []).filter((c) => !c.ok && c.why !== "unverifiable")
   if (bad.length) {
     const short = (s) => (s.length > 60 ? s.slice(0, 60) + "…" : s)
     const items = bad.slice(0, 3).map((c) => `${tr(`confidence.check.kind.${c.k}`).toLocaleLowerCase()} “${short(c.t)}”`).join(", ")
@@ -52,18 +52,23 @@ export function checkTip(t, c) {
 /** Expanded list of the grounding check: every checked item, ✓ matched (with its source) / ✗ not found. */
 export function CheckList({ checks, onPick }) {
   const t = useT()
-  const bad = checks.filter((c) => !c.ok).length
-  const order = checks.map((c, i) => ({ c, i })).sort((a, b) => Number(a.c.ok) - Number(b.c.ok))
+  // Same counting as the badge: links outside the automatically checkable sources are neither matched nor unmatched.
+  const ext = (c) => !c.ok && c.why === "unverifiable"
+  const bad = checks.filter((c) => !c.ok && !ext(c)).length
+  const outside = checks.filter(ext).length
+  const rank = (c) => (c.ok ? 2 : ext(c) ? 1 : 0)
+  const order = checks.map((c, i) => ({ c, i })).sort((a, b) => rank(a.c) - rank(b.c))
   return (
     <div className="gc-list" role="region" aria-label={t("confidence.check.title")}>
       <div className="gc-list-head">
-        {t("confidence.check.title")} · <b className="ok">{checks.length - bad} {t("confidence.check.matched")}</b>
+        {t("confidence.check.title")} · <b className="ok">{checks.length - bad - outside} {t("confidence.check.matched")}</b>
         {bad > 0 && <> · <b className="bad">{bad} {t("confidence.check.unmatched")}</b></>}
+        {outside > 0 && <> · {t("confidence.unverifiable", { count: outside })}</>}
       </div>
       <ul>
         {order.map(({ c, i }) => (
-          <li key={i} className={c.ok ? "ok" : "bad"}>
-            <span className="gc-icon" aria-hidden="true">{c.ok ? "✓" : "✗"}</span>
+          <li key={i} className={c.ok ? "ok" : ext(c) ? "ext" : "bad"}>
+            <span className="gc-icon" aria-hidden="true">{c.ok ? "✓" : ext(c) ? "–" : "✗"}</span>
             <span className="gc-kind">{t(`confidence.check.kind.${c.k}`)}</span>
             <button type="button" className="gc-text" onClick={() => onPick?.(i)} title={t("confidence.check.goto")}>
               {c.t.length > 110 ? c.t.slice(0, 110) + "…" : c.t}

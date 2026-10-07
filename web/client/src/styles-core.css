@@ -411,3 +411,6 @@ kbd {
 .source-card.src-external .src-state {
   color: var(--text-3, #6b6b6b);
 }
+.gc-list li.ext .gc-icon {
+  color: var(--text-3, #6b6b6b);
+}

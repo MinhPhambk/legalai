@@ -49,6 +49,8 @@ export function markChecks(root, checks, tip) {
   let marked = 0
   checks.forEach((c, i) => {
     if (c.ok && c.k !== "quote") return
+    // a link outside the automatically checkable sources is not an error (the badge does not count it either)
+    if (c.why === "unverifiable") return
     if (c.k === "link") {
       for (const box of containers) {
         const a = [...box.querySelectorAll("a[href]")].find((x) => x.href === c.t || x.getAttribute("href") === c.t || x.textContent.trim() === c.t)
