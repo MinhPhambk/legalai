@@ -644,7 +644,15 @@
         "not_opened": "link not opened for checking",
         "unverifiable": "outside the automatically checkable sources"
       }
-    }
+    },
+    "whyTitle": "Why {level}:",
+    "meaning": {
+      "high": "Every item checked matches an official source – fine to use for reference.",
+      "medium": "Most items match the sources, but some could not be checked or only appear in secondary sources / scans – check the marked parts before relying on them.",
+      "low": "Much of the content has no basis in the sources consulted – do not rely on it yet; look it up again or ask an expert."
+    },
+    "whyItems": "could not match {items}",
+    "whyMore": " and {n} more"
   },
   "report": {
     "defaultTitle": "Report",

@@ -17,6 +17,32 @@ export function confidenceReasons(v) {
     .map((w) => (w.code === "all_matched" && w.computed ? t("confidence.why.all_matched_calc", { n: w.n ?? 0, total: w.total ?? 0, computed: w.computed }) : t(`confidence.why.${w.code}`, { n: w.n ?? 0, total: w.total ?? 0, count: w.n ?? 0 })))
     .join("; ")
 }
+/**
+ * Always-visible explanation under the badge: why the system gave this level (from the check's reason codes) and what
+ * the level means for the user. Older verdicts without codes fall back to the check's own reason text.
+ */
+export function ConfidenceWhy({ verdict }) {
+  const tr = useT()
+  if (!verdict?.level) return null
+  const lv = verdict.level === LEVEL_HIGH ? "high" : verdict.level === LEVEL_LOW ? "low" : "medium"
+  let reasons = confidenceReasons(verdict) || (verdict.reasons || []).join("; ")
+  // With per-item results, name the items instead of the generic "some links / figures … did not match".
+  const bad = (verdict.checks || []).filter((c) => !c.ok)
+  if (bad.length) {
+    const short = (s) => (s.length > 60 ? s.slice(0, 60) + "…" : s)
+    const items = bad.slice(0, 3).map((c) => `${tr(`confidence.check.kind.${c.k}`).toLocaleLowerCase()} “${short(c.t)}”`).join(", ")
+    const named = tr("confidence.whyItems", { items }) + (bad.length > 3 ? tr("confidence.whyMore", { n: bad.length - 3 }) : "")
+    const generic = (verdict.why || []).filter((w) => !["unmatched", "unsupported", "bad_quotes"].includes(w.code))
+    reasons = [named, confidenceReasons({ why: generic })].filter(Boolean).join("; ")
+  }
+  return (
+    <div className={`conf-why lv-${lv}`}>
+      <b>{tr("confidence.whyTitle", { level: tr(`confidence.level.${lv}`) })}</b> {reasons ? `${reasons.charAt(0).toUpperCase()}${reasons.slice(1)}.` : ""}{" "}
+      <span className="conf-why-hint">{tr(`confidence.meaning.${lv}`)}</span>
+    </div>
+  )
+}
+
 /** Tooltip / list text for one checked item: why it matched or not, and the source it matched. */
 export function checkTip(t, c) {
   const why = hasKey(`confidence.check.why.${c.why}`) ? t(`confidence.check.why.${c.why}`) : t(c.ok ? "confidence.check.why.source" : "confidence.check.why.missing")

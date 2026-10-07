@@ -610,7 +610,15 @@
         "not_opened": "link chưa được mở để đối chiếu",
         "unverifiable": "ngoài các nguồn kiểm chứng tự động được"
       }
-    }
+    },
+    "whyTitle": "Vì sao {level}:",
+    "meaning": {
+      "high": "Mọi căn cứ đã đối chiếu đều khớp nguồn chính thức – dùng tham khảo được.",
+      "medium": "Phần lớn căn cứ khớp nguồn nhưng còn điểm chưa đối chiếu được hoặc chỉ có ở nguồn phụ / bản scan – hãy kiểm tra các chỗ được đánh dấu trước khi dùng.",
+      "low": "Nhiều nội dung chưa có căn cứ trong nguồn đã tra – chưa nên dùng; hãy tra lại hoặc nhờ chuyên gia."
+    },
+    "whyItems": "chưa đối chiếu được {items}",
+    "whyMore": " và {n} mục khác"
   },
   "report": {
     "defaultTitle": "Báo cáo",

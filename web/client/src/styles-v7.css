@@ -558,3 +558,19 @@ a.gc-mark-link { position: relative; }
 .gc-flash { animation: gc-flash 1.4s ease-out; }
 @keyframes gc-flash { 0%, 30% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 45%, transparent); } 100% { box-shadow: 0 0 0 0 transparent; } }
 @media (prefers-reduced-motion: reduce) { .gc-flash { animation: none; outline: 2px solid var(--accent); } }
+/* "Vì sao Trung bình: …" – always visible explanation of the level (07/10/2026) */
+.conf-why {
+  flex-basis: 100%;
+  margin-top: 4px;
+  padding: 7px 12px;
+  border-left: 3px solid var(--border-strong);
+  border-radius: 0 10px 10px 0;
+  background: var(--bg-soft);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text);
+}
+.conf-why.lv-high { border-left-color: #1e7a3a; }
+.conf-why.lv-medium { border-left-color: #c77d12; }
+.conf-why.lv-low { border-left-color: #c0262d; }
+.conf-why-hint { color: var(--text-2); }

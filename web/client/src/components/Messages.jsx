@@ -10,7 +10,7 @@ import { StepArgs, StepError, StepRes, statusLabel, stepOf, stepPlain } from "./
 import { OcrBadge } from "./OcrBadge.jsx"
 import { Data, guessLang } from "./DataText.jsx"
 import { useToast } from "./ui.jsx"
-import { ArtifactCards, CheckList, ConfidenceBadge, UPLOAD_DOC_NOTE, checkTip } from "./Extras.jsx"
+import { ArtifactCards, CheckList, ConfidenceBadge, ConfidenceWhy, UPLOAD_DOC_NOTE, checkTip } from "./Extras.jsx"
 import { clearChecks, markChecks, revealCheck } from "../checkmarks.js"
 import QuestionCard from "./QuestionCard.jsx"
 import { OrphanVisuals, RichHtml, VisualScope, orphanVisuals } from "./Visuals.jsx"
@@ -849,6 +849,7 @@ function AssistantTurnBody({
       {showConf && (
         <div className={`answer-foot ${low ? "is-low" : ""}`}>
           <ConfidenceBadge verdict={grounding || null} open={checksOpen} onToggle={grounding?.checks?.length ? () => setChecksOpen((o) => !o) : undefined} />
+          {grounding && <ConfidenceWhy verdict={grounding} />}
           {checksOpen && grounding?.checks?.length > 0 && <CheckList checks={grounding.checks} onPick={(i) => revealCheck(rootRef.current, i)} />}
           {low && (
             <div className="conf-warn" role="alert">
