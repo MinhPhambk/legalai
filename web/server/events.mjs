@@ -17,7 +17,10 @@ const isRepairUser = (parts) => startsWithMark(parts, REPAIR_MARK)
 const isFinalUser = (parts) => startsWithMark(parts, FINAL_MARK)
 
 /** Model-specific control tokens that sometimes leak into text (e.g. DeepSeek "<｜DSML｜ calls>"). */
-export const cleanModelText = (s) => String(s || "").replace(/<｜[^<>\n]{0,80}>/g, "")
+// The model's own "Độ tin cậy: CAO (…)" / "Confidence: HIGH" line: the UI shows the system's badge (computed by the
+// grounding check, possibly a later / server check), so a self-written level only contradicts it – drop that line.
+const SELF_CONFIDENCE = /^[ \t>*_•-]*(?:\*\*|__)?[ \t]*(?:mức[ \t]+)?(?:độ tin cậy|confidence(?:[ \t]+level)?)[ \t]*(?:\*\*|__)?[ \t]*[:：][^\n]*?\b(?:cao|trung bình|thấp|high|medium|low)\b[^\n]*(?:\n|$)/gimu
+export const cleanModelText = (s) => String(s || "").replace(/<｜[^<>\n]{0,80}>/g, "").replace(SELF_CONFIDENCE, "")
 
 const short = (s, n = 80) => {
   s = String(s ?? "").replace(/\s+/g, " ").trim()

@@ -555,7 +555,7 @@
   },
   "confidence": {
     "none": "Chưa kiểm chứng tự động",
-    "noneTip": "Câu trả lời này không có kết quả grounding_check – chưa được kiểm chứng tự động với nguồn đã tra.",
+    "noneTip": "Câu trả lời này chưa được hệ thống kiểm chứng tự động với nguồn đã tra.",
     "label": "Độ tin cậy: {level}",
     "reasons": "Lý do: {tip}",
     "claims": "{supported}/{claims} mục kiểm chứng khớp nguồn",
@@ -580,6 +580,36 @@
       "from_memory": "câu trả lời nêu số hiệu / con số / trích dẫn nhưng chưa mở nguồn nào trong phiên (trả lời theo trí nhớ)",
       "ocr_evidence": "một số căn cứ chỉ có trong văn bản nhận dạng OCR – cần đối chiếu bản gốc",
       "partial_quotes_other": "{count} đoạn trích chỉ khớp một phần với nguồn (diễn đạt lại, không phải nguyên văn)"
+    },
+    "check": {
+      "show": "Xem từng mục",
+      "hide": "Ẩn",
+      "title": "Các mục đã đối chiếu với nguồn",
+      "matched": "khớp",
+      "unmatched": "chưa khớp",
+      "goto": "Xem chỗ này trong câu trả lời",
+      "legend": "Chỗ gạch chân đỏ trong câu trả lời là nội dung chưa tìm thấy trong nguồn đã tra – hãy kiểm tra lại trước khi dùng.",
+      "kind": {
+        "quote": "Trích dẫn",
+        "figure": "Con số",
+        "amount": "Số tiền",
+        "id": "Số hiệu",
+        "link": "Link"
+      },
+      "why": {
+        "verbatim": "khớp nguyên văn",
+        "near": "khớp gần nguyên văn",
+        "source": "có trong nguồn đã tra",
+        "opened": "đã mở nguồn",
+        "calc": "do công cụ tính",
+        "doc": "có trong tài liệu của bạn",
+        "ocr": "chỉ có trong bản scan (OCR) – cần đối chiếu bản gốc",
+        "partial": "chỉ khớp một phần – có thể là diễn giải",
+        "missing": "không thấy trong nguồn đã tra",
+        "listed": "chỉ thấy trong kết quả tìm kiếm, chưa mở văn bản",
+        "not_opened": "link chưa được mở để đối chiếu",
+        "unverifiable": "ngoài các nguồn kiểm chứng tự động được"
+      }
     }
   },
   "report": {

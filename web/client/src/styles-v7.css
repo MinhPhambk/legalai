@@ -468,3 +468,93 @@
   background: var(--bg-muted);
   color: var(--text-2);
 }
+
+/* Grounding details (07/10/2026): "Xem từng mục" toggle on the badge, per-item list, inline marks in the answer. */
+.conf-more {
+  margin-left: 8px;
+  padding: 1px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.conf-more:hover { border-color: var(--accent); color: var(--accent); }
+.gc-list {
+  flex-basis: 100%;
+  margin-top: 6px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg-soft);
+  font-size: 13px;
+  overflow: hidden;
+}
+.gc-list-head { padding: 8px 12px; color: var(--text-2); border-bottom: 1px solid var(--border); }
+.gc-list-head b.ok { color: #1e7a3a; }
+.gc-list-head b.bad { color: #c0262d; }
+.gc-list ul { list-style: none; margin: 0; padding: 0; }
+.gc-list li {
+  display: grid;
+  grid-template-columns: 18px 86px minmax(0, 1fr) minmax(0, 0.8fr);
+  gap: 8px;
+  align-items: baseline;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.gc-list li:last-child { border-bottom: 0; }
+.gc-list li.bad { background: color-mix(in srgb, #c0262d 6%, transparent); }
+.gc-icon { font-weight: 700; }
+li.ok .gc-icon { color: #1e7a3a; }
+li.bad .gc-icon { color: #c0262d; }
+.gc-kind { color: var(--text-3); font-size: 12px; }
+.gc-text {
+  padding: 0; border: 0; background: none; font: inherit; color: var(--text); text-align: left; cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.gc-text:hover { text-decoration: underline; }
+.gc-where { color: var(--text-2); font-size: 12px; overflow-wrap: anywhere; }
+.gc-where a { color: var(--text-2); }
+.gc-list-foot { padding: 7px 12px; color: var(--text-3); font-size: 12px; border-top: 1px solid var(--border); }
+@media (max-width: 640px) {
+  .gc-list li { grid-template-columns: 18px minmax(0, 1fr); }
+  .gc-kind, .gc-where { grid-column: 2; }
+}
+/* inline marks */
+.gc-mark { position: relative; border-radius: 3px; }
+.gc-mark.gc-bad, a.gc-mark-link.gc-bad {
+  text-decoration: underline wavy #c0262d;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  background: color-mix(in srgb, #c0262d 8%, transparent);
+}
+.gc-mark.gc-ok::before {
+  content: "✓";
+  margin-right: 3px;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: #1e7a3a;
+}
+.gc-mark[data-gc-tip]:hover::after, .gc-mark[data-gc-tip]:focus::after, a.gc-mark-link[data-gc-tip]:hover::after {
+  content: attr(data-gc-tip);
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 6px);
+  z-index: 30;
+  width: max-content;
+  max-width: 280px;
+  padding: 6px 9px;
+  border-radius: 8px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+  white-space: normal;
+  pointer-events: none;
+}
+a.gc-mark-link { position: relative; }
+.gc-flash { animation: gc-flash 1.4s ease-out; }
+@keyframes gc-flash { 0%, 30% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 45%, transparent); } 100% { box-shadow: 0 0 0 0 transparent; } }
+@media (prefers-reduced-motion: reduce) { .gc-flash { animation: none; outline: 2px solid var(--accent); } }

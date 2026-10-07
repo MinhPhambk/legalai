@@ -44,6 +44,18 @@ function readGrounding(sid) {
         // Server-run checks (grounding.mjs) and the unsupported items (for the THẤP warning).
         ...(v.origin === "server" ? { origin: "server" } : {}),
         ...(Array.isArray(v.items) && v.items.length ? { items: v.items.slice(0, 20).map((x) => scrubText(String(x).slice(0, 300))) } : {}),
+        // Per-item results (grounding_check ≥ 07/10/2026): what was checked, matched or not, and where.
+        ...(Array.isArray(v.checks) && v.checks.length
+          ? {
+              checks: v.checks.slice(0, 40).map((c) => ({
+                k: ["link", "quote", "figure", "amount", "id"].includes(c?.k) ? c.k : "quote",
+                t: scrubText(String(c?.t ?? "").slice(0, 300)),
+                ok: !!c?.ok,
+                why: String(c?.why ?? "").replace(/[^a-z_]/g, "").slice(0, 16),
+                ...(c?.src?.url && /^https?:\/\//.test(c.src.url) ? { src: { title: scrubText(String(c.src.title ?? "").slice(0, 120)), url: String(c.src.url).slice(0, 500) } } : {}),
+              })),
+            }
+          : {}),
       })
     } catch {}
   }

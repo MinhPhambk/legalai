@@ -10,7 +10,8 @@ import { StepArgs, StepError, StepRes, statusLabel, stepOf, stepPlain } from "./
 import { OcrBadge } from "./OcrBadge.jsx"
 import { Data, guessLang } from "./DataText.jsx"
 import { useToast } from "./ui.jsx"
-import { ArtifactCards, ConfidenceBadge, UPLOAD_DOC_NOTE } from "./Extras.jsx"
+import { ArtifactCards, CheckList, ConfidenceBadge, UPLOAD_DOC_NOTE, checkTip } from "./Extras.jsx"
+import { clearChecks, markChecks, revealCheck } from "../checkmarks.js"
 import QuestionCard from "./QuestionCard.jsx"
 import { OrphanVisuals, RichHtml, VisualScope, orphanVisuals } from "./Visuals.jsx"
 import DraftCard from "./DraftCard.jsx"
@@ -711,6 +712,7 @@ function AssistantTurnBody({
   const mainText = useMemo(() => segs.filter((s) => s.kind === "text").reduce((best, s) => (s.text.length > (best?.text.length || 0) ? s : best), null)?.text || answer, [segs, answer])
   const summary = useMemo(() => (report.isArtifact ? citeify(renderMarkdown(artifactSummary(mainText)), new Map(model.registry)) : ""), [report.isArtifact, mainText, model.registry])
   const preview = useCitationPreview(rootRef, byKey)
+  const [checksOpen, setChecksOpen] = useState(false)
   useEffect(() => {
     if (report.isArtifact && active) onReportDetected?.()
   }, [report.isArtifact, active]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -751,6 +753,13 @@ function AssistantTurnBody({
     !active && !nested && !answer && !artifacts.length && !error && !aborted && !segs.some((s) => s.kind === "question" || s.kind === "draft") && messages.length > 0 &&
     (messages.some((m) => m.finalize) || !isLast || (lastDone?.completed && Date.now() - lastDone.completed > 20_000))
   const done = !active && !!answer
+  // Grounding marks in the answer text: unmatched items underlined in red, matched quotes ticked (see checkmarks.js).
+  useEffect(() => {
+    const root = rootRef.current
+    if (!done || nested || !grounding?.checks?.length) return
+    const id = requestAnimationFrame(() => markChecks(root, grounding.checks, (c) => checkTip(t, c)))
+    return () => { cancelAnimationFrame(id); clearChecks(root) }
+  }, [done, nested, grounding, answer, t])
   // Badge only when the turn was checked (grounding_check) or the answer makes legal claims / cites sources –
   // identity and small-talk turns get none (not even "Chưa kiểm chứng tự động").
   const showConf = !nested && done && (!!grounding || ((grounding !== undefined || readOnly) && (sources.length > 0 || LEGAL_CLAIM_RE.test(answer))))
@@ -839,7 +848,8 @@ function AssistantTurnBody({
       {!active && sources.length > 0 && <SourcesList sources={sources} />}
       {showConf && (
         <div className={`answer-foot ${low ? "is-low" : ""}`}>
-          <ConfidenceBadge verdict={grounding || null} />
+          <ConfidenceBadge verdict={grounding || null} open={checksOpen} onToggle={grounding?.checks?.length ? () => setChecksOpen((o) => !o) : undefined} />
+          {checksOpen && grounding?.checks?.length > 0 && <CheckList checks={grounding.checks} onPick={(i) => revealCheck(rootRef.current, i)} />}
           {low && (
             <div className="conf-warn" role="alert">
               <IconAlert size={15} />

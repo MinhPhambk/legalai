@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react"
 import { api } from "../api.js"
 import { formatBytes, prefersReducedMotion, relTime, renderMarkdown } from "../lib.js"
-import { fmtDateTime, t, useT } from "../i18n.jsx"
+import { fmtDateTime, hasKey, t, useT } from "../i18n.jsx"
 import { ESC_STATUSES, ESC_STATUS_KEY, KIND_KEY, LANG_BADGE, LEVEL_HIGH, LEVEL_KEY, LEVEL_LOW, URGENCIES, URGENCY_HIGH, URGENCY_KEY, URGENCY_MEDIUM } from "../codes.js"
 import { Dialog, useToast } from "./ui.jsx"
 import { Data } from "./DataText.jsx"
@@ -17,7 +17,47 @@ export function confidenceReasons(v) {
     .map((w) => (w.code === "all_matched" && w.computed ? t("confidence.why.all_matched_calc", { n: w.n ?? 0, total: w.total ?? 0, computed: w.computed }) : t(`confidence.why.${w.code}`, { n: w.n ?? 0, total: w.total ?? 0, count: w.n ?? 0 })))
     .join("; ")
 }
-export function ConfidenceBadge({ verdict }) {
+/** Tooltip / list text for one checked item: why it matched or not, and the source it matched. */
+export function checkTip(t, c) {
+  const why = hasKey(`confidence.check.why.${c.why}`) ? t(`confidence.check.why.${c.why}`) : t(c.ok ? "confidence.check.why.source" : "confidence.check.why.missing")
+  return c.ok && c.src?.title ? `${why} – ${c.src.title}` : why
+}
+
+/** Expanded list of the grounding check: every checked item, ✓ matched (with its source) / ✗ not found. */
+export function CheckList({ checks, onPick }) {
+  const t = useT()
+  const bad = checks.filter((c) => !c.ok).length
+  const order = checks.map((c, i) => ({ c, i })).sort((a, b) => Number(a.c.ok) - Number(b.c.ok))
+  return (
+    <div className="gc-list" role="region" aria-label={t("confidence.check.title")}>
+      <div className="gc-list-head">
+        {t("confidence.check.title")} · <b className="ok">{checks.length - bad} {t("confidence.check.matched")}</b>
+        {bad > 0 && <> · <b className="bad">{bad} {t("confidence.check.unmatched")}</b></>}
+      </div>
+      <ul>
+        {order.map(({ c, i }) => (
+          <li key={i} className={c.ok ? "ok" : "bad"}>
+            <span className="gc-icon" aria-hidden="true">{c.ok ? "✓" : "✗"}</span>
+            <span className="gc-kind">{t(`confidence.check.kind.${c.k}`)}</span>
+            <button type="button" className="gc-text" onClick={() => onPick?.(i)} title={t("confidence.check.goto")}>
+              {c.t.length > 110 ? c.t.slice(0, 110) + "…" : c.t}
+            </button>
+            <span className="gc-where">
+              {c.ok && c.src?.url ? (
+                <a href={c.src.url} target="_blank" rel="noopener noreferrer">{c.src.title || new URL(c.src.url).hostname}</a>
+              ) : (
+                checkTip(t, c)
+              )}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <div className="gc-list-foot">{t("confidence.check.legend")}</div>
+    </div>
+  )
+}
+
+export function ConfidenceBadge({ verdict, open = false, onToggle }) {
   const t = useT()
   if (!verdict) {
     return (
@@ -43,6 +83,11 @@ export function ConfidenceBadge({ verdict }) {
         </span>
       )}
       {verdict.origin === "server" && <span className="conf-sub"> · {t("confidence.byServer")}</span>}
+      {onToggle && (
+        <button type="button" className="conf-more" aria-expanded={open} onClick={onToggle}>
+          {t(open ? "confidence.check.hide" : "confidence.check.show")} <span aria-hidden="true">{open ? "▴" : "▾"}</span>
+        </button>
+      )}
       {tip && <span className="conf-tip" role="tooltip">{tip}</span>}
     </span>
   )

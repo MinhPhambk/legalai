@@ -587,7 +587,7 @@
   },
   "confidence": {
     "none": "Not automatically verified",
-    "noneTip": "This answer has no grounding_check result – it hasn't been automatically verified against the sources consulted.",
+    "noneTip": "This answer hasn't been automatically verified against the sources consulted.",
     "label": "Confidence: {level}",
     "reasons": "Reasons: {tip}",
     "claims": "{supported}/{claims} checked items match the sources",
@@ -614,6 +614,36 @@
       "ocr_evidence": "some items appear only in OCR-recognized text – check them against the original",
       "partial_quotes_one": "1 quote only partly matches the source (paraphrased, not verbatim)",
       "partial_quotes_other": "{count} quotes only partly match the source (paraphrased, not verbatim)"
+    },
+    "check": {
+      "show": "Show items",
+      "hide": "Hide",
+      "title": "Items checked against the sources",
+      "matched": "matched",
+      "unmatched": "not matched",
+      "goto": "Show this in the answer",
+      "legend": "Red underlined text in the answer was not found in the sources consulted – check it before relying on it.",
+      "kind": {
+        "quote": "Quote",
+        "figure": "Figure",
+        "amount": "Amount",
+        "id": "Doc. number",
+        "link": "Link"
+      },
+      "why": {
+        "verbatim": "verbatim match",
+        "near": "near-verbatim match",
+        "source": "found in the sources",
+        "opened": "source opened",
+        "calc": "computed by a tool",
+        "doc": "in your document",
+        "ocr": "only in a scanned copy (OCR) – check the original",
+        "partial": "only partly matched – may be a paraphrase",
+        "missing": "not found in the sources consulted",
+        "listed": "only in search results, document not opened",
+        "not_opened": "link not opened for checking",
+        "unverifiable": "outside the automatically checkable sources"
+      }
     }
   },
   "report": {

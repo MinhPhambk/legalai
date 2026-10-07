@@ -343,14 +343,33 @@ export const check = tool({
       list("Cảnh báo từ công cụ", warnings),
       unsupported
         ? "→ Sửa hoặc bỏ các mục trên rồi gọi lại grounding_check trước khi trả lời. Nếu vẫn không có căn cứ, nói rõ là chưa xác minh được."
-        : "→ Ghi đúng mức độ tin cậy này (kèm lý do) ở cuối câu trả lời.",
+        : "→ Không tự ghi mức độ tin cậy vào câu trả lời và không nhắc tên công cụ nội bộ – giao diện tự hiển thị thẻ độ tin cậy do hệ thống chấm, kèm danh sách từng mục đã đối chiếu.",
       researchStep,
       allComputed ? "→ Chỉ có phép tính (không có nguồn pháp lý): nếu câu trả lời có nhận định pháp lý (mức trần, nghĩa vụ, thời hạn, căn cứ) thì BẮT BUỘC tra bằng vbpl_* hoặc web_search → web_read trước; nếu chỉ là phép tính thì ghi rõ \"(tính bằng công cụ)\"." : "",
       level === "thấp" ? "→ Độ tin cậy THẤP: nói rõ trong câu trả lời phần nào chưa xác minh được. Chỉ đề nghị chuyển chuyên gia (expert_escalate) khi phần chưa xác minh là kết luận chính của câu trả lời, hoặc tình huống thuộc diện bắt buộc theo skill citation-check / safety – không đề nghị chuyển chuyên gia chỉ vì một vài chi tiết phụ." : "",
     ].filter(Boolean).join("\n")
+    // Per-item results for the web UI ("which items matched, where"): the answer text of each item (so the UI can
+    // underline it in the answer), whether it matched, why, and the opened source it matched (title + link).
+    const normTexts = new Map<number, string>()
+    const textOf = (i: number) => { if (!normTexts.has(i)) normTexts.set(i, norm(opened[i].text)); return normTexts.get(i)! }
+    const srcWhere = (pred: (t: string, e: (typeof opened)[number]) => boolean) => {
+      for (let i = 0; i < opened.length; i++) if (pred(textOf(i), opened[i])) return { title: String(opened[i].title || "").slice(0, 120), url: opened[i].url }
+      return undefined
+    }
+    type Check = { k: "link" | "quote" | "figure" | "amount" | "id"; t: string; ok: boolean; why: string; src?: { title: string; url: string } }
+    const checks: Check[] = [
+      ...quoteRes.map((x): Check => {
+        const nq = norm(x.q).replace(/^["']|["']$/g, ""); const head = nq.split(/\s*(?:…|\.\.\.+)\s*/)[0].slice(0, 60)
+        return { k: "quote", t: x.q, ok: x.ok, why: x.doc ? "doc" : x.calc ? "calc" : x.ocr ? "ocr" : x.near ? "near" : x.ok ? "verbatim" : x.partial ? "partial" : "missing", src: x.ok && !x.doc && !x.calc && head.length >= 12 ? srcWhere((t) => t.includes(head)) : undefined }
+      }),
+      ...figRes.map((x): Check => ({ k: "figure", t: x.f + "%", ok: x.ok, why: x.calc ? "calc" : x.ocr ? "ocr" : x.ok ? "source" : "missing", src: x.ok && !x.calc ? srcWhere((t) => t.includes(norm(x.f + "%")) || t.includes(norm(x.f + " %"))) : undefined })),
+      ...amtRes.map((x): Check => ({ k: "amount", t: x.a, ok: x.ok, why: x.calc ? "calc" : x.doc ? "doc" : x.ocr ? "ocr" : x.ok ? "source" : "missing" })),
+      ...idRes.map((x): Check => ({ k: "id", t: x.id, ok: x.ok, why: x.ocr ? "ocr" : x.ok ? "source" : "missing", src: x.ok ? srcWhere((t, e) => t.includes(norm(x.id)) || norm(`${e.title ?? ""} ${decodeURIComponent(e.url).replace(/[-_]/g, " ")}`).includes(norm(x.id))) : undefined })),
+      ...urlRes.map((x): Check => ({ k: "link", t: x.u, ok: x.ok, why: x.ok ? (x.ocr ? "ocr" : "opened") : x.listed ? "listed" : x.checkable ? "not_opened" : "unverifiable", src: x.ok ? srcWhere((_t, e) => canonicalKey(e.url) === canonicalKey(x.u) || baseUrl(e.url) === baseUrl(x.u)) : undefined })),
+    ].slice(0, 40).map((c) => ({ ...c, t: c.t.length > 300 ? c.t.slice(0, 300) + "…" : c.t }))
     // Keep the verdict with the session so the web UI can show the computed confidence.
-    recordEvidence(context?.sessionID, { url: "grounding://check", text: JSON.stringify({ level, reasons, why, claims, supported, unsupported, computed: computed.length, round, gap: mustResearch }), source: "grounding" })
+    recordEvidence(context?.sessionID, { url: "grounding://check", text: JSON.stringify({ level, reasons, why, claims, supported, unsupported, computed: computed.length, round, gap: mustResearch, checks }), source: "grounding" })
     const LEVEL_CODE = { cao: "high", "trung bình": "medium", thấp: "low" } as const
-    return withUi(report, { res: { t: "level", code: LEVEL_CODE[level] }, verdict: { level: LEVEL_CODE[level], why, claims, supported, unsupported } })
+    return withUi(report, { res: { t: "level", code: LEVEL_CODE[level] }, verdict: { level: LEVEL_CODE[level], why, claims, supported, unsupported, checks } })
   },
 })
