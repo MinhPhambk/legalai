@@ -66,6 +66,8 @@ $pwFile = Join-Path $sb "web\admin-password.txt"
 $pw = if (Test-Path $pwFile) { (Get-Content $pwFile -Raw).Trim() } else { "(chưa có – xem .sandbox\web\admin-password.txt)" }
 $info = Join-Path $root "THONG-TIN-TRUY-CAP.txt"
 $link = if ($url) { $url } else { "(chưa lấy được – chạy lại START-LegalAI.cmd)" }
+$upwFile = Join-Path $sb "web\user-password.txt"
+$upw = if (Test-Path $upwFile) { (Get-Content $upwFile -Raw).Trim() } else { "(chưa có tài khoản người dùng thường)" }
 @(
   "LegalAI – thông tin truy cập (cập nhật $(Get-Date -Format 'dd/MM/yyyy HH:mm'))",
   "",
@@ -74,6 +76,9 @@ $link = if ($url) { $url } else { "(chưa lấy được – chạy lại START-
   "",
   "Tài khoản admin: admin@legalai.local",
   "Mật khẩu       : $pw",
+  "",
+  "Tài khoản user : user@legalai.local   (người dùng thường)",
+  "Mật khẩu       : $upw",
   "",
   "Lưu ý: link công khai đổi mỗi lần bật lại. Không gửi file này cho người khác."
 ) | Set-Content -Path $info -Encoding utf8
