@@ -16,11 +16,14 @@ export const escalate = tool({
   args: {
     reason: tool.schema.string().describe("Lý do chuyển chuyên gia (ngắn, VD 'Tranh chấp sắp khởi kiện, giá trị hợp đồng lớn')"),
     summary: tool.schema.string().describe("Tóm tắt vụ việc và câu hỏi cho chuyên gia: bối cảnh, điều đã tra được (kèm căn cứ), điểm còn chưa chắc"),
-    urgency: tool.schema.enum(["thấp", "trung bình", "cao", "khẩn"]).describe("Mức khẩn (khẩn = có hạn chót trong vài ngày)"),
+    // Wording shown to people: "Độ khẩn" Thường / Sớm / Gấp / Khẩn – never Thấp / Trung bình / Cao (those are the
+    // confidence levels). Stored values stay "thấp" / "trung bình" / "cao" / "khẩn" (web/server/experts.mjs).
+    urgency: tool.schema.enum(["thường", "sớm", "gấp", "khẩn"]).describe("Độ khẩn: thường (không có hạn chót gần) · sớm (nên xử lý sớm) · gấp (hạn chót gần hoặc rủi ro lớn) · khẩn (hạn chót trong vài ngày)"),
     deadline: tool.schema.string().optional().describe("Hạn chót nếu có (dd/mm/yyyy), VD hạn trả lời bản câu hỏi điều tra"),
     topic: tool.schema.enum(["hợp đồng", "phòng vệ thương mại", "thương mại quốc tế", "tranh chấp", "khác"]).optional(),
   },
-  async execute({ reason, summary, urgency, deadline, topic }, context) {
+  async execute({ reason, summary, urgency: shown, deadline, topic }, context) {
+    const urgency = ({ thường: "thấp", sớm: "trung bình", gấp: "cao", khẩn: "khẩn" } as Record<string, string>)[shown] ?? (["thấp", "trung bình", "cao", "khẩn"].includes(shown) ? shown : "trung bình")
     fs.mkdirSync(dir(), { recursive: true })
     const now = new Date()
     const day = now.toLocaleDateString("sv-SE", { timeZone: "Asia/Ho_Chi_Minh" }).replace(/-/g, "")
@@ -35,7 +38,7 @@ export const escalate = tool({
     }
     fs.writeFileSync(path.join(dir(), `${id}.json`), JSON.stringify(ticket, null, 2))
     return [
-      `Đã tạo yêu cầu chuyển chuyên gia: ${id} (mức khẩn: ${urgency}${deadline ? `, hạn chót ${deadline}` : ""}).`,
+      `Đã tạo yêu cầu chuyển chuyên gia: ${id} (độ khẩn: ${shown}${deadline ? `, hạn chót ${deadline}` : ""}).`,
       "Trạng thái: mới – chuyên gia pháp lý của nền tảng sẽ xem xét; phản hồi sẽ hiện trong cuộc trò chuyện này.",
       "Hãy báo cho người dùng mã yêu cầu, những gì chuyên gia sẽ xem xét, và việc họ nên chuẩn bị (hợp đồng, chứng từ, thông báo của cơ quan điều tra…).",
     ].join("\n")

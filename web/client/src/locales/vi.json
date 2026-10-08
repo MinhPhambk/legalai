@@ -734,7 +734,7 @@
     "dialogTitle": "Chuyển cho chuyên gia pháp lý",
     "dialogBody": "Chuyên gia của nền tảng sẽ đọc câu hỏi, câu trả lời của trợ lý và các nguồn đã tra, rồi trả lời ngay trong cuộc trò chuyện này. Hãy bổ sung bối cảnh nếu cần (không đưa thông tin bí mật không cần thiết).",
     "lowWarn": "Câu trả lời này có độ tin cậy thấp – nên để chuyên gia xem lại trước khi sử dụng.",
-    "urgencyLabel": "Mức khẩn",
+    "urgencyLabel": "Độ khẩn",
     "noteLabel": "Ghi chú cho chuyên gia (không bắt buộc)",
     "notePlaceholder": "VD: hợp đồng đã ký, giá trị 5 tỷ đồng, đối tác chậm giao hàng 20 ngày…",
     "submit": "Gửi yêu cầu",
@@ -758,15 +758,15 @@
       "closed": "Đã đóng"
     },
     "urgency": {
-      "low": "Thấp",
-      "medium": "Trung bình",
-      "high": "Cao",
+      "low": "Thường",
+      "medium": "Sớm",
+      "high": "Gấp",
       "urgent": "Khẩn"
     },
     "urgencyBadge": {
-      "low": "Ưu tiên thấp",
-      "medium": "Ưu tiên trung bình",
-      "high": "Ưu tiên cao",
+      "low": "Thường",
+      "medium": "Sớm",
+      "high": "Gấp",
       "urgent": "Khẩn"
     },
     "filter": {

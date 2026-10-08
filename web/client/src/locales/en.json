@@ -810,15 +810,15 @@
       "closed": "Closed"
     },
     "urgency": {
-      "low": "Low",
-      "medium": "Medium",
-      "high": "High",
+      "low": "Routine",
+      "medium": "Soon",
+      "high": "Expedited",
       "urgent": "Urgent"
     },
     "urgencyBadge": {
-      "low": "Low priority",
-      "medium": "Medium priority",
-      "high": "High priority",
+      "low": "Routine",
+      "medium": "Soon",
+      "high": "Expedited",
       "urgent": "Urgent"
     },
     "filter": {
