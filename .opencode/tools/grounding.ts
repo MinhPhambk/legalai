@@ -22,7 +22,7 @@ const stripUrl = (u: string) => u.replace(/[)>\].,;:!?'"»]+$/, "")
 const baseUrl = (u: string) => u.replace(/^https?:\/\/(www\.)?/, "").replace(/[#].*$/, "").replace(/\/$/, "")
 
 // Official sources whose pages are fetched by our tools; links elsewhere cannot be checked automatically.
-const CHECKABLE = /vbpl\.vn|trav\.gov\.vn|federalregister\.gov|govinfo\.gov|eur-lex\.europa\.eu|publications\.europa\.eu|epingalert\.org|wto\.org|trungtamwto\.vn|toaan\.gov\.vn|sbv\.gov\.vn|vietcombank\.com\.vn|customs\.gov\.vn|hts\.usitc\.gov|trade\.ec\.europa\.eu\/access-to-markets/
+const CHECKABLE = /vbpl\.vn|trav\.gov\.vn|federalregister\.gov|govinfo\.gov|eur-lex\.europa\.eu|publications\.europa\.eu|epingalert\.org|wto\.org|trungtamwto\.vn|toaan\.gov\.vn|sbv\.gov\.vn|vietcombank\.com\.vn|customs\.gov\.vn|hts\.usitc\.gov|trade\.ec\.europa\.eu\/access-to-markets|macmap\.org|reallogistics\.vn/
 
 // English answers quote the Vietnamese text verbatim, then "(unofficial translation: …)". The translation
 // is not a verbatim quote of any source: it is cut out before quotes are extracted (the Vietnamese quote
