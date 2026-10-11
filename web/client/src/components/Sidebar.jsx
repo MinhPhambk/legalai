@@ -5,7 +5,7 @@ import { useT } from "../i18n.jsx"
 import { Popover, useConfirm } from "./ui.jsx"
 import {
   IconClose, IconInfo, IconKeyboard, IconLogout, IconMonitor, IconMoon, IconMore, IconNew, IconPencil, IconPin, IconSearch, IconSettings,
-  IconShare, IconShield, IconSun, IconTrash, IconChevron, Spinner,
+  IconShare, IconShield, IconSparkle, IconSun, IconTrash, IconChevron, Spinner,
 } from "./Icons.jsx"
 import { TechlabLogo } from "./Logo.jsx"
 
@@ -216,6 +216,12 @@ export default function Sidebar({ open, onClose, chats, loading, activeId, onNew
               <IconShield size={16} />
               <span>{t("sidebar.expertQueue")}</span>
               {notif?.queue > 0 ? <span className="nav-badge" aria-label={t("sidebar.newRequests", { count: notif.queue })}>{notif.queue}</span> : notif?.expertOpen ? <kbd>{notif.expertOpen}</kbd> : null}
+            </button>
+          )}
+          {user.isAdmin && (
+            <button className="search-btn" onClick={() => navigate("/admin/lab")}>
+              <IconSparkle size={16} />
+              <span>{t("sidebar.lab")}</span>
             </button>
           )}
           <button className="search-btn" onClick={() => openDialog("search")} aria-keyshortcuts="Control+K">

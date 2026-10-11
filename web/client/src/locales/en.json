@@ -183,7 +183,8 @@
     "toastDeleted": "Chat deleted.",
     "account": "Account",
     "logout": "Sign out",
-    "showMore": "Show more"
+    "showMore": "Show more",
+    "lab": "Pilot lab"
   },
   "chat": {
     "newChat": "New chat",

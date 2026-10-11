@@ -179,7 +179,8 @@
     "toastDeleted": "Đã xoá cuộc trò chuyện.",
     "account": "Tài khoản",
     "logout": "Đăng xuất",
-    "showMore": "Xem thêm"
+    "showMore": "Xem thêm",
+    "lab": "Lab thử nghiệm"
   },
   "chat": {
     "newChat": "Cuộc trò chuyện mới",
