@@ -219,7 +219,7 @@ export default function Sidebar({ open, onClose, chats, loading, activeId, onNew
             </button>
           )}
           {user.isAdmin && (
-            <button className="search-btn" onClick={() => navigate("/admin/lab")}>
+            <button className="search-btn" onClick={() => navigate("/lab")}>
               <IconSparkle size={16} />
               <span>{t("sidebar.lab")}</span>
             </button>

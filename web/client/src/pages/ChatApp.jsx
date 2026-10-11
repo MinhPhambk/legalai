@@ -11,8 +11,9 @@ import { AboutDialog, SearchDialog, ShareDialog, ShortcutsDialog, useGlobalShort
 import { useToast } from "../components/ui.jsx"
 import { ConnectionBanner } from "./StatePages.jsx"
 import { IconMenu, IconNew, IconShare } from "../components/Icons.jsx"
+import LabView from "../components/LabView.jsx"
 
-export default function ChatApp({ user, chatId, onLogout }) {
+export default function ChatApp({ user, chatId, lab, onLogout }) {
   const toast = useToast()
   const t = useT()
   const { dialog, openDialog, closeDialog } = useApp()
@@ -183,7 +184,7 @@ export default function ChatApp({ user, chatId, onLogout }) {
             <IconMenu />
           </button>
           <div className="topbar-title" title={active?.title} data-source={active?.title ? "user" : undefined}>
-            {active?.title || t("chat.newChat")}
+            {lab ? t("lab.title") : active?.title || t("chat.newChat")}
           </div>
           <span className="model-chip" title={t("chat.modelTip")}>
             {t("chat.modelBadge")}
@@ -198,7 +199,7 @@ export default function ChatApp({ user, chatId, onLogout }) {
             <IconNew />
           </button>
         </header>
-        <ChatView chatId={chatId} onChatCreated={onChatCreated} onActivity={onActivity} onTitle={onTitle} onStream={setStream} />
+        {lab ? <LabView id={lab.id} /> : <ChatView chatId={chatId} onChatCreated={onChatCreated} onActivity={onActivity} onTitle={onTitle} onStream={setStream} />}
       </main>
       <SearchDialog open={dialog === "search"} onClose={closeDialog} chats={chats} />
       <ShortcutsDialog open={dialog === "shortcuts"} onClose={closeDialog} />

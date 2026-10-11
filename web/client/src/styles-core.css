@@ -414,3 +414,21 @@ kbd {
 .gc-list li.ext .gc-icon {
   color: var(--text-3, #6b6b6b);
 }
+
+/* ---- Lab thử nghiệm (/lab) – plain pages inside the chat app -------------------------------------- */
+.lab-page { width: 100%; max-width: 920px; margin: 0 auto; padding: 28px 24px 48px; overflow-y: auto; }
+.lab-head { display: flex; align-items: center; gap: 10px; justify-content: space-between; }
+.lab-head h1 { font-size: 22px; margin: 0; display: inline-flex; align-items: center; gap: 8px; }
+.lab-sub { color: var(--text-2, #4d4d4d); margin: 6px 0 22px; }
+.lab-blank { border: 1px dashed var(--border); border-radius: 12px; padding: 36px 16px; text-align: center; color: var(--text-2, #4d4d4d); }
+.lab-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+.lab-list li a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; padding: 14px 4px; border-bottom: 1px solid var(--border); color: var(--text); text-decoration: none; }
+.lab-list li a:hover strong { color: var(--brand, #c20b11); }
+.lab-tag { grid-column: 1; color: var(--text-2, #4d4d4d); font-size: 14px; }
+.lab-when { grid-column: 2; grid-row: 1; color: var(--text-3, #6b6b6b); font-size: 12.5px; }
+.lab-product .lab-head { margin-bottom: 18px; }
+.lab-title-in, .lab-tag-in { display: block; width: 100%; border: 0; background: transparent; color: var(--text); font: inherit; padding: 2px 0; outline: none; }
+.lab-title-in { font-size: 26px; font-weight: 700; }
+.lab-tag-in { font-size: 15px; color: var(--text-2, #4d4d4d); margin-top: 4px; }
+.lab-title-in:focus, .lab-tag-in:focus { box-shadow: 0 1px 0 var(--border); }
+.lab-canvas { margin-top: 24px; min-height: 420px; border: 1px dashed var(--border); border-radius: 12px; display: grid; place-items: center; color: var(--text-3, #6b6b6b); text-align: center; padding: 24px; }

@@ -59,7 +59,7 @@ const csp = () =>
   ].join("; ")
 
 // Client-side routes that exist; anything else gets the SPA with a real 404 status.
-const SPA_ROUTES = /^\/(|en|brand|privacy|terms|en\/brand|en\/privacy|en\/terms|login|register|admin|admin\/(?:users|chats|access-log|experts|models|library|lab|settings)|admin\/lab\/[A-Za-z0-9_-]{1,64}|admin\/chats\/[A-Za-z0-9_-]{1,64}|expert|c\/[A-Za-z0-9_-]{1,64}|s\/[A-Za-z0-9_-]{1,64})$/
+const SPA_ROUTES = /^\/(|en|brand|privacy|terms|en\/brand|en\/privacy|en\/terms|login|register|admin|admin\/(?:users|chats|access-log|experts|models|library|settings)|lab|lab\/[A-Za-z0-9_-]{1,64}|admin\/chats\/[A-Za-z0-9_-]{1,64}|expert|c\/[A-Za-z0-9_-]{1,64}|s\/[A-Za-z0-9_-]{1,64})$/
 
 const clientIp = (req) => req.ip || req.socket.remoteAddress || ""
 const publicUser = (u) => u && { id: u.id, email: u.email, isAdmin: u.isAdmin, isExpert: u.isExpert, displayName: u.displayName, settings: u.settings, locale: u.locale || null }

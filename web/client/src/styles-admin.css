@@ -196,36 +196,3 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
-/* ---- Lab thử nghiệm ---------------------------------------------------------------------------- */
-.lab .admin-section-head { gap: 8px; flex-wrap: wrap; }
-.lab .admin-section-head .btn.primary { margin-left: auto; }
-.lab-filter { margin: 10px 0 14px; overflow-x: auto; }
-.lab-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-.lab-card { display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface, var(--bg)); color: var(--text); text-decoration: none; min-height: 112px; }
-.lab-card:hover { border-color: var(--brand, #c20b11); }
-.lab-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-.lab-card-tag { font-size: 14px; line-height: 1.45; }
-.lab-card-meta { font-size: 12.5px; margin-top: auto; }
-.lab-status { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); white-space: nowrap; }
-.lab-idea { color: var(--text-2, #4d4d4d); }
-.lab-building { color: #1d4ed8; border-color: #bfd0f7; }
-.lab-pilot { color: #15803d; border-color: #bfe3cb; }
-.lab-paused { color: var(--text-3, #6b6b6b); border-style: dashed; }
-.lab-empty { text-align: center; padding: 28px 16px; }
-.lab-detail .lab-actions { margin-left: auto; display: inline-flex; gap: 8px; align-items: center; }
-.lab-detail .lab-actions .btn.primary { margin-left: 0; }
-.lab-meta { margin: 2px 0 12px; font-size: 13px; }
-.lab-detail .field { display: grid; gap: 6px; margin: 0 0 14px; }
-.lab-detail .field > span { font-weight: 600; font-size: 13.5px; }
-.lab-detail input:not([type=checkbox]), .lab-detail textarea, .lab-detail select { width: 100%; font: inherit; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text); }
-.lab-detail textarea.mono { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 13px; }
-.lab-draft-note { margin-top: -4px; }
-.lab-pick { border: 1px solid var(--border); border-radius: 8px; }
-.lab-pick-head { display: flex; gap: 8px; align-items: center; padding: 8px; border-bottom: 1px solid var(--border); }
-.lab-pick-head input { flex: 1; }
-.lab-pick-head span { font-size: 12.5px; white-space: nowrap; }
-.lab-pick ul { list-style: none; margin: 0; padding: 4px 8px; max-height: 260px; overflow: auto; }
-.lab-pick li label { display: flex; gap: 8px; align-items: center; padding: 3px 0; font-size: 13.5px; line-height: 1.35; cursor: pointer; }
-.lab-pick li input[type=checkbox] { flex: none; width: 15px; height: 15px; margin: 0; accent-color: var(--brand, #c20b11); }
-.lab-pick li label > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
