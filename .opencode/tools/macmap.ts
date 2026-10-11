@@ -30,6 +30,10 @@ const POLITE = { concurrency: 1, gapMs: 1500 }
 const today = () => new Date().toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "Asia/Ho_Chi_Minh" })
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 class Blocked extends Error {}
+// After a block, do not knock again for a while (each attempt can raise the IP's bot score): answer at once.
+const BLOCK_PAUSE_MS = Number(process.env.MACMAP_BLOCK_PAUSE_MIN ?? 30) * 60_000
+let blockedUntil = 0
+let blockedWhy = ""
 
 // ---- headed Chrome (lazy start) ------------------------------------------------------------------------------------
 const up = async () => { try { return (await fetch(`http://127.0.0.1:${PORT}/json/version`, { signal: AbortSignal.timeout(1500) })).ok } catch { return false } }
@@ -51,6 +55,13 @@ async function ensureChrome() {
 
 /** A tab on macmap.org past the Cloudflare check (waits for it to clear by itself; never interacts with it). */
 async function withMacmap<T>(fn: (page: any) => Promise<T>): Promise<T> {
+  if (Date.now() < blockedUntil) throw new Blocked(`${blockedWhy} (tạm ngừng thử lại đến ${new Date(blockedUntil).toLocaleTimeString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })})`)
+  try { return await withMacmapNow(fn) } catch (e) {
+    if (e instanceof Blocked) { blockedUntil = Date.now() + BLOCK_PAUSE_MS; blockedWhy = e.message }
+    throw e
+  }
+}
+async function withMacmapNow<T>(fn: (page: any) => Promise<T>): Promise<T> {
   await ensureChrome()
   const browser = await puppeteer.connect({ browserURL: `http://127.0.0.1:${PORT}`, defaultViewport: null })
   try {
@@ -99,6 +110,18 @@ function country(q: string | undefined, dflt?: string): Country | null {
 }
 const strip = (s: unknown) => String(s ?? "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim()
 const clip = (s: string, n: number) => (s.length > n ? s.slice(0, n - 1) + "…" : s)
+
+// Where to look instead when macmap.org is not reachable (official sources first).
+const EU27 = ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE"]
+const ISO_OF: Record<string, string> = { ...VI_NAMES, japan: "JP", korea: "KR", china: "CN", germany: "DE", france: "FR", netherlands: "NL", unitedstates: "US", usa: "US", australia: "AU", india: "IN", eu: "EU", lienminhchauau: "EU", chauau: "EU" }
+function fallbackFor(importer: string, hs: string) {
+  const s = fold(importer)
+  const iso = (country(importer)?.ISO2 ?? ISO_OF[s] ?? (s.length === 2 ? s.toUpperCase() : "")).toUpperCase()
+  if (iso === "US") return `→ Thay thế (nguồn chính thức): tariff_us(hs="${hs}") cho thuế; phòng vệ thương mại: trav_measures / fedreg_search.`
+  if (iso === "EU" || EU27.includes(iso)) return `→ Thay thế (nguồn chính thức của EU): tariff_eu(hs="${hs}", destination="${iso === "EU" ? "FR" : iso}") cho thuế và ưu đãi EVFTA; tariff_eu_requirements(hs="${hs}", destination="${iso === "EU" ? "FR" : iso}") cho yêu cầu nhập khẩu (SPS, nhãn mác, tiêu chuẩn) và VAT.`
+  if (iso === "VN") return `→ Thay thế: tariff_vn(hs="${hs}") (nguồn chính thức) và tariff_vn_table(hs="${hs}") (bảng tổng hợp, có chính sách mặt hàng).`
+  return `→ Thay thế: fta_search (biểu cam kết FTA của Việt Nam với nước này trên trungtamwto.vn) và web_search("${hs} import tariff ${importer} customs") → web_read trang chính thức của cơ quan hải quan nước nhập khẩu; ghi rõ "chưa tra được Market Access Map".`
+}
 
 export const access = tool({
   description:
@@ -159,7 +182,7 @@ export const access = tool({
         return withUi(text, { res: count(nRates, "tariffLines") })
       })
     } catch (e: any) {
-      if (e instanceof Blocked) return `Không tra được Market Access Map: ${e.message}. Không nêu điều kiện thị trường theo trí nhớ; thử lại sau hoặc dùng tariff_* / web_search.`
+      if (e instanceof Blocked) return `Không tra được Market Access Map: ${e.message}.\n${fallbackFor(importer, d)}\nKhông nêu thuế suất / điều kiện thị trường theo trí nhớ.`
       throw e
     }
   },

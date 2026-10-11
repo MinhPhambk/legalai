@@ -248,6 +248,7 @@ function argsOf(tool, input = {}, st, output) {
       return [code(input.fta), q(input.query, "vi")]
     case "tariff_vn":
     case "tariff_vn_table":
+    case "macmap_access":
     case "tariff_us":
     case "tariff_eu":
     case "tariff_eu_requirements":
