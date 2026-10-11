@@ -213,7 +213,13 @@ export function registerChatRoutes(app, { oc, states, json, upstreamError }) {
     const ri = turn.map((m, i) => (isHiddenPrompt(m) ? i : -1)).filter((i) => i >= 0).at(-1) ?? -1
     const tail = turn.slice(ri + 1).filter((m) => m.info?.role === "assistant")
     if (!tail.length || tail.some((m) => m.info?.error)) return false // failed or stopped by the user
-    if (tail.some(visibleText)) return false
+    // Only text written AFTER the last tool call is an answer: a short note before the look-ups ("Tôi sẽ tra…") is not.
+    const lastTool = tail.map((m, i) => ((m.parts || []).some((p) => p.type === "tool") ? i : -1)).filter((i) => i >= 0).at(-1) ?? -1
+    const afterTools = tail.slice(lastTool + 1)
+    const lastToolMsg = lastTool >= 0 ? tail[lastTool] : null
+    // text in the same message after its last tool part counts too
+    const textAfterLastToolPart = lastToolMsg ? (() => { const ps = lastToolMsg.parts || []; const k = ps.map((p, i) => (p.type === "tool" ? i : -1)).filter((i) => i >= 0).at(-1); return ps.slice(k + 1).some((p) => p.type === "text" && !p.synthetic && !p.ignored && String(p.text || "").trim()) })() : false
+    if (afterTools.some(visibleText) || textAfterLastToolPart || (lastTool < 0 && tail.some(visibleText))) return false
     // A run that stopped on a clarifying question is not "empty".
     if (tail.some((m) => (m.parts || []).some((p) => p.type === "tool" && p.tool === "question"))) return false
     const locale = run.locale || "vi"

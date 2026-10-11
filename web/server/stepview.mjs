@@ -199,7 +199,7 @@ const q = (v, lang) => (str(v).trim() ? { t: "q", v: str(v), lang: langOf(v, lan
 const code = (v) => (str(v).trim() ? { t: "code", v: str(v) } : null)
 const urlArg = (u) => (str(u).trim() ? { t: "url", v: str(u).replace(/^https?:\/\//, "") } : null)
 const TOOL_LANG = (tool) =>
-  /^(vbpl|chinhphu|court|trav|fta|company)_/.test(tool) || tool === "tariff_vn" ? "vi" : /^(fedreg|eurlex|eping)_/.test(tool) || tool === "tariff_us" || tool === "tariff_eu" || tool === "tariff_eu_requirements" ? "en" : undefined
+  /^(vbpl|chinhphu|court|trav|fta|company)_/.test(tool) || tool === "tariff_vn" || tool === "tariff_vn_table" ? "vi" : /^(fedreg|eurlex|eping)_/.test(tool) || tool === "tariff_us" || tool === "tariff_eu" || tool === "tariff_eu_requirements" ? "en" : undefined
 
 function argsOf(tool, input = {}, st, output) {
   const url = str(input.url)
@@ -247,6 +247,7 @@ function argsOf(tool, input = {}, st, output) {
     case "fta_search":
       return [code(input.fta), q(input.query, "vi")]
     case "tariff_vn":
+    case "tariff_vn_table":
     case "tariff_us":
     case "tariff_eu":
     case "tariff_eu_requirements":

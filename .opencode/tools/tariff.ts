@@ -1159,3 +1159,84 @@ export const search = tool({
     }
   },
 })
+
+// =====================================================================================================
+// tariff_vn_table – offline index of the Real Logistics "Biểu thuế XNK 2026" workbook (UNOFFICIAL compilation)
+// =====================================================================================================
+// Built by tools/ingest-vn-tariff-table.py into .sandbox/data/tariff-reallogistics/index/ (meta.json, search.json,
+// one JSON per HS chapter). One row per 8-digit code: every tariff of the year (thông thường, MFN, VAT, TTĐB, BVMT,
+// XK and each FTA) with the decree and effective date the compiler cites, the year-by-year FTA schedules, and the
+// "chính sách mặt hàng theo mã HS" column (quarantine, CITES, licences, specialised inspection…). It fills the gap of
+// tariff_vn when the decree annex is not attached on vbpl.vn (FTA rate of the requested year). Results are labelled
+// unofficial and a source warning caps the grounding level at trung bình: official confirmation = tariff_vn / decree.
+const VNT_DIR = process.env.LEGALAI_VN_TARIFF_TABLE ?? path.join(ROOT, ".sandbox", "data", "tariff-reallogistics", "index")
+const vntChapters = new Map<string, Record<string, any>>()
+let vntMeta: any = null
+let vntSearch: Record<string, string> | null = null
+const vntRead = (f: string) => JSON.parse(fs.readFileSync(path.join(VNT_DIR, f), "utf8"))
+function vntChapter(ch: string): Record<string, any> {
+  if (!vntChapters.has(ch)) { try { vntChapters.set(ch, vntRead(`${ch}.json`)) } catch { vntChapters.set(ch, {}) } }
+  return vntChapters.get(ch)!
+}
+const VNT_LABEL: Record<string, string> = {
+  NK_THONG_THUONG: "Nhập khẩu thông thường", NK_UU_DAI: "Nhập khẩu ưu đãi (MFN)", VAT: "Thuế GTGT (VAT)", TTDB: "Thuế tiêu thụ đặc biệt",
+  BVMT: "Thuế bảo vệ môi trường", XK: "Thuế xuất khẩu", XK_CPTPP: "Thuế xuất khẩu CPTPP", XK_EVFTA: "Thuế xuất khẩu EVFTA", XK_UKVFTA: "Thuế xuất khẩu UKVFTA",
+}
+const VNT_BASE = ["NK_THONG_THUONG", "NK_UU_DAI", "VAT", "TTDB", "BVMT", "XK", "XK_CPTPP", "XK_EVFTA", "XK_UKVFTA"]
+const vntFold = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/gi, "d").toLowerCase()
+
+export const vn_table = tool({
+  description:
+    "TRA NHANH BIỂU THUẾ XUẤT NHẬP KHẨU VIỆT NAM 2026 theo mã HS (hoặc tìm mã theo tên hàng) từ BẢNG TỔNG HỢP KHÔNG CHÍNH THỨC của Real Logistics (cập nhật theo văn bản đến ngày ghi trong kết quả): đủ thuế nhập khẩu thông thường, MFN, VAT, tiêu thụ đặc biệt, bảo vệ môi trường, thuế xuất khẩu, thuế suất TỪNG FTA (ACFTA, ATIGA, AJCEP, VJEPA, AKFTA, AANZFTA, AIFTA, VKFTA, VCFTA, VN-EAEU, CPTPP, AHKFTA, EVFTA, UKVFTA, VIFTA, RCEP theo từng đối tác, Lào, Campuchia) kèm văn bản căn cứ, LỘ TRÌNH THEO NĂM 2022–2027, và CHÍNH SÁCH MẶT HÀNG theo mã HS (kiểm dịch, CITES, giấy phép, kiểm tra chuyên ngành, hàng cấm xuất/nhập…). Dùng khi tariff_vn không ra thuế FTA đúng năm, để tra nhiều loại thuế cùng lúc, hoặc để biết điều kiện quản lý mặt hàng khi nhập vào / xuất khỏi Việt Nam. KHÔNG phải nguồn chính thức: nêu rõ \"theo bảng tổng hợp của Real Logistics\" và đối chiếu bằng tariff_vn hoặc văn bản gốc (vbpl_* / chinhphu_*) trước khi khẳng định.",
+  args: {
+    hs: tool.schema.string().optional().describe("Mã HS 4–8 số, VD '0901.21', '09012111', '7210'"),
+    query: tool.schema.string().optional().describe("Tên hàng để tìm mã HS khi chưa có mã, VD 'cà phê robusta', 'thép mạ kẽm'"),
+    year: tool.schema.number().optional().describe("Năm áp dụng của lộ trình FTA (mặc định năm hiện tại)"),
+    fta: tool.schema.string().optional().describe("Chỉ hiện một FTA, VD 'EVFTA', 'RCEP', 'CPTPP'"),
+  },
+  async execute({ hs, query, year, fta }, context) {
+    try { vntMeta ??= vntRead("meta.json") } catch { return "Chưa có bảng tổng hợp biểu thuế (chạy tools/ingest-vn-tariff-table.py). Dùng tariff_vn." }
+    const y = String(year ?? new Date().getFullYear())
+    const header = `BẢNG TỔNG HỢP BIỂU THUẾ XNK VIỆT NAM – KHÔNG CHÍNH THỨC (${vntMeta.source}; phiên bản ${vntMeta.version})\nTrang nguồn: ${vntMeta.page}`
+    const warn = `⚠ Bảng tổng hợp không chính thức của Real Logistics (phiên bản ${vntMeta.version}) – chỉ dùng tham khảo; đối chiếu tariff_vn hoặc văn bản gốc trước khi khẳng định thuế suất.`
+    // ---- lookup by name ----
+    if (!hs && query) {
+      vntSearch ??= vntRead("search.json")
+      const words = vntFold(query).split(/\s+/).filter((w) => w.length > 1)
+      const hits = Object.entries(vntSearch!).map(([c, d]) => { const f = vntFold(d); return { c, d, s: words.filter((w) => f.includes(w)).length } })
+        .filter((x) => x.s === words.length && words.length).slice(0, 15)
+      if (!hits.length) return `${header}\nKhông thấy mã nào có mô tả chứa "${query}". Thử từ khóa ngắn hơn hoặc tariff_search(query, market="vn").`
+      return withUi([header, `Mã HS có mô tả chứa "${query}" (gợi ý – kiểm tra phân loại theo 6 quy tắc tổng quát trước khi dùng):`, ...hits.map((x) => `- ${dotVN(x.c)}: ${x.d}`), `Tiếp theo: tariff_vn_table(hs="<mã>") để xem thuế, hoặc tariff_vn(hs) cho nguồn chính thức.`].join("\n"), { res: count(hits.length, "results") })
+    }
+    const bad = badCode(hs ?? "", 4, 8)
+    if (bad) return bad
+    const d = digits(hs!)
+    const chapter = vntChapter(d.slice(0, 2))
+    const list = Object.keys(chapter).filter((c) => c.startsWith(d)).sort()
+    if (!list.length) return `${header}\nKhông có mã ${dotVN(d)} trong bảng tổng hợp. Dùng tariff_vn(hs) (nguồn chính thức) hoặc tariff_vn_table(query=…).`
+    const MAX = 6
+    const want = fta ? vntFold(fta).replace(/[^a-z0-9]/g, "") : ""
+    const pick = (k: string) => !want || vntFold(k).replace(/[^a-z0-9]/g, "").includes(want)
+    const out = [header, `Mã ${dotVN(d)} – ${list.length} mã 8 số${list.length > MAX ? `, hiển thị ${MAX} mã đầu (nhập mã chi tiết hơn để xem mã khác)` : ""}; năm lộ trình: ${y}`]
+    for (const c of list.slice(0, MAX)) {
+      const r = chapter[c]
+      out.push("", `■ ${dotVN(c)} – ${r.desc_vi}${r.desc_en ? ` (EN: ${r.desc_en})` : ""} · ĐVT: ${r.unit || "–"}`, `  Nhóm: ${clip(r.heading || "", 200)}`)
+      const line = (k: string, x: any) => `  • ${VNT_LABEL[k] ?? k}: ${x.v || "–"}${x.v && /^[\d.,/]+$/.test(x.v) ? "%" : ""}${x.doc ? ` – căn cứ ${x.doc}` : ""}${x.from ? ` – hiệu lực ${x.from}` : ""}`
+      for (const k of VNT_BASE) if (r.rates[k] && !want) out.push(line(k, r.rates[k]))
+      for (const [k, x] of Object.entries<any>(r.rates)) {
+        if (VNT_BASE.includes(k) || !pick(k)) continue
+        // year-specific rate from the decree's schedule when the compiler has it (else the table's current column)
+        const sched = Object.entries<any>(r.years ?? {}).filter(([n]) => vntFold(n).replace(/[^a-z0-9]/g, "").startsWith(vntFold(k).replace(/[^a-z0-9]/g, "")))
+        const yr = sched.map(([n, s]) => (s.rates?.[y] !== undefined ? `${n} năm ${y}: ${s.rates[y]}` : "")).filter(Boolean)
+        out.push(line(k, x) + (yr.length ? ` · lộ trình: ${yr.join("; ")}` : ""))
+      }
+      if (r.policy && !want) out.push(`  Chính sách mặt hàng (quản lý chuyên ngành, giấy phép…): ${clip(r.policy, 900)}`)
+    }
+    out.push("", warn, "→ Khi trả lời: ghi \"theo bảng tổng hợp của Real Logistics (không chính thức)\" kèm văn bản căn cứ của từng mức; xác nhận mức chính bằng tariff_vn(hs) hoặc văn bản gốc (vbpl_* / chinhphu_*). Không cộng / nhân thuế bằng tay – dùng calc_*.")
+    const text = out.join("\n")
+    const src = `${vntMeta.page}#hs=${d}`
+    recordEvidence(context?.sessionID, { url: src, title: `Bảng tổng hợp biểu thuế XNK (Real Logistics) – ${dotVN(d)}`, text, source: "reallogistics.vn", meta: { unofficial: true, hs: d } })
+    recordWarning(context?.sessionID, src, warn)
+    return withUi(text, { res: count(Math.min(list.length, MAX), "tariffLines") })
+  },
+})
