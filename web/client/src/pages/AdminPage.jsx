@@ -10,6 +10,7 @@ import { useT } from "../i18n.jsx"
 import { Segmented, Switch, useToast } from "../components/ui.jsx"
 import { AdminAccessLog, AdminChatHistory } from "./AdminChats.jsx"
 import AdminLibrary from "./AdminLibrary.jsx"
+import AdminLab from "./AdminLab.jsx"
 import AdminUsers from "./AdminUsers.jsx"
 import AdminGrounding from "../components/AdminGrounding.jsx"
 import { ESC_IN_PROGRESS, ESC_NEW, ESC_STATUSES, ESC_STATUS_KEY } from "../codes.js"
@@ -25,6 +26,7 @@ export const ADMIN_SECTIONS = [
   { k: "experts", key: "experts", Icon: IconGavel },
   { k: "models", key: "models", Icon: IconSparkle },
   { k: "library", key: "library", Icon: IconBook },
+  { k: "lab", key: "lab", Icon: IconSparkle },
   { k: "settings", key: "settings", Icon: IconSettings },
 ]
 export const adminPath = (k) => (k === "overview" ? "/admin" : `/admin/${k}`)
@@ -380,7 +382,7 @@ function Settings() {
 }
 
 // ---- shell ---------------------------------------------------------------------------------------
-function Section({ k, go }) {
+function Section({ k, go, labId }) {
   switch (k) {
     case "users":
       return <AdminUsers />
@@ -394,6 +396,8 @@ function Section({ k, go }) {
       return <Models />
     case "library":
       return <AdminLibrary />
+    case "lab":
+      return <AdminLab id={labId} />
     case "settings":
       return <Settings />
     default:
@@ -401,7 +405,7 @@ function Section({ k, go }) {
   }
 }
 
-export default function AdminPage({ me, section = "overview" }) {
+export default function AdminPage({ me, section = "overview", labId }) {
   const t = useT()
   const current = ADMIN_SECTIONS.find((s) => s.k === section) || ADMIN_SECTIONS[0]
   useTitle(`${t(`admin.console.nav.${current.key}`)} – ${t("admin.docTitle")}`)
@@ -420,7 +424,7 @@ export default function AdminPage({ me, section = "overview" }) {
   }, [])
   const go = useCallback(
     (k) => {
-      if (k === current.k) return
+      if (k === current.k && !labId) return
       lastQuery[current.k] = window.location.search
       navigate(adminPath(k) + (lastQuery[k] || ""))
     },
@@ -473,7 +477,7 @@ export default function AdminPage({ me, section = "overview" }) {
           </ul>
         </nav>
         <main className="admin-main adm-content" key={current.k}>
-          <Section k={current.k} go={go} />
+          <Section k={current.k} go={go} labId={labId} />
         </main>
       </div>
     </div>

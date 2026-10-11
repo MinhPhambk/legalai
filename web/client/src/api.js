@@ -149,6 +149,13 @@ export const api = {
       skill: (name) => request("GET", `/api/admin/library/skills/${enc(name)}`),
       setSkill: (name, enabled) => request("PUT", `/api/admin/library/skills/${enc(name)}`, { enabled }),
     },
+    lab: {
+      list: () => request("GET", "/api/admin/lab"),
+      get: (id) => request("GET", `/api/admin/lab/${enc(id)}`),
+      create: (body) => request("POST", "/api/admin/lab", body),
+      update: (id, body) => request("PATCH", `/api/admin/lab/${enc(id)}`, body),
+      remove: (id) => request("DELETE", `/api/admin/lab/${enc(id)}`),
+    },
   },
 
   deleteUpload: (id) => request("DELETE", `/api/uploads/${enc(id)}`),

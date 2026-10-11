@@ -50,7 +50,8 @@ const ROUTES = {
   auth: /^\/(login|register)$/,
   chat: /^\/(c\/([A-Za-z0-9_-]+))?$/,
   share: /^\/s\/([A-Za-z0-9_-]+)$/,
-  admin: /^\/admin(?:\/(users|chats|access-log|experts|models|library|settings))?$/,
+  admin: /^\/admin(?:\/(users|chats|access-log|experts|models|library|lab|settings))?$/,
+  adminLab: /^\/admin\/lab\/([A-Za-z0-9_-]{1,64})$/,
   adminChat: /^\/admin\/chats\/([A-Za-z0-9_-]+)$/,
   expert: /^\/expert$/,
 }
@@ -91,13 +92,13 @@ export default function App({ initialUser, ssr = false }) {
   const showSite = !!site && (site.page !== "landing" || user === null || (user === undefined && ssr))
   const isAuthPath = ROUTES.auth.test(path)
   const isShare = ROUTES.share.test(path)
-  const isKnown = isAuthPath || isShare || ROUTES.chat.test(path) || ROUTES.admin.test(path) || ROUTES.adminChat.test(path) || ROUTES.expert.test(path)
+  const isKnown = isAuthPath || isShare || ROUTES.chat.test(path) || ROUTES.admin.test(path) || ROUTES.adminLab.test(path) || ROUTES.adminChat.test(path) || ROUTES.expert.test(path)
   useEffect(() => {
     if (user && site?.page === "landing" && path !== "/") return navigate("/", { replace: true })
     if (user === undefined || isShare || !isKnown || showSite) return
     if (!user && !isAuthPath) navigate("/login", { replace: true })
     else if (user && isAuthPath) navigate("/", { replace: true })
-    else if (user && ROUTES.admin.test(path) && !user.isAdmin) navigate("/", { replace: true })
+    else if (user && (ROUTES.admin.test(path) || ROUTES.adminLab.test(path)) && !user.isAdmin) navigate("/", { replace: true })
     else if (user && ROUTES.expert.test(path) && !(user.isExpert || user.isAdmin)) navigate("/", { replace: true })
   }, [user, path, isAuthPath, isShare, isKnown, showSite, site?.page, meta.allowRegistration])
 
@@ -132,6 +133,8 @@ export default function App({ initialUser, ssr = false }) {
   } else if (ROUTES.expert.test(path)) {
     key = "expert"
     view = user.isExpert || user.isAdmin ? <ExpertPage me={user} /> : <Splash />
+  } else if (ROUTES.adminLab.test(path)) {
+    view = user.isAdmin ? <AdminPage me={user} section="lab" labId={path.match(ROUTES.adminLab)[1]} /> : <Splash />
   } else if (ROUTES.adminChat.test(path)) {
     key = "admin-chat"
     view = user.isAdmin ? <AdminChatViewer chatId={path.match(ROUTES.adminChat)[1]} /> : <NotFound />

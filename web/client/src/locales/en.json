@@ -1119,13 +1119,15 @@
         "experts": "Experts",
         "models": "AI model",
         "library": "Tools & skills",
-        "settings": "System settings"
+        "settings": "System settings",
+        "lab": "Pilot lab"
       },
       "desc": {
         "overview": "Key numbers, AI system status and recent activity.",
         "users": "Create accounts, issue one-time password resets, grant roles, lock or delete users.",
         "experts": "The expert queue at a glance and the people with the expert role.",
-        "settings": "System-wide switches; changes apply immediately."
+        "settings": "System-wide switches; changes apply immediately.",
+        "lab": "A workspace to sketch pilot products built on the LegalAI platform. Admins only; nothing here changes the running assistant yet."
       },
       "waiting_one": "{count} waiting for the user's answer",
       "waiting_other": "{count} waiting for the user's answer",
@@ -1142,6 +1144,71 @@
         "access": "Access",
         "answers": "Answers",
         "verify": "Verification"
+      }
+    },
+    "lab": {
+      "title": "Pilot lab",
+      "intro": "A workspace to sketch pilot products built on the LegalAI platform. Admins only; nothing here changes the running assistant yet.",
+      "new": "New pilot product",
+      "newTitle": "Create a pilot product",
+      "create": "Create",
+      "filter": "Filter by status",
+      "all": "All",
+      "empty": "No pilot products yet. Create the first one to start sketching.",
+      "noneInFilter": "No products with this status.",
+      "noTagline": "No description yet",
+      "counts": "{tools} tools · {skills} skills",
+      "updated": "updated {when}",
+      "createdUpdated": "Created {created} · updated {updated}",
+      "back": "Pilot lab",
+      "untitled": "(untitled)",
+      "unsaved": "Unsaved",
+      "save": "Save",
+      "saved": "Saved",
+      "delete": "Delete",
+      "deleteTitle": "Delete pilot product?",
+      "deleteBody": "Delete \"{name}\" with all its notes and draft configuration. This cannot be undone.",
+      "leaveTitle": "Leave without saving?",
+      "leaveBody": "Unsaved changes will be lost.",
+      "leave": "Leave",
+      "search": "Search…",
+      "picked": "{n}/{total} selected",
+      "modelDefault": "System default",
+      "draftNote": "Draft configuration – stored for reference, NOT applied to the assistant yet.",
+      "status": {
+        "idea": "Idea",
+        "building": "Building",
+        "pilot": "Pilot",
+        "paused": "Paused"
+      },
+      "s": {
+        "basic": "Basics",
+        "idea": "Product idea",
+        "draft": "Draft configuration"
+      },
+      "f": {
+        "name": "Product name",
+        "tagline": "Short description",
+        "status": "Status",
+        "goal": "Goal / problem it solves",
+        "audience": "Target users",
+        "notes": "Notes, ideas",
+        "welcome": "Welcome text",
+        "examples": "Sample questions (one per line)",
+        "prompt": "Role / instructions for the assistant (draft prompt)",
+        "model": "AI model",
+        "tools": "Tools it would use",
+        "skills": "Skills it would use"
+      },
+      "ph": {
+        "name": "e.g. Import/export tariff assistant",
+        "tagline": "One sentence about the product",
+        "goal": "Who it helps with what, how it differs from LegalAI today…",
+        "audience": "e.g. agri-food exporters, in-house legal teams…",
+        "notes": "Ideas, open questions, to-dos…",
+        "welcome": "e.g. I help you look up duties and export conditions…",
+        "examples": "Import duty on shrimp into Japan in 2026?\nEVFTA conditions for coffee?",
+        "prompt": "You are an assistant specialised in…"
       }
     }
   },

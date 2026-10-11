@@ -19,6 +19,7 @@ import { registerExpertRoutes } from "./experts.mjs"
 import { registerArtifactRoutes } from "./artifacts.mjs"
 import { registerVisualRoutes } from "./visuals.mjs"
 import { registerLibraryRoutes } from "./library.mjs"
+import { registerLabRoutes } from "./lab.mjs"
 import { startDraftWatcher } from "./drafts.mjs"
 import { registerAssistRoutes } from "./assist.mjs"
 import { localizeErrors } from "./i18n.mjs"
@@ -58,7 +59,7 @@ const csp = () =>
   ].join("; ")
 
 // Client-side routes that exist; anything else gets the SPA with a real 404 status.
-const SPA_ROUTES = /^\/(|en|brand|privacy|terms|en\/brand|en\/privacy|en\/terms|login|register|admin|admin\/(?:users|chats|access-log|experts|models|library|settings)|admin\/chats\/[A-Za-z0-9_-]{1,64}|expert|c\/[A-Za-z0-9_-]{1,64}|s\/[A-Za-z0-9_-]{1,64})$/
+const SPA_ROUTES = /^\/(|en|brand|privacy|terms|en\/brand|en\/privacy|en\/terms|login|register|admin|admin\/(?:users|chats|access-log|experts|models|library|lab|settings)|admin\/lab\/[A-Za-z0-9_-]{1,64}|admin\/chats\/[A-Za-z0-9_-]{1,64}|expert|c\/[A-Za-z0-9_-]{1,64}|s\/[A-Za-z0-9_-]{1,64})$/
 
 const clientIp = (req) => req.ip || req.socket.remoteAddress || ""
 const publicUser = (u) => u && { id: u.id, email: u.email, isAdmin: u.isAdmin, isExpert: u.isExpert, displayName: u.displayName, settings: u.settings, locale: u.locale || null }
@@ -210,6 +211,7 @@ export function createApp({ oc, getModelInfo }) {
   const assist = registerAssistRoutes(app, { oc, hub: chats.hub, json })
   app.locals.upgrade = assist.upgrade
   registerLibraryRoutes(app, { oc, json }) // Admin → tools & skills library
+  registerLabRoutes(app, { json }) // Admin → Lab thử nghiệm (pilot products, drafts only)
 
   // ---- uploads ------------------------------------------------------------------------------
   // Processing status of an upload in flight (the client sends X-Upload-Key and polls while the server extracts):

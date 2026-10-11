@@ -59,6 +59,10 @@ export function Dialog({ open, title, children, onClose, actions, labelledBy = "
   const [leaving, setLeaving] = useState(false)
   const boxRef = useRef(null)
   const lastFocus = useRef(null)
+  // onClose is usually an inline arrow (a new function every render): keep it in a ref so the focus effect below
+  // runs only when the dialog opens – re-running it moved the cursor back to the first field while typing.
+  const closeRef = useRef(onClose)
+  closeRef.current = onClose
   useEffect(() => {
     if (open) {
       lastFocus.current = document.activeElement
@@ -81,7 +85,7 @@ export function Dialog({ open, title, children, onClose, actions, labelledBy = "
       if (all[all.length - 1] !== box) return // only the topmost dialog reacts
       if (e.key === "Escape") {
         e.stopPropagation()
-        onClose?.()
+        closeRef.current?.()
       }
       if (e.key === "Tab" && box) {
         const f = [...box.querySelectorAll("button, input, textarea, [href]")].filter((el) => !el.disabled)
@@ -97,7 +101,7 @@ export function Dialog({ open, title, children, onClose, actions, labelledBy = "
     }
     document.addEventListener("keydown", onKey)
     return () => document.removeEventListener("keydown", onKey)
-  }, [render, leaving, onClose])
+  }, [render, leaving])
   if (!render) return null
   return createPortal(
     <div className={`dialog-backdrop ${leaving ? "leaving" : ""}`} onMouseDown={(e) => e.target === e.currentTarget && onClose?.()}>

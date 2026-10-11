@@ -1056,13 +1056,15 @@
         "experts": "Chuyên gia",
         "models": "Mô hình AI",
         "library": "Công cụ & kỹ năng",
-        "settings": "Cài đặt hệ thống"
+        "settings": "Cài đặt hệ thống",
+        "lab": "Lab thử nghiệm"
       },
       "desc": {
         "overview": "Số liệu chính, trạng thái hệ thống AI và hoạt động gần đây.",
         "users": "Tạo tài khoản, đặt lại mật khẩu một lần, cấp quyền, khoá hoặc xoá người dùng.",
         "experts": "Tình hình hàng đợi chuyên gia và danh sách người có vai trò chuyên gia.",
-        "settings": "Các công tắc áp dụng cho toàn hệ thống, có hiệu lực ngay."
+        "settings": "Các công tắc áp dụng cho toàn hệ thống, có hiệu lực ngay.",
+        "lab": "Không gian phác thảo các sản phẩm thí điểm xây trên nền tảng LegalAI. Chỉ quản trị viên thấy; nội dung ở đây chưa thay đổi trợ lý đang chạy."
       },
       "waiting_other": "{count} chờ người dùng trả lời",
       "expertOpen": "Yêu cầu chuyên gia đang mở",
@@ -1077,6 +1079,71 @@
         "access": "Truy cập",
         "answers": "Câu trả lời",
         "verify": "Kiểm chứng"
+      }
+    },
+    "lab": {
+      "title": "Lab thử nghiệm",
+      "intro": "Không gian phác thảo các sản phẩm thí điểm xây trên nền tảng LegalAI. Chỉ quản trị viên thấy; nội dung ở đây chưa thay đổi trợ lý đang chạy.",
+      "new": "Sản phẩm thí điểm mới",
+      "newTitle": "Tạo sản phẩm thí điểm",
+      "create": "Tạo",
+      "filter": "Lọc theo trạng thái",
+      "all": "Tất cả",
+      "empty": "Chưa có sản phẩm thí điểm nào. Tạo sản phẩm đầu tiên để bắt đầu phác thảo.",
+      "noneInFilter": "Không có sản phẩm ở trạng thái này.",
+      "noTagline": "Chưa có mô tả",
+      "counts": "{tools} công cụ · {skills} kỹ năng",
+      "updated": "cập nhật {when}",
+      "createdUpdated": "Tạo {created} · cập nhật {updated}",
+      "back": "Lab thử nghiệm",
+      "untitled": "(chưa đặt tên)",
+      "unsaved": "Chưa lưu",
+      "save": "Lưu",
+      "saved": "Đã lưu",
+      "delete": "Xoá",
+      "deleteTitle": "Xoá sản phẩm thí điểm?",
+      "deleteBody": "Xoá \"{name}\" và toàn bộ ghi chú, cấu hình nháp. Không hoàn tác được.",
+      "leaveTitle": "Rời trang khi chưa lưu?",
+      "leaveBody": "Các thay đổi chưa lưu sẽ mất.",
+      "leave": "Rời trang",
+      "search": "Tìm…",
+      "picked": "Đã chọn {n}/{total}",
+      "modelDefault": "Mặc định của hệ thống",
+      "draftNote": "Cấu hình nháp – lưu để tham khảo, CHƯA được áp dụng cho trợ lý.",
+      "status": {
+        "idea": "Ý tưởng",
+        "building": "Đang dựng",
+        "pilot": "Thử nghiệm",
+        "paused": "Tạm dừng"
+      },
+      "s": {
+        "basic": "Thông tin chung",
+        "idea": "Ý tưởng sản phẩm",
+        "draft": "Cấu hình nháp"
+      },
+      "f": {
+        "name": "Tên sản phẩm",
+        "tagline": "Mô tả ngắn",
+        "status": "Trạng thái",
+        "goal": "Mục tiêu / bài toán giải quyết",
+        "audience": "Người dùng mục tiêu",
+        "notes": "Ghi chú, ý tưởng",
+        "welcome": "Câu chào",
+        "examples": "Câu hỏi gợi ý (mỗi dòng một câu)",
+        "prompt": "Vai trò / hướng dẫn cho trợ lý (prompt nháp)",
+        "model": "Mô hình AI",
+        "tools": "Công cụ dự kiến dùng",
+        "skills": "Kỹ năng dự kiến dùng"
+      },
+      "ph": {
+        "name": "VD: Trợ lý Thuế XNK",
+        "tagline": "Một câu mô tả sản phẩm",
+        "goal": "Sản phẩm giúp ai làm việc gì, khác gì LegalAI hiện tại…",
+        "audience": "VD: doanh nghiệp xuất khẩu nông sản, bộ phận pháp chế…",
+        "notes": "Ghi lại ý tưởng, câu hỏi còn mở, việc cần làm…",
+        "welcome": "VD: Tôi giúp bạn tra thuế và điều kiện xuất khẩu…",
+        "examples": "Thuế nhập khẩu tôm vào Nhật năm 2026?\nĐiều kiện hưởng EVFTA cho cà phê?",
+        "prompt": "Bạn là trợ lý chuyên về…"
       }
     }
   },
